@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+
+<head>
+  <title>Notes - Fatal Error / System Restarting</title>
+</head>
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="References/AreFilesLinked.js"></script>
+  
+  <script src="References/Main.js"></script>
+  
+  <h1>Notes</h1>
+  
+  <h2>Chapter Types</h2>
+  
+  <p>Main: Follows the main character, Umbriel, an Anthropoid. Goes on many camping trips. Umbriel is working at a nuclear power plant.</p>
+  
+  <p>Terminal: Shows the main terminal of ILRU (Intelligent Life Recreation Unit); Pod sent out by humans, creator of the Anthropoids.</p>
+  
+  <p>Human: Journal entries from a human. They helped make the pod/ILRU.</p>
+  
+  <h2>Background</h2>
+  
+  <p>
+    All humans died, it might have been because of nuclear war, a supernova, a gamma ray burst, or maybe humans could not leave the solar system before the Sun went super giant. Anyhow, many years before humans died, they sent out pods containing all the DNA known to humans. These pods were designed to spread life to other planets. One of these pods got struck by a particle (a piece of dust) in interstellar space, breaking some of the shielding. Radiation caused mutations in the DNA and a system restart. When this pod landed it had to splice together DNA to recreate life. The main character is one of these Anthropoids.
+  </p>
+  
+  <h2>Species Description</h2>
+  
+  <p>
+    Human DNA was the most protected, and as such was the most intact. The human DNA had to be spliced with other mammals', and as such these new humanoids have animal features. Bacteria was the most abundant DNA, allowing for the planet to be prepared for mammalian life. Anthropoids are bipedal, yet have a tail and facial features of a canine and other mammals. They have the intelligence and dexterity of a human and the senses and athletics of a canine.
+  </p>
+  
+  <h2>World History</h2>
+  
+  <p>
+    Anthropoids are a lot more cooperative and kind then humans, yet still have a similar curiosity and innovation. Technology starts off a little slower then it did for humans, although there was a lot less violence. Technology is developed with a sense of smell more in mind. Note: There is religion, the predominant one surrounding what we would call cheese.
+  </p>
+  
+  <h2>Orbital Diagram</h2>
+  
+  <div class="ODBox"></div>
+  
+  <div id="output">Scroll: _<br>Section: _<br>Distance: _ km</div>
+  
+  <p id="rDisp">Radius px = km / [rScale]</p>
+  
+  <div class="navigation">
+    <button type="button" onclick="rScaleAdd();" class="nav">+</button>
+    <button type="button" onclick="rScaleSub();" class="nav">-</button>
+  </div>
+  
+  <p id="dDisp">Distance px = km / [dScale]</p>
+  
+  <div class="navigation">
+    <button type="button" onclick="dScaleAdd();" class="nav">+</button>
+    <button type="button" onclick="dScaleSub();" class="nav">-</button>
+  </div>
+  
+  <script src="References/OrbitDiagram.js"></script>
+  
+  <script>createCelestial(24622, 961000000, 0, 'Glacies', 'rgb(32, 0, 128)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(78997, 254000000, 0, 'Caelum', 'rgb(196, 196, 128)', 'rgb(0, 0, 0)', 0.5);
+    createCelestial(2797, 2229520, 254000000, 'Aer', 'rgb(196, 128, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(6097, 15086917, 0, 'Lutum', 'rgb(0, 128, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(12.1, 12890, 15086917, 'Saxum', 'rgb(64, 64, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(4726, 0, 0, 'Ignus', 'rgb(255, 228, 196)', 'rgb(0, 0, 0)', 0.5);</script>
+  
+  <p>Navigate To:</p>
+  
+  <div id="scrollNavBar" class="navigation"></div>
+  
+  <script>render();</script>
+  
+  <h2>Celestial Object Notes</h2>
+  
+  <p>Ignus:</p>
+  <ul>
+    <li>Sun: Hydrogen White Dwarf</li>
+    <li>Mass: 1.124 Solar Masses</li>
+    <li>Radius: 0.742 Earth</li>
+  </ul>
+  
+  <p>Lutum:</p>
+  <ul>
+    <li>Main Planet</li>
+    <li>Mass: 0.86 Earth</li>
+    <li>Radius: 0.957 Earth</li>
+    <li>Day Length: 22.6 Hours</li>
+    <li>Orbital Distance: 0.110 to 0.115 AU</li>
+    <li>Year: 13.0 Earth Days, 13.8 Lutum Days</li>
+    <br>
+    <li>Tilt: 16 deg</li>
+    <li>Ocean Coverage: 64%</li>
+    <li>Atmosphere: Similar to Earth's, ILRU regulated its composition via bacteria, less CO2.</li>
+    <li>Crust: Due to the planet's smaller mass and larger land area, rare metals are less rare.</li>
+    <li>Temp: -80C to 30C (Avg. 9.6C)</li>
+  </ul>
+  
+  <p>Saxum:</p>
+  <ul>
+    <li>Moon of Lutum</li>
+    <li>Mass: 7.22 * 10<sup>15</sup> kg</li>
+    <li>Radius: 12.1 km</li>
+    <li>Orbital Distance: 11365 to 14415 km</li>
+    <li>Orbital Period: 4.36 Hours</li>
+  </ul>
+  
+  <p>Caelum:</p>
+  <ul>
+    <li>Gas Gaint</li>
+    <li>Mass: 2.88 Jupiter</li>
+    <li>Radius: 1.13 Jupiter</li>
+    <li>Orbital Distance: 1.62 to 1.77 AU</li>
+    <li>Orbital Period: 760 Earth Days, 807 Lutum Days</li>
+  </ul>
+  
+  <p>Aer:</p>
+  <ul>
+    <li>Moon of Caelum</li>
+    <li>Mass: 2.32 Moon</li>
+    <li>Radius: 1.6 Moon</li>
+    <li>Orbital Distance: 5.62 to 5.98 Lunar Distance</li>
+    <li>Orbital Period: 12.7 Earth Days, 13.5 Lutum Days</li>
+    <li>Similar to Titan, methane oceans</li>
+  </ul>
+  
+  <p>Glacies:</p>
+  <ul>
+    <li>Gas Gaint</li>
+    <li>Mass: 17.1 Earth</li>
+    <li>Radius: 3.86 Earth</li>
+    <li>Orbital Distance: 5.82 to 7.02 AU</li>
+    <li>Orbital Period: 5605 Earth Days, 5952 Lutum Days</li>
+  </ul>
+  
+  <p>Thanks to Universe Sandbox for powering some of the calculations</p>
+  
+  <h2>Technology</h2>
+  
+  <ul>
+    <li>Math is in base 8</li>
+    <li>Calendar is set at around 4176 (2174 years) after the creation of cheese. The beginning of the year is in late spring. (There are no months: Year - Day, in base 8).
+    <li>Language is very diverse in that it uses vocalizations, scent, and body language. While vocalizations vary across regions, smell and body language are mostly universal.
+    <li>Written language is mostly based on phonics (I am going to keep things in english, don't worry).
+    <li>Due to the limitation of roads, and little use of fossil fuels (they are stinky), cars are solar powered: Steam engines used solar power via lenses.</li>
+    <li>Transport consists of Trains, Blimps, and Bikes. All of these are similar to ours, except they are electric. Blimps are used intead of planes, because fossil fuels are out of the question.</li>
+    <li>The grid is supported mostly by nuclear, solar, hydro, and wind. Nuclear is a lot more successful due to inherently safer design.</li>
+    <li>There is a geothermal plant in Nix, although this is more of an experimental plant.</li>
+    <li>Computers are very similar to our own, except they have a larger 'Paw Pad,' and they have special scent deployers.</li>
+    <li>Cities are similar to our own, except there are less roads and are more sustainable.</li>
+    <li>Housing is made of earthy materials, and often built somewhat underground.</li>
+  </ul>
+  
+  <h2>Geology / Nations</h2>
+  
+  <ul>
+    <li>Nix: Continent over the North Pole. Very mountainous.</li>
+    <li>Magna: Main continent, Large mostly Southern, spans East and West.</li>
+    <li>Parvus: Smaller continent (~1/2 Magna), has lots of resources and is considered the capital of the world. West of Magna.</li>
+    <li>Mons: Northern mountainous continent, mild climate like Magna and Parvus. More wild, were Umbriel lives and where ILRU landed.</li>
+    <br>
+    <li>The world is governed by a representative democracy (but with multiple people of power like an oligarchy). Each continent and oceanic region has a governor. This world government handles disputes among continents.</li>
+  </ul>
+  
+  <h2>History</h2>
+  
+  <u>
+  
+  </u>
+  
+  <h2>Biology</h2>
+  
+  <ul>
+    
+  </ul>
+  
+  <h1>⚠️ Spoilers Beyond This Point ⚠️
+  <span><button class="sectBttn" id="SA bttn" onclick="expndOrClps('SA', 'SA bttn')">🔽</button></span></h1>
+  
+  <div id = "SA" class = "sect">
+  
+  <h2>Plot</h2>
+  
+  <p>
+    Charon is at the head of an organization trying to gain power through nuclear weapons. He is blackmailing and threatening scientists into the development of these weapons. Hyperion is forced into threatening Umbrien. It does not go well: Hyperion gets injured while out in the woods, Umberium then finds them in the woods.
+  </p>
+  
+  <h2>Characters</h2>
+  
+  <ul>
+    <li>Umbriel:</li>
+    <ul>
+      <li>Gender: He/Him</li>
+      <li>Protagonist</li>
+      <li>Lives alone in a house near the woods.</li>
+      <li>Works for a nuclear plant in Mons.</li>
+      <li>Antisocial / Introvert.</li>
+      <li>Loves nature and hiking.</li>
+    </ul>
+    <li>Hyperion:</li>
+    <ul>
+      <li>Gender: They/Them</li>
+      <li>Forced into working for Charon: Charon hacked into their bank account and threatened their life.</li>
+    </ul>
+    <li>Charon:</li>
+    <ul>
+      <li>Gender: He/Him</li>
+      <li>Antagonist</li>
+    </ul>
+    <li>Cressuda:</li>
+    <ul>
+      <li>Gender: She/Her</li>
+      <li>Co-worker of Umbriel.</li>
+    </ul>
+  </ul>
+  
+  </div>
+  
+  <br>
+  
+  <script>expndOrClps('SA', 'SA bttn');</script>
+  
+</body>
+
+</html>
