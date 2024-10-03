@@ -37,6 +37,7 @@ li {font-size: 1.125em;}
 
 a.nav:hover, a.nav:active, a.navArrow:hover, a.navArrow:active {
   background-color: rgb(128, 192, 128);
+  color: rgb(0, 0, 0);
 }
 
 .navArrow {
