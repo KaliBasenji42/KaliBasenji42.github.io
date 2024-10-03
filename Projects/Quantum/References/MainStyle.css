@@ -17,6 +17,9 @@ h1 {text-align: center;}
 p {text-indent: 2em; font-size: 18px;}
 li {font-size: 18px;}
 
+a {color: rgb(0, 128, 0);}
+a:hover {color: rgb(128, 196, 128);}
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;

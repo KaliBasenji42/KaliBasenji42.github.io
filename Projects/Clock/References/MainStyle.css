@@ -3,6 +3,9 @@ body {
   height: 48em;
 }
 
+a {color: rgb(0, 128, 0);}
+a:hover {color: rgb(128, 196, 128);}
+
 .face {
   width: 32em;
   height: 32em;

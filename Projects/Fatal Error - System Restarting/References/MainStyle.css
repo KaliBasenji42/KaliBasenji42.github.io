@@ -15,7 +15,8 @@ body {
 h1 {text-align: center;}
 
 p {text-indent: 2em; font-size: 1.125em;}
-a {font-size: 1.125em;}
+a {font-size: 1.125em; color: rgb(0, 128, 0);}
+a:hover {color: rgb(128, 196, 128);}
 li {font-size: 1.125em;}
 
 /* Navigation */
