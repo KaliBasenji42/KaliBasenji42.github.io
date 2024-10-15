@@ -141,7 +141,7 @@ function expndOrClps(ID, bttnID) {
   
 }
 
-function remove(arrayA, arrayB){
+function remove(arrayA, arrayB) {
   
   out = []
 
@@ -189,29 +189,28 @@ document.addEventListener('keypress', function() {
   if(key == 33) window.alert('Hello!');
 });
 
-let elems = remove(document.getElementsByTagName('*'),document.getElementsByTagName('body'));
 let rotate = 0;
 let run = true;
 let trigger = '@';
 let time = 5;
 
-for(let i = 0; i < elems.length; i ++) {
-    elems[i].style.transition = 'rotate ' + time + 's linear';
+function loadSpin(){
+  let elems = document.getElementsByTagName('*');
+  
+  for(let i = 0; i < elems.length; i ++) elems[i].style.transition = 'rotate ' + time + 's linear';
 }
 
-function animate() {
-    rotate += 180;
-    
-    for(let i = 0; i < elems.length; i ++) {
-        elems[i].style.rotate = '' + rotate + 'deg';
-    }
+function spin() {
+  rotate += 180;
+  
+  for(let i = 0; i < elems.length; i ++) elems[i].style.rotate = '' + rotate + 'deg';
 }
 
 document.addEventListener('keypress', function() {
     if(event.key == trigger && run) {
         run = false;
-        animate();
-        window.setTimeout(animate, time * 1000);
+        spin();
+        window.setTimeout(spin, time * 1000);
         window.setTimeout(function runTrue(){
             run = true;
         }, time * 1000 * 2);
