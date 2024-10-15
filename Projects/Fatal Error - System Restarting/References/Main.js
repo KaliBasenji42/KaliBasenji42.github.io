@@ -141,6 +141,26 @@ function expndOrClps(ID, bttnID) {
   
 }
 
+function remove(arrayA, arrayB){
+  
+  out = []
+
+  let add = true;
+
+  for(let a = 0; a < arrayA.length; a++){
+    
+    add = true;
+    
+    for(let b = 0; b < arrayB.length; b++) if(arrayA[a] == arrayB[b]) add = false;
+    
+    if(add) out.push(arrayA[a]);
+    
+  }
+  
+  return out;
+  
+}
+
 // Set Elements
 
 for(let i = 0; i < head.length; i++) head[i].innerHTML += headHTML + '<title>Chapter ' + (chapter + 1) + ' - Fatal Error / System Restarting</title>';
@@ -169,7 +189,7 @@ document.addEventListener('keypress', function() {
   if(key == 33) window.alert('Hello!');
 });
 
-let elems = document.getElementsByTagName('*').remove(document.getElementsByTagName('body'));
+let elems = remove(document.getElementsByTagName('*').remove(document.getElementsByTagName('body'));
 let rotate = 0;
 let run = true;
 let trigger = '@';
