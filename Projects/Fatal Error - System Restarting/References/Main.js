@@ -180,6 +180,7 @@ document.addEventListener('keypress', function() {
 document.addEventListener('DOMContentLoaded', function(event) {
   document.querySelector('body').style = "animation-name: load;" + 
                                          "animation-duration: 0.75s;";
+  loadSpin();
 });
 
 // :P
