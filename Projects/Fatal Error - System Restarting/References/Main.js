@@ -189,7 +189,7 @@ document.addEventListener('keypress', function() {
   if(key == 33) window.alert('Hello!');
 });
 
-let elems = remove(document.getElementsByTagName('*').remove(document.getElementsByTagName('body'));
+let elems = remove(document.getElementsByTagName('*'),document.getElementsByTagName('body'));
 let rotate = 0;
 let run = true;
 let trigger = '@';
