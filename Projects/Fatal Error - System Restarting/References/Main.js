@@ -190,13 +190,14 @@ document.addEventListener('keypress', function() {
   if(key == 33) window.alert('Hello!');
 });
 
+let elems = [];
 let rotate = 0;
 let run = true;
 let trigger = '@';
 let time = 5;
 
 function loadSpin(){
-  let elems = document.getElementsByTagName('*');
+  elems = document.getElementsByTagName('*');
   
   for(let i = 0; i < elems.length; i ++) elems[i].style.transition = 'rotate ' + time + 's linear';
 }
