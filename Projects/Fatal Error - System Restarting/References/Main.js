@@ -169,7 +169,7 @@ document.addEventListener('keypress', function() {
   if(key == 33) window.alert('Hello!');
 });
 
-let elems = document.getElementsByTagName('*');
+let elems = document.getElementsByTagName('body');
 let rotate = 0;
 let run = true;
 let trigger = '@';
