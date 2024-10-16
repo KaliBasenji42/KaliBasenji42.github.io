@@ -139,7 +139,38 @@ document.addEventListener('DOMContentLoaded', function(event) {
                                          "animation-duration: 0.75s;";
 });
 
+// :P
+
 document.addEventListener('keypress', function() {
   let key = event.keyCode || event.charCode;
   if(key == 33) window.alert('Hello!');
+});
+
+let elems = [];
+let rotate = 0;
+let run = true;
+let trigger = '@';
+let time = 5;
+
+function loadSpin(){
+  elems = document.getElementsByTagName('*');
+  
+  for(let i = 0; i < elems.length; i ++) elems[i].style.transition = 'rotate ' + time + 's linear';
+}
+
+function spin() {
+  rotate += 180;
+  
+  for(let i = 0; i < elems.length; i ++) elems[i].style.rotate = '' + rotate + 'deg';
+}
+
+document.addEventListener('keypress', function() {
+    if(event.key == trigger && run) {
+        run = false;
+        spin();
+        window.setTimeout(spin, time * 1000);
+        window.setTimeout(function runTrue(){
+            run = true;
+        }, time * 1000 * 2);
+    }
 });
