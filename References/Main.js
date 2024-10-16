@@ -53,6 +53,7 @@ for(let i = 0; i < body.length; i++) body[i].innerHTML += bodyHTML;
 document.addEventListener('DOMContentLoaded', function (event) {
   document.querySelector('body').style = "animation-name: load;" +
     "animation-duration: 0.75s;";
+    function loadSpin();
 });
 
 // :P
