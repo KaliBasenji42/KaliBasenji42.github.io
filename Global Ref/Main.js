@@ -84,7 +84,7 @@ document.addEventListener('keypress', function() {
     if(event.key == trigger && run) {
         run = false;
         spin();
-        window.setTimeout(spin, time * 1000);
+        window.setTimeout(spin, 5 * 1000);
         window.setTimeout(function runTrue(){
             run = true;
         }, 5 * 1000 * 2);
