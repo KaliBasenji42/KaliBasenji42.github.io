@@ -61,7 +61,11 @@ function showAreas() {
   
   let areas = document.getElementsByClassName('mapArea');
   
-  for (let i = 0; i < areas.length; i ++) areas[i].style.backgroundColor = 'rgba(255, 0, 0, .5)';
+  for (let i = 0; i < areas.length; i ++) {
+    areas[i].style.backgroundColor = 'rgba(255, ' +
+                                     (256 * (i / areas.length)) +
+                                     ', 0, .5)';
+  }
   
 }
 
@@ -69,7 +73,9 @@ function hideAreas() {
   
   let areas = document.getElementsByClassName('mapArea');
   
-  for (let i = 0; i < areas.length; i ++) areas[i].style.backgroundColor = 'rgba(0, 0, 0, 0)';
+  for (let i = 0; i < areas.length; i ++) {
+    areas[i].style.backgroundColor = 'rgba(0, 0, 0, 0)';
+  }
   
 }
 
