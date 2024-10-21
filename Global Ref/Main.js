@@ -69,12 +69,9 @@ let elems = [];
 let rotate = 0;
 let run = true;
 let trigger = '@';
-let time = 5;
 
 function loadSpin(){
   elems = document.getElementsByTagName('*');
-  
-  for(let i = 0; i < elems.length; i ++) if(window.getComputedStyle(elems[i]).transition == 'all' || true)elems[i].style.transition += 'rotate ' + time + 's linear';
 }
 
 function spin() {
@@ -90,6 +87,6 @@ document.addEventListener('keypress', function() {
         window.setTimeout(spin, time * 1000);
         window.setTimeout(function runTrue(){
             run = true;
-        }, time * 1000 * 2);
+        }, 5 * 1000 * 2);
     }
 });
