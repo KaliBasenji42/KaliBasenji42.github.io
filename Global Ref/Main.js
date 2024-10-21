@@ -74,9 +74,7 @@ let time = 5;
 function loadSpin(){
   elems = document.getElementsByTagName('*');
   
-  insertRule('* {transition: rotate ' + time + 's linear');
-  
-  //for(let i = 0; i < elems.length; i ++) if(window.getComputedStyle(elems[i]).transition == 'all')elems[i].style.transition += 'rotate ' + time + 's linear';
+  for(let i = 0; i < elems.length; i ++) if(window.getComputedStyle(elems[i]).transition == 'all' || true)elems[i].style.transition += 'rotate ' + time + 's linear';
 }
 
 function spin() {
