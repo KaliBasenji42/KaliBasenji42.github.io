@@ -50,7 +50,7 @@ function TOCList() {
   let HTMLStr = '<ul>';
   
   for(let i = 0; i < chapters.length; i++) {
-    HTMLStr += '<li><a href="' + chapters[i] + '">Chapter ' + (i + 1) + '</li>';
+    HTMLStr += '<li><a href="' + chapters[i] + '">' + chapterNames[i] + '</li>';
   }
   
   HTMLStr += '</ul>';
