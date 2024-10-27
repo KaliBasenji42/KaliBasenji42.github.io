@@ -4,10 +4,10 @@
 const sections = ["Edu", "Other Org", "Exp", "Prj"];
 
 const classes = [["<b>All Courses Average</b>", 0.96776], 
-                 ["<b>Warren Tech</b>", 0.97], 
+                 ["<b>[School 1]</b>", 0.97], 
                  ["WT: Engineering II", 0.97], 
                  ["WT: Sustainable Energy I", 0.97], 
-                 ["<b>Green Mountain</b>", 0.96626667], 
+                 ["<b>[School 2]</b>", 0.96626667], 
                  ["English", 1.01], 
                  ["Trig / Math Analysis", 0.9637], 
                  ["Modern World History", 0.9251]];
