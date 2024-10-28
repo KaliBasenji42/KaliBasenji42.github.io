@@ -9,7 +9,7 @@ const areas = [['Nix', 'rect', 0, 0, 128, 10],
                ['Parvus', 'circle', 20, 48, 16],
                ['Mons', 'circle', 15.5, 20.5, 10.5],
                ['Mare', 'rect', 28, 10, 128, 28],
-               ['?', 'circle', 4.5, 31, 4.5]];
+               ['Disiunctus', 'circle', 4.5, 31, 4.5]];
 
 // Functions
 
