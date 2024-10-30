@@ -37,7 +37,7 @@ function expndOrClps(ID, bttnID) {
   bttn = document.getElementById(bttnID);
   height = "" + (sect.scrollHeight + 100) + "px";
   
-  if (sect.style.maxHeight ==  height || sect.style.maxHeight == "") {
+  if(sect.style.maxHeight ==  height || sect.style.maxHeight == "") {
     
     sect.style.maxHeight = "0px";
     bttn.style.transform = "rotate(270deg)";
