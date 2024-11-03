@@ -4,24 +4,25 @@ let map = document.getElementById('map');
 
 let mapScale = 4;
 
-const areas = [['Nix', 'rect', 0, 0, 128, 10],
-               ['Magna', 'rect', 36, 28, 128, 60],
-               ['Parvus', 'circle', 20, 48, 16],
-               ['Mons', 'circle', 15.5, 20.5, 10.5],
-               ['Mare', 'rect', 28, 10, 128, 28],
-               ['Disiunctus', 'circle', 4.5, 31, 4.5]];
+const mapAreas = [['Nix', 'rect', 0, 0, 128, 10],
+                  ['Magna', 'rect', 36, 28, 128, 60],
+                  ['Parvus', 'circle', 20, 48, 16],
+                  ['Mons', 'circle', 15.5, 20.5, 10.5],
+                  ['Mare', 'rect', 28, 10, 128, 28],
+                  ['Disiunctus', 'circle', 4.5, 31, 4.5],
+                  ['◮<br>N', 'label', 1, 56, 'rgb(128,0,0)', 16, 14]];
 
 // Functions
 
-function drawRect(name, x1, y1, x2, y2) {
+function drawRect(surf, scale, name, x1, y1, x2, y2) {
   
-  x1 = x1 * mapScale;
-  y1 = y1 * mapScale;
-  x2 = x2 * mapScale;
-  y2 = y2 * mapScale;
+  x1 = x1 * scale;
+  y1 = y1 * scale;
+  x2 = x2 * scale;
+  y2 = y2 * scale;
   
   let area = document.createElement('div');
-  map.appendChild(area);
+  surf.appendChild(area);
   
   area.style.position = 'absolute';
   area.className = 'mapArea';
@@ -35,14 +36,14 @@ function drawRect(name, x1, y1, x2, y2) {
   
 }
 
-function drawCircle(name, x1, y1, r) {
+function drawCircle(surf, scale, name, x1, y1, r) {
   
-  x1 = x1 * mapScale;
-  y1 = y1 * mapScale;
-  r = r * mapScale;
+  x1 = x1 * scale;
+  y1 = y1 * scale;
+  r = r * scale;
   
   let area = document.createElement('div');
-  map.appendChild(area);
+  surf.appendChild(area);
   
   area.style.position = 'absolute';
   area.className = 'mapArea';
@@ -57,11 +58,33 @@ function drawCircle(name, x1, y1, r) {
   
 }
 
+function drawLabel(surf, scale, name, x1, y1, color, size, height) {
+  
+  x1 = x1 * scale;
+  y1 = y1 * scale;
+  
+  let label = document.createElement('div');
+  surf.appendChild(label);
+  
+  label.style.position = 'absolute';
+  label.style.zIndex = '1';
+  label.style.textAlign = 'center';
+  
+  label.style.left = '' + x1 + 'px';
+  label.style.top = '' + y1 + 'px';
+  label.style.color = color;
+  label.style.fontSize = '' + size + 'px';
+  label.style.lineHeight = '' + height + 'px';
+  
+  label.innerHTML = name;
+  
+}
+
 function showAreas() {
   
   let areas = document.getElementsByClassName('mapArea');
   
-  for (let i = 0; i < areas.length; i ++) {
+  for(let i = 0; i < areas.length; i ++) {
     areas[i].style.backgroundColor = 'rgba(255, ' +
                                      (256 * (i / areas.length)) +
                                      ', 0, .5)';
@@ -73,17 +96,24 @@ function hideAreas() {
   
   let areas = document.getElementsByClassName('mapArea');
   
-  for (let i = 0; i < areas.length; i ++) {
+  for(let i = 0; i < areas.length; i ++) {
     areas[i].style.backgroundColor = 'rgba(0, 0, 0, 0)';
   }
   
 }
 
-// Loop / Output
-
-for(let i = 0; i < areas.length; i++) {
+function render(surf, scale, areas) {
   
-  if(areas[i][1] == 'rect') drawRect(areas[i][0], areas[i][2], areas[i][3], areas[i][4], areas[i][5]);
-  if(areas[i][1] == 'circle') drawCircle(areas[i][0], areas[i][2], areas[i][3], areas[i][4]);
+  for(let i = 0; i < areas.length; i++) {
+    
+    if(areas[i][1] == 'rect') drawRect(surf, scale, areas[i][0], areas[i][2], areas[i][3], areas[i][4], areas[i][5]);
+    else if(areas[i][1] == 'circle') drawCircle(surf, scale, areas[i][0], areas[i][2], areas[i][3], areas[i][4]);
+    else if(areas[i][1] == 'label') drawLabel(surf, scale, areas[i][0], areas[i][2], areas[i][3], areas[i][4], areas[i][5], areas[i][6]);
+    
+  }
   
 }
+
+// Renders
+
+render(map, mapScale, mapAreas);
