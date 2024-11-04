@@ -1,16 +1,17 @@
 // Variables and Constants
 
 let map = document.getElementById('map');
+let umbrielRef = document.getElementById('UmbrielRef');
 
-let mapScale = 4;
-
-const mapAreas = [['Nix', 'rect', 0, 0, 128, 10],
+const mapAreas = [['Nix', 'rect', 0, 0, 128, 10], // 'Name', 'type', ... args
                   ['Magna', 'rect', 36, 28, 128, 60],
                   ['Parvus', 'circle', 20, 48, 16],
                   ['Mons', 'circle', 15.5, 20.5, 10.5],
                   ['Mare', 'rect', 28, 10, 128, 28],
                   ['Disiunctus', 'circle', 4.5, 31, 4.5],
                   ['◮<br>N', 'label', 1, 56, 'rgb(128,0,0)', 16, 14]];
+
+const umbrielAreas = [['Boop!', 'rect', 45, 14, 47, 15]];
 
 // Functions
 
@@ -116,4 +117,5 @@ function render(surf, scale, areas) {
 
 // Renders
 
-render(map, mapScale, mapAreas);
+render(map, 4, mapAreas);
+render(umbrielRef, 4, umbrielAreas);
