@@ -11,7 +11,8 @@ const mapAreas = [['Nix', 'rect', 0, 0, 128, 10], // 'Name', 'type', ... args
                   ['Disiunctus', 'circle', 4.5, 31, 4.5],
                   ['◮<br>N', 'label', 1, 56, 'rgb(128,0,0)', 16, 14]];
 
-const umbrielAreas = [['Boop!', 'rect', 45, 14, 47, 15]];
+const umbrielAreas = [['Boop!', 'rect', 44, 13, 48, 16],
+                      ['Anklet', 'rect', 76, 49, 82, 50]];
 
 // Functions
 
@@ -86,9 +87,10 @@ function showAreas() {
   let areas = document.getElementsByClassName('mapArea');
   
   for(let i = 0; i < areas.length; i ++) {
-    areas[i].style.backgroundColor = 'rgba(255, ' +
-                                     (256 * (i / areas.length)) +
-                                     ', 0, .5)';
+    areas[i].style.backgroundImage = `radial-gradient( 
+                                      ellipse at 0% 0%,
+                                      rgba(255, 0, 0, 0.5), 
+                                      rgba(0, 255, 0, 0.5))`;
   }
   
 }
@@ -98,7 +100,7 @@ function hideAreas() {
   let areas = document.getElementsByClassName('mapArea');
   
   for(let i = 0; i < areas.length; i ++) {
-    areas[i].style.backgroundColor = 'rgba(0, 0, 0, 0)';
+    areas[i].style.backgroundImage = 'none';
   }
   
 }
