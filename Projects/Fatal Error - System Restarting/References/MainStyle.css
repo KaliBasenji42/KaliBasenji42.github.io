@@ -4,8 +4,8 @@ li {font-size: 18px;}
 
 img {
   image-render: pixelated;
-  image-render: -moz-crisp-edges;
-  image-render: crisp-edges;
+  /*image-render: -moz-crisp-edges;*/
+  /*image-render: crisp-edges;*/
 }
 
 /* Chapter Type */
