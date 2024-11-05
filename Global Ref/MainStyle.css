@@ -24,6 +24,7 @@ a {color: rgb(0, 96, 0);}
 a:hover {color: rgb(0, 128, 0);}
 
 img {
+  image-rendering: auto;
   image-rendering: pixelated;
 }
 
