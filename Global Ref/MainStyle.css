@@ -23,6 +23,10 @@ p {text-indent: 2rem; font-size: 18px}
 a {color: rgb(0, 96, 0);}
 a:hover {color: rgb(0, 128, 0);}
 
+img {
+  image-rendering: pixelated;
+}
+
 /* Navigation */
 
 .navigation {text-align: center;}
