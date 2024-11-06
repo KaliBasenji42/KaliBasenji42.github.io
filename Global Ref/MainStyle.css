@@ -89,7 +89,9 @@ div.navArrow {
 /* Media */
 
 @media only screen and (max-width: 600px) {
-  body {width: 100%;}
+  body {
+    overflow-x: scroll;
+  }
 }
 
 /* Load Animation */
