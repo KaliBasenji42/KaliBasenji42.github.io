@@ -14,7 +14,6 @@ body {
   background-position: 0vw 0vw, 100vw 50vw;
   background-size: 100vw 100vw, 200vw 100vw;
   background-repeat: no-repeat, repeat;
-  max-width: 600px;
 }
 
 h1 {text-align: center;}
@@ -85,6 +84,12 @@ div.navArrow {
   padding: 0;
   height: 80px;
   cursor: grab;
+}
+
+/* Media */
+
+@media only screen and (max-width: 600px) {
+  body {width: 100%;}
 }
 
 /* Load Animation */
