@@ -90,7 +90,7 @@ div.navArrow {
 
 @media (max-width: 600px) {
   body {
-    overflow-x: auto;
+    width: 80%;
   }
 }
 
