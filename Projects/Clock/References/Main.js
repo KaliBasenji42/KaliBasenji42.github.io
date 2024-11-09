@@ -103,6 +103,7 @@ function background(){
   let g = Math.floor((time.getMinutes() / 60) * 255);
   let b = Math.floor((time.getHours() / 24) * 255);
   
+  body.style.backgroundImage = 'none';
   body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
   
 }
