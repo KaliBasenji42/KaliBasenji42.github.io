@@ -30,7 +30,7 @@ for root, directories, files in os.walk(location):
       
       try: 
         
-        with open(path, 'r+', errors="ignore") as file: pass
+        with open(path, 'r+', encoding='utf-8', errors='ignore') as file: pass
         
       except: print('Unable to open "' + path + '" :/')
       else:
@@ -48,7 +48,7 @@ print('\nReading Template:\n')
 
 try:
   
-  with open(templatePath, 'r+', errors="ignore") as file: templateCont = file.readlines()
+  with open(templatePath, 'r+', encoding='utf-8', errors='ignore') as file: templateCont = file.readlines()
   
 except:
   
@@ -99,7 +99,7 @@ for path in paths:
   
   try:
     
-    with open(path, 'r+', errors="ignore") as file: cont = file.readlines()
+    with open(path, 'r+', encoding='utf-8', errors='ignore') as file: cont = file.readlines()
     
   except: print('Unable to open "' + path + '" :/')
   else:
@@ -133,7 +133,7 @@ for path in paths:
       elif addCont: newCont.append(line)
       
     
-    with open(path, 'w', errors="ignore") as file: file.writelines(newCont)
+    with open(path, 'w', encoding='utf-8', errors='ignore') as file: file.writelines(newCont)
     
     print('Updated "' + path + '"')
     
