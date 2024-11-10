@@ -12,7 +12,10 @@ const mapAreas = [['Nix', 'rect', 0, 0, 128, 10], // 'Name', 'type', ... args
                   ['◮<br>N', 'label', 1, 56, 'rgb(128,0,0)', 16, 14]];
 
 const umbrielAreas = [['Boop!', 'rect', 44, 13, 48, 16],
-                      ['Anklet', 'rect', 76, 49, 82, 50]];
+                      ['Anklet', 'rect', 76, 49, 82, 50],
+                      ['Side<br>Base', 'label', 16, 55, 'rgb(64,0,64)', 16, 16],
+                      ['Front<br>Base', 'label', 41, 55, 'rgb(64,0,64)', 16, 16],
+                      ['Side<br>Full', 'label', 75, 55, 'rgb(64,0,64)', 16, 16]];
 
 // Functions
 
