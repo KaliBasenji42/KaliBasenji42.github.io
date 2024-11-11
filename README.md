@@ -8,6 +8,8 @@
 <p style="text-indent: 1rem;">The python finds all the .html files in the directory 'Projects' using 'os.walk'. It then reads 'Template.html'.</p>
 <p style="text-indent: 1rem;">The Pyhton file finds all the sections, starting with commented 'start' and ending with commented 'end'. It replaces each one based on order.</p>
 <p style="text-indent: 1rem;">The Pyhton file will not affect the following files (either due to being in the wrong directory or not having template syntax setup):</p>
-*   'index.html'
-*   'Projects/Clock/index.html'
-*   'Projects/Resume/index.html'
+<ul>
+<li>'index.html'</li>
+<li>'Projects/Clock/index.html'</li>
+<li>'Projects/Resume/index.html'</li>
+</ul>
