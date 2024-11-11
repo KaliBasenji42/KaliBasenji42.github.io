@@ -5,7 +5,7 @@
 
 <h1>Template</h1>
 
-<p>The python finds all the .html files in the directory 'Projects' using 'os.walk'. It then reads 'Template.html'.</p>
+<p>The python file finds all the .html files in the directory 'Projects' using <code>os.walk</code>. It then reads 'Template.html'.</p>
 <p>The Pyhton file finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order.</p>
 <p>The Pyhton file will not affect the following files (either due to being in the wrong directory or not having template syntax setup):</p>
 <ul>
