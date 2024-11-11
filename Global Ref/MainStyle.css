@@ -73,7 +73,7 @@ div.navArrow {
 
 .sect {
   position: relative;
-  overflow: hidden;
+  overflow-y: hidden;
   transition: max-height 1s;
 }
 
