@@ -6,9 +6,9 @@ It is orginized by having a "index.html" at the front that links to projects in 
 
 <h1>Template</h1>
 
-The python file finds all the HTML files in "Projects" using `os.walk`. It then reads "Template.html".
+"HTML Template.py" finds all the HTML files in "Projects" using `os.walk`. It then reads "Template.html".
 
-The Pyhton file finds all the sections, starting with commented "Start" and ending with commented "End". It replaces each one based on order.
+"HTML Template.py" finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order of appearance.
 
 The Pyhton file will not affect the following files (either due to being in the wrong directory or not having template syntax setup):
 *   "index.html"
