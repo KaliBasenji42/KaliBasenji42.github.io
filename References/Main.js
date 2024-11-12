@@ -23,6 +23,7 @@ function outputData() {
   let barElem = document.getElementsByClassName('dataBar')[0];
   let textElem = document.getElementById('data');
   let DTElem = document.getElementById('DT');
+  let DTSect = document.getElementById('DT Sect');
   
   DTElem.innerHTML = `
     <tr>
@@ -52,8 +53,8 @@ function outputData() {
     }
   }
   
-  if(dataElem.style.maxHeight !=  "0px") {
-    dataElem.style.maxHeight = "" + (dataElem.scrollHeight + 100) + "px";
+  if(DTSect.style.maxHeight !=  "0px") {
+    DTSect.style.maxHeight = "" + (DTSect.scrollHeight + 100) + "px";
   }
   
   frac = bytes/5000000;
