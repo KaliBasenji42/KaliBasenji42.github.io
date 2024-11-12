@@ -53,10 +53,6 @@ function outputData() {
     }
   }
   
-  if(DTSect.style.maxHeight !=  "0px") {
-    DTSect.style.maxHeight = "" + (DTSect.scrollHeight + 100) + "px";
-  }
-  
   frac = bytes/5000000;
   percent = frac * 100;
   
