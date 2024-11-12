@@ -12,7 +12,8 @@ const classes = [["<b>All Courses Average</b>", 0.96776],
                  ["Trig / Math Analysis", 0.9637], 
                  ["Modern World History", 0.9251]];
 
-let gens = document.getElementsByClassName('gen');
+let setElems = document.getElementsByClassName('set');
+let setData = localStorage.getItem('Resume - Set Data');
 
 // Basic Functions
 
@@ -32,7 +33,52 @@ function cutStrAtStr(str, cutAt) {
   
 }
 
-// onClick
+// Generate
+
+function generateTOC(TOCID) {
+  
+  for (let i = 0; i < sections.length; i++) {
+    
+    let title = cutStrAtStr(document.getElementById(sections[i] + " ttl").innerHTML, " <span>")
+    
+    document.getElementById(TOCID).innerHTML += "<li><a href='#" + sections[i] + " ttl'>" + title + "</a></li>"
+    
+  }
+  
+}
+
+function generateGT(ID, classes) {
+  
+  let percent = -1;
+  let letter = "N";
+  
+  document.getElementById(ID).innerHTML = "<tr>" + 
+      "<th style='width: 40%;'>Name</th>" + 
+      "<th style='width: 20%;'>%</th>" + 
+      "<th style='width: 20%;'>Letter</th>" + 
+    "</tr>";
+  
+  for (let i = 0; i < classes.length; i ++) {
+    
+    percent = classes[i][1] * 100;
+    
+    if (percent >= 89.5) { letter = "A"; }
+    else if (percent >= 79.5) { letter = "B"; }
+    else if (percent >= 69.5) { letter = "C"; }
+    else if (percent >= 59.5) { letter = "D"; }
+    else { letter = "F"; }
+    
+    document.getElementById(ID).innerHTML += "<tr>" + 
+        "<td>" + classes[i][0] + "</td>" + 
+        "<td>" + percent.toString() + "% </td>" + 
+        "<td style='text-align: center;'>" + letter + "</td>" + 
+      "</tr>";
+   
+  }
+  
+}
+
+// Tool Functions
 
 function expndOrClps(ID, bttnID) {
   
@@ -119,50 +165,9 @@ function expandAll() {
   
 }
 
-function generateTOC(TOCID) {
-  
-  for (let i = 0; i < sections.length; i++) {
-    
-    let title = cutStrAtStr(document.getElementById(sections[i] + " ttl").innerHTML, " <span>")
-    
-    document.getElementById(TOCID).innerHTML += "<li><a href='#" + sections[i] + " ttl'>" + title + "</a></li>"
-    
-  }
-  
-}
+// Set Data
 
-function generateGT(ID, classes) {
-  
-  let percent = -1;
-  let letter = "N";
-  
-  document.getElementById(ID).innerHTML = "<tr>" + 
-      "<th style='width: 40%;'>Name</th>" + 
-      "<th style='width: 20%;'>%</th>" + 
-      "<th style='width: 20%;'>Letter</th>" + 
-    "</tr>";
-  
-  for (let i = 0; i < classes.length; i ++) {
-    
-    percent = classes[i][1] * 100;
-    
-    if (percent >= 89.5) { letter = "A"; }
-    else if (percent >= 79.5) { letter = "B"; }
-    else if (percent >= 69.5) { letter = "C"; }
-    else if (percent >= 59.5) { letter = "D"; }
-    else { letter = "F"; }
-    
-    document.getElementById(ID).innerHTML += "<tr>" + 
-        "<td>" + classes[i][0] + "</td>" + 
-        "<td>" + percent.toString() + "% </td>" + 
-        "<td style='text-align: center;'>" + letter + "</td>" + 
-      "</tr>";
-   
-  }
-  
-}
-
-function generate(string) {
+function set(string) {
   
   let list = [];
   let seg = '';
@@ -181,11 +186,13 @@ function generate(string) {
     
   }
   
+  console.log('Setting:');
+  
   console.log(list);
   
-  for(let i = 0; i < gens.length; i ++) {
+  for(let i = 0; i < setElems.length; i ++) {
 
-    let elem = gens[i];
+    let elem = setElems[i];
 
     for(let i = 0; i < list.length; i ++) {
       
@@ -196,7 +203,6 @@ function generate(string) {
         elem.innerHTML = cont;
         if(isEmail) {
           elem.href = 'mailto:' + cont;
-          console.log(cont);
         }
       }
       
@@ -206,15 +212,30 @@ function generate(string) {
   
 }
 
+function saveSetData() {
+  localStorage.setItem('Resume - Set Data', setData);
+  console.log('Saved:');
+  console.log(setData);
+}
+
+function removeSetData() {
+  localStorage.removeItem('Resume - Set Data');
+  console.log('Removed');
+}
+
 // Events
 
 document.addEventListener('DOMContentLoaded', function() {
   
-  let form = document.getElementById('genForm');
+  if(setData !== null) set(setData);
+  
+  let form = document.getElementById('setForm');
   
   form.addEventListener("submit", function(event) {
     event.preventDefault();
-    generate(document.getElementById('genText').value);
+    
+    setData = document.getElementById('setText').value;
+    set(setData);
   });
 
 });

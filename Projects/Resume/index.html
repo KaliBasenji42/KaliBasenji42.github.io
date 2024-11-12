@@ -22,7 +22,7 @@
   
   <div id = "Main Points" style = "width: 75%">
     
-    <h1 class="gen">Jacob Delzer</h1>
+    <h1 class="set">Jacob Delzer</h1>
     
     <!-- Main Points -->
       
@@ -31,14 +31,14 @@
     
     <div id = "Edu" class = "sect">
     
-    <h3 class="gen">[School 1]</h3>
+    <h3 class="set">[School 1]</h3>
     
-    <p>Adress: <span class="gen">[Address 1]</span></p>
+    <p>Adress: <span class="set">[Address 1]</span></p>
     <p>Graduation: 2025</p>
     <br>
     
     <p><b>Engineering - Design and Build:</b><br>
-    Instructor: Nate Olsen <a href = "" class="gen" target = "_blank">[Email 1]</a><br>
+    Instructor: Nate Olsen <a href = "" class="set" target = "_blank">[Email 1]</a><br>
     GPA: 4.00 (Semester 2 of 2, 2023 - 2024, Freshman Year)<br></p>
     
     <h4>Certifications:</h4>
@@ -73,8 +73,8 @@
       <li><a href = "References/NTHS.png" target = "_blank">Certificate</a></li>
     </ul>
     
-    <h3 class="gen">[School 2]</h3>
-    <p>Adress: <span class="gen">[Address 2]</span></p>
+    <h3 class="set">[School 2]</h3>
+    <p>Adress: <span class="set">[Address 2]</span></p>
     <p>Graduation: 2025</p>
     <br>
     
@@ -111,8 +111,8 @@
     
     <h3>Boy Scouts of America</h3>
     
-    <p>Troop: <span class="gen">[Troop]</span><br>
-    Scout Master: Scott Johnson <a href = "" class="gen" target = "_blank">[Email 2]</a><br>
+    <p>Troop: <span class="set">[Troop]</span><br>
+    Scout Master: Scott Johnson <a href = "" class="set" target = "_blank">[Email 2]</a><br>
     Current Rank: Eagle<br>
     And a member of <a href="https://oa-bsa.org/" target="_blank">Order of the Arrow</a><br>
     Service Hours: 94</p>
@@ -224,8 +224,8 @@
   <div id = "Side Bar" style = "width: 25%; height: 75%; position: fixed; left: 75%; top: 2em; overflow: auto;">
     
     <h3>Contact Info</h3>
-    <p>Email (Preferred): <a href = "" class="gen" target = "_blank">[Email]</a><br>
-    Phone: <span class="gen">[Phone]</span></p>
+    <p>Email (Preferred): <a href = "" class="set" target = "_blank">[Email]</a><br>
+    Phone: <span class="set">[Phone]</span></p>
     
     <h3>Table of Contents</h3>
     
@@ -242,11 +242,14 @@
     <button class="tool" onclick="expandAll()">Expand All</button><br>
     <button class="tool" onclick="collapseAll()">Collapse All</button><br>
     <br>
-    <form id="genForm">
-      <label for="genText">Generate Text Input</label>
-      <input type="text" id="genText" name="genText"><br>
-      <input type="submit" value="Generate Data" class="tool">
+    <form id="setForm">
+      <label for="setText">Enter Data:</label>
+      <input type="text" id="setText" name="setText"><br>
+      <input type="submit" value="Set Data" class="tool" title="Takes data above and sets respective element's innerHTML">
     </form>
+    
+    <button class="tool" onclick="saveSetData()" title="Saves set data to browser">Save Data</button><br>
+    <button class="tool" onclick="removeSetData()" title="Removes set data from browser">Remove Data</button>
     
     </div>
     
