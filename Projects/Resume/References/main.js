@@ -214,7 +214,7 @@ function set(string) {
 
 function saveSetData() {
   localStorage.setItem('Resume - Set Data', setData);
-  console.log('Saved:');
+  console.log('Saving:');
   console.log(setData);
 }
 
