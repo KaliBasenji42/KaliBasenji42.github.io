@@ -14,6 +14,20 @@ function clearData() {
     
     localStorage.clear();
     
+    outputData();
+    
+  }
+  
+}
+
+function removeData(key) {
+  
+  if(window.confirm('Remove "' + key + '"?')) {
+    
+    localStorage.removeItem(key);
+    
+    outputData();
+    
   }
   
 }
@@ -29,6 +43,7 @@ function outputData() {
     <tr>
       <th style="width: 25%;">Key</th>
       <th style="width: 75%;">Data</th>
+      <th style="width: 6rem;">Delete</th>
     </tr>
     `
   
@@ -50,6 +65,18 @@ function outputData() {
         let dataElem = document.createElement('td');
         dataElem.innerText = '' + item;
         rowElem.appendChild(dataElem);
+        
+        let remElem = document.createElement('td');
+        rowElem.appendChild(remElem);
+        
+        let remBttnElem = document.createElement('button');
+        remBttnElem.innerText = '❌';
+        remBttnElem.className = 'dataBttn'
+        //remBttnElem.style = 'text-align: center; cursor: pointer;';
+        remBttnElem.title = 'Remove';
+        remBttnElem.onclick = function() {removeData(key);}
+        remElem.appendChild(remBttnElem);
+        
     }
   }
   
