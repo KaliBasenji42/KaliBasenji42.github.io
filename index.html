@@ -2,7 +2,7 @@
 <html lang = "en-US">
 
 <head>
-  <title>Projects</title>
+  <title>KaliBasenji42 - Home</title>
   <meta name = "viewport" content = "width=device-width">
   <link href = "Global Ref/MainStyle.css" rel = "stylesheet" type = "text/css" />
   <link href = "References/MainStyle.css" rel = "stylesheet" type = "text/css" />
@@ -51,6 +51,37 @@
   </ul>
   <br>
   <li><a href="https://github.com/KaliBasenji42" target="_blank">Github</a></li>
+  
+  <h1>Data</h1>
+  
+  <span>
+    <button class="dataBttn" onclick="outputData()" title="Refresh">↺</button>
+    <button class="dataBttn" onclick="clearData()" title="Clear">🗑️</button>
+  </span>
+  
+  <br><br>
+  
+  <div class="dataBack">
+    <div class="dataBar"></div>
+  </div>
+  
+  <p><code id="data">? KB / 5000 KB (?%)</code></p>
+  
+  <h1>Data Table
+    <span><button class="sectBttn" id="DT bttn" onclick="expndOrClps('DT Sect', 'DT bttn')">🔽</button></span>
+  </h1>
+  
+  <div id = "DT Sect" class = "sect">
+  
+  <table style="width: 100%;" id="DT">
+    <tr><td>???</td></tr>
+  </table>
+  
+  </div>
+  
+  <script>expndOrClps('DT Sect', 'DT bttn');</script>
+  
+  <br>
   
 </body>
 
