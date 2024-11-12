@@ -34,10 +34,13 @@ function removeData(key) {
 
 function outputData() {
   
+  // Variables
+  
   let barElem = document.getElementsByClassName('dataBar')[0];
   let textElem = document.getElementById('data');
   let DTElem = document.getElementById('DT');
   let DTSect = document.getElementById('DT Sect');
+  let boom = document.getElementsByClassName('BOOM')[0];
   
   DTElem.innerHTML = `
     <tr>
@@ -49,11 +52,15 @@ function outputData() {
   
   let bytes = 0
   
+  // Item Loop
+  
   for(let key in localStorage) {
     if(localStorage.hasOwnProperty(key)) {
         item = localStorage.getItem(key);
         
         bytes += item.length;
+        
+        // Table
         
         let rowElem = document.createElement('tr');
         DTElem.appendChild(rowElem);
@@ -80,9 +87,13 @@ function outputData() {
     }
   }
   
+  // Sect
+  
   if(DTSect.style.maxHeight !=  "0px") {
     DTSect.style.maxHeight = "" + (DTSect.scrollHeight + 100) + "px";
   }
+  
+  // Bar & Text
   
   frac = bytes/5000000;
   percent = frac * 100;
@@ -95,6 +106,9 @@ function outputData() {
   
   barElem.style.width = '' + percent + '%';
   barElem.style.backgroundColor = color;
+  
+  if(frac > 1) boom.style.display = 'block';
+  else boom.style.display = 'none';
   
 }
 
