@@ -52,6 +52,10 @@ function outputData() {
     }
   }
   
+  if(dataElem.style.maxHeight !=  "0px") {
+    dataElem.style.maxHeight = "" + (dataElem.scrollHeight + 100) + "px";
+  }
+  
   frac = bytes/5000000;
   percent = frac * 100;
   
