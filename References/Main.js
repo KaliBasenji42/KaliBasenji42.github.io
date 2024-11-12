@@ -53,8 +53,6 @@ function outputData() {
     }
   }
   
-  window.alert('DT Sect height:' + DTSect.style.maxHeight);
-  
   if(DTSect.style.maxHeight !=  "0px") {
     DTSect.style.maxHeight = "" + (DTSect.scrollHeight + 100) + "px";
   }
