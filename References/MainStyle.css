@@ -48,8 +48,10 @@ tr {border: 1px solid;}
 .BOOM {
   display: none;
   position: absolute;
+  
   left: calc(100% - 2rem);
-  top: -1rem;
+  top: -2rem;
+  
   font-size: 4rem;
-  line-height: 4rem;
+  transition: rotate 5s;
 }

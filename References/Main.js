@@ -6,6 +6,9 @@ const headHTML = `
 const bodyHTML = `
   `;
 
+let boomRotate = 360;
+let boom;
+
 // Data
 
 function clearData() {
@@ -117,6 +120,15 @@ function outputData() {
 document.addEventListener('DOMContentLoaded', function (event) {
   
   outputData();
+  
+  boom = document.getElementsByClassName('BOOM')[0];
+  setTimeout(function() {
+    boom.style.rotate = '360deg';
+  }, 100);
+  setInterval(function() {
+    boomRotate = boomRotate * -1;
+    boom.style.rotate = '' + boomRotate + 'deg';
+  }, 5000);
   
   document.querySelector('body').style = "animation-name: load;" +
                                          "animation-duration: 0.75s;";
