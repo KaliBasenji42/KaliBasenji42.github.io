@@ -6,8 +6,32 @@ const headHTML = `
 const bodyHTML = `
   `;
 
+let warnRotate = 30;
+let warn;
 let boomRotate = 360;
 let boom;
+
+// Functions
+
+function numForm(num) {
+  
+  let numStr = '' + num;
+  let out = '';
+  
+  for(let i = 0; i < numStr.length; i++) {
+    
+    pos = numStr.length - i - 1;
+    add = i % 3 == 0 && i != 0;
+    
+    if(add) out = ',' + out;
+    
+    out = numStr[pos] + out;
+    
+  }
+  
+  return out;
+  
+}
 
 // Data
 
@@ -43,7 +67,11 @@ function outputData() {
   let textElem = document.getElementById('data');
   let DTElem = document.getElementById('DT');
   let DTSect = document.getElementById('DT Sect');
+  let warn = document.getElementsByClassName('warn')[0];
   let boom = document.getElementsByClassName('BOOM')[0];
+  
+  let quota = 5 * 1024 * 1024;
+  let usage = 0;
   
   DTElem.innerHTML = `
     <tr>
@@ -53,40 +81,37 @@ function outputData() {
     </tr>
     `
   
-  let bytes = 0
-  
   // Item Loop
   
   for(let key in localStorage) {
     if(localStorage.hasOwnProperty(key)) {
-        item = localStorage.getItem(key);
-        
-        bytes += item.length;
-        
-        // Table
-        
-        let rowElem = document.createElement('tr');
-        DTElem.appendChild(rowElem);
-        
-        let keyElem = document.createElement('td');
-        keyElem.innerText = key;
-        rowElem.appendChild(keyElem);
-        
-        let dataElem = document.createElement('td');
-        dataElem.innerText = '' + item;
-        rowElem.appendChild(dataElem);
-        
-        let remElem = document.createElement('td');
-        rowElem.appendChild(remElem);
-        
-        let remBttnElem = document.createElement('button');
-        remBttnElem.innerText = '❌';
-        remBttnElem.className = 'dataBttn'
-        //remBttnElem.style = 'text-align: center; cursor: pointer;';
-        remBttnElem.title = 'Remove';
-        remBttnElem.onclick = function() {removeData(key);}
-        remElem.appendChild(remBttnElem);
-        
+      item = localStorage.getItem(key);
+      
+      usage += item.length;
+      
+      // Table
+      
+      let rowElem = document.createElement('tr');
+      DTElem.appendChild(rowElem);
+      
+      let keyElem = document.createElement('td');
+      keyElem.innerText = key;
+      rowElem.appendChild(keyElem);
+      
+      let dataElem = document.createElement('td');
+      dataElem.innerText = '' + item;
+      rowElem.appendChild(dataElem);
+      
+      let remElem = document.createElement('td');
+      rowElem.appendChild(remElem);
+      
+      let remBttnElem = document.createElement('button');
+      remBttnElem.innerText = '❌';
+      remBttnElem.className = 'dataBttn'
+      remBttnElem.title = 'Remove';
+      remBttnElem.onclick = function() {removeData(key);}
+      remElem.appendChild(remBttnElem);
+      
     }
   }
   
@@ -98,17 +123,27 @@ function outputData() {
   
   // Bar & Text
   
-  frac = bytes/5000000;
+  frac = usage/quota;
   percent = frac * 100;
   
   red = (frac * 2) * 255;
   green =  (2 - (frac * 2)) * 255;
   color = 'rgb(' + red + ',' + green + ',0)';
   
-  textElem.innerHTML = '' + (bytes / 1000) + ' KB / 5000 KB (' + Math.floor(percent) + '%)';
+  textElem.innerHTML = '' + numForm(usage) + 
+                       ' Bytes / ' + numForm(quota) + 
+                       ' Bytes (' + Math.floor(percent) + '%)';
   
   barElem.style.width = '' + percent + '%';
   barElem.style.backgroundColor = color;
+  
+  // Warning
+  
+  if(frac > 0.9) {
+    warn.style.display = 'block';
+    warn.style.rotate = '0deg';
+  }
+  else warn.style.display = 'none';
   
   if(frac > 1) boom.style.display = 'block';
   else boom.style.display = 'none';
@@ -121,13 +156,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
   
   outputData();
   
+  warn = document.getElementsByClassName('warn')[0];
   boom = document.getElementsByClassName('BOOM')[0];
-  setTimeout(function() {
-    boom.style.rotate = '360deg';
-  }, 100);
+  
+  setInterval(function() {
+    warnRotate = warnRotate * -1;
+    if(frac > 0.95) warn.style.rotate = '' + warnRotate + 'deg';
+  }, 1000);
+  
+  boom.style.rotate = '' + boomRotate + 'deg';
   setInterval(function() {
     boomRotate = boomRotate * -1;
     boom.style.rotate = '' + boomRotate + 'deg';
+    boom.style.opacity = '1';
   }, 5000);
   
   document.querySelector('body').style = "animation-name: load;" +

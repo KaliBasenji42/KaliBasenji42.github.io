@@ -213,9 +213,14 @@ function set(string) {
 }
 
 function saveSetData() {
-  localStorage.setItem('Resume - Set Data', setData);
-  console.log('Saving:');
-  console.log(setData);
+  try{
+    localStorage.setItem('Resume - Set Data', setData);
+    console.log('Saving:');
+    console.log(setData);
+  }
+  catch(err){
+    window.alert('Saving Error:\n' + err + '\n\nYou may need to remove data.');
+  }
 }
 
 function removeSetData() {
