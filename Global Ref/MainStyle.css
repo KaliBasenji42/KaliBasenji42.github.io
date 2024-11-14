@@ -98,28 +98,9 @@ div.navArrow {
 
 @keyframes load {
   from {
-    background-image: none;
     opacity: 0;
-    background-color: rgb(224, 160, 244);
   }
   to {
-    background-image: linear-gradient(135deg, rgb(224, 192, 255), rgb(224, 128, 244)), 
-                      linear-gradient(90deg, rgb(224, 192, 255), rgb(224, 128, 244));
     opacity: 1;
-    background-color: rgb(224, 160, 244);
-  }
-}
-
-@keyframes unload {
-  from {
-    background-image: linear-gradient(135deg, rgb(224, 192, 255), rgb(224, 128, 244)), 
-                      linear-gradient(90deg, rgb(224, 192, 255), rgb(224, 128, 244));
-    opacity: 1;
-    background-color: rgb(224, 160, 244);
-  }
-  to {
-    background-image: none;
-    opacity: 0;
-    background-color: rgb(224, 160, 244);
   }
 }

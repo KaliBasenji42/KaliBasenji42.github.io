@@ -24,9 +24,3 @@ const chapterNames = ['Particles', 'Quarks', 'Electrons', 'Neutrinos', 'Higgs', 
 document.addEventListener('keypress', function() {
   shortcut("w", "W", "index.html");
 });
-
-document.addEventListener('DOMContentLoaded', function(event) {
-  document.querySelector('body').style = "animation-name: load;" + 
-                                         "animation-duration: 0.75s;";
-  loadSpin();
-});

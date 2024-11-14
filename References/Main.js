@@ -152,7 +152,7 @@ function outputData() {
 
 // Events
 
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', function () {
   
   outputData();
   
@@ -171,7 +171,4 @@ document.addEventListener('DOMContentLoaded', function (event) {
     boom.style.opacity = '1';
   }, 5000);
   
-  document.querySelector('body').style = "animation-name: load;" +
-                                         "animation-duration: 0.75s;";
-    loadSpin();
 });

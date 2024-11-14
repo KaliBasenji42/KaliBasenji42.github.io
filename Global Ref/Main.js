@@ -58,6 +58,14 @@ for(let i = 0; i < head.length; i++) head[i].innerHTML += headHTML;
 
 for(let i = 0; i < body.length; i++) body[i].innerHTML += bodyHTML;
 
+// Events
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('body').style = "animation-name: load;" +
+                                         "animation-duration: 1s;";
+  loadSpin();
+});
+
 // :P
 
 document.addEventListener('keypress', function() {
