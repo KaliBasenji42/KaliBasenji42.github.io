@@ -19,14 +19,15 @@ li {font-size: 18px;}
   background-color: rgb(240, 240, 240);
   
   width: 100%;
-  height: 2rem;
+  height: 3rem;
   
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .field {
   width: 100%;
-  height: calc(100% - 2rem);
+  height: calc(100% - 3rem);
   
   overflow: scroll;
 }
@@ -35,6 +36,28 @@ li {font-size: 18px;}
   background-color: rgb(240, 240, 240);
   
   position: absolute;
+  padding: 0.5rem;
   
   box-shadow: 0.25rem 0.25rem 0.5rem;
+}
+
+.bttn {
+  background-color: rgb(240, 240 , 240);
+  
+  height: 3rem;
+  width: 3rem;
+  
+  border: 0;
+  padding: 0;
+  
+  cursor: pointer;
+}
+
+.bttn:hover {
+  background-color: rgb(224, 224 , 224);
+}
+
+.bttnImg {
+  width: 3rem;
+  height: 3rem;
 }
