@@ -58,12 +58,14 @@ function openFile() {
 
 function loadData() {
   
+  nuDatStatOutput.innerHTML = '🔄';
+  
   fetch('References/Data/NuDat.json')
     .then(response => {
       
       if(!response.ok) {
         
-        nuDatStatOutput.innerHTML = '🛜⚠️';
+        nuDatStatOutput.innerHTML = '⚠️ Response Not OK';
         
         throw new Error('Response: ' + response.statusText);
         
@@ -81,11 +83,21 @@ function loadData() {
     })
     .catch(error => {
       
-      nuDatStatOutput.innerHTML = '⚠️';
+      nuDatStatOutput.innerHTML = '⚠️ Failed to Fetch';
       
       console.log(error);
       
     });
+  
+}
+
+function ZNtoName(Z, N) {
+  
+  for(const iso in NuDat) {
+    
+    if(NuDat[iso]['z'] == Z && NuDat[iso]['n'] == N) return NuDat[iso]['name'];
+    
+  }
   
 }
 
@@ -132,28 +144,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     event.preventDefault();
     
-    let elemStr = document.getElementById('DTElemInput').value;
-    let parent = NuDat[elemStr]['levels'][0];
+    let isoStr = document.getElementById('DTIsoInput').value;
+    let parent = NuDat[isoStr];
     
     let field = document.getElementById('DTField');
     
-    let elems = new Set();
-    let newElems = new Set();
+    let isos = new Set();
+    let newIsos = new Set([parent]);
     
-    newElems.add(parent);
-    
-    while(newElems.size > 0) {
+    while(newIsos.size > 0) {
       
-      let tempElems = new Set(newElems);
+      let tempIsos = new Set(newIsos);
       
-      console.log(tempElems);
+      isos = isos.union(newIsos);
+      newIsos.clear();
       
-      elems = elems.union(newElems);
-      newElems.clear();
-      
-      for(let i = 0; i < tempElems.size; i++) {
+      for(const value of tempIsos) {
         
-        let modes = tempElems[i];
+        let modes = value['levels'][0]['decayModes']['observed'];
         
         console.log(modes);
         
@@ -161,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
     
-    console.log(elems);
+    console.log(isos);
     
   });
   
