@@ -33,12 +33,38 @@ li {font-size: 18px;}
 }
 
 .menu {
+  display: none;
+  
+  top: 20%;
+  left: 20%;
+  
   background-color: rgb(240, 240, 240);
   
   position: absolute;
   padding: 0.5rem;
   
   box-shadow: 0.25rem 0.25rem 0.5rem;
+  
+  overflow: hidden;
+}
+
+.menuTtl {
+  top: 0;
+  left: 0;
+  height: 2.5rem;
+  
+  max-width: calc(100% - 3rem);
+  
+  margin: 0;
+  
+  text-align: left;
+}
+
+.menuX {
+  position: absolute;
+  
+  right: 0;
+  top: 0;
 }
 
 .bttn {

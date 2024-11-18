@@ -38,13 +38,28 @@
   <div class="window">
     
     <div class="toolBar">
-      <button onclick="console.log('Hi')" class="bttn">
-        <img src="References/Images/File.png" class="bttnImg" title="File">
+      <button onclick="openMenu('MenuSave')" class="bttn">
+        <img src="References/Images/File.png" class="bttnImg" title="File [F]">
       </button>
     </div>
     
     <div class="field">
       
+    </div>
+    
+    <!--Menus-->
+    
+    <div class="menu" id="MenuSave" style="min-width: 6rem;">
+      <h1 class="menuTtl">File</h1>
+      Name:
+      <input id="FileName">
+      <br>
+      <button onclick="saveFile()" class="bttn">
+        <img src="References/Images/Download.png" class="bttnImg" title="Save">
+      </button>
+      <button onclick="openFile()" class="bttn">
+        <img src="References/Images/Upload.png" class="bttnImg" title="Open">
+      </button>
     </div>
     
   </div>
