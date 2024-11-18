@@ -87,3 +87,30 @@ li {font-size: 18px;}
   width: 3rem;
   height: 3rem;
 }
+
+/* Decay Tree */
+
+.elem {
+  
+}
+
+/* Other */
+
+.dataBttn {
+  background-color: rgb(240, 240, 240);
+  width: 3rem;
+  height: 3rem;
+  
+  line-height: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  
+  border-radius: 0.5rem;
+  border-width: 0;
+  
+  cursor: pointer;
+}
+
+.dataBttn:active {
+  background-color: rgb(224, 224, 224);
+}

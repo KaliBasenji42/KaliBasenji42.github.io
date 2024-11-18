@@ -64,6 +64,35 @@
     
   </div>
   
+  <h2>
+    NuDat Status:<span id="NuDatStat">...</span>
+  </h2>
+  
+  <button onclick="loadData()" class="dataBttn">
+    ↺
+  </button>
+  
+  <h2>Decay Tree
+    <span><button class="sectBttn" id="DT bttn" onclick="expndOrClps('DT Sect', 'DT bttn')">🔽</button></span>
+  </h2>
+  
+  <div id="DT Sect" class="sect">
+  
+  <form id="DTForm">
+    <label for="DTElemInput">Element:</label>
+    <input type="text" id="DTElemInput" name="DTElemInput">
+    Example: "235U"<br>
+    <input type="submit" value="Load">
+  </p>
+  
+  <div itemid="DTField" class="field" style="width: 100%; aspect-ratio: 2 / 1; background-color: rgb(240, 240, 240);" id="DT">
+    
+  </div>
+  
+  </div>
+  
+  <script>expndOrClps('DT Sect', 'DT bttn');</script>
+  
   <h2>Sources:</h2>
   
   <ul>
