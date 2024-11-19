@@ -90,7 +90,7 @@ li {font-size: 18px;}
   height: 3rem;
 }
 
-/* Decay Tree */
+/* Decay Chain */
 
 .iso {
   position: absolute;
@@ -100,14 +100,13 @@ li {font-size: 18px;}
   
   text-align: center;
   font-size: 0.75rem;
+  line-height: 1rem;
   
   z-index: 1;
 }
 
-.DTArrow {
+.DCArrow {
   position: absolute;
-  
-  z-index: 10;
 }
 
 /* Other */

@@ -6,6 +6,8 @@ const headHTML = `
 const bodyHTML = `
   `;
 
+let style;
+  
 let menus;
 let currentMenu = 'none';
 
@@ -13,7 +15,7 @@ let fileNameInput;
 
 let nuDatStatOutput;
 let NuDat = {};
-let DTForm;
+let DCForm;
 let decayTree = {};
 
 // Functions
@@ -264,13 +266,24 @@ function createDecayIso(iso, parentElem, minX, maxY) {
   let isoElem = document.createElement('div');
   parentElem.appendChild(isoElem);
   
-  isoElem.className = 'iso';
+  isoElem.className = 'iso ' + iso['name'];
   isoElem.style.backgroundColor = 'rgb(' + (255 - (2*Z)) + ',' + 
                                   (2*Z) + ',' + (255 - (2*Z)) + ')';
   isoElem.style.left = '' + (x * 4) + 'rem';
   isoElem.style.top = '' + (y * 4) + 'rem';
   
-  isoElem.innerHTML = iso['name'] + '<br>Z: ' + Z + '<br>N: ' + N;
+  halflife = iso['levels'][0]['halflife']['value'] + iso['levels'][0]['halflife']['unit'];
+  
+  if(halflife.slice(0, 6) == 'STABLE') halflife = 'STABLE';
+  
+  if(halflife.length > 6) {
+    let val = iso['levels'][0]['halflife']['value'];
+    let valStr = val.toExponential(1);
+    
+    halflife = valStr + iso['levels'][0]['halflife']['unit'];
+  }
+  
+  isoElem.innerHTML = iso['name'] + '<br>' + Z + 'z ' + N + 'n<br>' + halflife;
   
   // Arrows
   
@@ -283,43 +296,67 @@ function createDecayIso(iso, parentElem, minX, maxY) {
       - decay[0] - decay[1]
     ];
     
-    let arrowX = Math.min(((x * 4) + 1.5), (((x + change[0]) * 4) + 1.5));
-    let arrowY = Math.min(((y * 4) + 1.5), (((y + change[1]) * 4) + 1.5));
-    let arrowW = Math.abs((change[0] * 4));
-    let arrowH = Math.abs((change[1] * 4)) + 0.25;
+    // Create Canvas
+    
+    let arrowX = Math.min(x * 4, (x + change[0]) * 4);
+    let arrowY = Math.min(y * 4, (y + change[1]) * 4);
+    let arrowW = Math.abs(change[0] * 4) + 3;
+    let arrowH = Math.abs(change[1] * 4) + 3;
     
     let flipped = (change[0] / Math.abs(change[0])) *
-                  (change[0] / Math.abs(change[0])) < 0;
+                  (change[1] / Math.abs(change[1])) < 0;
     
-    let arrowElem = document.createElement('svg');
+    let arrowElem = document.createElement('canvas');
     parentElem.appendChild(arrowElem);
     
-    console.log(arrowElem);
-    
-    arrowElem.className = 'DTArrow';
+    arrowElem.className = 'DCArrow ' + iso['name'] + 'arrow';
     arrowElem.style.left = '' + arrowX + 'rem';
     arrowElem.style.top = '' + arrowY + 'rem';
     arrowElem.style.width = '' + arrowW + 'rem';
     arrowElem.style.height = '' + arrowH + 'rem';
     
-    let width = arrowElem.clientWidth;
-    let height = arrowElem.clientHeight;
+    let pxWidth = arrowElem.clientWidth;
+    let pxHeight = arrowElem.clientHeight;
     
-    let lineX1 = 0;
-    let lineX2 = width;
-    let lineY1 = 0;
-    let lineY2 = height;
+    arrowElem.width = pxWidth;
+    arrowElem.height = pxHeight;
     
-    console.log('(' + lineX1 + ', ' + lineY1 + ')');
-    console.log('(' + lineX2 + ', ' + lineY2 + ')');
+    // Draw Line
     
-    arrowElem.innerHTML = '<line x1="' + lineX1 + 
-                          '" y1="' + lineY1 + 
-                          '" x2="' + lineX2 +
-                          '" y2="' + lineY2 +
-                          '" stroke="black" stroke-width="2"/>';
+    let remUnit = pxWidth / arrowW;
+    
+    let lineX1 = remUnit * 1.5;
+    let lineX2 = pxWidth - (remUnit * 1.5);
+    let lineY1 = remUnit * 1.5;
+    let lineY2 = pxHeight - (remUnit * 1.5);
+    
+    if(flipped) {
+      lineX1 = pxWidth - (remUnit * 1.5);
+      lineX2 = remUnit * 1.5;
+    }
+    
+    let ctx = arrowElem.getContext('2d');
+    const gradient = ctx.createLinearGradient(lineX1, lineY1, lineX2, lineY2);
+    
+    gradient.addColorStop(0, 'rgb(0,0,0)');
+    gradient.addColorStop(1, 'rgb(0,0,0)');
+    
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 4;
+    
+    ctx.beginPath();
+    ctx.moveTo(lineX1, lineY1);
+    ctx.lineTo(lineX2, lineY2);
+    ctx.stroke();
     
   }
+  
+  // CSS
+  
+  style.sheet.insertRule(
+    '.' + iso['name'] + ':hover ' + iso['name'] + 'arrow {' +
+    'z-index: 1000;}'
+  );
   
 }
 
@@ -329,13 +366,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Elems
   
+  style = document.createElement('style');
+  document.head.appendChild(style);
+  
   menus = document.getElementsByClassName('menu');
   
   fileNameInput = document.getElementById('FileName');
   
   nuDatStatOutput = document.getElementById('NuDatStat');
   
-  DTForm = document.getElementById('DTForm');
+  DCForm = document.getElementById('DCForm');
   
   // Menu
   
@@ -360,19 +400,19 @@ document.addEventListener('DOMContentLoaded', function() {
   
   loadData();
   
-  // DT
+  // DC
   
-  DTForm.addEventListener("submit", function(event) {
+  DCForm.addEventListener("submit", function(event) {
     
     event.preventDefault();
     
-    let isoStr = document.getElementById('DTIsoInput').value;
+    let isoStr = document.getElementById('DCIsoInput').value;
     let parent = NuDat[isoStr];
     
     if(parent === undefined) return;
     
-    let fieldElem = document.getElementById('DTField');
-    let isosCountElem = document.getElementById('DTIsosCount');
+    let fieldElem = document.getElementById('DCField');
+    let isosCountElem = document.getElementById('DCIsosCount');
     
     let isos = new Set();
     let newIsos = new Set([parent]);
