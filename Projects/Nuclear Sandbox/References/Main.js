@@ -261,7 +261,7 @@ function createDecayIso(iso, parentElem, minX, maxY) {
   
   // Iso
   
-  isoElem = document.createElement('div');
+  let isoElem = document.createElement('div');
   parentElem.appendChild(isoElem);
   
   isoElem.className = 'iso';
@@ -291,7 +291,7 @@ function createDecayIso(iso, parentElem, minX, maxY) {
     let flipped = (change[0] / Math.abs(change[0])) *
                   (change[0] / Math.abs(change[0])) < 0;
     
-    arrowElem = document.createElement('svg');
+    let arrowElem = document.createElement('svg');
     parentElem.appendChild(arrowElem);
     
     console.log(arrowElem);
