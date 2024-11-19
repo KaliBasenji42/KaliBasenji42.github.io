@@ -246,6 +246,8 @@ function decayChange(mode) {
 
 function createDecayIso(iso, parentElem, minX, maxY) {
   
+  // Vars
+  
   let Z = iso['z'];
   let N = iso['n'];
   
@@ -257,6 +259,8 @@ function createDecayIso(iso, parentElem, minX, maxY) {
     modes = iso['levels'][0]['decayModes']['observed'];
   }
   
+  // Iso
+  
   isoElem = document.createElement('div');
   parentElem.appendChild(isoElem);
   
@@ -267,6 +271,55 @@ function createDecayIso(iso, parentElem, minX, maxY) {
   isoElem.style.top = '' + (y * 4) + 'rem';
   
   isoElem.innerHTML = iso['name'] + '<br>Z: ' + Z + '<br>N: ' + N;
+  
+  // Arrows
+  
+  for(const mode in modes) {
+    
+    let decay = decayChange(modes[mode]['mode']);
+    
+    let change = [
+      decay[1] - decay[0],
+      - decay[0] - decay[1]
+    ];
+    
+    let arrowX = Math.min(((x * 4) + 1.5), (((x + change[0]) * 4) + 1.5));
+    let arrowY = Math.min(((y * 4) + 1.5), (((y + change[1]) * 4) + 1.5));
+    let arrowW = Math.abs((change[0] * 4));
+    let arrowH = Math.abs((change[1] * 4)) + 0.25;
+    
+    let flipped = (change[0] / Math.abs(change[0])) *
+                  (change[0] / Math.abs(change[0])) < 0;
+    
+    arrowElem = document.createElement('svg');
+    parentElem.appendChild(arrowElem);
+    
+    console.log(arrowElem);
+    
+    arrowElem.className = 'DTArrow';
+    arrowElem.style.left = '' + arrowX + 'rem';
+    arrowElem.style.top = '' + arrowY + 'rem';
+    arrowElem.style.width = '' + arrowW + 'rem';
+    arrowElem.style.height = '' + arrowH + 'rem';
+    
+    let width = arrowElem.clientWidth;
+    let height = arrowElem.clientHeight;
+    
+    let lineX1 = 0;
+    let lineX2 = width;
+    let lineY1 = 0;
+    let lineY2 = height;
+    
+    console.log('(' + lineX1 + ', ' + lineY1 + ')');
+    console.log('(' + lineX2 + ', ' + lineY2 + ')');
+    
+    arrowElem.innerHTML = '<line x1="' + lineX1 + 
+                          '" y1="' + lineY1 + 
+                          '" x2="' + lineX2 +
+                          '" y2="' + lineY2 +
+                          '" stroke="black" stroke-width="2"/>';
+    
+  }
   
 }
 

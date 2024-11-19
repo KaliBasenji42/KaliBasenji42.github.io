@@ -100,6 +100,14 @@ li {font-size: 18px;}
   
   text-align: center;
   font-size: 0.75rem;
+  
+  z-index: 1;
+}
+
+.DTArrow {
+  position: absolute;
+  
+  z-index: 10;
 }
 
 /* Other */
