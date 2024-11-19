@@ -26,6 +26,8 @@ li {font-size: 18px;}
 }
 
 .field {
+  position: relative;
+  
   width: 100%;
   height: calc(100% - 3rem);
   
@@ -90,8 +92,14 @@ li {font-size: 18px;}
 
 /* Decay Tree */
 
-.elem {
+.iso {
+  position: absolute;
   
+  width: 3rem;
+  height: 3rem;
+  
+  text-align: center;
+  font-size: 0.75rem;
 }
 
 /* Other */

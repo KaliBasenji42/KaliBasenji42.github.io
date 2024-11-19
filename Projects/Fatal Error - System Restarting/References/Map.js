@@ -109,7 +109,7 @@ function hideAreas() {
   
 }
 
-function render(surf, scale, areas) {
+function renderMap(surf, scale, areas) {
   
   for(let i = 0; i < areas.length; i++) {
     
@@ -123,5 +123,5 @@ function render(surf, scale, areas) {
 
 // Renders
 
-render(map, 4, mapAreas);
-render(umbrielRef, 4, umbrielAreas);
+renderMap(map, 4, mapAreas);
+renderMap(umbrielRef, 4, umbrielAreas);

@@ -244,6 +244,32 @@ function decayChange(mode) {
   
 }
 
+function createDecayIso(iso, parentElem, minX, maxY) {
+  
+  let Z = iso['z'];
+  let N = iso['n'];
+  
+  let x = (N - Z) - minX + 2;
+  let y = maxY - (N + Z);
+  
+  let modes = {};
+  if(iso['levels'][0].hasOwnProperty('decayModes')) {
+    modes = iso['levels'][0]['decayModes']['observed'];
+  }
+  
+  isoElem = document.createElement('div');
+  parentElem.appendChild(isoElem);
+  
+  isoElem.className = 'iso';
+  isoElem.style.backgroundColor = 'rgb(' + (255 - (2*Z)) + ',' + 
+                                  (2*Z) + ',' + (255 - (2*Z)) + ')';
+  isoElem.style.left = '' + (x * 4) + 'rem';
+  isoElem.style.top = '' + (y * 4) + 'rem';
+  
+  isoElem.innerHTML = iso['name'] + '<br>Z: ' + Z + '<br>N: ' + N;
+  
+}
+
 // Events
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -290,10 +316,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let isoStr = document.getElementById('DTIsoInput').value;
     let parent = NuDat[isoStr];
     
-    let field = document.getElementById('DTField');
+    if(parent === undefined) return;
+    
+    let fieldElem = document.getElementById('DTField');
+    let isosCountElem = document.getElementById('DTIsosCount');
     
     let isos = new Set();
     let newIsos = new Set([parent]);
+    
+    let maxA = parent['z'] + parent['n'];
+    let minNZ = parent['n'] - parent['z'];
     
     while(newIsos.size > 0) {
       
@@ -301,6 +333,8 @@ document.addEventListener('DOMContentLoaded', function() {
       
       isos = isos.union(newIsos);
       newIsos.clear();
+      
+      isosCountElem.innerHTML = isos.size;
       
       for(const iso of tempIsos) {
         
@@ -317,11 +351,12 @@ document.addEventListener('DOMContentLoaded', function() {
           let Z = iso['z'];
           let N = iso['n'];
           
+          maxA = Math.max(maxA, Z + N);
+          minNZ = Math.min(minNZ, N - Z);
+          
           let change = decayChange(modes[mode]['mode']);
           
-          console.log(change);
-          
-          if(change != [0, 0]) {
+          if(!(change[0] == 0 && change[1] == 0)) {
             let daughter = NuDat[ZNtoName(Z + change[0], N + change[1])];
             newIsos.add(daughter);
             
@@ -334,7 +369,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
     
-    console.log(isos);
+    fieldElem.innerHTML = '';
+    
+    for(const iso of isos) {
+      
+      createDecayIso(iso, fieldElem, minNZ, maxA);
+      
+    }
     
   });
   
