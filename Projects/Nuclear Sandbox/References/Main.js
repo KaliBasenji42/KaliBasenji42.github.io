@@ -244,117 +244,84 @@ function decayChange(mode) {
   
 }
 
-function createDecayIso(iso, parentElem, styleElem, minX, maxY) {
+function createDecayChain(isos, canvas, minX, minY, maxX, maxY) {
   
-  // Vars
+  let ctx = canvas.getContext('2d');
   
-  let Z = iso['z'];
-  let N = iso['n'];
+  let width = (maxX - minX);
+  let height = (maxY - minY);
   
-  let x = (N - Z) - minX + 2;
-  let y = maxY - (N + Z);
+  canvas.width = width * 16 * 4 + (16 * 3);
+  canvas.height = height * 16 * 4 + (16 * 3);
   
-  let modes = {};
-  if(iso['levels'][0].hasOwnProperty('decayModes')) {
-    modes = iso['levels'][0]['decayModes']['observed'];
-  }
+  console.log('(' + canvas.width + ', ' + canvas.height + ')');
   
-  // Iso
-  
-  let isoElem = document.createElement('div');
-  parentElem.appendChild(isoElem);
-  
-  isoElem.className = 'iso iso' + iso['name'];
-  isoElem.style.backgroundColor = 'rgb(' + (255 - (2*Z)) + ',' + 
-                                  (2*Z) + ',' + (255 - (2*Z)) + ')';
-  isoElem.style.left = '' + (x * 4) + 'rem';
-  isoElem.style.top = '' + (y * 4) + 'rem';
-  
-  halflife = iso['levels'][0]['halflife']['value'] + iso['levels'][0]['halflife']['unit'];
-  
-  if(halflife.slice(0, 6) == 'STABLE') halflife = 'STABLE';
-  
-  if(halflife.length > 6) {
-    let val = iso['levels'][0]['halflife']['value'];
-    let valStr = val.toExponential(1);
+  for(const iso of isos) {
     
-    halflife = valStr + iso['levels'][0]['halflife']['unit'];
-  }
-  
-  isoElem.innerHTML = iso['name'] + '<br>' + Z + 'z ' + N + 'n<br>' + halflife;
-  
-  // Arrows
-  
-  for(const mode in modes) {
+    // Vars
     
-    let decay = decayChange(modes[mode]['mode']);
+    let Z = iso['z'];
+    let N = iso['n'];
     
-    let change = [
-      decay[1] - decay[0],
-      - decay[0] - decay[1]
-    ];
+    let x = (N - Z) - minX;
+    let y = maxY - (N + Z);
     
-    // Create Canvas
-    
-    let arrowX = Math.min(x * 4, (x + change[0]) * 4);
-    let arrowY = Math.min(y * 4, (y + change[1]) * 4);
-    let arrowW = Math.abs(change[0] * 4) + 3;
-    let arrowH = Math.abs(change[1] * 4) + 3;
-    
-    let flipped = (change[0] / Math.abs(change[0])) *
-                  (change[1] / Math.abs(change[1])) < 0;
-    
-    let arrowElem = document.createElement('canvas');
-    parentElem.appendChild(arrowElem);
-    
-    arrowElem.className = 'DCArrow iso' + iso['name'] + 'arrow';
-    arrowElem.style.left = '' + arrowX + 'rem';
-    arrowElem.style.top = '' + arrowY + 'rem';
-    arrowElem.style.width = '' + arrowW + 'rem';
-    arrowElem.style.height = '' + arrowH + 'rem';
-    
-    let pxWidth = arrowElem.clientWidth;
-    let pxHeight = arrowElem.clientHeight;
-    
-    arrowElem.width = pxWidth;
-    arrowElem.height = pxHeight;
-    
-    // Draw Line
-    
-    let remUnit = pxWidth / arrowW;
-    
-    let lineX1 = remUnit * 1.5;
-    let lineX2 = pxWidth - (remUnit * 1.5);
-    let lineY1 = remUnit * 1.5;
-    let lineY2 = pxHeight - (remUnit * 1.5);
-    
-    if(flipped) {
-      lineX1 = pxWidth - (remUnit * 1.5);
-      lineX2 = remUnit * 1.5;
+    let modes = {};
+    if(iso['levels'][0].hasOwnProperty('decayModes')) {
+      modes = iso['levels'][0]['decayModes']['observed'];
     }
     
-    let ctx = arrowElem.getContext('2d');
-    const gradient = ctx.createLinearGradient(lineX1, lineY1, lineX2, lineY2);
+    let halflife = iso['levels'][0]['halflife']['value'] + iso['levels'][0]['halflife']['unit'];
     
-    gradient.addColorStop(0, 'rgb(0,0,0)');
-    gradient.addColorStop(1, 'rgb(0,0,0)');
+    if(halflife.slice(0, 6) == 'STABLE') halflife = 'STABLE';
     
-    ctx.strokeStyle = gradient;
-    ctx.lineWidth = 4;
+    if(halflife.length > 6) {
+      let val = iso['levels'][0]['halflife']['value'];
+      let valStr = val.toExponential(1);
+      
+      halflife = valStr + iso['levels'][0]['halflife']['unit'];
+    }
     
-    ctx.beginPath();
-    ctx.moveTo(lineX1, lineY1);
-    ctx.lineTo(lineX2, lineY2);
-    ctx.stroke();
+    // Iso
+    
+    ctx.fillStyle = 'rgb(0,128,0)';
+    ctx.fillRect(x * 16 * 4, y * 16 * 4, 16 * 3, 16 * 3);
+    
+    console.log('(' + (x * 16 * 4) + ', ' + (y * 16 * 4) + ')');
+    
+    // Arrows
+    
+    for(const mode in modes) {
+      
+      let decay = decayChange(modes[mode]['mode']);
+      
+      let change = [
+        decay[1] - decay[0],
+        - decay[0] - decay[1]
+      ];
+      
+      let lineX1 = x * 16 * 4 + (16 * 1.5);
+      let lineY1 = y * 16 * 4 + (16 * 1.5);
+      let lineX2 = ((x + change[0]) * 16 * 4) + (16 * 1.5);
+      let lineY2 = ((y + change[1]) * 16 * 4) + (16 * 1.5);
+      
+      const gradient = ctx.createLinearGradient(
+        lineX1, lineY1, lineX2, lineY2);
+      
+      gradient.addColorStop(0, 'rgb(255,0,0)');
+      gradient.addColorStop(1, 'rgb(0,0,255)');
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 4;
+      
+      ctx.beginPath();
+      ctx.moveTo(lineX1, lineY1);
+      ctx.lineTo(lineX2, lineY2);
+      ctx.stroke();
+      
+    }
     
   }
-  
-  // CSS
-  
-  styleElem.innerHTML += (
-    '.iso' + iso['name'] + ':hover + .iso' + iso['name'] + 'arrow {' +
-    'z-index: 1000; opacity: 1;} '
-  );
   
 }
 
@@ -371,9 +338,6 @@ document.addEventListener('DOMContentLoaded', function() {
   nuDatStatOutput = document.getElementById('NuDatStat');
   
   DCForm = document.getElementById('DCForm');
-  
-  let DCStyle = document.createElement('style');
-  document.head.appendChild(DCStyle);
   
   // Menu
   
@@ -409,14 +373,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if(parent === undefined) return;
     
-    let fieldElem = document.getElementById('DCField');
+    let DCCanvas = document.getElementById('DCCanvas');
     let isosCountElem = document.getElementById('DCIsosCount');
     
     let isos = new Set();
     let newIsos = new Set([parent]);
     
-    let maxA = parent['z'] + parent['n'];
     let minNZ = parent['n'] - parent['z'];
+    let minA = parent['z'] + parent['n'];
+    let maxNZ = parent['n'] - parent['z'];
+    let maxA = parent['z'] + parent['n'];
     
     while(newIsos.size > 0) {
       
@@ -442,8 +408,10 @@ document.addEventListener('DOMContentLoaded', function() {
           let Z = iso['z'];
           let N = iso['n'];
           
-          maxA = Math.max(maxA, Z + N);
           minNZ = Math.min(minNZ, N - Z);
+          minA = Math.min(maxA, Z + N);
+          minNZ = Math.max(minNZ, N - Z);
+          maxA = Math.max(maxA, Z + N);
           
           let change = decayChange(modes[mode]['mode']);
           
@@ -460,14 +428,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
     
-    fieldElem.innerHTML = '';
-    DCStyle.innerHTML = '';
-    
-    for(const iso of isos) {
-      
-      createDecayIso(iso, fieldElem, DCStyle, minNZ, maxA);
-      
-    }
+    createDecayChain(isos, DCCanvas, minNZ, minA, maxNZ, maxA);
     
   });
   
