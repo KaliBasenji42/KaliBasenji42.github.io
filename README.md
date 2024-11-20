@@ -4,6 +4,16 @@ This is my website. It is hosted by Github.
 
 It is orginized by having a "index.html" at the front that links to projects in "Projects". "Global Refs" are JS and CSS files that are commanly used, and linked to projects when applicable.
 
+<h1>File Structure</h1>
+
+> Global Ref *Files used by many HTML files*
+> > AreFilesLinked.js *Checks if files are linked, if so sets warning's disp to 'none'*
+> > Chapter.js *Sets up and gives functions for chapter like navigation, requires some set up on both ends*
+> > Main.js *Basic JS ran on most HTML files (such as load animation)*
+> > MainStyle.css *Basic CSS used on most HTML files*
+> Projects
+> > 
+
 <h1>Template</h1>
 
 "HTML Template.py" finds all the HTML files in "Projects" using `os.walk`. It then reads "Template.html".
