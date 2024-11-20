@@ -107,6 +107,7 @@ li {font-size: 18px;}
 
 .DCArrow {
   position: absolute;
+  opacity: 0.75;
 }
 
 /* Other */

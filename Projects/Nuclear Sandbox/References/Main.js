@@ -6,8 +6,6 @@ const headHTML = `
 const bodyHTML = `
   `;
 
-let style;
-  
 let menus;
 let currentMenu = 'none';
 
@@ -246,7 +244,7 @@ function decayChange(mode) {
   
 }
 
-function createDecayIso(iso, parentElem, minX, maxY) {
+function createDecayIso(iso, parentElem, styleElem, minX, maxY) {
   
   // Vars
   
@@ -266,7 +264,7 @@ function createDecayIso(iso, parentElem, minX, maxY) {
   let isoElem = document.createElement('div');
   parentElem.appendChild(isoElem);
   
-  isoElem.className = 'iso ' + iso['name'];
+  isoElem.className = 'iso iso' + iso['name'];
   isoElem.style.backgroundColor = 'rgb(' + (255 - (2*Z)) + ',' + 
                                   (2*Z) + ',' + (255 - (2*Z)) + ')';
   isoElem.style.left = '' + (x * 4) + 'rem';
@@ -309,7 +307,7 @@ function createDecayIso(iso, parentElem, minX, maxY) {
     let arrowElem = document.createElement('canvas');
     parentElem.appendChild(arrowElem);
     
-    arrowElem.className = 'DCArrow ' + iso['name'] + 'arrow';
+    arrowElem.className = 'DCArrow iso' + iso['name'] + 'arrow';
     arrowElem.style.left = '' + arrowX + 'rem';
     arrowElem.style.top = '' + arrowY + 'rem';
     arrowElem.style.width = '' + arrowW + 'rem';
@@ -353,9 +351,9 @@ function createDecayIso(iso, parentElem, minX, maxY) {
   
   // CSS
   
-  style.sheet.insertRule(
-    '.' + iso['name'] + ':hover ' + iso['name'] + 'arrow {' +
-    'z-index: 1000;}'
+  styleElem.innerHTML += (
+    '.iso' + iso['name'] + ':hover + .iso' + iso['name'] + 'arrow {' +
+    'z-index: 1000; opacity: 1;} '
   );
   
 }
@@ -366,9 +364,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Elems
   
-  style = document.createElement('style');
-  document.head.appendChild(style);
-  
   menus = document.getElementsByClassName('menu');
   
   fileNameInput = document.getElementById('FileName');
@@ -376,6 +371,9 @@ document.addEventListener('DOMContentLoaded', function() {
   nuDatStatOutput = document.getElementById('NuDatStat');
   
   DCForm = document.getElementById('DCForm');
+  
+  let DCStyle = document.createElement('style');
+  document.head.appendChild(DCStyle);
   
   // Menu
   
@@ -463,10 +461,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     fieldElem.innerHTML = '';
+    DCStyle.innerHTML = '';
     
     for(const iso of isos) {
       
-      createDecayIso(iso, fieldElem, minNZ, maxA);
+      createDecayIso(iso, fieldElem, DCStyle, minNZ, maxA);
       
     }
     
