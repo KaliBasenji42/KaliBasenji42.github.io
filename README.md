@@ -6,19 +6,31 @@ It is orginized by having a "index.html" at the front that links to projects in 
 
 <h1>File Structure</h1>
 
-<code>
+<code style="white-space: pre;">
 
-┌─ Global Ref *- Files used by many HTML files* 
-│  ├─ AreFilesLinked.js *- Checks if files are linked, if so sets warning's disp to 'none'* 
-│  ├─ Chapter.js *- Sets up and gives functions for chapter like navigation, requires some set up on both ends* 
-│  ├─ Main.js *- Basic JS ran on most HTML files (such as load animation)* 
-│  └─ MainStyle.css *- Basic CSS used on most HTML files* 
-├─ Projects 
-│  └─ *Project* *- Project Name* 
-├─ HTML Template.py *- Explained Below* 
-├─ README.md *- This File!* 
-├─ Template.html *- Explained Below* 
-└─ index.html *- Home Page* 
+┌─ Global Ref *- Files used by many HTML files*
+│  ├─ AreFilesLinked.js *- Sets link warning's disp to 'none'*
+│  ├─ Chapter.js *- Sets up and gives functions for chapter like navigation*
+│  ├─ Main.js *- Basic JS ran on most HTML files (such as load animation)*
+│  └─ MainStyle.css *- Basic CSS used on most HTML files*
+├─ Projects
+│  └─ *Project - Project Name*
+│     ├─ References *- Files linked/referenced in HTML files*
+│     │  ├─ *Folder - Other folders*
+│     │  ├─ Icon.png
+│     │  ├─ Main.js *- JS ran on all HTML files in the Project*
+│     │  ├─ MainStyle.css *- CSS linked on all HTML files in the Project*
+│     │  └─ *File.ext - Other files*
+│     ├─ index.html *- Project's home page*
+│     └─ *page.html - Other HTML pages*
+├─ References *- Files linked/referenced in home page*
+│  ├─ Icon.png
+│  ├─ Main.js *- JS ran on home page*
+│  └─ MainStyle.css *- CSS linked on home page*
+├─ HTML Template.py *- Explained below*
+├─ README.md *- This file!*
+├─ Template.html *- Explained below*
+└─ index.html *- Home page*
 
 </code>
 
