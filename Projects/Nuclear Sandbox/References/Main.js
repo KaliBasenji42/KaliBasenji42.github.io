@@ -244,7 +244,29 @@ function decayChange(mode) {
   
 }
 
-function createDecayChain(isos, canvas, minX, minY, maxX, maxY) {
+function createDecayChain(isos, canvas) {
+  
+  // Min and Max
+  
+  let minX = 1000;
+  let minY = 1000;
+  let maxX = -1000;
+  let maxY = -1000;
+  
+  for(const isoMM of isos) {
+    
+    let Z = isoMM['z'];
+    let N = isoMM['n'];
+    
+    let x = N - Z;
+    let y = N + Z;
+    
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    
+  }
   
   let ctx = canvas.getContext('2d');
   
@@ -254,7 +276,7 @@ function createDecayChain(isos, canvas, minX, minY, maxX, maxY) {
   canvas.width = width * 16 * 4 + (16 * 3);
   canvas.height = height * 16 * 4 + (16 * 3);
   
-  console.log('(' + canvas.width + ', ' + canvas.height + ')');
+  console.log('Canvas: (' + canvas.width + ', ' + canvas.height + ')');
   
   for(const iso of isos) {
     
@@ -282,12 +304,18 @@ function createDecayChain(isos, canvas, minX, minY, maxX, maxY) {
       halflife = valStr + iso['levels'][0]['halflife']['unit'];
     }
     
+    let red = x / width * 255;
+    let blue = ((y % 8) / 8) * 255;
+    let green = 255 - blue;
+    if(width == 0) red = 128;
+    let color = 'rgb(' + red + ',' + green + ',' + blue +')';
+    
+    console.log('(' + x + ', ' + y + ') ');
+    
     // Iso
     
-    ctx.fillStyle = 'rgb(0,128,0)';
+    ctx.fillStyle = color;
     ctx.fillRect(x * 16 * 4, y * 16 * 4, 16 * 3, 16 * 3);
-    
-    console.log('(' + (x * 16 * 4) + ', ' + (y * 16 * 4) + ')');
     
     // Arrows
     
@@ -305,13 +333,7 @@ function createDecayChain(isos, canvas, minX, minY, maxX, maxY) {
       let lineX2 = ((x + change[0]) * 16 * 4) + (16 * 1.5);
       let lineY2 = ((y + change[1]) * 16 * 4) + (16 * 1.5);
       
-      const gradient = ctx.createLinearGradient(
-        lineX1, lineY1, lineX2, lineY2);
-      
-      gradient.addColorStop(0, 'rgb(255,0,0)');
-      gradient.addColorStop(1, 'rgb(0,0,255)');
-      
-      ctx.strokeStyle = gradient;
+      ctx.strokeStyle = color;
       ctx.lineWidth = 4;
       
       ctx.beginPath();
@@ -379,11 +401,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let isos = new Set();
     let newIsos = new Set([parent]);
     
-    let minNZ = parent['n'] - parent['z'];
-    let minA = parent['z'] + parent['n'];
-    let maxNZ = parent['n'] - parent['z'];
-    let maxA = parent['z'] + parent['n'];
-    
     while(newIsos.size > 0) {
       
       let tempIsos = new Set(newIsos);
@@ -408,11 +425,6 @@ document.addEventListener('DOMContentLoaded', function() {
           let Z = iso['z'];
           let N = iso['n'];
           
-          minNZ = Math.min(minNZ, N - Z);
-          minA = Math.min(maxA, Z + N);
-          minNZ = Math.max(minNZ, N - Z);
-          maxA = Math.max(maxA, Z + N);
-          
           let change = decayChange(modes[mode]['mode']);
           
           if(!(change[0] == 0 && change[1] == 0)) {
@@ -428,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
     
-    createDecayChain(isos, DCCanvas, minNZ, minA, maxNZ, maxA);
+    createDecayChain(isos, DCCanvas);
     
   });
   
