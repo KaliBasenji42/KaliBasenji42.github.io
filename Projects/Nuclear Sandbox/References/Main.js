@@ -268,6 +268,8 @@ function createDecayChain(isos, canvas) {
     
   }
   
+  // Vars
+  
   let ctx = canvas.getContext('2d');
   
   let width = (maxX - minX);
@@ -276,7 +278,18 @@ function createDecayChain(isos, canvas) {
   canvas.width = width * 16 * 6 + (16 * 3);
   canvas.height = height * 16 * 6 + (16 * 3);
   
-  console.log('Canvas: (' + canvas.width + ', ' + canvas.height + ')');
+  const grid = [];
+  
+  for(let y = 0; y < height * 2; y++) {
+    let row = [];
+    for(let x = 0; x < width * 2; x++) row[x] = [];
+    grid[y] = row;
+  }
+  
+  console.log('Grid: (' + width + ', ' + height + ')');
+  console.log(grid);
+  
+  const arrows = [];
   
   for(const iso of isos) {
     
@@ -313,12 +326,30 @@ function createDecayChain(isos, canvas) {
     if(width == 0) red = 128;
     let color = 'rgb(' + red + ',' + green + ',' + blue +')';
     
-    console.log('(' + x + ', ' + y + ') ');
+    let textColor = 'rgb(0,0,0)';
+    if(Math.max(red, green, blue) < 128) textColor = 'rgb(255,255,255)';
     
     // Iso
     
     ctx.fillStyle = color;
     ctx.fillRect(x * 16 * 6, y * 16 * 6, 16 * 3, 16 * 3);
+    
+    ctx.font = '12px Arial';
+    ctx.fillStyle = textColor;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    
+    ctx.fillText(iso['name'], x * 16 * 6 + (16 * 1.5), y * 16 * 6 + 4);
+    
+    ctx.font = '10px Arial';
+    
+    ctx.fillText(iso['z'] + 'z ' + iso['n'] + 'n', 
+                 x * 16 * 6 + (16 * 1.5), y * 16 * 6 + 20);
+    ctx.fillText(halflife, x * 16 * 6 + (16 * 1.5), y * 16 * 6 + 36);
+    
+    console.log('(' + x + ', ' + y + ')');
+    
+    grid[y][x].push('block');
     
     // Arrows
     
@@ -331,22 +362,29 @@ function createDecayChain(isos, canvas) {
         - decay[0] - decay[1]
       ];
       
-      let lineX1 = x * 16 * 6 + (16 * 1.5);
-      let lineY1 = y * 16 * 6 + (16 * 1.5);
-      let lineX2 = ((x + change[0]) * 16 * 6) + (16 * 1.5);
-      let lineY2 = ((y + change[1]) * 16 * 6) + (16 * 1.5);
+      let arrowX1 = x * 16 * 6 + (16 * 1.5);
+      let arrowY1 = y * 16 * 6 + (16 * 1.5);
+      let arrowX2 = ((x + change[0]) * 16 * 6) + (16 * 1.5);
+      let arrowY2 = ((y + change[1]) * 16 * 6) + (16 * 1.5);
       
       ctx.strokeStyle = color;
       ctx.lineWidth = 4;
       
       ctx.beginPath();
-      ctx.moveTo(lineX1, lineY1);
-      ctx.lineTo(lineX2, lineY2);
+      ctx.moveTo(arrowX1, arrowY1);
+      ctx.lineTo(arrowX2, arrowY2);
       ctx.stroke();
+      
+      arrows.push({x1: arrowX1, y1: arrowY1, x2: arrowX2, y2: arrowY2});
       
     }
     
   }
+  
+  console.log('Grid:');
+  console.log(grid);
+  console.log('Arrows:');
+  console.log(arrows);
   
 }
 
