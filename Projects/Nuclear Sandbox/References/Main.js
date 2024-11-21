@@ -273,8 +273,8 @@ function createDecayChain(isos, canvas) {
   let width = (maxX - minX);
   let height = (maxY - minY);
   
-  canvas.width = width * 16 * 4 + (16 * 3);
-  canvas.height = height * 16 * 4 + (16 * 3);
+  canvas.width = width * 16 * 6 + (16 * 3);
+  canvas.height = height * 16 * 6 + (16 * 3);
   
   console.log('Canvas: (' + canvas.width + ', ' + canvas.height + ')');
   
@@ -304,7 +304,7 @@ function createDecayChain(isos, canvas) {
       halflife = valStr + iso['levels'][0]['halflife']['unit'];
     }
     
-    let red = x / width * 255;
+    let red = ((x % 8) / 8) * 255;
     let blue = ((y % 8) / 8) * 255;
     let green = 255 - blue;
     if(width == 0) red = 128;
@@ -315,7 +315,7 @@ function createDecayChain(isos, canvas) {
     // Iso
     
     ctx.fillStyle = color;
-    ctx.fillRect(x * 16 * 4, y * 16 * 4, 16 * 3, 16 * 3);
+    ctx.fillRect(x * 16 * 6, y * 16 * 6, 16 * 3, 16 * 3);
     
     // Arrows
     
@@ -328,10 +328,10 @@ function createDecayChain(isos, canvas) {
         - decay[0] - decay[1]
       ];
       
-      let lineX1 = x * 16 * 4 + (16 * 1.5);
-      let lineY1 = y * 16 * 4 + (16 * 1.5);
-      let lineX2 = ((x + change[0]) * 16 * 4) + (16 * 1.5);
-      let lineY2 = ((y + change[1]) * 16 * 4) + (16 * 1.5);
+      let lineX1 = x * 16 * 6 + (16 * 1.5);
+      let lineY1 = y * 16 * 6 + (16 * 1.5);
+      let lineX2 = ((x + change[0]) * 16 * 6) + (16 * 1.5);
+      let lineY2 = ((y + change[1]) * 16 * 6) + (16 * 1.5);
       
       ctx.strokeStyle = color;
       ctx.lineWidth = 4;
