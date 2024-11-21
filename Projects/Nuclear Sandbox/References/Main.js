@@ -293,7 +293,10 @@ function createDecayChain(isos, canvas) {
       modes = iso['levels'][0]['decayModes']['observed'];
     }
     
-    let halflife = iso['levels'][0]['halflife']['value'] + iso['levels'][0]['halflife']['unit'];
+    let halflife = '?';
+    if(iso['levels'][0].hasOwnProperty('halflife')) {
+      halflife = iso['levels'][0]['halflife']['value'] + iso['levels'][0]['halflife']['unit'];
+    }
     
     if(halflife.slice(0, 6) == 'STABLE') halflife = 'STABLE';
     
