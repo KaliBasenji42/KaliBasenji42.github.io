@@ -280,16 +280,17 @@ function createDecayChain(isos, canvas) {
   
   const grid = [];
   
-  for(let y = 0; y < height * 2; y++) {
+  for(let y = 0; y < height * 2 + 1; y++) {
     let row = [];
-    for(let x = 0; x < width * 2; x++) row[x] = [];
+    for(let x = 0; x < width * 2 + 1; x++) row[x] = [];
     grid[y] = row;
   }
   
   console.log('Grid: (' + width + ', ' + height + ')');
-  console.log(grid);
   
   const arrows = [];
+  
+  // Iso Loop
   
   for(const iso of isos) {
     
@@ -329,7 +330,7 @@ function createDecayChain(isos, canvas) {
     let textColor = 'rgb(0,0,0)';
     if(Math.max(red, green, blue) < 128) textColor = 'rgb(255,255,255)';
     
-    // Iso
+    // Iso Draw
     
     ctx.fillStyle = color;
     ctx.fillRect(x * 16 * 6, y * 16 * 6, 16 * 3, 16 * 3);
@@ -349,7 +350,9 @@ function createDecayChain(isos, canvas) {
     
     console.log('(' + x + ', ' + y + ')');
     
-    grid[y][x].push('block');
+    // Iso Grid
+    
+    grid[y*2][x*2].push({type:'block', elem:iso['name']});
     
     // Arrows
     
@@ -362,20 +365,8 @@ function createDecayChain(isos, canvas) {
         - decay[0] - decay[1]
       ];
       
-      let arrowX1 = x * 16 * 6 + (16 * 1.5);
-      let arrowY1 = y * 16 * 6 + (16 * 1.5);
-      let arrowX2 = ((x + change[0]) * 16 * 6) + (16 * 1.5);
-      let arrowY2 = ((y + change[1]) * 16 * 6) + (16 * 1.5);
-      
-      ctx.strokeStyle = color;
-      ctx.lineWidth = 4;
-      
-      ctx.beginPath();
-      ctx.moveTo(arrowX1, arrowY1);
-      ctx.lineTo(arrowX2, arrowY2);
-      ctx.stroke();
-      
-      arrows.push({x1: arrowX1, y1: arrowY1, x2: arrowX2, y2: arrowY2});
+      arrows.push({x1: x, y1: y, x2: x + change[0], 
+                   y2: y + change[1], color: color});
       
     }
     
@@ -385,6 +376,25 @@ function createDecayChain(isos, canvas) {
   console.log(grid);
   console.log('Arrows:');
   console.log(arrows);
+  
+  // Lines
+  
+  for(const arrow in arrows) {
+    
+    // Vars
+    
+    ctx.strokeStyle = arrow['color'];
+    ctx.lineWidth = 4;
+    
+    let done = false;
+    
+    while(!done) {
+      
+      
+      
+    }
+    
+  }
   
 }
 
