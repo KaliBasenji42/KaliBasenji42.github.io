@@ -390,7 +390,7 @@ function createDecayChain(isos, canvas) {
     
     while(!done) {
       
-      
+      done = true;
       
     }
     
