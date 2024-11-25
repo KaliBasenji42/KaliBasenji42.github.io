@@ -45,6 +45,11 @@ li {font-size: 18px;}
   z-index: 1;
 }
 
+.map {
+  position: relative;
+  overflow: auto;
+}
+
 .pass {
   text-align: center;
   margin: 1em;
