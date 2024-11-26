@@ -19,7 +19,7 @@ const chapters = ['1.html', '2.html', '3.html'];
 
 const chapterNames = [];
 
-for(let i = 0; i < chapters.length; i++) chapterNames.push('Chapter ' + (i + 1) + ' - Fatal Error / System Restarting');
+for(let i = 0; i < chapters.length; i++) chapterNames.push('Chapter ' + (i + 1) + ' | Fatal Error - System Restarting');
 
 // Events
 
