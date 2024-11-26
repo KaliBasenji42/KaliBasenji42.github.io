@@ -9,7 +9,8 @@ const mapAreas = [['Nix', 'rect', 0, 0, 128, 10], // 'Name', 'type', ... args
                   ['Mons', 'circle', 15.5, 20.5, 10.5],
                   ['Mare', 'rect', 28, 10, 128, 28],
                   ['Disiunctus', 'circle', 4.5, 31, 4.5],
-                  ['◮<br>N', 'label', 1, 56, 'rgb(128,0,0)', 16, 14]];
+                  ['◮<br>N', 'label', 1, 56, 'rgb(128,0,0)', 16, 14],
+                  ['* Aurum', 'label', 40, 40, 'rgb(192,0,0)', 10, 10]];
 
 const umbrielAreas = [['Boop!', 'rect', 44, 13, 48, 16],
                       ['Anklet', 'rect', 77, 49, 83, 51],
