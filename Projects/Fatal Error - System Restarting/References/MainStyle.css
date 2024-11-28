@@ -1,6 +1,6 @@
 /* Elements */
 
-li {font-size: 18px;}
+body {font-size: 18px;}
 
 /* Chapter Type */
 
@@ -14,9 +14,10 @@ li {font-size: 18px;}
 
 .terminal {
   color: rgb(64, 255, 64);
-  font-family: consolas;
+  font-family: monospace;
   background-color: rgb(32, 0, 64);
   padding: 1em;
+  
 }
 
 .human {
