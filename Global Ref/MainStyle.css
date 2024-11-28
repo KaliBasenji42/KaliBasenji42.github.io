@@ -18,7 +18,7 @@ body {
 
 h1 {text-align: center;}
 
-p {text-indent: 2em; font-size: 18px}
+p {text-indent: 2rem; font-size: 18px}
 
 a {color: rgb(0, 96, 0);}
 a:hover {color: rgb(0, 128, 0);}
@@ -40,7 +40,7 @@ img {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 1.5em;
   cursor: pointer;
 }
 
@@ -64,10 +64,10 @@ div.navArrow {
 
 .sectBttn {
   text-align: center;
-  line-height: 2rem;
+  line-height: 2em;
   border: none;
   background-color: rgba(0, 0, 0, 0);
-  font-size: 1rem;
+  font-size: 1em;
   cursor: pointer;
 }
 

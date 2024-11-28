@@ -1,6 +1,7 @@
 /* Elements */
 
-body {font-size: 18px;}
+ul {font-size: 18px;}
+p {font-size: 18px;}
 
 /* Chapter Type */
 
@@ -10,6 +11,7 @@ body {font-size: 18px;}
   border-radius: 1em; 
   padding: 1em; 
   margin: auto;
+  font-size: 18px;
 }
 
 .terminal {
@@ -17,13 +19,14 @@ body {font-size: 18px;}
   font-family: monospace;
   background-color: rgb(32, 0, 64);
   padding: 1em;
-  
+  font-size: 18px;
 }
 
 .human {
   background-color: rgb(255, 224, 240);
   padding: 0.5em;
   border-radius: 0.1em;
+  font-size: 18px;
 }
 
 /* Other */
