@@ -42,6 +42,7 @@ img {
   display: inline-block;
   font-size: 1.5em;
   cursor: pointer;
+  border-radius: 0.25em;
 }
 
 a.nav:hover, a.nav:active, a.navArrow:hover, a.navArrow:active {
