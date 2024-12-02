@@ -388,6 +388,8 @@ function createDecayChain(isos, canvas) {
     ctx.strokeStyle = arrow['color'];
     ctx.lineWidth = 4;
     
+    const pos = [arrow.x1, arrow.y1];
+    
     let done = false;
     
     while(!done) {
@@ -498,6 +500,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
 });
+
+// Key Press
 
 document.addEventListener('keyup', function() {
   

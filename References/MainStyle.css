@@ -67,3 +67,13 @@ tr {border: 1px solid;}
   font-size: 4rem;
   transition: rotate 5s, opacity 1s;
 }
+
+.how {
+  display: none;
+  position: absolute;
+  
+  left: calc(0% - 1rem);
+  top: -1rem;
+  
+  font-size: 2rem;
+}

@@ -2,6 +2,10 @@
 
 li {font-size: 18px;}
 
+img{
+  image-rendering: auto;
+}
+
 /* Window */
 
 .window {
