@@ -146,7 +146,7 @@ function outputData(usage) {
                        ' Bytes / ' + numForm(quota) + 
                        ' Bytes (' + Math.floor(percent) + '%)';
   
-  barElem.style.width = '' + percent + '%';
+  barElem.style.width = '' + Math.abs(percent) + '%';
   barElem.style.backgroundColor = color;
   
   // Warning
@@ -160,8 +160,14 @@ function outputData(usage) {
   if(frac > 1) boom.style.display = 'block';
   else boom.style.display = 'none';
   
-  if(frac < 0) how.style.display = 'block';
-  else how.style.display = 'none';
+  if(frac < 0) {
+    how.style.display = 'block';
+    barElem.style.left = '' + percent + '%';
+  }
+  else {
+    how.style.display = 'none';
+    barElem.style.left = '0';
+  }
   
 }
 
