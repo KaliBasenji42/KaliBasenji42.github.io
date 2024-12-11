@@ -6,10 +6,10 @@ table, th, td {
   text-align: center;
 }
 
-th {width: 16em; font-size: 18px;}
-td {width: 8em; font-size: 18px;}
+th {width: 16em; font-size: 1.125rem;}
+td {width: 8em; font-size: 1.125rem;}
 
-li {font-size: 18px;}
+li {font-size: 1.125rem;}
 
 /* Backing */
 
