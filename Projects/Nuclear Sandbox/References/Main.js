@@ -328,7 +328,9 @@ function createDecayChain(isos, canvas) {
     let color = 'rgb(' + red + ',' + green + ',' + blue +')';
     
     let textColor = 'rgb(0,0,0)';
-    if(Math.max(red, green, blue) < 128) textColor = 'rgb(255,255,255)';
+    if(((red * 0.3) + (green * 0.59) + (blue * 0.11)) < 128) {
+      textColor = 'rgb(255,255,255)';
+    }
     
     // Iso Draw
     
@@ -377,7 +379,7 @@ function createDecayChain(isos, canvas) {
   console.log('Arrows:');
   console.log(arrows);
   
-  // Lines
+  // Arrows
   
   for(const arrow in arrows) {
     
@@ -385,6 +387,8 @@ function createDecayChain(isos, canvas) {
     
     ctx.strokeStyle = arrow['color'];
     ctx.lineWidth = 4;
+    
+    const pos = [arrow.x1, arrow.y1];
     
     let done = false;
     
@@ -496,6 +500,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
 });
+
+// Key Press
 
 document.addEventListener('keyup', function() {
   

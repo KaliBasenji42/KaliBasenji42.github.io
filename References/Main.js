@@ -41,7 +41,7 @@ function clearData() {
     
     localStorage.clear();
     
-    outputData();
+    outputData(getUsage());
     
   }
   
@@ -53,13 +53,29 @@ function removeData(key) {
     
     localStorage.removeItem(key);
     
-    outputData();
+    outputData(getUsage());
     
   }
   
 }
 
-function outputData() {
+function getUsage() {
+  
+  let usage = 0;
+  
+  for(let key in localStorage) {
+    if(localStorage.hasOwnProperty(key)) {
+      item = localStorage.getItem(key);
+      
+      usage += item.length;
+    }
+  }
+  
+  return usage;
+  
+}
+
+function outputData(usage) {
   
   // Variables
   
@@ -69,9 +85,9 @@ function outputData() {
   let DTSect = document.getElementById('DT Sect');
   let warn = document.getElementsByClassName('warn')[0];
   let boom = document.getElementsByClassName('BOOM')[0];
+  let how = document.getElementsByClassName('how')[0];
   
   let quota = 5 * 1024 * 1024;
-  let usage = 0;
   
   DTElem.innerHTML = `
     <tr>
@@ -81,15 +97,11 @@ function outputData() {
     </tr>
     `
   
-  // Item Loop
+  // Table Loop
   
   for(let key in localStorage) {
     if(localStorage.hasOwnProperty(key)) {
       item = localStorage.getItem(key);
-      
-      usage += item.length;
-      
-      // Table
       
       let rowElem = document.createElement('tr');
       DTElem.appendChild(rowElem);
@@ -134,7 +146,7 @@ function outputData() {
                        ' Bytes / ' + numForm(quota) + 
                        ' Bytes (' + Math.floor(percent) + '%)';
   
-  barElem.style.width = '' + percent + '%';
+  barElem.style.width = '' + Math.abs(percent) + '%';
   barElem.style.backgroundColor = color;
   
   // Warning
@@ -148,13 +160,24 @@ function outputData() {
   if(frac > 1) boom.style.display = 'block';
   else boom.style.display = 'none';
   
+  if(frac < 0) {
+    how.style.display = 'block';
+    barElem.style.left = '' + percent + '%';
+  }
+  else {
+    how.style.display = 'none';
+    barElem.style.left = '0';
+  }
+  
 }
 
 // Events
 
 document.addEventListener('DOMContentLoaded', function () {
   
-  outputData();
+  // Data
+  
+  outputData(getUsage());
   
   warn = document.getElementsByClassName('warn')[0];
   boom = document.getElementsByClassName('BOOM')[0];
