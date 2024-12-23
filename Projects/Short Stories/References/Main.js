@@ -18,7 +18,7 @@ const chapters = ['1.html'];
 
 const chapterNames = ['&#9608&#9608&#9608&#9608'];
 
-for(let i = 0; i < chapters.length; i++) chapterNames.push('Story ' + (i + 1) + ' | ' + chapterNames[i]);
+for(let i = 0; i < chapterNames.length; i++) chapterNames[i] = ('Story ' + (i + 1) + ' | ' + chapterNames[i]);
 
 // Events
 
