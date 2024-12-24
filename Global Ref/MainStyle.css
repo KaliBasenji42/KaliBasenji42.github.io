@@ -105,3 +105,10 @@ div.navArrow {
     opacity: 1;
   }
 }
+
+/* Other */
+
+.WC {
+  text-align: center;
+  color: rgb(96, 96, 96);
+}
