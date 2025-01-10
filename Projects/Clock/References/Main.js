@@ -24,24 +24,32 @@ function delay(millis){
   
 }
 
-function generateFace(radius, offset){
+function generateFace(radius, offset, hours, unit, face, mult = 1){
   
-  let face = document.getElementById("face");
+  while(hours > 24) {
+    hours = hours / 24;
+    mult = mult * 24;
+  }
   
-  let left = face.style.left;
-  let right = face.style.right;
-  
-  for(let i = 0; i < 60; i++){
+  for(let i = 0; i < 5 * hours; i++){
     
-    let posX = ((Math.cos((Math.PI / 30) * (i - 3) ) + 1) * (radius)) + offset;
-    let posY = ((Math.sin((Math.PI / 30) * (i - 3) ) + 1) * (radius)) + offset;
+    let ang = ((i / (5 * hours) ) * (2 * Math.PI)) - (Math.PI / 2);
+    
+    let posX = (Math.cos(ang) + 1) * (radius)
+    let posY = (Math.sin(ang) + 1) * (radius)
     
     let char = '&#x25AA';
     
-    if((i + 12) % 5 == 0) char = ((i + 12) / 5) % 12;
-    if(char == 0) char = 12;
+    if(i % 5 < 0.01) char = ((i / 5) % hours) * mult;
+    if(i == 0) {
+      if(char - Math.round(char) > 0.01) char = 0;
+      else char = Math.round(hours * mult);
+    }
     
-    face.innerHTML += '<div style="position: absolute; left:' + left + '; top: ' + top + '; transform: translate(' + posX + 'em,' + posY + 'em);">' + char + '</div';
+    let tick = document.createElement('div');
+    tick.style = 'position: absolute; width: 2em; height: 2em; text-align: center; line-height: 2em; left:' + (posX + offset) + unit + '; top:' + (posY + offset) + unit + ';';
+    tick.innerHTML = char;
+    face.appendChild(tick);
     
   }
   

@@ -25,7 +25,10 @@
   <div class="second" id="second"></div>
   <div class="pin"></div>
   
-  <script>generateFace(15, 0.5);</script>
+  <script>
+    let face = document.getElementById('face');
+    generateFace(15, 0, 12, 'em', face);
+  </script>
   
   <div class="digital" id="digital">##:##:## XX</div>
   <div class="digital" id="military">##:##:##</div>
