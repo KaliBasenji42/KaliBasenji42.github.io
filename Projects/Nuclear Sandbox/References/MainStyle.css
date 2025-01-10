@@ -1,0 +1,136 @@
+/* Elements */
+
+li {font-size: 1.125rem;}
+
+img{
+  image-rendering: auto;
+}
+
+/* Window */
+
+.window {
+  position: relative;
+  
+  background-color: rgb(192, 192, 192);
+  
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  
+  overflow: hidden;
+}
+
+.toolBar {
+  background-color: rgb(240, 240, 240);
+  
+  width: 100%;
+  height: 3rem;
+  
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.field {
+  position: relative;
+  
+  width: 100%;
+  height: calc(100% - 3rem);
+  
+  overflow: scroll;
+}
+
+.menu {
+  display: none;
+  
+  top: 20%;
+  left: 20%;
+  
+  background-color: rgb(240, 240, 240);
+  
+  position: absolute;
+  padding: 0.5rem;
+  
+  box-shadow: 0.25rem 0.25rem 0.5rem;
+  
+  overflow: hidden;
+}
+
+.menuTtl {
+  top: 0;
+  left: 0;
+  height: 2.5rem;
+  
+  max-width: calc(100% - 3rem);
+  
+  margin: 0;
+  
+  text-align: left;
+}
+
+.menuX {
+  position: absolute;
+  
+  right: 0;
+  top: 0;
+}
+
+.bttn {
+  background-color: rgb(240, 240 , 240);
+  
+  height: 3rem;
+  width: 3rem;
+  
+  border: 0;
+  padding: 0;
+  
+  cursor: pointer;
+}
+
+.bttn:hover {
+  background-color: rgb(224, 224 , 224);
+}
+
+.bttnImg {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Decay Chain */
+
+.iso {
+  position: absolute;
+  
+  width: 3rem;
+  height: 3rem;
+  
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  
+  z-index: 1;
+}
+
+.DCArrow {
+  position: absolute;
+  opacity: 0.75;
+}
+
+/* Other */
+
+.dataBttn {
+  background-color: rgb(240, 240, 240);
+  width: 3rem;
+  height: 3rem;
+  
+  line-height: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  
+  border-radius: 0.5rem;
+  border-width: 0;
+  
+  cursor: pointer;
+}
+
+.dataBttn:active {
+  background-color: rgb(224, 224, 224);
+}

@@ -1,0 +1,116 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang = "en-US">
+
+<head>
+<!--End-->
+  <title>Nuclear Sandbox</title>
+<!--Start-->
+  <meta charset = "utf-8">
+  <meta name = "viewport" content = "width=device-width">
+  <link href = "../../Global Ref/MainStyle.css" rel = "stylesheet" type = "text/css" />
+  <link href = "References/MainStyle.css" rel = "stylesheet" type = "text/css" />
+  <link href = "References/Icon.png" rel = "icon">
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../Global Ref/AreFilesLinked.js"></script>
+  
+  <script src="References/Main.js"></script>
+  <script src="../../Global Ref/Main.js"></script>
+  
+<!--End-->
+  
+<p><a href="../../index.html">Home Page</a></p>
+  
+  <h1>Nuclear Sandbox (WIP)</h1>
+  
+  <div class="window">
+    
+    <div class="toolBar">
+      <button onclick="openMenu('MenuSave')" class="bttn">
+        <img src="References/Images/File.png" class="bttnImg" title="File [F]">
+      </button>
+    </div>
+    
+    <div class="field">
+      
+    </div>
+    
+    <!--Menus-->
+    
+    <div class="menu" id="MenuSave" style="min-width: 6rem;">
+      <h1 class="menuTtl">File</h1>
+      Name:
+      <input id="FileName">
+      <br>
+      <button onclick="saveFile()" class="bttn">
+        <img src="References/Images/Download.png" class="bttnImg" title="Save">
+      </button>
+      <button onclick="openFile()" class="bttn">
+        <img src="References/Images/Upload.png" class="bttnImg" title="Open">
+      </button>
+    </div>
+    
+  </div>
+  
+  <h2>
+    NuDat Status:<span id="NuDatStat">🔄</span>
+  </h2>
+  
+  <button onclick="loadData()" class="dataBttn" title="Re-Fetch NuDat">
+    ↺
+  </button>
+  
+  <h2>Decay Chain
+    <span><button class="sectBttn" id="DC bttn" onclick="expndOrClps('DC Sect', 'DC bttn')">🔽</button></span>
+  </h2>
+  
+  <div id="DC Sect" class="sect">
+  
+  <form id="DCForm">
+    <label for="DCIsoInput">Isotope:</label>
+    <input type="text" id="DCIsoInput" name="DCIsoInput">
+    Example: "235U"<br>
+    <input type="submit" value="Load">
+  </form>
+  
+  <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
+  
+  <div class="field" style="aspect-ratio: 2 / 1; background-color: rgb(240, 240, 240);">
+    <canvas id="DCCanvas"></canvas>
+  </div>
+  
+  <p>Verticle Axis: A</p>
+  <p>Horizontal Axis: N - Z</p>
+  
+  </div>
+  
+  <script>expndOrClps('DC Sect', 'DC bttn');</script>
+  
+  <h2>Sources:</h2>
+  
+  <ul>
+    <li>National Nuclear Data Center, information extracted from the NuDat database, <a href="https://www.nndc.bnl.gov/nudat/" target="_blank">https://www.nndc.bnl.gov/nudat/</a></li>
+    <li>International Atomic Energy Agency's <a href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" target="_blank">Live Charts</a></li>
+  </ul>
+  
+</body>
+
+<!--Start-->
+
+</html>
+
+<!--End-->
+
+<!--Hello!-->

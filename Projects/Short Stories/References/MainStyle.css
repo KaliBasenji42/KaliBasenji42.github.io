@@ -1,0 +1,44 @@
+/* Elements */
+
+body {
+  margin: auto;
+  margin-top: 1em;
+  width: 70%;
+  background-color: rgb(64, 192, 64);
+  background-image: linear-gradient(90deg, rgb(64, 192, 64), rgb(0, 192, 96));
+  background-size: 100vw 100vw;
+  background-repeat: repeat;
+}
+
+li {font-size: 1.125rem;}
+
+a {color: rgb(96, 0, 96);}
+a:hover {color: rgb(160, 0, 160);}
+
+/* Navigation */
+
+.nav, .navArrow {
+  background-color: rgb(208, 128, 128);
+}
+
+a.nav:hover, a.nav:active, a.navArrow:hover, a.navArrow:active {
+  background-color: rgb(192, 128, 128);
+}
+
+/* Body */
+
+.body {
+  background-image: linear-gradient(30deg, rgb(255, 224, 192), rgb(255, 255, 192));
+  background-color: rgb(192, 255, 224); 
+  border-radius: 1em; 
+  padding: 1em; 
+  margin: auto;
+}
+
+/* Other */
+
+.pass {
+  text-align: center;
+  margin: 1em;
+  font-family: Consolas;
+}

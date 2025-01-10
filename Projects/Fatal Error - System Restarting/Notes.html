@@ -1,0 +1,322 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang = "en-US">
+
+<head>
+<!--End-->
+  <title>Notes | Fatal Error - System Restarting</title>
+<!--Start-->
+  <meta charset = "utf-8">
+  <meta name = "viewport" content = "width=device-width">
+  <link href = "../../Global Ref/MainStyle.css" rel = "stylesheet" type = "text/css" />
+  <link href = "References/MainStyle.css" rel = "stylesheet" type = "text/css" />
+  <link href = "References/Icon.png" rel = "icon">
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../Global Ref/AreFilesLinked.js"></script>
+  
+  <script src="References/Main.js"></script>
+  <script src="../../Global Ref/Main.js"></script>
+  
+<!--End-->
+  
+  <script src="../../Global Ref/Chapter.js"></script>
+  
+  <h1>Notes</h1>
+  
+  <h2>Chapter Types</h2>
+  
+  <p>Main: Follows the main character, Umbriel, an Anthropoid. Goes on many camping trips. Umbriel is working at a nuclear power plant.</p>
+  
+  <p>Terminal: Shows the main terminal of ILRU (Intelligent Life Recreation Unit); Pod sent out by humans, creator of the Anthropoids.</p>
+  
+  <p>Human: Journal entries from a human. They helped make the pod/ILRU.</p>
+  
+  <h2>Background</h2>
+  
+  <p>
+    All humans died, it might have been because of nuclear war, a supernova, a gamma ray burst, or maybe humans could not leave the solar system before the Sun went super giant. Anyhow, many years before humans died, they sent out pods containing all the DNA known to humans. These pods were designed to spread life to other planets. One of these pods got struck by a particle (a piece of dust) in interstellar space, breaking some of the shielding. Radiation caused mutations in the DNA and a system restart. When this pod landed it had to splice together DNA to recreate life. The main character is one of these Anthropoids.
+  </p>
+  
+  <h2>Species Description</h2>
+  
+  <p>
+    Human DNA was the most protected, and as such was the most intact. The human DNA had to be spliced with other mammals', and as such these new humanoids have animal features. Bacteria was the most abundant DNA, allowing for the planet to be prepared for mammalian life. Anthropoids are bipedal, yet have a tail and facial features of a canine and other mammals. They have the intelligence and dexterity of a human and the senses and athletics of a canine. Note: There are two types of Anthropoids, both mainly human, one more canine and the other more feline. The feline Anthropoids are less common.
+  </p>
+  
+  <h2>Orbital Diagram</h2>
+  
+  <div class="ODBox"></div>
+  
+  <div id="output">Scroll: _<br>Section: _<br>Distance: _ km</div>
+  
+  <p id="rDisp">Radius px = km / [rScale]</p>
+  
+  <div class="navigation">
+    <button type="button" onclick="rScaleAdd();" class="nav">+</button>
+    <button type="button" onclick="rScaleSub();" class="nav">-</button>
+  </div>
+  
+  <p id="dDisp">Distance px = km / [dScale]</p>
+  
+  <div class="navigation">
+    <button type="button" onclick="dScaleAdd();" class="nav">+</button>
+    <button type="button" onclick="dScaleSub();" class="nav">-</button>
+  </div>
+  
+  <script src="References/OrbitDiagram.js"></script>
+  
+  <script>createCelestial(24622, 961000000, 0, 'Glacies', 'rgb(32, 0, 128)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(78997, 254000000, 0, 'Caelum', 'rgb(196, 196, 128)', 'rgb(0, 0, 0)', 0.5);
+    createCelestial(2797, 2229520, 254000000, 'Aer', 'rgb(196, 128, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(6097, 15086917, 0, 'Lutum', 'rgb(0, 128, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(12.1, 12890, 15086917, 'Saxum', 'rgb(64, 64, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(4726, 0, 0, 'Ignus', 'rgb(255, 228, 196)', 'rgb(0, 0, 0)', 0.5);</script>
+  
+  <p>Navigate To:</p>
+  
+  <div id="scrollNavBar" class="navigation"></div>
+  
+  <script>render();</script>
+  
+  <h2>Celestial Object Notes</h2>
+  
+  <p>Ignus:</p>
+  <ul>
+    <li>Sun: Hydrogen White Dwarf</li>
+    <li>Mass: 1.124 Solar Masses</li>
+    <li>Radius: 0.742 Earth</li>
+  </ul>
+  
+  <p>Lutum:</p>
+  <ul>
+    <li>Main Planet</li>
+    <li>Mass: 0.86 Earth</li>
+    <li>Radius: 0.957 Earth</li>
+    <li>Day Length: 22.6 Hours</li>
+    <li>Orbital Distance: 0.110 to 0.115 AU</li>
+    <li>Year: 13.0 Earth Days, 13.8 Lutum Days</li>
+    <br>
+    <li>Tilt: 16 deg</li>
+    <li>Ocean Coverage: 67% Calculated by <a href="https://www.tools366.com/tool/image-color-ratio#google_vignette" target="_blank">Tools366</a></li>
+    <li>Atmosphere: Similar to Earth's, ILRU regulated its composition via bacteria, less CO2.</li>
+    <li>Crust: Due to the planet's smaller mass and larger land area, rare metals are less rare.</li>
+    <li>Temp: -80C to 30C (Avg. 9.6C)</li>
+  </ul>
+  
+  <p>Saxum:</p>
+  <ul>
+    <li>Moon of Lutum</li>
+    <li>Mass: 7.22 * 10<sup>15</sup> kg</li>
+    <li>Radius: 12.1 km</li>
+    <li>Orbital Distance: 11365 to 14415 km</li>
+    <li>Orbital Period: 4.36 Hours</li>
+  </ul>
+  
+  <p>Caelum:</p>
+  <ul>
+    <li>Gas Giant</li>
+    <li>Mass: 2.88 Jupiter</li>
+    <li>Radius: 1.13 Jupiter</li>
+    <li>Orbital Distance: 1.62 to 1.77 AU</li>
+    <li>Orbital Period: 760 Earth Days, 807 Lutum Days</li>
+  </ul>
+  
+  <p>Aer:</p>
+  <ul>
+    <li>Moon of Caelum</li>
+    <li>Mass: 2.32 Moon</li>
+    <li>Radius: 1.6 Moon</li>
+    <li>Orbital Distance: 5.62 to 5.98 Lunar Distance</li>
+    <li>Orbital Period: 12.7 Earth Days, 13.5 Lutum Days</li>
+    <li>Similar to Titan, methane oceans</li>
+  </ul>
+  
+  <p>Glacies:</p>
+  <ul>
+    <li>Gas Giant</li>
+    <li>Mass: 17.1 Earth</li>
+    <li>Radius: 3.86 Earth</li>
+    <li>Orbital Distance: 5.82 to 7.02 AU</li>
+    <li>Orbital Period: 5605 Earth Days, 5952 Lutum Days</li>
+  </ul>
+  
+  <p>Thanks to Universe Sandbox for powering some of the calculations.</p>
+  
+  <h2>Technology</h2>
+  
+  <ul>
+    <li>Numbers are written in base 8 (I will specify when numbers are in base 8).</li>
+    <li>Time is measured in Caelum Cycles - Lutum Cycles - Lutum Days 8th:512th (fractional digits after, if needed).</li>
+    <ul>
+      <li>Every ~807 Lutum Days a new Cealum Cycle passes and Lutum Cycles will reset once the current one finishes. The same thing happens with days.</li>
+      <li>The day is split into 8 "hours" (1 digit) and each hour is split into 512 "minutes" (3 digits).</li>
+      <li>Time can be told by how celestial bodies line up with the Satus constellation.</li>
+      <li>The calendar starts after the most recent time Glacies, Cealum, and Status lined up (happens every ~1984 Cealum Cycles, ~4129 Earth Years).</li>
+      <li>Umbriel's story is set at 1216 Cealum Cycles (2300 in base 8) (~2530 Earth Years).</li>
+    </ul>
+    <li>Language is very diverse in that it uses vocalizations and body language. While vocalizations vary across regions, body language is mostly universal.</li>
+    <li>Written language is mostly based on phonics (I am going to keep everything in english, don't worry).</li>
+    <li>Due to the limitation of roads, and little use of fossil fuels (they are stinky), cars are solar powered: Steam engines use solar power via lenses.</li>
+    <li>Transport consists of Trains, Blimps, and Bikes. All of these are similar to ours, except they are electric. Blimps are used instead of planes, because fossil fuels are out of the question.</li>
+    <li>The grid is supported mostly by nuclear, solar, hydro, and wind. Nuclear is a lot more successful due to being so efficient and inherently safer design being implemented.</li>
+    <li>There is a geothermal plant in Nix, although this is more of an experimental plant.</li>
+    <li>Computers are very similar to our own, except they have a larger 'Paw Pad.'</li>
+    <li>Cities are similar to our own, except there are less roads and are more sustainable.</li>
+    <li>Housing is made of earthy materials, and often built somewhat underground.</li>
+  </ul>
+  
+  <h2>Geology / Nations</h2>
+  
+  <ul>
+    <li>Nix: Continent over the North Pole. Very mountainous. No Nation.</li>
+    <li>Magna: Main continent, Large mostly Southern, spans East and West.</li>
+    <li>Parvus: Smaller continent, has lots of resources and is considered the capital of the world. West of Magna.</li>
+    <li>Mons: Northern mountainous continent, mild climate like Magna and Parvus. North of Parvus. More wild, where Umbriel lives and where ILRU landed.</li>
+    <li>Mare: Islands North of Magna.</li>
+    <li>Disiunctus: Large island South West of Mons, North West of Parvus. Where many of the feline Anthropoids live.</li>
+    <br>
+    <li>Aurum: Major port city and economic center in Magna.</li>
+    <br>
+    <li>The world is governed by a representative democracy (but with multiple people of power like an oligarchy). Each continent has a governor. This world government handles disputes among continents.</li>
+  </ul>
+  
+  <p>Map (Equirectangular):</p>
+  
+  <div id="map" class="map">
+    <img src="References/Map.png" width="512" height="256" alt="Map">
+  </div>
+  
+  <p>I used <a href="https://elektrobild.org/photo-filter/3d-sphere" target="_blank">Elektrobild</a> to render the map on a globe.</p>
+  
+  <h2>World History</h2>
+  
+  <p>
+    Anthropoids are a lot more cooperative and kind than humans, yet still have a similar curiosity and innovation. Technology starts off a little slower than it did for humans, although there was a lot less violence. Technology is developed with a sense of smell more in mind. Note: There is religion, the predominant one surrounding what we would call cheese. 
+  </p>
+  
+  <p>
+    Anthropoids started in Mons, and traveled to Parvus then Magna via (now gone) land bridges. 
+  </p>
+  
+  <p>
+    There was a somewhat recent conflict, not a full out war, but aggressions nonetheless. More explained under spoilers.
+  </p>
+  
+  <h2>Biology - Species</h2>
+  
+  <ul>
+    
+  </ul>
+  
+  <h1>⚠️ Spoilers Beyond This Point ⚠️
+  <span><button class="sectBttn" id="SA bttn" onclick="expndOrClps('SA', 'SA bttn')">🔽</button></span></h1>
+  
+  <div id = "SA" class = "sect">
+  
+  <h2>Plot</h2>
+  
+  <p>
+    Charon is at the head of a government branch of Disiunctus trying to gain power through nuclear power and weapons. He is gathering scientists for the development of these weapons. Hyperion is forced into threatening Umbriels. It does not go well: Hyperion gets injured while out in the woods, Umberium then finds them in the woods. 
+  </p>
+  
+  <p>
+    Umbriel and Hyperion manage to sabotage the construction of Charon's weapons. Although this furthers the problem. Afterwards Umbriel goes to authurities. With little leverage, the government of Disiunctus easily falls. This scandal further taints public perception of feline Anthropoids. This leads the governments to start arresting many feline Anthropoids. Puck ends up being on of them, being in the nuclear industry making him a target.
+  </p>
+  
+  <p>
+    Being praised as a hero while having his friend persecuted leads Umbriel to experience depression and anxiety from the guilt. Umbriel has to learn how to cope with/resolve these feelings. After progress from Cressida and Hyperion, Umbriel and his friends uncover that Parvus and Mons made nuclear weapons. This, of course, leads to political unrest. After the legal dust settles, laws are set in that crack down transport of nuclear materials. And feline Anthropoids are tried fairly, freeing Puck. 
+  </p>
+  
+  <h2>World History (Plot Relevant)</h2>
+  
+  <p>
+    At 1202 Caelum Cycles (2262 in base 8) the governors of Parvus and Mons blamed feline Anthropoids for the previous nuclear accident on the West side of Magna and subsequent economic recession. The plant was built by Mons and owned by Parvus. The accident was a small Tritium leak due to a flood and reactor core damage due to on-site power loss and safety issues causing a runaway reaction. The accident itself was not bad, the only danger being eating too much fish in the Western Gulf and entering the reactor room unprepared. The real problem was an over reaction from the government. The government of Magna evacuated the nearby city, Aurum, a major port city and economic center.
+  </p>
+  
+  <p>
+    The governments of Parvus and Mons did not want to take responsibility for this, and shifted much of the blame to feline Anthropoids. These governments targeted felines not only because it was easy (much of the crew was feline along with the head of the facility), but also because the governments were afraid that felines would cause an uprising: There are more reports of feline Anthropoids participating in protests then canines (canines are usually more loyal). The governments also tried sending many felines from Parvus and Mons to Disiunctus. Around 1208 (2270 in base 8) Aurum was reoccupied and the economy recovered, and people were suspecting the transportation of felines. So the governments of Parvus and Mons stopped trying to remove felines.
+  </p>
+  
+  <p>
+    By 1211 (2273 in base 8) Disiunctus formed a government and wants nuclear power. Parvus and Mons do not want to help Disiunctus, afraid they will attack them for the recent conflict. Magna and Mare do not to help in fear that they will lose Parvus and Mons as allies. Disiunctus is in an arms race with Parvus and Mons in nuclear weapons. Parvus and Mons are hiding the fact they are making weapons: Parvus, Mons, Magna, and Mare signed a treaty stating none would produce nuclear weapons or any city destroying bomb. This then leads us to today, Charon kidnapping people for intelligence.
+  </p>
+  
+  <h2>Characters</h2>
+  
+  <h3>Umbriel:</h3>
+  <ul>
+    Gender: He/Him<br>
+    Type: Canine<br>
+    <br>
+    <li>Protagonist</li>
+    <li>Lives alone in a house in the woods.</li>
+    <li>Works as an operator for a nuclear plant in Mons.</li>
+    <li>Introvert & Recluse.</li>
+    <li>Loves nature and hiking.</li>
+    <br>
+    <div id="UmbrielRef" class="map">
+      <img src="References/Ref Sheets/Umbriel.png" width="512" height="256" alt="Umbriel Ref-Sheet">
+    </div>
+  </ul>
+  
+  <h3>Hyperion:</h3>
+  <ul>
+    Gender: They/Them<br>
+    Type: Feline<br>
+    <br>
+    <li>Worked at the nuclear plant in Aurum.</li>
+    <li>Forced into working for Charon in order to keep the fact they were in part responsible for the Aurum plant accident.</li>
+  </ul>
+  
+  <h3>Charon:</h3>
+  <ul>
+    Gender: He/Him<br>
+    Type: Feline<br>
+    <br>
+    <li>Antagonist</li>
+  </ul>
+  
+  <h3>Cressida:</h3>
+  <ul>
+    Gender: She/Her<br>
+    Type: Canine<br>
+    <br>
+    <li>Co-worker of Umbriel.</li>
+    <li>Very talkative and kind.</li>
+  </ul>
+  
+  <h3>Puck:</h3>
+  <ul>
+    Gender: He/Him<br>
+    Type: Feline<br>
+    <br>
+    <li>Co-worker of Umbriel.</li>
+    <li>Jokester, lighthearted, but serious when needed.</li>
+  </ul>
+  
+  </div>
+  
+  <br>
+  
+  <script>expndOrClps('SA', 'SA bttn');</script>
+  
+  <script src="References/Map.js"></script>
+  
+</body>
+
+<!--Start-->
+
+</html>
+
