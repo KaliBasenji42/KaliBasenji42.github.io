@@ -26,7 +26,6 @@ a:hover {color: rgb(0, 128, 0);}
   top: 18.125em;
   left: calc(50% - 14em + 0.25em); /*0.25em for face border*/
   transform: rotate(-90deg);
-  border-radius: 0.25em;
 }
 
 .minute {
@@ -37,7 +36,6 @@ a:hover {color: rgb(0, 128, 0);}
   top: 18.125em;
   left: calc(50% - 14em + 0.25em); /*0.25em for face border*/
   transform: rotate(-90deg);
-  border-radius: 0.25em;
 }
 
 .hour {
@@ -48,7 +46,6 @@ a:hover {color: rgb(0, 128, 0);}
   top: 18.125em;
   left: calc(50% - 11em + 0.25em); /*0.25em for face border*/
   transform: rotate(-90deg);
-  border-radius: 0.25em;
 }
 
 .pin {

@@ -69,9 +69,9 @@ function analog(){
   let minuteDeg = (minute * 6) - 90
   let hourDeg = (hour * 30) - 90
   
-  secondHand.style.transform = 'rotate(' + secondDeg + 'deg)';
-  minuteHand.style.transform = 'rotate(' + minuteDeg + 'deg)';
-  hourHand.style.transform = 'rotate(' + hourDeg + 'deg)';
+  secondHand.style.transform = 'rotate(' + (secondDeg + 0.01) + 'deg)';
+  minuteHand.style.transform = 'rotate(' + (minuteDeg + 0.01) + 'deg)';
+  hourHand.style.transform = 'rotate(' + (hourDeg + 0.01) + 'deg)';
   
 }
 
