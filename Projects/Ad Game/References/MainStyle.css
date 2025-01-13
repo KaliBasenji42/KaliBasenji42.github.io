@@ -6,6 +6,10 @@ img{
   image-rendering: auto;
 }
 
+body {
+  width: 100% !important;
+}
+
 /* Window */
 
 .window {
@@ -13,10 +17,14 @@ img{
   
   background-color: rgb(32, 0, 64);
   
-  width: 100%;
-  aspect-ratio: 2 / 1;
+  width: 800px;
+  height: 600px;
+  
+  margin: auto;
   
   overflow: hidden;
+  
+  cursor: none;
 }
 
 .infoBar {
@@ -29,4 +37,35 @@ img{
   overflow-y: hidden;
 }
 
+#mouse {
+  position: absolute;
+  
+  top: 50%;
+  left: 50%;
+}
+
+/* Media */
+
+@media (max-width: 800px) {
+  
+  #screenWarn {
+    display: block !important;
+  }
+  
+}
+
+@media (max-height: 600px) {
+  
+  #screenWarn {
+    display: block !important;
+  }
+  
+}
+
 /* Other */
+
+#screenWarn {
+  display: none;
+  padding: 2em;
+  font-size: 1.5em;
+}
