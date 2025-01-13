@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
   });
   
-  gameWindow.addEventListener('mousemove', function(event) {
+  document.addEventListener('mousemove', function(event) {
     
     windowRect = gameWindow.getClientRects()[0];
     mouseRect = mouse.getClientRects()[0];
@@ -41,8 +41,16 @@ document.addEventListener('DOMContentLoaded', function() {
     x = event.clientX - windowRect.left - (mouseRect.width / 2);
     y = event.clientY - windowRect.top - (mouseRect.height / 2);
     
+    x = Math.max(0, x);
+    x = Math.min(windowRect.width - mouseRect.width, x);
+    
+    y = Math.max(48, y);
+    y = Math.min(windowRect.height - mouseRect.height, y);
+    
     mouse.style.left = x + 'px';
     mouse.style.top = y + 'px';
+    
+    console.log('(' + event.clientX + ', ' + event.clientY + ')');
     
   });
   
