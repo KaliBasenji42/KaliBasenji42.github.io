@@ -20,6 +20,14 @@ const gameWindow = {
   rect: null
 };
 
+const info = {
+  elem: null,
+  rect: null,
+  lives: 5,
+  profiles: null,
+  emptyProf: null
+}
+
 const mouse = {
   
   elem: null,
@@ -49,7 +57,7 @@ const mouse = {
     
     this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
     
-    this.pos = [Math.max(0, this.pos[0]), Math.max(48, this.pos[1])]; // 48 From Toolbar Height
+    this.pos = [Math.max(0, this.pos[0]), Math.max(info.rect.height, this.pos[1])];
     this.pos = [Math.min(gameWindow.rect.width - mouse.rect.width, this.pos[0]), 
                 Math.min(gameWindow.rect.height - mouse.rect.height, this.pos[1])];
     this.pos = [Math.round(this.pos[0] * 10) / 10, Math.round(this.pos[1] * 10) / 10];
@@ -84,7 +92,8 @@ const mouse = {
           this.keyVel[i]++;
         }
       }
-      else this.keyVel[i] = 0;
+      
+      else if(this.keyVel[i] > 0) this.keyVel[i]--;
       
     }
     
@@ -120,10 +129,23 @@ function gameloop() {
     
     gameWindow.rect = gameWindow.elem.getClientRects()[0];
     mouse.rect = mouse.elem.getClientRects()[0];
+    info.rect = info.elem.getClientRects()[0];
     
     // Mouse
     
     mouse.move();
+    
+    // Info
+    
+    info.profiles = document.getElementsByClassName('profile');
+    info.emptyProf = document.getElementsByClassName('emptyProf');
+    
+    while(info.lives < info.profiles.length) {
+      info.profiles[info.profiles.length - 1].className = 'emptyProf';
+    }
+    while(info.lives > info.profiles.length) {
+      info.emptyProf[0].className = 'profile';
+    }
     
   }
   
@@ -165,6 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   gameWindow.elem = document.getElementsByClassName('window')[0];
   mouse.elem = document.getElementById('mouse');
+  info.elem = document.getElementsByClassName('infoBar')[0];
   
   // Gameloop
   

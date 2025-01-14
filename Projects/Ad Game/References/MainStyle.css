@@ -35,6 +35,9 @@ body {
   
   overflow-x: auto;
   overflow-y: hidden;
+  
+  display: flex;
+  align-items: center;
 }
 
 #mouse {
@@ -52,6 +55,26 @@ body {
   line-height: 32px;
   
   cursor: none;
+}
+
+.profile {
+  width: 32px;
+  height: 32px;
+  
+  background-color: #808080;
+  
+  border-radius: 16px;
+  margin: 8px;
+}
+
+.emptyProf {
+  width: 32px;
+  height: 32px;
+  
+  border-radius: 16px;
+  margin: 8px;
+  
+  opacity: 0.1;
 }
 
 /* Media */
