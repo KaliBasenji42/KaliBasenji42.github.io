@@ -24,7 +24,7 @@ body {
   
   overflow: hidden;
   
-  cursor: none;
+  cursor: crosshair;
 }
 
 .infoBar {
@@ -50,6 +50,8 @@ body {
   
   text-align: center;
   line-height: 32px;
+  
+  cursor: none;
 }
 
 /* Media */

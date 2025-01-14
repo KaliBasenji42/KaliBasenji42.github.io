@@ -174,9 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   document.addEventListener('keyup', function(event) {
     
-    if(event.key == 'Escape') control.run = !control.run;
-    
-    // Mouse
+    if(event.key == 'Escape') {
+      
+      control.run = !control.run;
+      
+    }
     
     mouse.setKey(event.key, 'nothing');
     
@@ -186,8 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     mouse.useMouse = false;
     
-    // Mouse
-      
     mouse.setKey('nothing', event.key);
     
   });
