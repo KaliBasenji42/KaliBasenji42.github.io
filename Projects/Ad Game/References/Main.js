@@ -144,6 +144,13 @@ function gameloop() {
       info.profiles[info.profiles.length - 1].className = 'emptyProf';
     }
     while(info.lives > info.profiles.length) {
+      info.emptyProf[0].innerHTML = '👤';
+      
+      let rand = Math.random();
+      
+      if(rand < .30) info.emptyProf[0].innerHTML = '<img src="https://avatars.githubusercontent.com/u/176335627?v=4">';
+      if(rand < .10) info.emptyProf[0].innerHTML = '<img src="References/Images/CamProf.png">';
+      
       info.emptyProf[0].className = 'profile';
     }
     
