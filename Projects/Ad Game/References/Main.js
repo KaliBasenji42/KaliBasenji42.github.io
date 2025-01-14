@@ -27,18 +27,21 @@ const mouse = {
   
   pos: [400,600],
   vel: [0,0],
-  maxVel: 8,
+  maxVel: 4,
   
   target: [0,0],
   useMouse: false,
   
-  keys: [['d', 'D', 'ArrowRight'], ['a', 'A', 'ArrowLeft'], ['w', 'W', 'ArrowUp'], ['s', 'S', 'ArrowDown']],
-  keyStates: [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
-  keyDir: [0, 0, 0, 0],
+  keys: ['d', 'a', 'w', 's',],
+  keyStates: [0, 0, 0, 0],
   keyVel: [0, 0, 0, 0],
+  holdVel: 16,
   //Right, Left, Up, Down
   
   move: function() {
+    
+    if(this.useMouse) this.mouse();
+    else this.key();
     
     this.vel = [Math.max(-this.maxVel, this.vel[0]), Math.max(-this.maxVel, this.vel[1])];
     this.vel = [Math.min(this.maxVel, this.vel[0]), Math.min(this.maxVel, this.vel[1])];
@@ -49,7 +52,7 @@ const mouse = {
     this.pos = [Math.max(0, this.pos[0]), Math.max(48, this.pos[1])]; // 48 From Toolbar Height
     this.pos = [Math.min(gameWindow.rect.width - mouse.rect.width, this.pos[0]), 
                 Math.min(gameWindow.rect.height - mouse.rect.height, this.pos[1])];
-    this.pos = [Math.round(this.pos[0]), Math.round(this.pos[1])];
+    this.pos = [Math.round(this.pos[0] * 10) / 10, Math.round(this.pos[1] * 10) / 10];
     
     let x = this.pos[0];
     let y = this.pos[1];
@@ -61,53 +64,41 @@ const mouse = {
   
   mouse: function() {
     
-    if(this.useMouse) {
-      
-      let x = Math.round(this.target[0] - gameWindow.rect.left - (this.rect.width / 2));
-      let y = Math.round(this.target[1] - gameWindow.rect.top - (this.rect.height / 2));
-      
-      let dir = arctan(x - this.pos[0], y - this.pos[1]);
-      let vel = dist(x, y, this.pos[0], this.pos[1]);
-      vel = Math.min(this.maxVel, vel);
-      
-      this.vel = [vel * Math.cos(dir), vel * Math.sin(dir)];
-      
-    }
+    let x = Math.round(this.target[0] - gameWindow.rect.left - (this.rect.width / 2));
+    let y = Math.round(this.target[1] - gameWindow.rect.top - (this.rect.height / 2));
     
-    else {
-      
-      console.log(this.keyDir);
-      
-    }
+    let dir = arctan(x - this.pos[0], y - this.pos[1]);
+    let vel = dist(x, y, this.pos[0], this.pos[1]);
+    vel = Math.min(this.maxVel, vel);
+    
+    this.vel = [vel * Math.cos(dir), vel * Math.sin(dir)];
     
   },
   
-  key: function(up, down) {
+  key: function() {
+  
+    for(let i = 0; i < this.keyStates.length; i++) {
+      
+      if(this.keyStates[i] == 1) {
+        if(this.keyVel[i] < this.maxVel * this.holdVel) {
+          this.keyVel[i]++;
+        }
+      }
+      else this.keyVel[i] = 0;
+      
+    }
     
-    if(!this.useMouse) {
+    this.vel[0] = (this.keyVel[0] - this.keyVel[1]) / this.holdVel;
+    this.vel[1] = (this.keyVel[3] - this.keyVel[2]) / this.holdVel;
+    
+  },
+  
+  setKey: function(up, down) {
+    
+    for(let i = 0; i < this.keys.length; i++) {
       
-      for(let i = 0; i < this.keys.length; i++) {
-        
-        for(let k = 0; k < this.keys[i].length; k++) {
-          
-          if(this.keys[i][k] == up) this.keyStates[i][k] = 0;
-          if(this.keys[i][k] == down) this.keyStates[i][k] = 1;
-          
-        }
-        
-      }
-      
-      this.keyDir = [0, 0, 0, 0];
-      
-      for(let i = 0; i < this.keyStates.length; i++) {
-        
-        for(let k = 0; k < this.keyStates[i].length; k++) {
-          
-          if(this.keyStates[i][k] == 1) this.keyDir[i] = 1;
-          
-        }
-        
-      }
+      if(this.keys[i] == up.toLowerCase()) this.keyStates[i] = 0;
+      if(this.keys[i] == down.toLowerCase()) this.keyStates[i] = 1;
       
     }
     
@@ -132,7 +123,6 @@ function gameloop() {
     
     // Mouse
     
-    mouse.mouse();
     mouse.move();
     
   }
@@ -186,30 +176,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if(event.key == 'Escape') control.run = !control.run;
     
-    console.log(event.key);
+    // Mouse
     
-    if(control.run) {
-      
-      // Mouse
-      
-      mouse.key(event.key, 'nothing');
-      
-    }
+    mouse.setKey(event.key, 'nothing');
     
   });
   
   document.addEventListener('keydown', function(event) {
     
     mouse.useMouse = false;
-    mouse.vel = [0, 0];
     
-    if(control.run) {
+    // Mouse
       
-      // Mouse
-      
-      mouse.key('nothing', event.key);
-      
-    }
+    mouse.setKey('nothing', event.key);
     
   });
   
@@ -217,12 +196,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   document.addEventListener('mousemove', function(event) {
     
-    if(control.run) {
-      
-      mouse.useMouse = true;
-      mouse.target = [event.clientX, event.clientY];
-      
-    }
+    mouse.useMouse = true;
+    mouse.target = [event.clientX, event.clientY];
     
   });
   
