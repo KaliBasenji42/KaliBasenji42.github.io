@@ -27,13 +27,16 @@ const mouse = {
   
   pos: [400,600],
   vel: [0,0],
-  maxVel: 12,
+  maxVel: 8,
   
   target: [0,0],
   useMouse: false,
   
   keys: [['d', 'D', 'ArrowRight'], ['a', 'A', 'ArrowLeft'], ['w', 'W', 'ArrowUp'], ['s', 'S', 'ArrowDown']],
-  keyStates: [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]], //Right, Left, Up, Down
+  keyStates: [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+  keyDir: [0, 0, 0, 0],
+  keyVel: [0, 0, 0, 0],
+  //Right, Left, Up, Down
   
   move: function() {
     
@@ -71,6 +74,12 @@ const mouse = {
       
     }
     
+    else {
+      
+      console.log(this.keyDir);
+      
+    }
+    
   },
   
   key: function(up, down) {
@@ -88,20 +97,17 @@ const mouse = {
         
       }
       
-      let keyDir = [0, 0, 0, 0]; //Right, Left, Up, Down
+      this.keyDir = [0, 0, 0, 0];
       
       for(let i = 0; i < this.keyStates.length; i++) {
         
         for(let k = 0; k < this.keyStates[i].length; k++) {
           
-          if(this.keyStates[i][k] == 1) keyDir[i] = 1;
+          if(this.keyStates[i][k] == 1) this.keyDir[i] = 1;
           
         }
         
       }
-      
-      mouse.vel[0] = (keyDir[0] - keyDir[1]) * mouse.maxVel;
-      mouse.vel[1] = (keyDir[3] - keyDir[2]) * mouse.maxVel;
       
     }
     
