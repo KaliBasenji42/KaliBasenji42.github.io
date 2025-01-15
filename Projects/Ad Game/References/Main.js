@@ -142,8 +142,8 @@ class cursor {
   main() {
     
     this.elem.style.top = 'calc(' + this.elem.style.top + ' - ' + ' 12px)';
-    
-    return strToInt(this.elem.style.top) < 0;
+          
+    return parseInt(this.elem.style.top.slice(5)) < 0;
     
   }
   
@@ -200,11 +200,14 @@ function gameloop() {
     
     // Cursors
     
-    for(const cursorObj of cursors) {
+    for(let cursorObj of cursors) {
       if(cursorObj.main()) {
+        
+        console.log(parseInt(cursorObj.elem.style.top.slice(5)));
         
         cursorObj.elem.remove();
         cursors.splice(cursors.indexOf(cursorObj), 1);
+        cursorObj = null;
         
       }
     }
