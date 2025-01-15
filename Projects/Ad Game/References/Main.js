@@ -6,13 +6,18 @@ const headHTML = `
 const bodyHTML = `
   `;
 
+
 // Classes
 
 const control = {
   run: true,
-  mspf: 50,
+  mspf: 16,
   interval: null,
-  ticks: 0
+  ticks: 0,
+  
+  FPSElem: null,
+  lastFrame: 0,
+  now: 0
 };
 
 const gameWindow = {
@@ -35,7 +40,7 @@ const mouse = {
   
   pos: [400,600],
   vel: [0,0],
-  maxVel: 4,
+  maxVel: 8,
   
   target: [0,0],
   useMouse: false,
@@ -43,7 +48,7 @@ const mouse = {
   keys: ['d', 'a', 'w', 's',],
   keyStates: [0, 0, 0, 0],
   keyVel: [0, 0, 0, 0],
-  holdVel: 16,
+  holdVel: 2,
   //Right, Left, Up, Down
   
   move: function() {
@@ -119,7 +124,13 @@ const mouse = {
 
 function gameloop() {
   
+  // Control
+  
   control.ticks++;
+  
+  control.now = Date.now();
+  control.FPSElem.innerText = 'FPS: ' + (Math.round(1000 / (control.now - control.lastFrame) * 1000) / 1000);
+  control.lastFrame = control.now;
   
   // Un-Paused
   
@@ -192,13 +203,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Elems & Variables
   
+  control.FPSElem = document.getElementById('FPS');
   gameWindow.elem = document.getElementsByClassName('window')[0];
   mouse.elem = document.getElementById('mouse');
   info.elem = document.getElementsByClassName('infoBar')[0];
   
   // Gameloop
   
-  control.interval = window.setInterval(gameloop, control.run);
+  control.interval = window.setInterval(gameloop, control.mspf);
   
   // Keys
   
