@@ -6,15 +6,13 @@ const headHTML = `
 const bodyHTML = `
   `;
 
-
-// Classes
-
 const control = {
   run: true,
   mspf: 16,
   interval: null,
   ticks: 0,
   
+  debug: true,
   FPSElem: null,
   lastFrame: 0,
   now: 0
@@ -120,6 +118,37 @@ const mouse = {
   
 };
 
+// Classes
+
+const cursors = [];
+
+class cursor {
+  
+  constructor() {
+    
+    this.elem = document.createElement('img');
+    gameWindow.elem.appendChild(this.elem);
+    
+    this.elem.className = 'cursor';
+    this.elem.src = 'References/Images/Cursor.png';
+    
+    this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
+    this.elem.style.top = mouse.elem.style.top;
+    
+    cursors.push(this);
+    
+  }
+  
+  main() {
+    
+    this.elem.style.top = 'calc(' + this.elem.style.top + ' - ' + ' 12px)';
+    
+    return strToInt(this.elem.style.top) < 0;
+    
+  }
+  
+}
+
 // Gameloop
 
 function gameloop() {
@@ -128,10 +157,14 @@ function gameloop() {
   
   control.ticks++;
   
-  control.now = Date.now();
-  control.FPSElem.innerText = 'FPS: ' + (Math.round(1000 / (control.now - control.lastFrame) * 1000) / 1000);
-  control.lastFrame = control.now;
-  
+  if(control.debug && control.ticks % Math.floor(250 / control.mspf) == 0) {
+    
+    control.now = Date.now();
+    control.FPSElem.innerText = 'FPS: ' + (Math.round(1000 / (control.now - control.lastFrame) * 100 * Math.floor(250 / control.mspf)) / 100);
+    control.lastFrame = control.now;
+    
+  }
+    
   // Un-Paused
   
   if(control.run) {
@@ -165,6 +198,17 @@ function gameloop() {
       info.emptyProf[0].className = 'profile';
     }
     
+    // Cursors
+    
+    for(const cursorObj of cursors) {
+      if(cursorObj.main()) {
+        
+        cursorObj.elem.remove();
+        cursors.splice(cursors.indexOf(cursorObj), 1);
+        
+      }
+    }
+    
   }
   
   // Paused
@@ -174,6 +218,37 @@ function gameloop() {
 }
 
 // Functions
+
+function isNumeric(char) {
+  
+  let valid = '1234567890';
+  
+  for(const num of valid) {
+    
+    if(num == char) return true;
+    
+  }
+  
+  return false;
+  
+}
+
+function strToInt(str) {
+  
+  let numStr = '';
+  
+  for(let i = 0; i < str.length; i++) {
+    
+    if(isNumeric(str[i])) numStr = numStr + str[i];
+    
+  }
+  
+  if(numStr.length == 0) return 0;
+  
+  if(str[0] == '-') return -1 * parseInt(numStr);
+  else return parseInt(numStr);
+  
+}
 
 function arctan(x, y) {
   
@@ -228,9 +303,11 @@ document.addEventListener('DOMContentLoaded', function() {
   
   document.addEventListener('keydown', function(event) {
     
-    mouse.useMouse = false;
+    if(event.key != ' ') mouse.useMouse = false;
     
     mouse.setKey('nothing', event.key);
+    
+    if(event.key == ' ') new cursor();
     
   });
   
@@ -240,6 +317,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     mouse.useMouse = true;
     mouse.target = [event.clientX, event.clientY];
+    
+  });
+  
+  document.addEventListener('mousedown', function(event) {
+    
+    if(control.run) {
+      
+      if(event.button == 0) {
+        
+        event.preventDefault();
+        
+        new cursor();
+        
+      }
+      
+    }
     
   });
   
