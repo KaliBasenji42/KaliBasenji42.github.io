@@ -26,9 +26,17 @@ const gameWindow = {
 const info = {
   elem: null,
   rect: null,
+  
   lives: 5,
+  deathCooldownMax: 300,
+  deathCooldown: 0,
   profiles: null,
-  emptyProf: null
+  emptyProf: null,
+  
+  energy: 0,
+  maxEnergy: 1000,
+  energyElem: null,
+  energyBarElem: null
 }
 
 const mouse = {
@@ -126,16 +134,22 @@ class cursor {
   
   constructor() {
     
-    this.elem = document.createElement('img');
-    gameWindow.elem.appendChild(this.elem);
-    
-    this.elem.className = 'cursor';
-    this.elem.src = 'References/Images/Cursor.png';
-    
-    this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
-    this.elem.style.top = mouse.elem.style.top;
-    
-    cursors.push(this);
+    if(info.energy < info.maxEnergy) {
+      
+      this.elem = document.createElement('img');
+      gameWindow.elem.appendChild(this.elem);
+      
+      this.elem.className = 'cursor';
+      this.elem.src = 'References/Images/Cursor.png';
+      
+      this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
+      this.elem.style.top = mouse.elem.style.top;
+      
+      cursors.push(this);
+      
+      info.energy += 50;
+      
+    }
     
   }
   
@@ -198,19 +212,23 @@ function gameloop() {
       info.emptyProf[0].className = 'profile';
     }
     
+    if(info.energy > 0) info.energy--;
+    
+    info.energyElem = document.getElementById('energy');
+    info.energyBarElem = document.getElementById('energyBar');
+    
+    let frac = info.energy / info.maxEnergy;
+    
+    red = (frac * 2) * 255;
+    green =  (2 - (frac * 2)) * 255;
+    color = 'rgb(' + red + ',' + green + ',0)';
+    
+    info.energyBarElem.style.width = (100 - (frac * 100)) + '%';
+    info.energyBarElem.style.backgroundColor = 'rgb(' + red + ',' + green + ',0)';
+    
     // Cursors
     
-    for(let cursorObj of cursors) {
-      if(cursorObj.main()) {
-        
-        console.log(parseInt(cursorObj.elem.style.top.slice(5)));
-        
-        cursorObj.elem.remove();
-        cursors.splice(cursors.indexOf(cursorObj), 1);
-        cursorObj = null;
-        
-      }
-    }
+    runClass(cursors);
     
   }
   
@@ -221,37 +239,6 @@ function gameloop() {
 }
 
 // Functions
-
-function isNumeric(char) {
-  
-  let valid = '1234567890';
-  
-  for(const num of valid) {
-    
-    if(num == char) return true;
-    
-  }
-  
-  return false;
-  
-}
-
-function strToInt(str) {
-  
-  let numStr = '';
-  
-  for(let i = 0; i < str.length; i++) {
-    
-    if(isNumeric(str[i])) numStr = numStr + str[i];
-    
-  }
-  
-  if(numStr.length == 0) return 0;
-  
-  if(str[0] == '-') return -1 * parseInt(numStr);
-  else return parseInt(numStr);
-  
-}
 
 function arctan(x, y) {
   
@@ -272,6 +259,22 @@ function arctan(x, y) {
 function dist(x1, y1, x2, y2) {
   
   return Math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2));
+  
+}
+
+function runClass(array) {
+  
+  for(let obj of array) {
+    
+    if(obj.main()) {
+      
+      if(obj.elem) obj.elem.remove();
+      array.splice(array.indexOf(obj), 1);
+      obj = null;
+      
+    }
+    
+  }
   
 }
 
@@ -310,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     mouse.setKey('nothing', event.key);
     
-    if(event.key == ' ') new cursor();
+    if(event.key == ' ' && control.run) new cursor();
     
   });
   
