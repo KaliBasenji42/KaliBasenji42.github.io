@@ -5,7 +5,6 @@
 
 <head>
 <!--End-->
-  <title>Home | Short Stories</title>
 <!--Start-->
   <meta charset = "utf-8">
   <meta name = "viewport" content = "width=device-width">
@@ -33,13 +32,17 @@
   
   <script src="../../Global Ref/Chapter.js"></script>
   
-  <h1>Home</h1>
+  <script>createNavArrows();</script>
   
-  <p>Hello this is a HTML file documenting short stories by me (KaliBasenji42). Here is my <a href="../../index.html">Home Page</a>.</p>
+  <div class = "body">
+    
+  </div>
   
-  <h2>Table of Contents</h2>
+  <script src="../../Global Ref/WordCount.js"></script>
   
-  <script>TOCList();</script>
+  <script>outputWC(document.querySelector(".body"), 0);</script>
+  
+  <script>createNavArrows();</script>
   
 </body>
 
