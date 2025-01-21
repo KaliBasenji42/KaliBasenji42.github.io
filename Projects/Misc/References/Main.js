@@ -7,7 +7,7 @@ const bodyHTML = `
   
   <div class="navigation">
     
-    <a class="nav" title="Q/q" href="index.html">Home</a>
+    <a class="nav" title="W/w" href="index.html">Home</a>
     
   </div>
   
@@ -22,6 +22,5 @@ for(let i = 0; i < chapterNames.length; i++) chapterNames[i] = (i + 1) + ' | ' +
 // Events
 
 document.addEventListener('keypress', function() {
-  shortcut("q", "Q", "index.html");
-  shortcut("e", "E", "Ideas.html");
+  shortcut("w", "W", "index.html");
 });
