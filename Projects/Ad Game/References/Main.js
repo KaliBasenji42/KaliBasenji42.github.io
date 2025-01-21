@@ -44,53 +44,46 @@ const mouse = {
   elem: null,
   rect: null,
   
-  pos: [400,600],
-  vel: [0,0],
+  pos: 400,
+  vel: 0,
   maxVel: 8,
   
-  target: [0,0],
+  target: 0,
   useMouse: false,
   
-  keys: ['d', 'a', 'w', 's',],
-  keyStates: [0, 0, 0, 0],
-  keyVel: [0, 0, 0, 0],
+  keys: ['d', 'a'],
+  keyStates: [0, 0],
+  keyVel: [0, 0],
   holdVel: 2,
-  //Right, Left, Up, Down
+  //Right, Left
   
   move: function() {
     
     if(this.useMouse) this.mouse();
     else this.key();
     
-    this.vel = [Math.max(-this.maxVel, this.vel[0]), Math.max(-this.maxVel, this.vel[1])];
-    this.vel = [Math.min(this.maxVel, this.vel[0]), Math.min(this.maxVel, this.vel[1])];
-    this.vel = [Math.round(this.vel[0] * 100) / 100, Math.round(this.vel[1] * 100) / 100];
+    this.vel = Math.max(-this.maxVel, this.vel);
+    this.vel = Math.min(this.maxVel, this.vel);
+    this.vel = Math.round(this.vel * 100) / 100;
     
-    this.pos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
+    this.pos += this.vel;
     
-    this.pos = [Math.max(0, this.pos[0]), Math.max(info.rect.height, this.pos[1])];
-    this.pos = [Math.min(gameWindow.rect.width - mouse.rect.width, this.pos[0]), 
-                Math.min(gameWindow.rect.height - mouse.rect.height, this.pos[1])];
-    this.pos = [Math.round(this.pos[0] * 10) / 10, Math.round(this.pos[1] * 10) / 10];
+    this.pos = Math.max(0, this.pos);
+    this.pos = Math.min(gameWindow.rect.width - mouse.rect.width, this.pos);
+    this.pos = Math.round(this.pos * 10) / 10;
     
-    let x = this.pos[0];
-    let y = this.pos[1];
-    
-    this.elem.style.left = x + 'px';
-    this.elem.style.top = y + 'px';
+    this.elem.style.left = this.pos + 'px';
     
   },
   
   mouse: function() {
     
-    let x = Math.round(this.target[0] - gameWindow.rect.left - (this.rect.width / 2));
-    let y = Math.round(this.target[1] - gameWindow.rect.top - (this.rect.height / 2));
+    let x = Math.round(this.target - gameWindow.rect.left - (this.rect.width / 2))
     
-    let dir = arctan(x - this.pos[0], y - this.pos[1]);
-    let vel = dist(x, y, this.pos[0], this.pos[1]);
+    let vel = x - this.pos;
     vel = Math.min(this.maxVel, vel);
     
-    this.vel = [vel * Math.cos(dir), vel * Math.sin(dir)];
+    this.vel = vel;
     
   },
   
@@ -108,8 +101,7 @@ const mouse = {
       
     }
     
-    this.vel[0] = (this.keyVel[0] - this.keyVel[1]) / this.holdVel;
-    this.vel[1] = (this.keyVel[3] - this.keyVel[2]) / this.holdVel;
+    this.vel = (this.keyVel[0] - this.keyVel[1]) / this.holdVel;
     
   },
   
@@ -143,7 +135,7 @@ class cursor {
       this.elem.src = 'References/Images/Cursor.png';
       
       this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
-      this.elem.style.top = mouse.elem.style.top;
+      this.elem.style.top = (600-32) + 'px'; // Window Height - Mouse Height
       
       cursors.push(this);
       
@@ -156,7 +148,64 @@ class cursor {
   main() {
     
     this.elem.style.top = 'calc(' + this.elem.style.top + ' - ' + ' 12px)';
-          
+    
+    return parseInt(this.elem.style.top.slice(5)) < 0;
+    
+  }
+  
+}
+
+const adConts = [];
+
+class adCont {
+  
+  constructor() {
+  
+    this.elem = document.createElement('div');
+    gameWindow.elem.appendChild(this.elem);
+    
+    this.elem.className = 'adCont';
+    
+    this.elem.style.left = '0px';
+    this.elem.style.bottom = '48px'; // InfoBar Height
+    
+    adConts.push(this);
+    
+  }
+  
+  main() {
+    
+    this.elem.style.top = 'calc(' + this.elem.style.top + ' - ' + ' 12px)';
+    
+    return parseInt(this.elem.style.top.slice(5)) < 0;
+    
+  }
+  
+}
+
+const ads = [];
+
+class ad {
+  
+  constructor() {
+  
+    this.elem = document.createElement('img');
+    gameWindow.elem.appendChild(this.elem);
+    
+    this.elem.className = 'cursor';
+    this.elem.src = 'References/Images/Cursor.png';
+    
+    this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
+    this.elem.style.top = (600-32) + 'px'; // Window Height - Mouse Height
+    
+    ads.push(this);
+    
+  }
+  
+  main() {
+    
+    this.elem.style.top = 'calc(' + this.elem.style.top + ' - ' + ' 12px)';
+    
     return parseInt(this.elem.style.top.slice(5)) < 0;
     
   }
@@ -322,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('mousemove', function(event) {
     
     mouse.useMouse = true;
-    mouse.target = [event.clientX, event.clientY];
+    mouse.target = event.clientX;
     
   });
   

@@ -44,7 +44,7 @@ body {
 #mouse {
   position: absolute;
   
-  top: 50%;
+  bottom: 0%;
   left: 50%;
   width: 32px;
   height: 32px;
@@ -54,8 +54,6 @@ body {
   
   text-align: center;
   line-height: 32px;
-  
-  cursor: none;
 }
 
 .profile, .emptyProf{
