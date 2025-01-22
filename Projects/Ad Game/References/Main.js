@@ -12,10 +12,14 @@ const control = {
   interval: null,
   ticks: 0,
   
-  debug: true,
   FPSElem: null,
   lastFrame: 0,
-  now: 0
+  now: 0,
+  
+  onMenu: true,
+  menuElem: null,
+  startElem: null,
+  startRect: null
 };
 
 const gameWindow = {
@@ -36,8 +40,17 @@ const info = {
   energy: 0,
   maxEnergy: 1000,
   energyElem: null,
-  energyBarElem: null
+  energyBarElem: null,
+  
+  level: 0,
+  levelElem: null,
+  
+  pauseElem: null
 }
+
+const levelData = [
+  [1,'none']
+];
 
 const mouse = {
   
@@ -120,7 +133,7 @@ const mouse = {
 
 // Classes
 
-const cursors = [];
+let cursors = [];
 
 class cursor {
   
@@ -137,6 +150,10 @@ class cursor {
       this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
       this.elem.style.top = (600-32) + 'px'; // Window Height - Mouse Height
       
+      this.rect;
+      
+      this.hit = false;
+      
       cursors.push(this);
       
       info.energy += 50;
@@ -147,19 +164,38 @@ class cursor {
   
   main() {
     
+    // Rect
+    
+    this.rect = this.elem.getClientRects()[0];
+    
+    // Start
+    
+    if(control.onMenu && collide(control.startRect, this.rect)) {
+      
+      control.menuElem.style.display = 'none';
+      control.onMenu = false;
+      
+      info.level = 1;
+      
+      start();
+      
+    }
+    
+    // Move
+    
     this.elem.style.top = 'calc(' + this.elem.style.top + ' - ' + ' 12px)';
     
-    return parseInt(this.elem.style.top.slice(5)) < 0;
+    return parseInt(this.elem.style.top.slice(5)) < 48;
     
   }
   
 }
 
-const adConts = [];
+let adConts = [];
 
 class adCont {
   
-  constructor() {
+  constructor(top) {
   
     this.elem = document.createElement('div');
     gameWindow.elem.appendChild(this.elem);
@@ -167,7 +203,14 @@ class adCont {
     this.elem.className = 'adCont';
     
     this.elem.style.left = '0px';
-    this.elem.style.bottom = '48px'; // InfoBar Height
+    this.elem.style.top = (top + 48) + 'px'; // 48 = InfoBar Height
+    
+    for(let i = 0; i < 8; i++) {
+      
+      let newAd = new ad();
+      this.elem.appendChild(newAd.elem);
+      
+    }
     
     adConts.push(this);
     
@@ -183,7 +226,7 @@ class adCont {
   
 }
 
-const ads = [];
+let ads = [];
 
 class ad {
   
@@ -220,7 +263,7 @@ function gameloop() {
   
   control.ticks++;
   
-  if(control.debug && control.ticks % Math.floor(250 / control.mspf) == 0) {
+  if(control.ticks % Math.floor(250 / control.mspf) == 0) {
     
     control.now = Date.now();
     control.FPSElem.innerText = 'FPS: ' + (Math.round(1000 / (control.now - control.lastFrame) * 100 * Math.floor(250 / control.mspf)) / 100);
@@ -236,7 +279,7 @@ function gameloop() {
     
     gameWindow.rect = gameWindow.elem.getClientRects()[0];
     mouse.rect = mouse.elem.getClientRects()[0];
-    info.rect = info.elem.getClientRects()[0];
+    control.startRect = control.startElem.getClientRects()[0];
     
     // Mouse
     
@@ -263,9 +306,6 @@ function gameloop() {
     
     if(info.energy > 0) info.energy--;
     
-    info.energyElem = document.getElementById('energy');
-    info.energyBarElem = document.getElementById('energyBar');
-    
     let frac = info.energy / info.maxEnergy;
     
     red = (frac * 2) * 255;
@@ -274,6 +314,8 @@ function gameloop() {
     
     info.energyBarElem.style.width = (100 - (frac * 100)) + '%';
     info.energyBarElem.style.backgroundColor = 'rgb(' + red + ',' + green + ',0)';
+    
+    info.levelElem.innerText = 'Level: ' + info.level;
     
     // Cursors
     
@@ -311,6 +353,27 @@ function dist(x1, y1, x2, y2) {
   
 }
 
+function collide(rect1, rect2) {
+  
+  let pos = [rect2.left, rect2.top]
+  
+  for(let i = 0; i < 4; i++) {
+    
+    if(i == 1) pos = [rect2.right, rect2.top];
+    if(i == 2) pos = [rect2.right, rect2.bottom];
+    if(i == 3) pos = [rect2.left, rect2.bottom];
+    
+    if((pos[0] >= rect1.left && pos[0] <= rect1.right) && 
+    (pos[1] >= rect1.top && pos[1] <= rect1.bottom)) {
+      return true;
+    }
+    
+  }
+  
+  return false;
+  
+}
+
 function runClass(array) {
   
   for(let obj of array) {
@@ -327,6 +390,44 @@ function runClass(array) {
   
 }
 
+function clear() {
+  
+  for(let obj of cursors) {
+    if(obj.elem) obj.elem.remove();
+    obj = null;
+  }
+  cursors = [];
+  
+  for(let obj of ads) {
+    if(obj.elem) obj.elem.remove();
+    obj = null;
+  }
+  ads = [];
+  
+  for(let obj of adConts) {
+    if(obj.elem) obj.elem.remove();
+    obj = null;
+  }
+  adConts = [];
+  
+  info.energy = 0;
+  
+}
+
+function start() {
+  
+  clear();
+  
+  lvl = levelData[info.level - 1];
+  
+  for(let i = 0; i < lvl[0]; i++) {
+    
+    new adCont(-i * 100);
+    
+  }
+  
+}
+
 // Events
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -334,9 +435,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // Elems & Variables
   
   control.FPSElem = document.getElementById('FPS');
+  control.menuElem = document.getElementById('menu');
+  control.startElem = document.getElementById('start');
   gameWindow.elem = document.getElementsByClassName('window')[0];
   mouse.elem = document.getElementById('mouse');
   info.elem = document.getElementsByClassName('infoBar')[0];
+  info.energyElem = document.getElementById('energy');
+  info.energyBarElem = document.getElementById('energyBar');
+  info.levelElem = document.getElementById('level');
+  info.pauseElem = document.getElementById('pause');
   
   // Gameloop
   
@@ -349,6 +456,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if(event.key == 'Escape') {
       
       control.run = !control.run;
+      
+      if(control.run) info.pauseElem.style.display = 'none';
+      else info.pauseElem.style.display = 'block';
       
     }
     

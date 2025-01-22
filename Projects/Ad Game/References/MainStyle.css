@@ -81,7 +81,6 @@ body {
 }
 
 #energy {
-  
   background-color: #808080;
   
   width: 128px;
@@ -95,6 +94,27 @@ body {
   height: 100%;
 }
 
+#level {
+  color: #0000F0;
+  
+  margin: 16px;
+  
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 20px;
+  
+}
+
+#pause {
+  position: absolute;
+  margin: 16px;
+  font-size: 20px;
+  
+  right: 0px;
+  
+  display: none;
+}
+
 /* Classes */
 
 .cursor {
@@ -102,6 +122,40 @@ body {
   
   width: 12px;
   height: 16px;
+}
+
+.adCont {
+  position: absolute;
+  
+  background-color: #808080;
+}
+
+.ad {
+  
+}
+
+#menu {
+  position: absolute;
+  display: flex;
+  
+  width: 100%;
+  
+  color: #E0E0E0;
+  
+  justify-content: space-evenly;
+  
+  padding-top: 100px;
+}
+
+#start {
+  background-color: #408040;
+  
+  width: 100px;
+  height: 50px;
+  
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
 }
 
 /* Media */
