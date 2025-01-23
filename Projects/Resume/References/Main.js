@@ -104,7 +104,7 @@ function expndOrClps(ID, bttnID) {
 function printFormat() {
   
   document.getElementById("tools").style.display = "none";
-  document.getElementById("Side Bar").style.overflow = "visible";
+  document.getElementById("SideBar").style.overflow = "visible";
   
   expandAll();
   
