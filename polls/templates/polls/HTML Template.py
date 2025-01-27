@@ -4,7 +4,7 @@ import os
 
 paths = []
 
-location = 'Projects'
+location = ''
 ext = '.html'
 
 templatePath = 'Template.html'
