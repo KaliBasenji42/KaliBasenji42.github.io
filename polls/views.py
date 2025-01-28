@@ -1,12 +1,10 @@
-from django.shortcuts import render
-
 # Copied from Copilot
 from django.http import HttpResponse
 import os
 
 def serve_file(request, file_path):
     # Define the base directory where your files are stored
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
     full_path = os.path.join(base_dir, file_path)
 
     # Check if file exists
