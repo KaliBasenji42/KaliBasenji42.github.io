@@ -7,7 +7,7 @@ const bodyHTML = `
   
   <div class="navigation">
     
-    <a class="nav" title="W/w" href="index.html">Home</a>
+    <a class="nav" title="W/w" href="./">Home</a>
     
   </div>
   
@@ -22,5 +22,5 @@ const chapterNames = ['Particles', 'Quarks', 'Electrons', 'Neutrinos', 'Higgs', 
 // Events
 
 document.addEventListener('keypress', function() {
-  shortcut("w", "W", "index.html");
+  shortcut("w", "W", "./");
 });

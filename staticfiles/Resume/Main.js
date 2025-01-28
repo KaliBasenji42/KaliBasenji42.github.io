@@ -135,7 +135,7 @@ function printFormat() {
   
   window.print()
   
-  window.location.replace("index.html")
+  window.location.replace("./")
   
 }
 
