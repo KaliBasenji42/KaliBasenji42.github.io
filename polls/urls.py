@@ -1,8 +1,7 @@
-# Copied from Copilot
-from django.urls import path, re_path
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    re_path(r'^(?P<file_path>.*)$', views.serve_file, name='serve_file'),
-    # Add other URL patterns here
+  path('', views.index, name='index'),
+  path('/<path:file_path>', views.index, name='path'),
 ]

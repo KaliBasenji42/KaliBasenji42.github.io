@@ -1,16 +1,9 @@
 # Copied from Copilot
-from django.http import HttpResponse
+from django.shortcuts import render
 import os
 
-def serve_file(request, file_path):
-    # Define the base directory where your files are stored
-    base_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
-    full_path = os.path.join(base_dir, file_path)
+def index(request):
+    return render(request, 'index.html')
 
-    # Check if file exists
-    if os.path.exists(full_path):
-        with open(full_path, 'rb') as f:
-            file_content = f.read()
-        return HttpResponse(file_content, content_type="application/octet-stream")
-    else:
-        return HttpResponse("File not found.", status=404)
+def serve_file(request, file_path):
+    print(file_path)
