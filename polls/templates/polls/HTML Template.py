@@ -4,7 +4,7 @@ import os
 
 paths = []
 
-location = 'Projects'
+location = '.'
 ext = '.html'
 
 templatePath = 'Template.html'
@@ -12,6 +12,8 @@ templateCont = []
 template = []
 start = '<!--Start-->\n'
 end = '<!--End-->\n'
+
+projectId = '<Project>'
 
 # Getting Paths
 
@@ -111,6 +113,10 @@ for path in paths:
     sect = 0
     
     for line in cont:
+      
+      # Find ProjectId
+      
+      # Start/End
       
       if line == end:
         

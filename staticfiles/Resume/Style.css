@@ -1,4 +1,4 @@
-div.noLink {display: none;}
+/* Elems */
 
 html {height: 100%; width: 100%;}
 
@@ -19,15 +19,18 @@ th {border: 1px solid;}
 td {border: 1px solid; padding-left: 0.5em; padding-right: 0.5em;}
 tr {border: 1px solid;}
 
-h1 {text-align: center;}
+h1 {text-align: center; margin: auto;}
 h2 {color: rgb(128, 32, 192); text-align: center;}
 h3 {color: rgb(64, 64, 64);}
 h4 {text-indent: 1em; font-size: 1em; font-style: normal; font-weight: normal;}
+
+/* Classes */
 
 .sect {
   position: relative;
   overflow: hidden;
   transition: max-height 0.5s;
+  overflow-x: auto;
 }
 .sectBttn{
   width: 1.75em;
@@ -47,4 +50,29 @@ h4 {text-indent: 1em; font-size: 1em; font-style: normal; font-weight: normal;}
   border-radius: 0.25em;
   margin-top: 0.25em;
   margin-bottom: 0.25em;
+}
+
+/* IDs */
+
+#SideBar {
+  width: 25%;
+  height: 75%;
+  position: fixed;
+  left: 75%;
+  top: 2em;
+  overflow: auto;
+}
+
+/* Media */
+
+@media (max-width: 600px) {
+  #SideBar {
+    position: relative;
+    left: 0%;
+    width: 100%;
+    top: 0%;
+  }
+  body {
+    width: 100%;
+  }
 }

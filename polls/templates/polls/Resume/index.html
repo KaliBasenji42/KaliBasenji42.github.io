@@ -20,6 +20,40 @@
   
   <script src="References/AreFilesLinked.js"></script>
   
+  <!-- Side Bar -->
+  
+  <div id = "SideBar">
+    
+    <h3>Contact Info</h3>
+    <p>Email (Preferred): <a href = "" class="set" target = "_blank">[Email]</a><br>
+    Phone: <span class="set">[Phone]</span></p>
+    
+    <h3>Table of Contents</h3>
+    
+    <ol type="I" id="TOC">
+    </ol>
+    
+    <div id = "tools">
+    
+    <h3>Tools</h3>
+    
+    <button class="tool" onclick="printFormat()">Print</button><br>
+    <button class="tool" onclick="expandAll()">Expand All</button><br>
+    <button class="tool" onclick="collapseAll()">Collapse All</button><br>
+    <br>
+    <form id="setForm">
+      <label for="setText">Enter Data:</label>
+      <input type="text" id="setText" name="setText"><br>
+      <input type="submit" value="Set Data" class="tool" title="Takes data above and sets respective element's innerHTML">
+    </form>
+    
+    <button class="tool" onclick="saveSetData()" title="Saves set data to browser">Save Data</button><br>
+    <button class="tool" onclick="removeSetData()" title="Removes set data from browser">Remove Data</button>
+    
+    </div>
+    
+  </div>
+  
   <div id = "Main Points" style = "width: 75%">
     
     <h1 class="set">[Name]</h1>
@@ -217,43 +251,8 @@
     
   </div>
   
-  <!-- Side Bar -->
-      
-  <div id = "Side Bar" style = "width: 25%; height: 75%; position: fixed; left: 75%; top: 2em; overflow: auto;">
-    
-    <h3>Contact Info</h3>
-    <p>Email (Preferred): <a href = "" class="set" target = "_blank">[Email]</a><br>
-    Phone: <span class="set">[Phone]</span></p>
-    
-    <h3>Table of Contents</h3>
-    
-    <ol type="I" id="TOC">
-    </ol>
-    
-    <script>generateTOC("TOC");</script>
-    
-    <div id = "tools">
-    
-    <h3>Tools</h3>
-    
-    <button class="tool" onclick="printFormat()">Print</button><br>
-    <button class="tool" onclick="expandAll()">Expand All</button><br>
-    <button class="tool" onclick="collapseAll()">Collapse All</button><br>
-    <br>
-    <form id="setForm">
-      <label for="setText">Enter Data:</label>
-      <input type="text" id="setText" name="setText"><br>
-      <input type="submit" value="Set Data" class="tool" title="Takes data above and sets respective element's innerHTML">
-    </form>
-    
-    <button class="tool" onclick="saveSetData()" title="Saves set data to browser">Save Data</button><br>
-    <button class="tool" onclick="removeSetData()" title="Removes set data from browser">Remove Data</button>
-    
-    </div>
-    
-  </div>
-  
   <script>
+    generateTOC("TOC");
     expandAll();
   </script>
   
