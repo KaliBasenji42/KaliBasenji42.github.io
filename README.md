@@ -2,13 +2,11 @@
 
 This is my website. It is hosted by Github.
 
-It is orginized by having a "index.html" at the front that links to projects in "Projects". "Global Refs" are JS and CSS files that are commanly used, and linked to projects when applicable.
+It is structured so that it can by copied to host on a Raspberry Pi (Ignore the root index.html when coping).
 
 <h1>File Structure</h1>
 
-<code style="white-space: pre;">
-
-Structured so that it can by copied to run on a Raspberry Pi
+<code style="white-space: pre; overflow-x: scroll;">
 
 ┌─ polls/templates/polls *- where .html files are stored*
 │  ├─ *Project - Project Name*
@@ -29,7 +27,8 @@ Structured so that it can by copied to run on a Raspberry Pi
 │     ├─ Main.js *- JS ran on all HTML files in the Project*
 │     ├─ MainStyle.css *- CSS linked on all HTML files in the Project*
 │     └─ *File.ext - Other files*
-└─ README.md *- This file!*
+├─ README.md *- This file!*
+└─ index.html *- pages landing page. Ignore when coping to Raspi*
 
 </code>
 
@@ -39,7 +38,10 @@ Structured so that it can by copied to run on a Raspberry Pi
 
 "HTML Template.py" finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order of appearance.
 
-The Pyhton file will not affect the following files (due to not having template syntax setup):
-*   "Home/index.html"
-*   "Clock/index.html"
-*   "Resume/index.html"
+The script will also find a variable stored as '<Project>' and replace it with the project name based on the file path.
+
+The Pyhton file will not affect the following files (due to not having template syntax setup or being in the wrong directory):
+*   "polls/templates/polls/Home/index.html"
+*   "polls/templates/polls/Clock/index.html"
+*   "polls/templates/polls/Resume/index.html"
+*   "index.html"
