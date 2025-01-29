@@ -2,31 +2,33 @@
 
 This is my website. It is hosted by Github.
 
-It is structured so that it can by copied to host on a Raspberry Pi (Ignore the root index.html when coping).
+It is structured so that it can by copied to host on a Raspberry Pi (do not copy 'index.html').
 
 <h1>File Structure</h1>
 
 <code style="white-space: pre; overflow-x: scroll;">
 
-┌─ polls/templates/polls *- where .html files are stored*
-│  ├─ *Project - Project Name*
-│  │  ├─ index.html *- Project's home page*
-│  │  └─ *page.html - Other HTML pages*
-│  ├─ HTML Template.py *- Explained below*
-│  ├─ index.html *- Home page*
-│  └─ Template.html *- Explained below*
-├─ staticfiles *- where all other files are stored*
-│  ├─ Global Ref *- Files used by many HTML files*
-│  │  ├─ AreFilesLinked.js *- Sets link warning's disp to 'none'*
-│  │  ├─ Chapter.js *- Sets up and gives functions for chapter like navigation*
-│  │  ├─ Main.js *- Basic JS ran on most HTML files (such as load animation)*
-│  │  └─ MainStyle.css *- Basic CSS used on most HTML files*
-│  └─ *Project - Project Name, includes home page*
-│     ├─ *Folder - Other folders*
-│     ├─ Icon.png
-│     ├─ Main.js *- JS ran on all HTML files in the Project*
-│     ├─ MainStyle.css *- CSS linked on all HTML files in the Project*
-│     └─ *File.ext - Other files*
+┌─ myapp
+│  ├─ templates
+│  │  └─ site *- where .html files are stored*
+│  │     ├─ *project - Project Name*
+│  │     │  ├─ index.html *- Project's home page*
+│  │     │  └─ *page.html - Other HTML pages*
+│  │     └─ index.html *- Home page*
+│  ├─ static *- where all static files are stored*
+│  │  ├─ global *- Files used by many HTML files*
+│  │  │  ├─ areFilesLinked.js *- Sets link warning's disp to 'none'*
+│  │  │  ├─ chapter.js *- Sets up and gives functions for chapter like navigation*
+│  │  │  ├─ main.js *- Basic JS ran on most HTML files (such as load animation)*
+│  │  │  └─ mainStyle.css *- Basic CSS used on most HTML files*
+│  │  └─ *project - Project Name, includes home page*
+│  │     ├─ *Folder - Other folders*
+│  │     ├─ icon.png
+│  │     ├─ main.js *- JS ran on all HTML files in the Project*
+│  │     ├─ mainStyle.css *- CSS linked on all HTML files in the Project*
+│  │     └─ *file.ext - Other files*
+│  ├─ setup.py *- Explained below*
+│  └─ template.html *- Explained below*
 ├─ README.md *- This file!*
 └─ index.html *- pages landing page. Ignore when coping to Raspi*
 
