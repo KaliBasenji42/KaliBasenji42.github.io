@@ -145,7 +145,7 @@ class cursor {
       gameWindow.elem.appendChild(this.elem);
       
       this.elem.className = 'cursor';
-      this.elem.src = '../../../../static/adGame/images/cursor.png';
+      this.elem.src = '../../../static/adGame/images/cursor.png';
       
       this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
       this.elem.style.top = (600-32) + 'px'; // Window Height - Mouse Height
@@ -236,7 +236,7 @@ class ad {
     gameWindow.elem.appendChild(this.elem);
     
     this.elem.className = 'cursor';
-    this.elem.src = '../../../../static/adGame/images/cursor.png';
+    this.elem.src = '../../../static/adGame/images/cursor.png';
     
     this.elem.style.left = 'calc(' + mouse.elem.style.left + ' + ' + ' 10px)'; // 10 = 16 - 6, 16 = mouseWidth / 2, 6 = thisWidth / 2
     this.elem.style.top = (600-32) + 'px'; // Window Height - Mouse Height
@@ -299,7 +299,7 @@ function gameloop() {
       let rand = Math.random();
       
       if(rand < .30) info.emptyProf[0].innerHTML = '<img src="https://avatars.githubusercontent.com/u/176335627?v=4">';
-      if(rand < .10) info.emptyProf[0].innerHTML = '<img src="../../../../static/adGame/images/camProf.png">';
+      if(rand < .10) info.emptyProf[0].innerHTML = '<img src="../../../static/adGame/images/camProf.png">';
       
       info.emptyProf[0].className = 'profile';
     }

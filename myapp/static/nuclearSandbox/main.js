@@ -63,7 +63,7 @@ function loadData() {
   
   nuDatStatOutput.innerHTML = '🔄';
   
-  fetch('../../../../static/nuclearSandbox/data/NuDat.json')
+  fetch('../../../static/nuclearSandbox/data/NuDat.json')
     .then(response => {
       
       if(!response.ok) {
@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let menuXImg = document.createElement('img');
     menuX.appendChild(menuXImg);
     menuXImg.className = 'bttnImg';
-    menuXImg.src = 'References/Images/X.png';
+    menuXImg.src = '../../../static/nuclearSandbox/images/X.png';
     menuXImg.title = '[ESC]';
     
   }

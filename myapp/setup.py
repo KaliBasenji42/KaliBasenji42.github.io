@@ -14,6 +14,7 @@ start = '<!--Start-->\n'
 end = '<!--End-->\n'
 
 projectId = '<project>'
+projectDepth = len('templates/site/') # What to cut off in front of Project
 
 # Functions
 
@@ -125,7 +126,7 @@ for path in paths:
     
     sect = 0 # Template section
     
-    project = cutStringAt(path, '\\')
+    project = cutStringAt(path[projectDepth:], '\\')
     
     # Start/End
     
@@ -170,7 +171,7 @@ for path in paths:
     
     # Print
     
-    print('Updated "' + path + '"')
+    print('Updated "' + path + '" as Project "' + project + '"')
     
   
 
