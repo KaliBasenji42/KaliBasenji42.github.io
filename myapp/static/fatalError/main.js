@@ -9,7 +9,7 @@ const bodyHTML = `
     
     <a class="nav" title="Q/q" href="./">Home</a>
     <a class="nav" title="W/w" href="TOC.html">Table of Contents</a>
-    <a class="nav" title="E/e" href="Notes.html">Story Notes</a>
+    <a class="nav" title="E/e" href="notes.html">Story Notes</a>
     
   </div>
   
@@ -26,5 +26,5 @@ for(let i = 0; i < chapters.length; i++) chapterNames.push('Chapter ' + (i + 1) 
 document.addEventListener('keypress', function() {
   shortcut("q", "Q", "./");
   shortcut("w", "W", "TOC.html");
-  shortcut("e", "E", "Notes.html");
+  shortcut("e", "E", "notes.html");
 });

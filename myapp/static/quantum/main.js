@@ -13,7 +13,7 @@ const bodyHTML = `
   
   `;
 
-const chapters = ['Particles.html', 'Quarks.html', 'Electrons.html', 'Neutrinos.html', 'Higgs.html', 'Forces.html', 'Strong.html', 'Weak.html', 'EM.html', 'Gravity.html', 'String.html', 'Entanglement.html', 'Collapse.html'];
+const chapters = ['particles.html', 'quarks.html', 'electrons.html', 'neutrinos.html', 'higgs.html', 'forces.html', 'strong.html', 'weak.html', 'EM.html', 'gravity.html', 'string.html', 'entanglement.html', 'collapse.html'];
 
 const chapterNames = ['Particles', 'Quarks', 'Electrons', 'Neutrinos', 'Higgs', 'Forces', 'Strong Nuclear Force', 'Weak Nuclear Force', 'Electromagnetic Force', 'Gravity', 'String Theory', 'Entanglement', 'Collapse']
 

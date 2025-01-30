@@ -43,7 +43,7 @@ It is structured so that it can by copied to host on a Raspberry Pi (do not copy
 The script will also find a variable stored as '<Project>' and replace it with the project name based on the file path.
 
 The Pyhton file will not affect the following files (due to not having template syntax setup or being in the wrong directory):
-*   "polls/templates/polls/Home/index.html"
-*   "polls/templates/polls/Clock/index.html"
-*   "polls/templates/polls/Resume/index.html"
+*   "myapp/templates/site/index.html"
+*   "myapp/templates/site/Clock/index.html"
+*   "myapp/templates/site/Resume/index.html"
 *   "index.html"

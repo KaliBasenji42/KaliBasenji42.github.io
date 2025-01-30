@@ -63,7 +63,7 @@ function loadData() {
   
   nuDatStatOutput.innerHTML = '🔄';
   
-  fetch('../../../../staticfiles/Nuclear Sandbox/Data/NuDat.json')
+  fetch('../../../../static/nuclearSandbox/data/NuDat.json')
     .then(response => {
       
       if(!response.ok) {

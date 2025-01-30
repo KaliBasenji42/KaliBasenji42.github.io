@@ -7,13 +7,13 @@ paths = []
 location = '.'
 ext = '.html'
 
-templatePath = 'Template.html'
+templatePath = 'template.html'
 templateCont = []
 template = []
 start = '<!--Start-->\n'
 end = '<!--End-->\n'
 
-projectId = '<Project>'
+projectId = '<project>'
 
 # Functions
 

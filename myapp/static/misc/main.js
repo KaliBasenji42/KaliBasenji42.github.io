@@ -13,7 +13,7 @@ const bodyHTML = `
   
   `;
 
-const chapters = ['Start.html', 'Eureka.html'];
+const chapters = ['start.html', 'eureka.html'];
 
 const chapterNames = ['Fire', 'Publication ██42'];
 
