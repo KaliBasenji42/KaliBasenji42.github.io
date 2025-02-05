@@ -14,7 +14,10 @@ instructions = [
 paths = []
 
 location = '.'
-ext = '.html'
+exts = [
+  '.html',
+  '.js'
+]
 
 templatePath = 'template.html'
 templateCont = []
@@ -25,13 +28,16 @@ tempEnd = '<!--End-->\n'
 projectId = '<project>'
 projectDepth = len('templates/site/') # What to cut off in front of Project
 
+pageExts = ['.html']
+staticExts = ['.js', '.css', '.png']
+
 urlsPath = 'urls.py'
 viewsPath = 'views.py'
 
+links = []
+
 djangoStart = '# start'
 djangoEnd = '# end'
-
-
 
 # Simple Functions
 
@@ -57,7 +63,11 @@ def getPaths():
       
       path = os.path.normpath(os.path.join(root, file))
       
-      match = path[-len(ext):] == ext
+      match = False
+      
+      for ext in exts:
+        if path[-len(ext):] == ext: match = True
+      
       if path == templatePath: match = False
       
       if match:
@@ -99,9 +109,9 @@ def readTemplate():
     
     for line in templateCont:
       
-      if line == start: add = True
+      if line == tempStart: add = True
       
-      elif line == end:
+      elif line == tempEnd:
         
         add = False
         
@@ -153,14 +163,14 @@ def templateEdit():
       
       for line in cont:
         
-        if line == end: # End of template section
+        if line == tempEnd: # End of template section
           
           newCont.append(line)
           
           addCont = True
           
         
-        elif line == start: # Start of template section
+        elif line == tempStart: # Start of template section
           
           newCont.append(line)
           
@@ -197,7 +207,30 @@ def templateEdit():
     
   
 
-def 
+def django():
+  
+  if input('Enter "y" to continue: ') != 'y': return
+  
+  print('\nWriting to Files:\n')
+  
+  for path in paths:
+    
+    cont = [] # Content of file before writing
+    
+    try:
+      
+      with open(path, 'r+', encoding='utf-8', errors='ignore') as file: cont = file.read()
+      
+    except: print('Unable to open "' + path + '" :/')
+    
+    else:
+      
+      for i in range(len(cont)):
+        
+        link = False # If 'href', 'src', etc. was detected
+        
+        
+      
 
 # Pre Loop
 
@@ -228,4 +261,7 @@ while run:
     
   
   elif inp == 'django':
+    
+    django()
+    
   

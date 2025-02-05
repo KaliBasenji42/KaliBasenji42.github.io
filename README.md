@@ -47,3 +47,4 @@ The Pyhton file will not affect the following files (due to not having template 
 *   "myapp/templates/site/Clock/index.html"
 *   "myapp/templates/site/Resume/index.html"
 *   "index.html"
+*   All .js files
