@@ -15,7 +15,7 @@ const bodyHTML = `
 
 const chapters = ['1.html', '2.html', '3.html', '4.html', '5.html', 'reflect.html'];
 
-const chapterNames = ['BSA', 'PC', 'Backbacking', 'Nuclear & Quantum', 'Coding', 'Reflection'];
+const chapterNames = ['BSA', 'PC', 'Backpacking', 'Nuclear & Quantum', 'Coding', 'Reflection'];
 
 for(let i = 0; i < chapterNames.length; i++) chapterNames[i] = (i + 1) + ' | ' + chapterNames[i];
 
