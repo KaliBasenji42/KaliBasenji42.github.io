@@ -15,8 +15,7 @@ paths = []
 
 location = '.'
 exts = [
-  '.html',
-  '.js'
+  '.html'
 ]
 
 templatePath = 'template.html'
@@ -35,6 +34,9 @@ urlsPath = 'urls.py'
 viewsPath = 'views.py'
 
 links = []
+
+allowedAttributes = ['href', 'src']
+allowedElements = ['a', 'img', 'link', 'script']
 
 djangoStart = '# start'
 djangoEnd = '# end'
@@ -225,12 +227,43 @@ def django():
     
     else:
       
-      for i in range(len(cont)):
+      inElement = False # If in an allowedElements
+      afterAttribute = False # If after an allowedAttributes
+      inString = False # If in quotes
+      
+      url = ''
+      
+      for i in range(len(cont)): # Iterate characters in file
         
-        link = False # If 'href', 'src', etc. was detected
+        # In Element
         
+        for element in allowedElements:
+          if i > len('<'+element):
+            if cont[i-len('<'+element):i] == '<' + element: inElement = True
+        
+        # After Attribute
+        
+        for attribute in allowedAttributes:
+          if i > len(attribute):
+            if cont[i-len(attribute):i] == attribute: afterAttribute = True
+        
+        if start and cont[i] == '"': # Find end of url
+          
+          start = False
+          link = False
+          
+          print(path + ': "' + url + '"')
+          
+          url = ''
+          
+        
+        elif link and cont[i] == '"': start = True # Find start of url
+        
+        elif start: url = url + cont[i]
         
       
+    
+  
 
 # Pre Loop
 
