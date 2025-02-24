@@ -33,7 +33,7 @@ staticExts = ['.js', '.css', '.png']
 urlsPath = 'urls.py'
 viewsPath = 'views.py'
 
-links = []
+urls = []
 
 allowedAttributes = ['href', 'src']
 allowedElements = ['a', 'img', 'link', 'script']
@@ -101,7 +101,7 @@ def readTemplate():
     
     print('Unable to open Template :/')
     
-    return False
+    return False # Fail
     
   else:
     
@@ -134,7 +134,7 @@ def readTemplate():
       
     
   
-  return True
+  return True # Success
   
 
 def templateEdit():
@@ -211,7 +211,7 @@ def templateEdit():
     
   
 
-def django():
+def djangoUrls():
   
   if input('Enter "y" to continue: ') != 'y': return
   
@@ -225,9 +225,15 @@ def django():
       
       with open(path, 'r+', encoding='utf-8', errors='ignore') as file: cont = file.read()
       
-    except: print('Unable to open "' + path + '" :/')
+    except:
+      
+      print('Unable to open "' + path + '" :/')
+      
+      return False # Fail
     
     else:
+      
+      urls = []
       
       inElement = False # If in an allowedElements
       afterAttribute = False # If after an allowedAttributes
@@ -244,30 +250,44 @@ def django():
             if i > len('<'+element):
               if cont[i-len('<'+element):i] == '<' + element: inElement = True
         
-        if cont[i] == '>': inElement = False
-        
         # After Attribute
         
-        for attribute in allowedAttributes:
-          if i > len(attribute):
-            if cont[i-len(attribute):i] == attribute: afterAttribute = True
+        if not afterAttribute and inElement:
+          for attribute in allowedAttributes:
+            if i > len(attribute):
+              if cont[i-len(attribute):i] == attribute: afterAttribute = True
         
-        if inString and cont[i] == '"': # Find end of url
+        # In String
+        
+        if inString and cont[i] == '"': # End
           
+          inElement = False
+          afterAttribute = False
           inString = False
-          link = False
+          
+          if len(url) >= len('https://'):
+            if url[:len('https://')] == 'https://': break
           
           print(path + ': "' + url + '"')
+          
+          urls.append(url)
           
           url = ''
           
         
-        elif link and cont[i] == '"': start = True # Find start of url
+        elif afterAttribute and cont[i] == '"': inString = True # Start
         
-        elif start: url = url + cont[i]
+        elif inString: url = url + cont[i] # In String: Add to URL
         
       
     
+  
+  return True # Success
+  
+
+def djangoSetFiles():
+  
+  pass
   
 
 # Pre Loop
@@ -300,6 +320,8 @@ while run:
   
   elif inp == 'django':
     
-    django()
+    if djangoUrls():
+      print()
+      djangoSetFiles()
     
   
