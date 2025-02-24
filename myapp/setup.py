@@ -24,7 +24,7 @@ template = []
 tempStart = '<!--Start-->\n'
 tempEnd = '<!--End-->\n'
 
-projectId = '<project>'
+projectId = '{project}'
 projectDepth = len('templates/site/') # What to cut off in front of Project
 
 pageExts = ['.html']
@@ -101,7 +101,7 @@ def readTemplate():
     
     print('Unable to open Template :/')
     
-    exit()
+    return False
     
   else:
     
@@ -133,6 +133,8 @@ def readTemplate():
       print('End')
       
     
+  
+  return True
   
 
 def templateEdit():
@@ -237,9 +239,12 @@ def django():
         
         # In Element
         
-        for element in allowedElements:
-          if i > len('<'+element):
-            if cont[i-len('<'+element):i] == '<' + element: inElement = True
+        if not inElement:
+          for element in allowedElements:
+            if i > len('<'+element):
+              if cont[i-len('<'+element):i] == '<' + element: inElement = True
+        
+        if cont[i] == '>': inElement = False
         
         # After Attribute
         
@@ -247,9 +252,9 @@ def django():
           if i > len(attribute):
             if cont[i-len(attribute):i] == attribute: afterAttribute = True
         
-        if start and cont[i] == '"': # Find end of url
+        if inString and cont[i] == '"': # Find end of url
           
-          start = False
+          inString = False
           link = False
           
           print(path + ': "' + url + '"')
@@ -288,9 +293,9 @@ while run:
   
   elif inp == 'temp':
     
-    readTemplate()
-    print()
-    templateEdit()
+    if readTemplate():
+      print()
+      templateEdit()
     
   
   elif inp == 'django':
