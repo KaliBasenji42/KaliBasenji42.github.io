@@ -18,6 +18,8 @@ exts = [
   '.html'
 ]
 
+# Template
+
 templatePath = 'template.html'
 templateCont = []
 template = []
@@ -27,8 +29,7 @@ tempEnd = '<!--End-->\n'
 projectId = '{project}'
 projectDepth = len('templates/site/') # What to cut off in front of Project
 
-pageExts = ['.html']
-staticExts = ['.js', '.css', '.png']
+# Django
 
 urlsPath = 'urls.py'
 viewsPath = 'views.py'
