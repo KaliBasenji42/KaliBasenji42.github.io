@@ -12,11 +12,18 @@ instructions = [
 ]
 
 paths = []
-
-location = '.'
 exts = [
   '.html'
 ]
+
+jsPaths = []
+jsExts = [
+  '.js'
+]
+
+location = '.'
+
+# Template
 
 templatePath = 'template.html'
 templateCont = []
@@ -27,8 +34,7 @@ tempEnd = '<!--End-->\n'
 projectId = '{project}'
 projectDepth = len('templates/site/') # What to cut off in front of Project
 
-pageExts = ['.html']
-staticExts = ['.js', '.css', '.png']
+# Django
 
 urlsPath = 'urls.py'
 viewsPath = 'views.py'
@@ -38,8 +44,7 @@ urls = []
 allowedAttributes = ['href', 'src']
 allowedElements = ['a', 'img', 'link', 'script']
 
-djangoStart = '# start'
-djangoEnd = '# end'
+djangoInject = '# inject'
 
 # Simple Functions
 
@@ -65,6 +70,8 @@ def getPaths():
       
       path = os.path.normpath(os.path.join(root, file))
       
+      # HTML
+      
       match = False
       
       for ext in exts:
@@ -82,7 +89,28 @@ def getPaths():
         else:
             
           paths.append(path)
-          print('Added "' + path + '"')
+          print('Added "' + path + '" to paths')
+          
+        
+      
+      # JS
+      
+      jsMatch = False
+      
+      for ext in jsExts:
+        if path[-len(ext):] == ext: jsMatch = True
+      
+      if jsMatch:
+        
+        try: 
+          
+          with open(path, 'r+', encoding='utf-8', errors='ignore') as file: pass
+          
+        except: print('Unable to open "' + path + '" :/')
+        else:
+            
+          jsPaths.append(path)
+          print('Added "' + path + '" to jsPaths')
           
         
       
@@ -213,9 +241,7 @@ def templateEdit():
 
 def djangoUrls():
   
-  if input('Enter "y" to continue: ') != 'y': return
-  
-  print('\nWriting to Files:\n')
+  print('\Getting URLs:\n')
   
   for path in paths:
     
@@ -233,7 +259,12 @@ def djangoUrls():
     
     else:
       
-      urls = []
+      isJs = False
+      
+      for ext in jsExts:
+        if path[-len(ext):] == ext: isJs = True
+      
+      # js comment thing
       
       inElement = False # If in an allowedElements
       afterAttribute = False # If after an allowedAttributes
@@ -242,6 +273,14 @@ def djangoUrls():
       url = ''
       
       for i in range(len(cont)): # Iterate characters in file
+        
+        # JS
+        
+        if isJs:
+          
+          pass
+          # WIP
+          
         
         # In Element
         
@@ -287,8 +326,39 @@ def djangoUrls():
 
 def djangoSetFiles():
   
-  pass
+  if input('Enter "y" to continue: ') != 'y': return
   
+  print('\nWriting to Files:\n')
+  
+  # urls
+  
+  urlsCont = [] # Content of file before writing
+  
+  try:
+    
+    with open(urlsPath, 'r+', encoding='utf-8', errors='ignore') as file: urlsCont = file.readlines()
+    
+  except: print('Unable to open "' + urlsPath + '" :/')
+  
+  else:
+    
+    inject = False
+    
+    for line in urlsCont:
+      
+      print(line, end='')
+      
+    
+    # Write to file
+    
+    with open(urlsPath, 'w', encoding='utf-8', errors='ignore') as file: file.writelines(newCont)
+    
+    # Print
+    
+    print('Updated "' + path + '" as Project "' + project + '"')
+    
+  
+
 
 # Pre Loop
 
