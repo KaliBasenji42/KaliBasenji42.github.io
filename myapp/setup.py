@@ -44,7 +44,8 @@ urls = []
 allowedAttributes = ['href', 'src']
 allowedElements = ['a', 'img', 'link', 'script']
 
-djangoInject = '# inject'
+djangoInject = '# inject\n'
+djangoInjectEnd = '# inject end\n'
 
 # Simple Functions
 
@@ -241,7 +242,7 @@ def templateEdit():
 
 def djangoUrls():
   
-  print('\Getting URLs:\n')
+  print('Getting URLs:\n')
   
   for path in paths:
     
@@ -307,9 +308,11 @@ def djangoUrls():
           if len(url) >= len('https://'):
             if url[:len('https://')] == 'https://': break
           
-          print(path + ': "' + url + '"')
+          normPath = os.path.normpath(path + url)[len('templates/'):] # Normalize
           
-          urls.append(url)
+          print('Added "' + normPath + '"')
+          
+          urls.append(normPath)
           
           url = ''
           
@@ -342,11 +345,30 @@ def djangoSetFiles():
   
   else:
     
-    inject = False
+    newCont = [] # Content to be writen to file
     
     for line in urlsCont:
       
-      print(line, end='')
+      inject = False # Should inject
+      
+      if line == djangoInject: 
+        inject = True
+        newCont.append(line)
+      elif line == djangoInjectEnd: inject = False
+      
+      if inject:
+        
+        for i in range(len(urls)):
+          
+          newCont.append(
+            '  path("' + urls[i] + '", views.injected' + str(i) + '),\n'
+          )
+          
+        
+      else:
+        
+        newCont.append(line)
+        
       
     
     # Write to file
@@ -355,7 +377,7 @@ def djangoSetFiles():
     
     # Print
     
-    print('Updated "' + path + '" as Project "' + project + '"')
+    print('Updated "' + urlsPath + '"')
     
   
 
@@ -366,7 +388,7 @@ getPaths()
 
 print()
 
-for str in instructions: print(str)
+for string in instructions: print(string)
 
 # Input Loop
 
@@ -379,7 +401,7 @@ while run:
   if inp == 'quit': run = False
   
   elif inp == '?':
-    for str in instructions: print(str)
+    for string in instructions: print(string)
   
   elif inp == 'temp':
     
