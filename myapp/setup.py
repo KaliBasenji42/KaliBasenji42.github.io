@@ -40,6 +40,7 @@ urlsPath = 'urls.py'
 viewsPath = 'views.py'
 
 urls = []
+urlPaths = []
 
 allowedAttributes = ['href', 'src']
 allowedElements = ['a', 'img', 'link', 'script']
@@ -57,6 +58,16 @@ def cutStringAt(string, char):
     
   
   return string
+  
+
+def remFile(string):
+  
+  for i in range(len(string)):
+    
+    if string[-i] == '/': return string[:-i]
+    
+  
+  return ''
   
 
 # Complex Functions
@@ -305,14 +316,24 @@ def djangoUrls():
           afterAttribute = False
           inString = False
           
+          # Normalize & Add URL
+          
           if len(url) >= len('https://'):
             if url[:len('https://')] == 'https://': break
           
-          normPath = os.path.normpath(path + url)[len('templates/'):] # Normalize
+          pathPos = remFile(path)
           
-          print('Added "' + normPath + '"')
+          normPath = os.path.normpath(os.path.join(pathPos, url))
           
-          urls.append(normPath)
+          if normPath[:len('myapp/')] == 'myapp/':
+            
+            normPath = normPath[len('myapp/'):]
+            
+            urlPaths.append(normPath)
+            urls.append(url)
+            
+            print('Added "' + normPath + '"')
+            
           
           url = ''
           
