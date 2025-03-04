@@ -40,7 +40,6 @@ urlsPath = 'urls.py'
 viewsPath = 'views.py'
 
 urls = []
-urlPaths = []
 
 allowedAttributes = ['href', 'src']
 allowedElements = ['a', 'img', 'link', 'script']
@@ -65,6 +64,7 @@ def remFile(string):
   for i in range(len(string)):
     
     if string[-i] == '/': return string[:-i]
+    elif string[-i] == '\\': return string[:-i]
     
   
   return ''
@@ -325,12 +325,11 @@ def djangoUrls():
           
           normPath = os.path.normpath(os.path.join(pathPos, url))
           
-          if normPath[:len('myapp/')] == 'myapp/':
+          if normPath[:len('myapp')] == 'myapp': normPath = normPath[len('myapp/'):]
+          
+          if normPath.find('{project}') < 0:
             
-            normPath = normPath[len('myapp/'):]
-            
-            urlPaths.append(normPath)
-            urls.append(url)
+            urls.append(normPath)
             
             print('Added "' + normPath + '"')
             
@@ -368,16 +367,14 @@ def djangoSetFiles():
     
     newCont = [] # Content to be writen to file
     
+    inject = False # Should inject
+    
     for line in urlsCont:
       
-      inject = False # Should inject
-      
       if line == djangoInject: 
+        
         inject = True
         newCont.append(line)
-      elif line == djangoInjectEnd: inject = False
-      
-      if inject:
         
         for i in range(len(urls)):
           
@@ -386,7 +383,9 @@ def djangoSetFiles():
           )
           
         
-      else:
+      elif line == djangoInjectEnd: inject = False
+      
+      if not inject:
         
         newCont.append(line)
         
@@ -436,5 +435,6 @@ while run:
     if djangoUrls():
       print()
       djangoSetFiles()
+      urls = []
     
   
