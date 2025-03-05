@@ -2,7 +2,7 @@
 
 This is my website. It is hosted by Github.
 
-It is structured so that it can by copied to host on a Raspberry Pi (do not copy 'index.html').
+It is structured so that it can by copied to host on a Raspberry Pi using Jekyll. [How to setup Jekyll](https://raspberrypi-guide.github.io/other/installing-jekyll-webserver).
 
 <h1>File Structure [Current]</h1>
 
@@ -38,11 +38,11 @@ It is structured so that it can by copied to host on a Raspberry Pi (do not copy
 
 <code style="white-space: pre; overflow-x: scroll;">
 
-┌─ assets *- For home page*
+┌─ assetsHome *- For home page*
 │  ├─ icon.png
 │  ├─ main.js *- JS ran on home page*
 │  └─ mainStyle.css *- CSS linked on home page*
-├─ global *- Files used by many HTML files*
+├─ assets *- Files used by many HTML files*
 │  ├─ areFilesLinked.js *- Sets link warning's disp to 'none'*
 │  ├─ chapter.js *- Sets up and gives functions for chapter like navigation*
 │  ├─ icon.png *- Default icon*
