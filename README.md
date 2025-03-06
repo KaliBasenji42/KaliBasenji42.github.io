@@ -49,16 +49,17 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 │  ├─ main.js *- Basic JS ran on most HTML files (such as load animation)*
 │  ├─ mainStyle.css *- Basic CSS used on most HTML files*
 │  └─ orbitDiagram.js *- Allows for a star system representation graphic*
-├─ *project - Project Name, so it may be easily copied*
-│  ├─ assets
-│  │  ├─ *Folder - Other folders, such as "images/"*
-│  │  ├─ icon.png
-│  │  ├─ main.js *- JS ran on all HTML files in the Project*
-│  │  ├─ mainStyle.css *- CSS linked on all HTML files in the Project*
-│  │  └─ *file.ext - Other files*
-│  ├─ *Folder - Page subfolder*
-│  ├─ index.html *- Project's home page*
-│  └─ *page.html - Other HTML pages*
+├─ projects
+│  └─ *project - Project Name, so it may be easily copied*
+│     ├─ assets
+│     │  ├─ *Folder - Other folders, such as "images/"*
+│     │  ├─ icon.png
+│     │  ├─ main.js *- JS ran on all HTML files in the Project*
+│     │  ├─ mainStyle.css *- CSS linked on all HTML files in the Project*
+│     │  └─ *file.ext - Other files*
+│     ├─ *Folder - Page subfolder*
+│     ├─ index.html *- Project's home page*
+│     └─ *page.html - Other HTML pages*
 ├─ index.html *- Home page*
 ├─ README.md *- This file!*
 ├─ setup.py *- Explained below*
