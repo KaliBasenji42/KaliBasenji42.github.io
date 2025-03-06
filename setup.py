@@ -8,7 +8,8 @@ instructions = [
   'Input "quit" to quit',
   'Input "?" to reprint this',
   'Input "temp" to update template marked areas',
-  'Input "django" to set up links to for Djando'
+  'Input "django" to set up links to for Djando',
+  '  WARNING: "django" unfinished and will not work!'
 ]
 
 paths = []
@@ -32,7 +33,7 @@ tempStart = '<!--Start-->\n'
 tempEnd = '<!--End-->\n'
 
 projectId = '{project}'
-projectDepth = len('templates/site/') # What to cut off in front of Project
+projectDepth = len('projects/') # What to cut off in front of Project
 
 # Django
 

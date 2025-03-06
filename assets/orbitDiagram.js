@@ -1,5 +1,5 @@
-// Set Variables
-
+// Ensure These Variables are set before linking:
+/*
 let MaxRScale = 4;
 let MaxDScale = 7;
 
@@ -14,7 +14,7 @@ let rScale = 10 ** rScalePower;
 
 let dScalePower = 4;
 let dScale = 10 ** dScalePower;
-
+*/
 // System Variables
 
 let section = 0;
