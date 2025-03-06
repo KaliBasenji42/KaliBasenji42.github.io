@@ -1,17 +1,28 @@
 <!--Start-->
 
 <!DOCTYPE html>
-<html lang = "en-US">
+<html lang="en-US">
 
 <head>
 <!--End-->
   <title>Home - Quantum</title>
 <!--Start-->
-  <meta charset = "utf-8">
-  <meta name = "viewport" content = "width=device-width">
-  <link href = "../../../static/global/mainStyle.css" rel = "stylesheet" type = "text/css" />
-  <link href = "../../../static/quantum/mainStyle.css" rel = "stylesheet" type = "text/css" />
-  <link href = "../../../static/quantum/icon.png" rel = "icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
 </head>
 
 <!--End-->
@@ -24,10 +35,10 @@
     Java Script does not seem to be linked. Most features and some content may be missing.
   </div>
   
-  <script src="../../../static/global/areFilesLinked.js"></script>
+  <script src="../../assets/areFilesLinked.js"></script>
   
-  <script src="../../../static/quantum/main.js"></script>
-  <script src="../../../static/global/main.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
   
 <!--End-->
   
@@ -35,7 +46,7 @@
   
   <h1>Quantum Physics Explained</h1>
   
-  <p>Welcome! This is HTML file containing information about quantum physics in a chaptered format. Compiled by me (KaliBasenji42), starting July 8th 2024. Here is my <a href="../">Home Page</a>.</p>
+  <p>Welcome! This is HTML file containing information about quantum physics in a chaptered format. Compiled by me (KaliBasenji42), starting July 8th 2024. Here is my <a href="../../">Home Page</a>.</p>
   
   <h2>Table of Contents:</h2>
   

@@ -1,17 +1,28 @@
 <!--Start-->
 
 <!DOCTYPE html>
-<html lang = "en-US">
+<html lang="en-US">
 
 <head>
 <!--End-->
   <title>Home | Fatal Error - System Restarting</title>
 <!--Start-->
-  <meta charset = "utf-8">
-  <meta name = "viewport" content = "width=device-width">
-  <link href = "../../../static/global/mainStyle.css" rel = "stylesheet" type = "text/css" />
-  <link href = "../../../static/fatalError/mainStyle.css" rel = "stylesheet" type = "text/css" />
-  <link href = "../../../static/fatalError/icon.png" rel = "icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
 </head>
 
 <!--End-->
@@ -24,10 +35,10 @@
     Java Script does not seem to be linked. Most features and some content may be missing.
   </div>
   
-  <script src="../../../static/global/areFilesLinked.js"></script>
+  <script src="../../assets/areFilesLinked.js"></script>
   
-  <script src="../../../static/fatalError/main.js"></script>
-  <script src="../../../static/global/main.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
   
 <!--End-->
   
@@ -35,7 +46,7 @@
   
   <h1>Fatal Error - System Restarting</h1>
   
-  <p>Welcome! This is a SiFi story writen by me (KaliBasenji42), starting April of 2024. Here is <a href="1.html">chapter 1</a>. Go to <a href="Notes.html">Story Notes</a> for details. Here is my <a href="../">Home Page</a>.</p>
+  <p>Welcome! This is a SiFi story writen by me (KaliBasenji42), starting April of 2024. Here is <a href="1.html">chapter 1</a>. Go to <a href="Notes.html">Story Notes</a> for details. Here is my <a href="../../">Home Page</a>.</p>
   
   <p>Thanks to W3Schools and Stack Overflow for providing most of my web development knowledge (AKA I still have 1% of my sanity left thanks to them ;D).</p>
   
