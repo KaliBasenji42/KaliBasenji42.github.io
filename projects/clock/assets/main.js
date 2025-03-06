@@ -1,5 +1,11 @@
 // Variables and Constants
 
+const headHTML = `
+  `;
+
+const bodyHTML = `
+  `;
+
 let time = new Date();
 
 let update = true;
@@ -10,7 +16,7 @@ const start = Date.now();
 
 let id = setInterval(animate, 10);
 
-let body = document.getElementById("body");
+let docBody = document.getElementById("body");
 let title = document.getElementById("title");
 
 // Functions
@@ -111,8 +117,8 @@ function background(){
   let g = Math.floor((time.getMinutes() / 60) * 255);
   let b = Math.floor((time.getHours() / 24) * 255);
   
-  body.style.backgroundImage = 'none';
-  body.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+  docBody.style.backgroundImage = 'none';
+  docBody.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
   
 }
 
