@@ -1,10 +1,10 @@
-<h1>General</h1>
+# General
 
 This is my website. It is hosted by Github.
 
-It is structured so that it can by copied to host on a Raspberry Pi using Jekyll. [How to setup Jekyll](https://raspberrypi-guide.github.io/other/installing-jekyll-webserver).
+It is structured so that it can by copied to host on a Raspberry Pi using Jekyll. [How to setup Jekyll](https://raspberrypi-guide.github.io/other/installing-jekyll-webserver). Run using: `bundle exec jekyll serve --host 0.0.0.0 --port 8000`.
 
-<h1>File Structure</h1>
+# File Structure
 
 <code style="white-space: pre; overflow-x: scroll;">
 
@@ -37,7 +37,7 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 
 </code>
 
-<h1>Template</h1>
+# Template
 
 "HTML Template.py" finds all the HTML files in "Projects" using `os.walk`. It then reads "Template.html".
 
