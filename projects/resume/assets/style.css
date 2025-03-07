@@ -4,7 +4,7 @@ html {height: 100%; width: 100%;}
 
 body {
   background-color: rgb(240, 240, 240);
-  margin-left: 3em; margin-right: 1in;
+  margin: 2em;
   padding-bottom: 2em;
   font-family: "Times New Roman", Times;
 }
@@ -61,6 +61,11 @@ h4 {text-indent: 1em; font-size: 1em; font-style: normal; font-weight: normal;}
   left: 75%;
   top: 2em;
   overflow: auto;
+}
+
+#GT {
+  overflow-y: visible;
+  margin: 2em;
 }
 
 /* Media */

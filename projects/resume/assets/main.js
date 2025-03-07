@@ -117,22 +117,6 @@ function printFormat() {
     
   }
   
-  let buttons = document.getElementsByTagName("button");
-  
-  for (i = 0; i < buttons.length; i++) {
-    
-    buttons[i].style.display = "none";
-    
-  }
-  
-  let body = document.getElementsByTagName("body");
-  
-  for (let i = 0; i < body.length; i++) {
-    
-    body[i].style.marginLeft = "1em";
-    
-  }
-  
   window.print()
   
   window.location.replace("./")
