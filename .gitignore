@@ -4,5 +4,6 @@ _site
 .jekyll-metadata
 vendor
 Gemfile
+Gemfile.lock
 _posts
 
