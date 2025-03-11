@@ -30,8 +30,12 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 │     ├─ *Folder - Page subfolder*
 │     ├─ index.html *- Project's home page*
 │     └─ *page.html - Other HTML pages*
-├─ index.html *- Home page*
+├─ 404.html *- Served when HTML file is not found (RasPi)*
 ├─ README.md *- This file!*
+├─ _config.yml *- Jekyll Config*
+├─ index.html *- Home page*
+├─ kill_jekyll.sh *- Kills server*
+├─ restart_jekyll.sh *- Restarts server*
 ├─ setup.py *- Explained below*
 └─ template.html *- Explained below*
 
@@ -39,12 +43,12 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 
 # Template
 
-"HTML Template.py" finds all the HTML files in "Projects" using `os.walk`. It then reads "Template.html".
+"setup.py" finds all the HTML files in "projects" using `os.walk`. It then reads "template.html".
 
-"HTML Template.py" finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order of appearance.
+"setup.py" finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order of appearance.
 
-The script will also find a variable stored as '{Project}' and replace it with the project name based on the file path (Dated).
+The script will also find a variable stored as '{project}' and replace it with the project name based on the file path (This feature is currently unused).
 
 The Pyhton file will not affect the following files (due to not having template syntax setup or being in the wrong directory):
-*   "projects/Resume/index.html"
+*   "projects/resume/index.html"
 *   "index.html"
