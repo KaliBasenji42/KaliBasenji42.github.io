@@ -2,7 +2,7 @@
 
 This is my website. It is hosted by Github.
 
-It is structured so that it can by copied to host on a Raspberry Pi using Jekyll. [How to setup Jekyll](https://raspberrypi-guide.github.io/other/installing-jekyll-webserver). Run using: `bundle exec jekyll serve --host 0.0.0.0 --port 8000`.
+It is structured so that it can by copied to host on a Raspberry Pi using Jekyll. [How to setup Jekyll](https://raspberrypi-guide.github.io/other/installing-jekyll-webserver).
 
 # File Structure
 
