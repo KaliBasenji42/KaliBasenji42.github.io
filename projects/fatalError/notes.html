@@ -63,8 +63,10 @@
   <h2>Species Description</h2>
   
   <p>
-    Human DNA was the most protected, and as such was the most intact. The human DNA had to be spliced with other mammals', and as such these new humanoids have animal features. Bacteria was the most abundant DNA, allowing for the planet to be prepared for mammalian life. Anthropoids are bipedal, yet have a tail and facial features of a canine and other mammals. They have the intelligence and dexterity of a human and the senses and athletics of a canine. Note: There are two types of Anthropoids, both mainly human, one more canine and the other more feline. The feline Anthropoids are less common.
+    Human DNA was the most protected, and as such was the most intact. The human DNA had to be spliced with other mammals', and as such these new humanoids have animal features. Bacteria was the most abundant DNA, allowing for the planet to be prepared for mammalian life. Anthropoids are bipedal, yet have a tail and facial features of a canine and other mammals. They have the intelligence and dexterity of a human and the senses and athletics of a canine.
   </p>
+  
+  <!--~//OwO//~-->
   
   <h2>Orbital Diagram</h2>
   
@@ -105,12 +107,14 @@
   
   <script src="../../assets/orbitDiagram.js"></script>
   
-  <script>createCelestial(24622, 961000000, 0, 'Glacies', 'rgb(32, 0, 128)', 'rgb(255, 255, 255)', 0.5);
+  <script>
+    createCelestial(24622, 961000000, 0, 'Glacies', 'rgb(32, 0, 128)', 'rgb(255, 255, 255)', 0.5);
     createCelestial(78997, 254000000, 0, 'Caelum', 'rgb(196, 196, 128)', 'rgb(0, 0, 0)', 0.5);
     createCelestial(2797, 2229520, 254000000, 'Aer', 'rgb(196, 128, 64)', 'rgb(255, 255, 255)', 0.5);
-    createCelestial(6097, 15086917, 0, 'Lutum', 'rgb(0, 128, 64)', 'rgb(255, 255, 255)', 0.5);
-    createCelestial(12.1, 12890, 15086917, 'Saxum', 'rgb(64, 64, 64)', 'rgb(255, 255, 255)', 0.5);
-    createCelestial(4726, 0, 0, 'Ignus', 'rgb(255, 228, 196)', 'rgb(0, 0, 0)', 0.5);</script>
+    createCelestial(6097, 37399500, 0, 'Lutum', 'rgb(0, 128, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(12.1, 12890, 37399500, 'Saxum', 'rgb(64, 64, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(8028, 0, 0, 'Ignus', 'rgb(255, 228, 196)', 'rgb(0, 0, 0)', 0.5);
+  </script>
   
   <p>Navigate To:</p>
   
@@ -120,11 +124,20 @@
   
   <h2>Celestial Object Notes</h2>
   
+  <a href="https://docs.google.com/spreadsheets/d/1NjrHUIKWM7LbEv4aLEjfMv9sYvSKuoLdP8VC8jJyrK4/edit?usp=sharing" target="_blank">Data calculated from this sheet.</a>
+  
   <p>Ignus:</p>
   <ul>
     <li>Sun: Hydrogen White Dwarf</li>
-    <li>Mass: 1.124 Solar Masses</li>
-    <li>Radius: 0.742 Earth</li>
+    <li>Mass: 1.1249 Solar Masses</li>
+    <li>Radius: 1.2601 Earth</li>
+    <li>Effective Temperature: 27,658K</li>
+    <li>Luminosity: 0.0702 L<sub>☉</sub></li>
+    <li>
+      Resources to calculate whitedwarf values:
+      <br><a href="https://www.desmos.com/calculator/cnziovd1jh" target="_blank">Mass - Radius Relation</a>
+      <br><a href="https://cdn.eso.org/images/screen/eso0728c.jpg" target="_blank">HR Diagram</a>
+    </li>
   </ul>
   
   <p>Lutum:</p>
@@ -133,14 +146,15 @@
     <li>Mass: 0.86 Earth</li>
     <li>Radius: 0.957 Earth</li>
     <li>Day Length: 22.6 Hours</li>
-    <li>Orbital Distance: 0.110 to 0.115 AU</li>
-    <li>Year: 13.0 Earth Days, 13.8 Lutum Days</li>
+    <li>Sidereal Day Length: 22.12</li>
+    <li>Orbital Distance: 0.244 to 0.256 AU</li>
+    <li>Year: 43.048 Earth Days, 45.715 Lutum Days</li>
     <br>
     <li>Tilt: 16 deg</li>
     <li>Ocean Coverage: 67% Calculated by <a href="https://www.tools366.com/tool/image-color-ratio#google_vignette" target="_blank">Tools366</a></li>
-    <li>Atmosphere: Similar to Earth's, ILRU regulated its composition via bacteria, less CO2.</li>
+    <li>Atmosphere: Similar to Earth's, ILRU regulated its composition via bacteria, less CO2. Global warming effect is about +26.9K.</li>
     <li>Crust: Due to the planet's smaller mass and larger land area, rare metals are less rare.</li>
-    <li>Temp: -80C to 30C (Avg. 9.6C)</li>
+    <li>Temp: ~9.5°C to ~15.4°C (Avg. ~12.4°C/54.3°F)</li>
   </ul>
   
   <p>Saxum:</p>
@@ -213,7 +227,7 @@
     <li>Parvus: Smaller continent, has lots of resources and is considered the capital of the world. West of Magna.</li>
     <li>Mons: Northern mountainous continent, mild climate like Magna and Parvus. North of Parvus. More wild, where Umbriel lives and where ILRU landed.</li>
     <li>Mare: Islands North of Magna.</li>
-    <li>Disiunctus: Large island South West of Mons, North West of Parvus. Where many of the feline Anthropoids live.</li>
+    <li>Disiunctus: Large island South West of Mons, North West of Parvus. Where many criminals are transported.</li>
     <br>
     <li>Aurum: Major port city and economic center in Magna.</li>
     <br>
@@ -253,6 +267,24 @@
   
   <div id = "SA" class = "sect">
   
+  <h2>World History (Plot Relevant)</h2>
+  
+  <p>
+    First it is important to note that some Anthropoids express Odorem Muteness. Odorem Muteness causes an Anthropoid's scent glands to not work normally. Odorem Muteness seems to be genetic, and also seems to be linked to one's physcology/brain.
+  </p>
+  
+  <p>
+    At 1202 Caelum Cycles (2262 in base 8) the governors of Parvus and Mons blamed Odorem Mute Anthropoids for the previous nuclear accident on the West side of Magna and subsequent economic recession. The plant was built by Mons and owned by Parvus. The accident was a small Tritium leak due to a flood and reactor core damage due to on-site power loss and safety issues causing a runaway reaction. The accident itself was not bad, the only danger being eating too much fish in the Western Gulf and entering the reactor room unprepared. The real problem was an over reaction from the government. The government of Magna evacuated the nearby city, Aurum, a major port city and economic center.
+  </p>
+  
+  <p>
+    The governments of Parvus and Mons did not want to take responsibility for this, and shifted much of the blame to Odorem Mute Anthropoids. These governments targeted Odorem Mute Anthropoids not only because it was easy (the facility was Odorem Mute), but also because it would distract the public from other problems. The governments also tried sending many Odorem Mute Anthropoids from Parvus and Mons to Disiunctus. Around 1208 (2270 in base 8) Aurum was reoccupied and the economy recovered, and people were suspecting the transportation of Anthropoids to Disiunctus. So the governments of Parvus and Mons stopped.
+  </p>
+  
+  <p>
+    By 1211 (2273 in base 8) Disiunctus formed a government and wants nuclear power. Parvus and Mons do not want to help Disiunctus, afraid they will attack them for the recent conflict. Magna and Mare do not to help in fear that they will lose Parvus and Mons as allies. Disiunctus is in an arms race with Parvus and Mons in nuclear weapons. Parvus and Mons are hiding the fact they are making weapons: Parvus, Mons, Magna, and Mare signed a treaty stating none would produce nuclear weapons or any city destroying bomb. This then leads us to today, Charon kidnapping people for intelligence.
+  </p>
+  
   <h2>Plot</h2>
   
   <p>
@@ -260,25 +292,11 @@
   </p>
   
   <p>
-    Umbriel and Hyperion manage to sabotage the construction of Charon's weapons. Although this furthers the problem. Afterwards Umbriel goes to authurities. With little leverage, the government of Disiunctus easily falls. This scandal further taints public perception of feline Anthropoids. This leads the governments to start arresting many feline Anthropoids. Puck ends up being on of them, being in the nuclear industry making him a target.
+    Umbriel and Hyperion manage to sabotage the construction of Charon's weapons. Although this furthers the problem. Afterwards Umbriel goes to the media. With little leverage, the government of Disiunctus easily falls. This scandal further taints public perception of Odorem Mute Anthropoids. This leads the governments to start arresting many Odorem Mute Anthropoids. Puck ends up being on of them, being in the nuclear industry making him a target.
   </p>
   
   <p>
-    Being praised as a hero while having his friend persecuted leads Umbriel to experience depression and anxiety from the guilt. Umbriel has to learn how to cope with/resolve these feelings. After progress from Cressida and Hyperion, Umbriel and his friends uncover that Parvus and Mons made nuclear weapons. This, of course, leads to political unrest. After the legal dust settles, laws are set in that crack down transport of nuclear materials. And feline Anthropoids are tried fairly, freeing Puck. 
-  </p>
-  
-  <h2>World History (Plot Relevant)</h2>
-  
-  <p>
-    At 1202 Caelum Cycles (2262 in base 8) the governors of Parvus and Mons blamed feline Anthropoids for the previous nuclear accident on the West side of Magna and subsequent economic recession. The plant was built by Mons and owned by Parvus. The accident was a small Tritium leak due to a flood and reactor core damage due to on-site power loss and safety issues causing a runaway reaction. The accident itself was not bad, the only danger being eating too much fish in the Western Gulf and entering the reactor room unprepared. The real problem was an over reaction from the government. The government of Magna evacuated the nearby city, Aurum, a major port city and economic center.
-  </p>
-  
-  <p>
-    The governments of Parvus and Mons did not want to take responsibility for this, and shifted much of the blame to feline Anthropoids. These governments targeted felines not only because it was easy (much of the crew was feline along with the head of the facility), but also because the governments were afraid that felines would cause an uprising: There are more reports of feline Anthropoids participating in protests then canines (canines are usually more loyal). The governments also tried sending many felines from Parvus and Mons to Disiunctus. Around 1208 (2270 in base 8) Aurum was reoccupied and the economy recovered, and people were suspecting the transportation of felines. So the governments of Parvus and Mons stopped trying to remove felines.
-  </p>
-  
-  <p>
-    By 1211 (2273 in base 8) Disiunctus formed a government and wants nuclear power. Parvus and Mons do not want to help Disiunctus, afraid they will attack them for the recent conflict. Magna and Mare do not to help in fear that they will lose Parvus and Mons as allies. Disiunctus is in an arms race with Parvus and Mons in nuclear weapons. Parvus and Mons are hiding the fact they are making weapons: Parvus, Mons, Magna, and Mare signed a treaty stating none would produce nuclear weapons or any city destroying bomb. This then leads us to today, Charon kidnapping people for intelligence.
+    Being praised as a hero while having his friend persecuted leads Umbriel to experience depression and anxiety from the guilt. Umbriel has to learn how to cope with/resolve these feelings. After progress from Cressida and Hyperion, Umbriel and his friends uncover that Parvus and Mons made nuclear weapons. This, of course, leads to political unrest. After the legal dust settles, laws are set in that crack down transport of nuclear materials. And feline Anthropoids are tried fairly, freeing Puck.
   </p>
   
   <h2>Characters</h2>
@@ -286,7 +304,6 @@
   <h3>Umbriel:</h3>
   <ul>
     Gender: He/Him<br>
-    Type: Canine<br>
     <br>
     <li>Protagonist</li>
     <li>Lives alone in a house in the woods.</li>
@@ -302,7 +319,6 @@
   <h3>Hyperion:</h3>
   <ul>
     Gender: They/Them<br>
-    Type: Feline<br>
     <br>
     <li>Worked at the nuclear plant in Aurum.</li>
     <li>Forced into working for Charon in order to keep the fact they were in part responsible for the Aurum plant accident.</li>
@@ -311,7 +327,6 @@
   <h3>Charon:</h3>
   <ul>
     Gender: He/Him<br>
-    Type: Feline<br>
     <br>
     <li>Antagonist</li>
   </ul>
@@ -319,7 +334,6 @@
   <h3>Cressida:</h3>
   <ul>
     Gender: She/Her<br>
-    Type: Canine<br>
     <br>
     <li>Co-worker of Umbriel.</li>
     <li>Very talkative and kind.</li>
@@ -328,10 +342,10 @@
   <h3>Puck:</h3>
   <ul>
     Gender: He/Him<br>
-    Type: Feline<br>
     <br>
     <li>Co-worker of Umbriel.</li>
     <li>Jokester, lighthearted, but serious when needed.</li>
+    <li>Expresses Odorem Mute</li>
   </ul>
   
   </div>
