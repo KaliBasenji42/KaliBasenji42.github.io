@@ -30,13 +30,14 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 │     ├─ *Folder - Page subfolder*
 │     ├─ index.html *- Project's home page*
 │     └─ *page.html - Other HTML pages*
-├─ 404.html *- Served when HTML file is not found (RasPi)*
-├─ README.md *- This file!*
 ├─ _config.yml *- Jekyll Config*
+├─ 404.html *- Served when HTML file is not found (Raspi)*
 ├─ index.html *- Home page*
-├─ kill_jekyll.sh *- Kills server*
-├─ restart_jekyll.sh *- Restarts server*
+├─ kill_jekyll.sh *- Kills server (Raspi)*
+├─ README.md *- This file!*
+├─ restart_jekyll.sh *- Restarts server (Raspi)*
 ├─ setup.py *- Explained below*
+├─ status.txt *- Used to return server status*
 └─ template.html *- Explained below*
 
 </code>
