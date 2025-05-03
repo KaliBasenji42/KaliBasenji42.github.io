@@ -13,9 +13,9 @@ const bodyHTML = `
   
   `;
 
-const chapters = ['start.html', 'eureka.html'];
+const chapters = ['poems.html', '_.html'];
 
-const chapterNames = ['Fire', 'Publication ██42'];
+const chapterNames = ['Poems', '████'];
 
 for(let i = 0; i < chapterNames.length; i++) chapterNames[i] = (i + 1) + ' | ' + chapterNames[i];
 
