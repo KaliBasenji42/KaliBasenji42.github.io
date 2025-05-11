@@ -29,6 +29,8 @@
 
 <body style="background-color: rgb(224, 160, 244);">
   
+  <script src="assets/decay.js"></script>
+  
 <!--Start-->
   
   <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
@@ -88,23 +90,24 @@
   </h2>
   
   <div id="DC Sect" class="sect">
-  
-  <form id="DCForm">
-    <label for="DCIsoInput">Isotope:</label>
-    <input type="text" id="DCIsoInput" name="DCIsoInput">
-    Example: "235U"<br>
-    <input type="submit" value="Load">
-  </form>
-  
-  <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
-  
-  <div class="field" style="aspect-ratio: 2 / 1; background-color: rgb(240, 240, 240);">
-    <canvas id="DCCanvas"></canvas>
-  </div>
-  
-  <p>Verticle Axis: A</p>
-  <p>Horizontal Axis: N - Z</p>
-  
+    
+    <form id="DCForm">
+      <label for="DCIsoInput">Isotope:</label>
+      <input type="text" id="DCIsoInput" name="DCIsoInput">
+      Example: "235U"<br>
+      <input type="submit" value="Load">
+    </form>
+    
+    <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
+    
+    <div class="DCCont">
+      <table class="DCTbl" id="DCTbl">
+      </table>
+    </div>
+    
+    <p>Verticle Axis: A</p>
+    <p>Horizontal Axis: N - Z</p>
+    
   </div>
   
   <script>expndOrClps('DC Sect', 'DC bttn');</script>
