@@ -11,7 +11,6 @@ let currentMenu = 'none';
 
 let fileNameInput;
 
-let nuDatStatOutput;
 let NuDat = {};
 let DCForm;
 let decayTree = {};
@@ -59,78 +58,6 @@ function openFile() {
   
 }
 
-function loadData() {
-  
-  nuDatStatOutput.innerHTML = '🔄';
-  
-  fetch('assets/data/NuDat.json')
-    .then(response => {
-      
-      if(!response.ok) {
-        
-        nuDatStatOutput.innerHTML = '⚠️ Response Not OK';
-        
-        throw new Error('Response: ' + response.statusText);
-        
-      }
-      
-      return response.json();
-      
-    })
-    .then(data => {
-      
-      NuDat = data;
-      
-      nuDatStatOutput.innerHTML = '✅';
-      
-    })
-    .catch(error => {
-      
-      nuDatStatOutput.innerHTML = '⚠️ Failed to Fetch';
-      
-      console.log(error);
-      
-    });
-  
-}
-
-function ZNtoName(Z, N) {
-  
-  for(const iso in NuDat) {
-    
-    if(NuDat[iso]['z'] == Z && NuDat[iso]['n'] == N) return NuDat[iso]['name'];
-    
-  }
-  
-}
-
-function listDecayModes(all) {
-  
-  let list = new Set();
-  
-  for(const iso in NuDat) {
-    
-    try {
-      
-      let modes = {};
-      
-      modes = NuDat[iso]['levels'][0]['decayModes']['observed'];
-      
-      for(const mode in modes) {
-        list.add(modes[mode]['mode']);
-        if(all) console.log(modes[mode]['mode'] + ' in ' + NuDat[iso]['name']);
-      }
-      
-    }
-    
-    catch {}
-    
-  }
-  
-  console.log(list);
-  
-}
-
 // Events
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -140,8 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
   menus = document.getElementsByClassName('menu');
   
   fileNameInput = document.getElementById('FileName');
-  
-  nuDatStatOutput = document.getElementById('NuDatStat');
   
   DCForm = document.getElementById('DCForm');
   

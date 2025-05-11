@@ -6,6 +6,16 @@ img{
   image-rendering: auto;
 }
 
+.tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.tbl {
+  border-collapse: collapse;
+  background-color: rgb(240, 240, 240);
+  width: 30%;
+}
+
 /* Window */
 
 .window {
@@ -116,6 +126,7 @@ img{
 .DCTbl > tr > td {
   border: 4px solid rgb(240, 240 , 240);
   width: 3rem;
+  white-space: nowrap;
   overflow: hidden;
 }
 
