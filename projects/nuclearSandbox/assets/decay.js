@@ -37,6 +37,7 @@ let decayDict = {
 
 let selectedIso = '';
 let parents = {};
+let NuDat = {};
 
 // Function
 

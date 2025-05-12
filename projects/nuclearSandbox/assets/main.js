@@ -11,9 +11,7 @@ let currentMenu = 'none';
 
 let fileNameInput;
 
-let NuDat = {};
 let DCForm;
-let decayTree = {};
 
 let gameWindow;
 let active = true;
