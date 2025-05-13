@@ -107,17 +107,18 @@ img{
 .DCTbl {
   text-align: center;
   background-color: rgb(240, 240, 240);
+  table-layout: fixed;
+  width: 100%; /* Or set a fixed width like 60rem */
 }
 
-.DCTbl > tr {
-  height: 3rem;
-}
-
-.DCTbl > tr > td {
+.DCIso {
   border: 4px solid rgb(240, 240 , 240);
-  width: 3rem;
+  width: 3rem !important;
+  height: 3rem !important;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0;
 }
 
 .tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {

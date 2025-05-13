@@ -147,8 +147,8 @@ function createDecayChain(isos, tbl) {
     let Z = isoMM['z'];
     let N = isoMM['n'];
     
-    let x = N - Z;
-    let y = N + Z;
+    let x = N;
+    let y = Z;
     
     minX = Math.min(minX, x);
     minY = Math.min(minY, y);
@@ -179,6 +179,8 @@ function createDecayChain(isos, tbl) {
     
   }
   
+  console.log(parents);
+  
   // Iso Loop
   
   for(const iso of isos) {
@@ -188,8 +190,8 @@ function createDecayChain(isos, tbl) {
     let Z = iso['z'];
     let N = iso['n'];
     
-    let x = (N - Z) - minX;
-    let y = maxY - (N + Z);
+    let x = maxX - N;
+    let y = maxY - Z;
     
     let modes = {};
     if(iso['levels'][0].hasOwnProperty('decayModes')) {
@@ -197,12 +199,9 @@ function createDecayChain(isos, tbl) {
       
       for(let mode in modes) {
         let decay = decayChange(modes[mode]['mode']);
-        let change = [
-          decay[1] - decay[0],
-          - decay[0] - decay[1]
-        ];
         
-        let child = 'DCIso:' + (x + change[0]) + ',' + (y + change[1]);
+        let child = 'DCIso:' + (x - decay[1]) + ',' + (y - decay[0]);
+        console.log(child);
         
         parents[child].push('DCIso:' + x + ',' + y);
       }
@@ -286,13 +285,8 @@ function createDecayChain(isos, tbl) {
         
         let decay = decayChange(modes[mode]['mode']);
         
-        let change = [
-          decay[1] - decay[0],
-          - decay[0] - decay[1]
-        ];
-        
-        dx = x + change[0];
-        dy = y + change[1];
+        dx = x - decay[1];
+        dy = y - decay[0];
         
         let elemDaughter = document.getElementById('DCIso:' + dx + ',' + dy);
         
