@@ -43,7 +43,7 @@ let decay = {
 
 // Function
 
-function loadData() {
+function loadNuDat() {
   
   let nuDatStatOutput = document.getElementById('NuDatStat');
   

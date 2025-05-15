@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Data
   
-  loadData();
+  loadNuDat();
   
   // Decay Chain
   
