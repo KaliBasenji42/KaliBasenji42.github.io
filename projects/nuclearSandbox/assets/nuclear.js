@@ -1,6 +1,9 @@
 // Variables
 
-let decayDict = {
+let NuDat = {};
+
+let decay = {
+  dict: {
     // [Z, N] for each decay mode
     'B-': [1, -1],
     'β⁻': [1, -1],
@@ -33,11 +36,10 @@ let decayDict = {
     '28MG': [-12, -16],
     '22NE': [-10, -12],
     'MG': [-12, -12]
-}
-
-let selectedIso = '';
-let parents = {};
-let NuDat = {};
+  },
+  selectedIso: '',
+  parents: {}
+};
 
 // Function
 
@@ -88,6 +90,8 @@ function ZNtoName(Z, N) {
   
 }
 
+// Decay Functions
+
 function listDecayModes(all) {
   
   let list = new Set();
@@ -119,8 +123,8 @@ function decayChange(mode) {
   
   // Returns [Z, N] change
   
-  for(key in decayDict) {
-    if(key == mode) return decayDict[mode];
+  for(key in decay[dict]) {
+    if(key == mode) return decay[dict][mode];
   }
 
   return [0, 0];
@@ -132,8 +136,8 @@ function createDecayChain(isos, tbl) {
   // Reset
   
   tbl.innerHTML = '';
-  selectedIso = '';
-  parents = {};
+  decay[selectedIso] = '';
+  decay[parents] = {};
   
   // Min and Max
   

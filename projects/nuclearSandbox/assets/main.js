@@ -16,7 +16,7 @@ let DCForm;
 let gameWindow;
 let active = true;
 
-// Functions
+// Game Functions
 
 function closeMenus() {
   
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   loadData();
   
-  // DC
+  // Decay Chain
   
   DCForm.addEventListener("submit", function(event) {
     
