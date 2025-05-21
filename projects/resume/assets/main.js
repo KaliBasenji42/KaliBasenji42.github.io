@@ -3,14 +3,9 @@
 
 const sections = ["Edu", "Other Org", "Exp", "Prj"];
 
-const classes = [["<b>All Courses Average</b>", 0.96776], 
-                 ["<b class='gen'>[School 1]</b>", 0.97], 
-                 ["Engineering II", 0.97], 
-                 ["Sustainable Energy I", 0.97], 
-                 ["<b class='gen'>[School 2]</b>", 0.96626667], 
-                 ["English", 1.01], 
-                 ["Trig / Math Analysis", 0.9637], 
-                 ["Modern World History", 0.9251]];
+const classes = [["<span class='gen'>[School 1]</span>", 0.96776], 
+                 ["<span class='gen'>[School 2]</span>", 0.97],  
+                 ["Average", 0.9251]];
 
 let setElems = document.getElementsByClassName('set');
 let setData = localStorage.getItem('Resume - Set Data');
@@ -53,7 +48,7 @@ function generateGT(ID, classes) {
   let letter = "N";
   
   document.getElementById(ID).innerHTML = "<tr>" + 
-      "<th style='width: 40%;'>Name</th>" + 
+      "<th style='width: 40%;'>School</th>" + 
       "<th style='width: 20%;'>%</th>" + 
       "<th style='width: 20%;'>Letter</th>" + 
     "</tr>";
@@ -183,7 +178,7 @@ function set(string) {
       if(list[i].startsWith(elem.innerHTML)) {
         let cont = list[i].slice(elem.innerHTML.length);
         
-        isEmail = elem.innerHTML.startsWith('[Email');
+        isLink = elem.href.startsWith('[Email');
         elem.innerHTML = cont;
         if(isEmail) {
           elem.href = 'mailto:' + cont;
