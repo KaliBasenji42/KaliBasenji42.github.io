@@ -178,7 +178,7 @@ function set(string) {
       if(list[i].startsWith(elem.innerHTML)) {
         let cont = list[i].slice(elem.innerHTML.length);
         
-        isLink = elem.href.startsWith('[Email');
+        isEmail = elem.innerHTML.startsWith('[Email');
         elem.innerHTML = cont;
         if(isEmail) {
           elem.href = 'mailto:' + cont;
