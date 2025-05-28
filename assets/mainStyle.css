@@ -28,6 +28,12 @@ img {
   image-rendering: pixelated;
 }
 
+footer {
+  width: 60%;
+  margin: auto;
+  font-size: 12px;
+}
+
 /* Navigation */
 
 .navigation {text-align: center;}
