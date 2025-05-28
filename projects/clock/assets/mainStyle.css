@@ -6,6 +6,11 @@ body {
 a {color: rgb(0, 96, 0);}
 a:hover {color: rgb(0, 128, 0);}
 
+footer {
+  position: absolute;
+  top: 100%;
+}
+
 .face {
   width: 32em;
   height: 32em;
