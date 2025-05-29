@@ -116,7 +116,7 @@ img{
   width: 3rem !important;
   height: 3rem !important;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: visible;
   text-overflow: ellipsis;
   padding: 0;
 }
@@ -131,6 +131,8 @@ img{
   max-width: 100%;
   width: 30rem;
 }
+
+
 
 /* Other */
 
