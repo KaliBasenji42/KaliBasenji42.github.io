@@ -8,9 +8,9 @@ const bodyHTML = `
 
 const control = {
   run: true,
-  mspf: 16,
-  interval: null,
-  ticks: 0,
+  startTime: 0, // Start time, to find elapsed time (to find ticks)
+  tickLength: 16, // Length of a tick
+  ticks: 0, // Number of ticks passed
   
   FPSElem: null,
   lastFrame: 0,
