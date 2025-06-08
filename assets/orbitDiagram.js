@@ -1,49 +1,51 @@
 // Ensure These Variables are set before linking:
 /*
-let MaxRScale = 4;
-let MaxDScale = 7;
+let maxRScale = 4; // Max scale for radius (power)
+let maxDScale = 7; // Max scale for distance (power)
+let minRScale = -1; // Min scale for radius (power)
+let minDScale = 0; // Min scale for distance (power)
 
-let rightThres = 10 ** 5;
-let leftThres = 100;
-let increment = rightThres / 2;
+let rightThres = 10 ** 5; // Section width (detection threshold for section nav, right)
+let leftThres = 100; // detection threshold for section nav, left
+let increment = rightThres / 2; // Space moved when changing section
 
-let offset = 400;
+let offset = 400; // How far everything is shifted over
 
-let rScalePower = 3;
+let rScalePower = 3; // Initial radius scale
 let rScale = 10 ** rScalePower;
 
-let dScalePower = 4;
+let dScalePower = 4; // Initial distance scale
 let dScale = 10 ** dScalePower;
 */
 // System Variables
 
-let section = 0;
+let section = 0; // Section number
 
-let maxDist = 0;
+let maxDist = 0; // Max scroll distance for last celestial
 
-const positioning = [];
-const celestials = [];
-const orbitals = [];
+const positioning = []; // Array for storing rendering values
+const celestials = []; // Array for storing a Celestial's element
+const orbitals = []; // Array for storing a Celestial's Orbit's element
 
-let rDisp = document.getElementById('rDisp');
-let dDisp = document.getElementById('dDisp');
+let rDisp = document.getElementById('rDisp'); // Display elem for Radius scale
+let dDisp = document.getElementById('dDisp'); // Display elem for Distance scale
 
-let ODBox = document.getElementsByClassName('ODBox')[0];
+let ODBox = document.getElementsByClassName('ODBox')[0]; // Scroll container
 
-let cropCont = document.createElement('div');
+let cropCont = document.createElement('div'); // Container to create scroll section
 cropCont.style.height = '400px';
 cropCont.style.overflow = 'hidden';
 cropCont.style.position = 'absolute';
 ODBox.appendChild(cropCont);
 
-let rightSign = document.createElement('div');
+let rightSign = document.createElement('div'); // Right section navigation
 rightSign.innerHTML = '<b>Enter Next Section</b>';
 rightSign.className = 'ODBSign';
 rightSign.style.left = '' + (rightThres) + 'px';
 rightSign.style.backgroundImage = 'linear-gradient(to right, rgba(196, 196, 255, 0.75), rgba(0, 0, 0, 0))';
 ODBox.appendChild(rightSign);
 
-let leftSign = document.createElement('div');
+let leftSign = document.createElement('div'); // Left section navigation
 leftSign.innerHTML = '<b>Enter Prev Section</b>';
 leftSign.className = 'ODBSign';
 leftSign.style.textAlign = 'right';
@@ -51,11 +53,11 @@ leftSign.style.backgroundImage = 'linear-gradient(to left, rgba(196, 196, 255, 0
 leftSign.style.display = 'none';
 ODBox.appendChild(leftSign);
 
-output = document.getElementById('output');
+output = document.getElementById('output'); // Elem for displaying position
 
 // Functions
 
-function ODBoxScrollTo(object) {
+function ODBoxScrollTo(object) { // Function for scrolling to a celestial
   
   let pos = Math.max(celestials[object].style.left.slice(0, -2));
   
@@ -65,7 +67,7 @@ function ODBoxScrollTo(object) {
   
   section = Math.min(section, 0);
   
-  render(0);
+  render(false);
   
   pos = Math.max(celestials[object].style.left.slice(0, -2), leftSign.offsetLeft + leftSign.offsetWidth, 0);
   
@@ -77,7 +79,7 @@ function ODBoxScrollTo(object) {
   
 }
 
-function ODBoxScrollToPx(pos, smooth) {
+function ODBoxScrollToPx(pos, smooth) { // Function for scrolling to a pixel position
   
   section = -1 * Math.floor(pos / increment);
   
@@ -102,59 +104,60 @@ function ODBoxScrollToPx(pos, smooth) {
   
 }
 
-function rScaleSub() {
+function rScaleSub() { // Subtract from radius scale (for button)
   
-  if(rScalePower < MaxRScale) {
+  if(rScalePower < maxRScale) {
     
     rScalePower += 1;
     rScale = 10 ** rScalePower;
     
   }
   
-  render(1);
+  render(true);
   
 }
 
-function rScaleAdd() {
+function rScaleAdd() { // Add to radius scale (for button)
   
-  if(rScalePower > 0) {
+  if(rScalePower > minRScale) {
     
     rScalePower -= 1;
     rScale = 10 ** rScalePower;
     
   }
   
-  render(1);
+  render(true);
   
 }
 
-function dScaleSub() {
+function dScaleSub() { // Subtract from distance scale (for button)
   
-  if(dScalePower < MaxDScale) {
+  if(dScalePower < maxDScale) {
     
     dScalePower += 1;
     dScale = 10 ** dScalePower;
     
   }
   
-  render(1);
+  render(true);
   
 }
 
-function dScaleAdd() {
+function dScaleAdd() { // Add to distance scale (for button)
   
-  if(dScalePower > 0) {
+  if(dScalePower > minDScale) {
     
     dScalePower -= 1;
     dScale = 10 ** dScalePower;
     
   }
   
-  render(1);
+  render(true);
   
 }
 
-function render(smooth) {
+function render(smooth) { // Function for setting celestials' styles
+  // Smooth: boolean for wether to animate transition
   
   rDisp.innerHTML = 'Radius px = km / ' + rScale;
   dDisp.innerHTML = 'Distance px = km / ' + dScale;
@@ -200,7 +203,7 @@ function render(smooth) {
                                     height 1s, 
                                     border-radius 1s`;
     
-    if(smooth == 0) {
+    if(smooth == false) {
       
       celestials[i].style.transition = '';
       orbitals[i].style.transition = '';      
@@ -307,7 +310,7 @@ ODBox.addEventListener('scroll', function() {
     
     section += -1;
     
-    render(0);
+    render(false);
     
   }
   
@@ -317,7 +320,7 @@ ODBox.addEventListener('scroll', function() {
     
     section += 1;
     
-    render(0);
+    render(false);
     
   }
   
