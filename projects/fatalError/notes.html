@@ -89,8 +89,10 @@
   </div>
   
   <script>
-    let MaxRScale = 3;
-    let MaxDScale = 6;
+    let maxRScale = 3;
+    let maxDScale = 6;
+    let minRScale = 0;
+    let minDScale = 0;
 
     let rightThres = 10 ** 5 - 100;
     let leftThres = 100;
@@ -111,6 +113,7 @@
     createCelestial(24622, 961000000, 0, 'Glacies', 'rgb(32, 0, 128)', 'rgb(255, 255, 255)', 0.5);
     createCelestial(78997, 254000000, 0, 'Caelum', 'rgb(196, 196, 128)', 'rgb(0, 0, 0)', 0.5);
     createCelestial(2797, 2229520, 254000000, 'Aer', 'rgb(196, 128, 64)', 'rgb(255, 255, 255)', 0.5);
+    createCelestial(1073, 136582974, 0, 'Silex', 'rgb(196, 196, 196)', 'rgb(0, 0, 0)', 0.5);
     createCelestial(6097, 37399500, 0, 'Lutum', 'rgb(0, 128, 64)', 'rgb(255, 255, 255)', 0.5);
     createCelestial(12.1, 12890, 37399500, 'Saxum', 'rgb(64, 64, 64)', 'rgb(255, 255, 255)', 0.5);
     createCelestial(8028, 0, 0, 'Ignus', 'rgb(255, 228, 196)', 'rgb(0, 0, 0)', 0.5);
@@ -126,6 +129,9 @@
   
   <p>
     <a href="https://docs.google.com/spreadsheets/d/1NjrHUIKWM7LbEv4aLEjfMv9sYvSKuoLdP8VC8jJyrK4/edit?usp=sharing" target="_blank">Data calculated from this sheet.</a>
+  </p>
+  <p>
+    My sheet does not use anything from this one, however I would like to shout out: <a href="https://docs.google.com/spreadsheets/d/1NUcTIQc9f111rP2X7KaX2VQrkNQrr0nW-s1aI9gC324/edit?gid=9#gid=9" target="_blank">planet calculator (Revision 3.0)</a>
   </p>
   
   <p>Ignus:</p>
@@ -166,6 +172,15 @@
     <li>Radius: 12.1 km</li>
     <li>Orbital Distance: 11365 to 14415 km</li>
     <li>Orbital Period: 4.36 Hours</li>
+  </ul>
+  
+  <p>Silex:</p>
+  <ul>
+    <li>Dwarf Planet</li>
+    <li>Mass: 1.79 * 10<sup>21</sup> kg</li>
+    <li>Radius: 1073 km</li>
+    <li>Orbital Distance: 0.8675 to 0.9585 AU</li>
+    <li>Orbital Period: 300.4 Earth Days, 319 Lutum Days</li>
   </ul>
   
   <p>Caelum:</p>
