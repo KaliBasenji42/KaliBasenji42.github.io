@@ -14,6 +14,7 @@ li {font-size: 1.125rem;}
 /* Backing */
 
 .body {
+  color: rgb(0, 0, 0);
   background-image: linear-gradient(30deg, rgb(192, 255, 224), rgb(224, 255, 192));
   background-color: rgb(192, 255, 224); 
   border-radius: 1em; 
