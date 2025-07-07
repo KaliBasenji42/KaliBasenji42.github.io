@@ -112,8 +112,10 @@ img{
 
 .DCIso {
   border: 4px solid rgb(240, 240 , 240);
-  width: 3rem !important;
-  height: 3rem !important;
+  min-width: 3rem;
+  min-height: 3rem;
+  width: 3rem;
+  height: 3rem;
   white-space: nowrap;
   overflow: visible;
   text-overflow: ellipsis;
