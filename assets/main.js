@@ -106,8 +106,8 @@ body {
   color: rgb(0, 0, 0);
   background-color: rgb(224, 224, 224);
   background-image: 
-    linear-gradient(135deg, rgb(224, 224, 224) 60%, rgb(240, 240, 224), rgb(240, 224, 224)),
-    linear-gradient(90deg, rgb(224, 224, 224) 60%, rgb(240, 240, 224), rgb(240, 224, 224));
+    linear-gradient(135deg, rgb(224, 224, 224) 60%, rgb(232, 232, 224), rgb(232, 224, 224)),
+    linear-gradient(90deg, rgb(224, 224, 224) 60%, rgb(232, 232, 224), rgb(232, 224, 224));
 }
 
 table {
