@@ -68,6 +68,19 @@
   
   <h1>Data - localStorage</h1>
   
+  <p>
+    This is data stored on your local browser for this domain. This is not data saved on external servers. Chromium and Firefox based browsers (and most others) reserve 5 MBs (5,242,880 Bytes) of localStorage for each domain. My website assumes 5 MB, so this may be inaccurate depending on your browser.
+  </p>
+  
+  <p>
+    All data is shown in the table (you could export it by copying it). And to import data you would need to open the console (in inspector) and run:
+  </p>
+  <pre style="font-size: 1.5em;">localStorage.setItem(<i>key</i>, <i>value</i>);</pre>
+  
+  <p>
+    More info here: <a href="https://www.w3schools.com/jsref/prop_win_localstorage.asp" target="_blank">Window localStorage Property | W3Schools.com</a>
+  </p>
+  
   <span>
     <button class="dataBttn" onclick="outputData(getUsage())" title="Refresh">↺</button>
     <button class="dataBttn" onclick="clearData()" title="Clear">🗑️</button>
