@@ -93,6 +93,7 @@ function ZNtoName(Z, N) {
 // Decay Functions
 
 function listDecayModes(all) {
+  // all: Log all
   
   let list = new Set();
   
@@ -132,6 +133,8 @@ function decayChange(mode) {
 }
 
 function createDecayChain(isos, tbl) {
+  // isos: All isotopes referenced (set)
+  // tbl: Table element embedded in container (rendering elem)
   
   // Reset
   
@@ -168,12 +171,12 @@ function createDecayChain(isos, tbl) {
   
   // Gen. Tbl
   
-  for(let y = 0; y < height + 1; y++) {
+  for(let y = 0; y < height + 1; y++) { // Each row
     
     let tblRow = document.createElement('tr');
     tbl.appendChild(tblRow);
     
-    for(let x = 0; x < width + 1; x++) {
+    for(let x = 0; x < width + 1; x++) { // Each column/iso
       let tblDat = document.createElement('td');
       tblDat.id = 'DCIso:' + x + ',' + y;
       decay['parents'][tblDat.id] = [];
@@ -183,7 +186,7 @@ function createDecayChain(isos, tbl) {
     
   }
   
-  console.log(decay['parents']);
+  //console.log(decay['parents']);
   
   // Iso Loop
   
@@ -197,21 +200,21 @@ function createDecayChain(isos, tbl) {
     let x = maxX - N;
     let y = maxY - Z;
     
-    let modes = {};
+    let modes = {}; // Mode for...
     if(iso['levels'][0].hasOwnProperty('decayModes')) {
       modes = iso['levels'][0]['decayModes']['observed'];
       
-      for(let mode in modes) {
+      for(let mode in modes) { // ...getting parents and daughters
         let decayC = decayChange(modes[mode]['mode']);
         
         let child = 'DCIso:' + (x - decayC[1]) + ',' + (y - decayC[0]);
-        console.log(child);
+        //console.log(child);
         
         decay['parents'][child].push('DCIso:' + x + ',' + y);
       }
     }
     
-    let halflife = '?';
+    let halflife = '?'; // Halflife
     if(iso['levels'][0].hasOwnProperty('halflife')) {
       halflife = iso['levels'][0]['halflife']['value'] + iso['levels'][0]['halflife']['unit'];
     }
@@ -225,7 +228,7 @@ function createDecayChain(isos, tbl) {
       halflife = valStr + iso['levels'][0]['halflife']['unit'];
     }
     
-    let red = ((x % 8) / 8) * 255;
+    let red = ((x % 8) / 8) * 255; // Color
     let blue = ((y % 8) / 8) * 255;
     let green = 255 - blue;
     if(width == 0) red = 128;
@@ -239,6 +242,9 @@ function createDecayChain(isos, tbl) {
     // Create iso elem
     
     let elem = document.getElementById('DCIso:' + x + ',' + y);
+    
+    elem.Z = Z;
+    elem.N = N;
     
     elem.style.backgroundColor = color;
     elem.style.cursor = 'pointer';
@@ -254,12 +260,22 @@ function createDecayChain(isos, tbl) {
     
     elem.addEventListener('click', () => {
       
+      // Grab info table elems
+      
+      let tblSelected = document.querySelector('#selected.tbl'); // Self
+      let tblDaughters = document.querySelector('#daughters.tbl'); // Daughters
+      let tblParents = document.querySelector('#parents.tbl'); // Parents
+      
       // Reset
       
       for(let DCIso of document.getElementsByClassName('DCIso')) {
         DCIso.style.borderColor = 'rgb(240, 240 , 240)';
         DCIso.title = '';
       }
+      
+      tblSelected.innerHTML = '<th>Selected</th>';
+      tblDaughters.innerHTML = '<th>Daughters</th><th>Info</th>';
+      tblParents.innerHTML = '<th>Parents</th>';
       
       // If already selected
       
@@ -271,7 +287,7 @@ function createDecayChain(isos, tbl) {
       // Get elem
       
       decay['selectedIso'] = elem.id;
-      elemTitle = 'Selcected: ';
+      elemTitle = 'Selected: ';
       
       // Parents
       
@@ -280,6 +296,11 @@ function createDecayChain(isos, tbl) {
         let elemParent = document.getElementById(parent);
         elemParent.style.borderColor = 'rgb(0, 0, 240)';
         elemParent.title = 'Parent';
+        
+        let Z = elemParent.Z;
+        let N = elemParent.N;
+        
+        tblParents.innerHTML += '<tr><td>' + ZNtoName(Z, N) + ': ' + Z + 'z, ' + N + 'n</td></tr>';
         
       }
       
@@ -294,12 +315,19 @@ function createDecayChain(isos, tbl) {
         
         let elemDaughter = document.getElementById('DCIso:' + dx + ',' + dy);
         
-        elemDaughter.style.borderColor = 'rgb(0, 240, 0)';
-        elemDaughter.title = 'Daughter: ' + modes[mode]['mode'] + 
+        let modeInfo = modes[mode]['mode'] + 
           ' (' + decayC[0] + 'z, ' + decayC[1] + 'n): ' + 
-          modes[mode]['value'] + '%';
+          modes[mode]['value'] + '%'
+        
+        elemDaughter.style.borderColor = 'rgb(0, 240, 0)';
+        elemDaughter.title = 'Daughter: ' + modeInfo;
         
         elemTitle += modes[mode]['mode'] + ', ';
+        
+        let Z = elemDaughter.Z;
+        let N = elemDaughter.N;
+        
+        tblDaughters.innerHTML += '<tr><td>' + ZNtoName(Z, N) + ': ' + Z + 'z, ' + N + 'n</td><td>' + modeInfo + '</td></tr>';
         
       }
       
@@ -307,6 +335,11 @@ function createDecayChain(isos, tbl) {
       
       elem.style.borderColor = 'rgb(240, 0, 0)';
       elem.title = elemTitle.slice(0, -2);
+
+      let Z = elem.Z;
+      let N = elem.N;
+      
+      tblSelected.innerHTML += '<tr><td>' + ZNtoName(Z, N) + ': ' + Z + 'z, ' + N + 'n' + elem.title.slice('Selected'.length) + '</td></tr>';
       
     });
     

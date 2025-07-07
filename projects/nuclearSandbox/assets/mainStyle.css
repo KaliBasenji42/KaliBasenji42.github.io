@@ -108,7 +108,6 @@ img{
   text-align: center;
   background-color: rgb(240, 240, 240);
   table-layout: fixed;
-  width: 100%; /* Or set a fixed width like 60rem */
 }
 
 .DCIso {
@@ -132,7 +131,10 @@ img{
   width: 30rem;
 }
 
-
+.info > tbody > tr > td {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 
 /* Other */
 

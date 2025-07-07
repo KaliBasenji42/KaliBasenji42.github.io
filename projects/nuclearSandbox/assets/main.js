@@ -99,46 +99,46 @@ document.addEventListener('DOMContentLoaded', function() {
     
     event.preventDefault();
     
-    let isoStr = document.getElementById('DCIsoInput').value;
-    let parent = NuDat[isoStr];
+    let isoStr = document.getElementById('DCIsoInput').value; // Grab input isotope
+    let parent = NuDat[isoStr]; // Parent = input isotope in NuDat
     
-    if(parent === undefined) return;
+    if(parent === undefined) return; // Return if input is not in NuDat
     
-    let DCTbl = document.getElementById('DCTbl');
-    let isosCountElem = document.getElementById('DCIsosCount');
+    let DCTbl = document.getElementById('DCTbl'); // Grab rendering table
+    let isosCountElem = document.getElementById('DCIsosCount'); // Grab isotope count elem
     
-    let isos = new Set();
-    let newIsos = new Set([parent]);
+    let isos = new Set(); // Init isos
+    let newIsos = new Set([parent]); // init newIsos
     
-    while(newIsos.size > 0) {
+    while(newIsos.size > 0) { // While newIsos is not empty (to get daughters all the way down)
       
-      let tempIsos = new Set(newIsos);
+      let tempIsos = new Set(newIsos); // Temporary set
       
-      isos = isos.union(newIsos);
-      newIsos.clear();
+      isos = isos.union(newIsos); // isos = isos + newIsos (Union)
+      newIsos.clear(); // Clear newIsos
       
-      isosCountElem.innerHTML = isos.size;
+      isosCountElem.innerHTML = isos.size; // Update count
       
-      for(const iso of tempIsos) {
+      for(const iso of tempIsos) { // Each iso in tempIsos
         
-        let modes = {};
+        let modes = {}; // init modes
         
         if(iso['levels'][0].hasOwnProperty('decayModes')) {
           
-          modes = iso['levels'][0]['decayModes']['observed'];
+          modes = iso['levels'][0]['decayModes']['observed']; // Set modes to iso's modes
           
         }
         
-        for(const mode in modes){
+        for(const mode in modes){ // For each decay mode
           
-          let Z = iso['z'];
-          let N = iso['n'];
+          let Z = iso['z']; // Set Z (# of protons)
+          let N = iso['n']; // Set N (# of neutrons)
           
-          let change = decayChange(modes[mode]['mode']);
+          let change = decayChange(modes[mode]['mode']); // Get change from mode
           
-          if(!(change[0] == 0 && change[1] == 0)) {
-            let daughter = NuDat[ZNtoName(Z + change[0], N + change[1])];
-            newIsos.add(daughter);
+          if(!(change[0] == 0 && change[1] == 0)) { // If there was change
+            let daughter = NuDat[ZNtoName(Z + change[0], N + change[1])]; // Get daughter
+            newIsos.add(daughter); // Add daughter to newIsos
             
             //console.log(iso['name'] + ' ' + modes[mode]['mode'] + ' -> ' + daughter['name']);
           }
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
     
-    createDecayChain(isos, DCTbl);
+    createDecayChain(isos, DCTbl); // Create chain
     
   });
   
