@@ -107,8 +107,7 @@ function printFormat() {
   
   for (i = 0; i < links.length; i++) {
     
-    links[i].style.color = "rgb(0, 0, 0)";
-    links[i].style.textDecoration = "none";
+    links[i].style.color = "rgb(0, 0, 238)";
     
   }
   
