@@ -170,6 +170,85 @@ updateTheme();
 
 setTimeout(nextTheme, 10, 0);
 
+// Restart Warning
+
+let restartTimeMS;
+let restartWarningElem;
+let restartWarningCont
+let restartWarningMinButton;
+let restartWarningShow = false;
+
+function updateRestartWarning() {
+
+  let time = new Date(restartTimeMS).toString();
+  
+  let secondsTill = Math.floor((restartTimeMS - Date.now()) / 1000);
+  let hours = Math.floor(secondsTill / (3600));
+  secondsTill += - (hours * 3600)
+  let minutes = Math.floor((secondsTill) / 60);
+  secondsTill += - (minutes * 60);
+  let seconds = Math.floor(secondsTill);
+  
+  let timeTill = '' + hours + ':';
+  if(minutes < 10) timeTill += '0';
+  timeTill += minutes + ':';
+  if(seconds < 10) timeTill += '0';
+  timeTill += seconds;
+  
+  restartWarningCont.innerHTML = 'Server will restart ' + time;
+  restartWarningCont.innerHTML += ' (in ' + timeTill + ')';
+  
+}
+
+function restartWarningToggleShow() {
+  
+  restartWarningShow = !restartWarningShow;
+  
+  if(restartWarningShow) {
+    restartWarningCont.style.display = 'inline';
+    restartWarningMinButton.innerHTML = '<';
+  }
+  else {
+    restartWarningCont.style.display = 'none';
+    restartWarningMinButton.innerHTML = '❗>';
+  }
+  
+}
+
+async function restartWarning() {
+  
+  let file = await fetch('../../restartT.txt');
+  
+  if(!file.ok) return // Return if error
+  
+  let text = await file.text();
+  //console.log(text);
+  
+  if(text == '') return // Return if empty
+  
+  restartTimeMS = parseInt(text);
+  //console.log(timeMS);
+  
+  restartWarningElem = document.createElement('div');
+  document.getElementsByTagName('body')[0].appendChild(restartWarningElem);
+  restartWarningElem.className = 'restartWarn';
+  
+  restartWarningCont = document.createElement('span');
+  restartWarningElem.appendChild(restartWarningCont);
+  restartWarningCont.style.display = 'none';
+  
+  restartWarningMinButton = document.createElement('button');
+  restartWarningElem.appendChild(restartWarningMinButton);
+  restartWarningMinButton.onclick = restartWarningToggleShow;
+  restartWarningMinButton.innerHTML = '❗>';
+  
+  updateRestartWarning();
+  let updateRestartWarningInt = setInterval(updateRestartWarning, 100);
+  
+}
+
+restartWarning();
+
 // :P
 
 document.addEventListener('keypress', function() {

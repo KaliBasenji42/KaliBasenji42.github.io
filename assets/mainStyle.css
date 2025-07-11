@@ -67,6 +67,19 @@ footer > div {
   font-size: 1.5rem;
 }
 
+/* Restart Warning */
+
+.restartWarn {
+  position: fixed;
+  top: 0;
+  background-color: rgb(255, 192, 0);
+  color: rgb(0, 0, 0);
+  padding: 0.5rem;
+  text-align: center;
+  left: 0;
+  top: 2rem;
+}
+
 /* Navigation */
 
 .navigation {text-align: center;}
