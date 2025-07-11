@@ -224,7 +224,7 @@ async function restartWarning() {
   let text = await file.text();
   //console.log(text);
   
-  if(text == '') return // Return if empty
+  if(text[0] == '!') return // Return if empty
   
   restartTimeMS = parseInt(text);
   //console.log(timeMS);
