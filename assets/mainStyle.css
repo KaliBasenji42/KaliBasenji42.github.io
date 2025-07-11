@@ -70,14 +70,25 @@ footer > div {
 /* Restart Warning */
 
 .restartWarn {
-  position: fixed;
-  top: 0;
   background-color: rgb(255, 192, 0);
   color: rgb(0, 0, 0);
-  padding: 0.5rem;
-  text-align: center;
+  
+  position: fixed;
   left: 0;
   top: 2rem;
+  
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.restartWarn > div {
+  display: inline-block;
+  
+  max-width: 0;
+  transition: max-width 1s;
+  
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Navigation */

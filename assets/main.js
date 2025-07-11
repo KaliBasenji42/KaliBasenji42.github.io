@@ -205,11 +205,11 @@ function restartWarningToggleShow() {
   restartWarningShow = !restartWarningShow;
   
   if(restartWarningShow) {
-    restartWarningCont.style.display = 'inline';
+    restartWarningCont.style.maxWidth = '100rem';
     restartWarningMinButton.innerHTML = '<';
   }
   else {
-    restartWarningCont.style.display = 'none';
+    restartWarningCont.style.maxWidth = '0rem';
     restartWarningMinButton.innerHTML = '❗>';
   }
   
@@ -233,9 +233,8 @@ async function restartWarning() {
   document.getElementsByTagName('body')[0].appendChild(restartWarningElem);
   restartWarningElem.className = 'restartWarn';
   
-  restartWarningCont = document.createElement('span');
+  restartWarningCont = document.createElement('div');
   restartWarningElem.appendChild(restartWarningCont);
-  restartWarningCont.style.display = 'none';
   
   restartWarningMinButton = document.createElement('button');
   restartWarningElem.appendChild(restartWarningMinButton);
