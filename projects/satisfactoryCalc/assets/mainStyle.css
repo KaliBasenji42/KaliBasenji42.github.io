@@ -1,0 +1,40 @@
+/* Elements */
+
+body {
+  margin-top: 4rem;
+}
+
+/* Tool Bar */
+
+#toolbar {
+  background-color: rgb(240, 240, 240);
+  
+  display: flex;
+  flex-direction: row;
+  
+  position: fixed;
+  left: 0;
+  top: 0;
+  
+  height: 3rem;
+  width: 100vw;
+}
+
+#toolbar > div {
+  height: 3rem;
+  width: 3rem;
+  
+  cursor: pointer;
+}
+
+#toolbar > div:hover {
+  background-color: rgb(192, 192, 192);
+  
+  height: 3rem;
+  width: 3rem;
+}
+
+#toolbar > div > img {
+  height: 3rem;
+  width: 3rem;
+}
