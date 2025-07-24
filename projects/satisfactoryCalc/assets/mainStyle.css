@@ -20,20 +20,33 @@ body {
   width: 100vw;
 }
 
-#toolbar > div {
+#toolbar > * {
   height: 3rem;
   width: 3rem;
   cursor: pointer;
 }
 
-#toolbar > div:hover {
+#toolbar > *:hover {
   background-color: rgb(192, 192, 192);
   
   height: 3rem;
   width: 3rem;
 }
 
-#toolbar > div > img {
+#toolbar > * > img {
   height: 3rem;
   width: 3rem;
+}
+
+/* Menus */
+
+#menuGreyout {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  background-color: rgba(64, 64, 64, 0.5);
+  z-index: 1;
 }

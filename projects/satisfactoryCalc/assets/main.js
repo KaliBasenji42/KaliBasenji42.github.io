@@ -6,9 +6,11 @@ const headHTML = `
 const bodyHTML = `
   `;
 
+let currentMenu = 'none';
+
 let settings = {
   'Max Calculation Iterations': 100,
-  'Number Input Digits': 3, 
+  'Number Input Digits': 3,
 };
 
 let items = { // Default item data
@@ -216,25 +218,125 @@ let items = { // Default item data
     }
   },
   'Biomass': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
-    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
     }
   },
-  'Iron Ingot'
-  'Copper Ingot'
-  'Caterium Ingot'
-  'Steel Ingot'
-  'Concrete'
-  'Silica'
-  'Quartz Crystal'
-  'Copper Powder'
-  'Compacted Coal'
-  'Aluminum Ingot'
-  'Aluminum Scrap'
-  'Diamonds'
-  'Reanimated SAM'
-  'Ficsite Ingot'
+  'Iron Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
+      'Basic': {out: 50, in: [{item: 'Iron Ore', amount: 25}, {item: 'Limestone', amount: 40}], bypro: [], building: 'Foundry'},
+      'Alloy': {out: 75, in: [{item: 'Iron Ore', amount: 40}, {item: 'Copper Ore', amount: 10}], bypro: [], building: 'Foundry'},
+      'Leached': {out: 100, in: [{item: 'Iron Ore', amount: 50}, {item: 'Sulfuric Acid', amount: 10}], bypro: [], building: 'Refinery'},
+      'Pure': {out: 65, in: [{item: 'Iron Ore', amount: 35}, {item: 'Water', amount: 20}], bypro: [], building: 'Refinery'},
+    }
+  },
+  'Copper Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
+      'Alloy': {out: 100, in: [{item: 'Copper Ore', amount: 50}, {item: 'Iron Ore', amount: 50}], bypro: [], building: 'Foundry'},
+      'Leached': {out: 110, in: [{item: 'Copper Ore', amount: 45}, {item: 'Sulfuric Acid', amount: 25}], bypro: [], building: 'Refinery'},
+      'Pure': {out: 37.5, in: [{item: 'Copper Ore', amount: 15}, {item: 'Water', amount: 20}], bypro: [], building: 'Refinery'},
+      'Tempered': {out: 60, in: [{item: 'Copper Ore', amount: 25}, {item: 'Petroleum Coke', amount: 40}], bypro: [], building: 'Foundry'},
+    }
+  },
+  'Caterium Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 42, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 15, in: [{item: 'Caterium Ore', amount: 45}], bypro: [], building: 'Smelter'},
+      'Leached': {out: 36, in: [{item: 'Caterium Ore', amount: 54}, {item: 'Sulfuric Acid', amount: 30}], bypro: [], building: 'Refinery'},
+      'Pure': {out: 12, in: [{item: 'Caterium Ore', amount: 24}, {item: 'Water', amount: 24}], bypro: [], building: 'Refinery'},
+      'Tempered': {out: 22.5, in: [{item: 'Caterium Ore', amount: 45}, {item: 'Petroleum Coke', amount: 15}], bypro: [], building: 'Foundry'},
+    }
+  },
+  'Steel Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 45, in: [{item: 'Iron Ore', amount: 45}, {item: 'Coal', amount: 45}], bypro: [], building: 'Foundry'},
+      'Coke': {out: 100, in: [{item: 'Iron Ore', amount: 75}, {item: 'Petroleum Coke', amount: 75}], bypro: [], building: 'Foundry'},
+      'Compacted': {out: 10, in: [{item: 'Iron Ore', amount: 5}, {item: 'Compacted Coal', amount: 2.5}], bypro: [], building: 'Foundry'},
+      'Solid': {out: 60, in: [{item: 'Iron Ingot', amount: 40}, {item: 'Coal', amount: 40}], bypro: [], building: 'Foundry'},
+    }
+  },
+  'Concrete': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 15, in: [{item: 'Limestone', amount: 45}], bypro: [], building: 'Constructor'},
+      'Fine': {out: 50, in: [{item: 'Limestone', amount: 60}, {item: 'Silica', amount: 15}], bypro: [], building: 'Assembler'},
+      'Rubber': {out: 90, in: [{item: 'Limestone', amount: 100}, {item: 'Rubber', amount: 20}], bypro: [], building: 'Assembler'},
+      'Wet': {out: 80, in: [{item: 'Limestone', amount: 120}, {item: 'Water', amount: 100}], bypro: [], building: 'Refinery'},
+    }
+  },
+  'Silica': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 20, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 37.5, in: [{item: 'Raw Quartz', amount: 22.5}], bypro: [], building: 'Constructor'},
+      'Cheap': {out: 52.5, in: [{item: 'Raw Quartz', amount: 22.5}, {item: 'Limestone', amount: 37.5}], bypro: [], building: 'Assembler'},
+      'Distilled': {out: 270, in: [{item: 'Dissolved Silica', amount: 120}, {item: 'Limestone', amount: 50}, {item: 'Water', amount: 100}], bypro: [{item: 'Water', amount: 80}], building: 'Blender'},
+    }
+  },
+  'Quartz Crystal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 50, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 22.5, in: [{item: 'Raw Quartz', amount: 37.5}], bypro: [], building: 'Constructor'},
+      'Fused': {out: 54, in: [{item: 'Raw Quartz', amount: 75}, {item: 'Coal', amount: 36}], bypro: [], building: 'Foundry'},
+      'Pure': {out: 52.5, in: [{item: 'Raw Quartz', amount: 67.5}, {item: 'Water', amount: 37.5}], bypro: [], building: 'Refinery'},
+      'Purification': {out: 75, in: [{item: 'Raw Quartz', amount: 120}, {item: 'Nitric Acid', amount: 10}], bypro: [{item: 'Dissolved Silica', amount: 60}], building: 'Refinery'},
+    }
+  },
+  'Copper Powder': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 72, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 50, in: [{item: 'Copper Ingot', amount: 300}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Compacted Coal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 28, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 25, in: [{item: 'Coal', amount: 25}, {item: 'Sulfur', amount: 25}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Aluminum Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 131, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 60, in: [{item: 'Aluminum Scrap', amount: 90}, {item: 'Silica', amount: 75}], bypro: [], building: 'Foundry'},
+      'Pure': {out: 30, in: [{item: 'Aluminum Scrap', amount: 60}], bypro: [], building: 'Smelter'},
+    }
+  },
+  'Aluminum Scrap': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 27, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 360, in: [{item: 'Alumina Solution', amount: 240}, {item: 'Coal', amount: 120}], bypro: [{item: 'Water', amount: 120}], building: 'Refinery'},
+      'Electrode': {out: 300, in: [{item: 'Alumina Solution', amount: 180}, {item: 'Petroleum Coke', amount: 60}], bypro: [{item: 'Water', amount: 105}], building: 'Refinery'},
+      'Instant': {out: 300, in: [{item: 'Bauxite', amount: 150}, {item: 'Coal', amount: 100}, {item: 'Sulfuric Acid', amount: 50}, {item: 'Water', amount: 60}], bypro: [{item: 'Water', amount: 50}], building: 'Blender'},
+    }
+  },
+  'Diamonds': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 240, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 30, in: [{item: 'Coal', amount: 600}], bypro: [], building: 'Particle Accelerator 1'},
+      'Cloudy': {out: 20, in: [{item: 'Coal', amount: 240}, {item: 'Limestone', amount: 480}], bypro: [], building: 'Particle Accelerator 1'},
+      'Oil-Based': {out: 40, in: [{item: 'Oil', amount: 200}], bypro: [], building: 'Particle Accelerator 1'},
+      'Petroleum': {out: 30, in: [{item: 'Petroleum Coke', amount: 720}], bypro: [], building: 'Particle Accelerator 1'},
+      'Pink': {out: 15, in: [{item: 'Coal', amount: 120}, {Item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Converter'},
+      'Turbo': {out: 60, in: [{item: 'Coal', amount: 600}, {item: 'Packaged Turbofuel'}], bypro: [], building: 'Particle Accelerator 1'},
+    }
+  },
+  'Reanimated SAM': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 30, in: [{item: 'SAM', amount: 120}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Ficsite Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Default', recipes: {
+      'Default': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
+    }
+  },
   'Iron Plate'
   'Iron Rod'
   'Screw'
