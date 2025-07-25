@@ -332,9 +332,11 @@ let items = { // Default item data
     }
   },
   'Ficsite Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
-    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1936, 
     recipe: 'Default', recipes: {
-      'Default': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
+      'Aluminum': {out: 30, in: [{item: 'Reanimated SAM', amount: 60}, {item: 'Aluminum Ingot', 120}], bypro: [], building: 'Converter'},
+      'Caterium': {out: 15, in: [{item: 'Reanimated SAM', amount: 45}, {item: 'Caterium Ingot', 60}], bypro: [], building: 'Converter'},
+      'Aluminum': {out: 10, in: [{item: 'Reanimated SAM', amount: 40}, {item: 'Aluminum Ingot', 240}], bypro: [], building: 'Converter'},
     }
   },
   'Iron Plate'
