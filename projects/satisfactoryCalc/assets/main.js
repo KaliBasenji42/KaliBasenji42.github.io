@@ -276,6 +276,7 @@ let items = { // Default item data
       'Silica': {out: 37.5, in: [{item: 'Raw Quartz', amount: 22.5}], bypro: [], building: 'Constructor'},
       'Cheap Silica': {out: 52.5, in: [{item: 'Raw Quartz', amount: 22.5}, {item: 'Limestone', amount: 37.5}], bypro: [], building: 'Assembler'},
       'Distilled Silica': {out: 270, in: [{item: 'Dissolved Silica', amount: 120}, {item: 'Limestone', amount: 50}, {item: 'Water', amount: 100}], bypro: [{item: 'Water', amount: 80}], building: 'Blender'},
+      'Alumina Solution': {out: 50, in: [{item: 'Bauxite', amount: 120}, {item: 'Water', amount: 180}], bypro: [{item: 'Alumina Solution', amount: 120}], building: 'Refinery '},
     }
   },
   'Quartz Crystal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
@@ -321,7 +322,7 @@ let items = { // Default item data
       'Cloudy Diamonds': {out: 20, in: [{item: 'Coal', amount: 240}, {item: 'Limestone', amount: 480}], bypro: [], building: 'Particle Accelerator 1'},
       'Oil-Based Diamonds': {out: 40, in: [{item: 'Oil', amount: 200}], bypro: [], building: 'Particle Accelerator 1'},
       'Petroleum Diamonds': {out: 30, in: [{item: 'Petroleum Coke', amount: 720}], bypro: [], building: 'Particle Accelerator 1'},
-      'Pink Diamonds': {out: 15, in: [{item: 'Coal', amount: 120}, {Item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Converter'},
+      'Pink Diamonds': {out: 15, in: [{item: 'Coal', amount: 120}, {item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Converter'},
       'Turbo Diamonds': {out: 60, in: [{item: 'Coal', amount: 600}, {item: 'Packaged Turbofuel'}], bypro: [], building: 'Particle Accelerator 1'},
     }
   },
@@ -469,7 +470,7 @@ let items = { // Default item data
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 465, 
     recipe: 'Battery', recipes: {
       'Battery': {out: 20, in: [{item: 'Sulfuric Acid', amount: 50}, {item: 'Alumina Solution', amount: 40}, {item: 'Aluminum Casing', amount: 20}], bypro: [{item: 'Water', amount: 30}], building: 'Blender'},
-      'Classic Battery': {out: 30, in: [{item: 'Sulfur', amount: 45}, {item: 'Alclad Aluminum Sheet', amount: 52.5}, {item: 'Plastic', amount: 60}, {item: 'Wire', amount: 90}], bypro: [], building: 'Manufacture'},
+      'Classic Battery': {out: 30, in: [{item: 'Sulfur', amount: 45}, {item: 'Alclad Aluminum Sheet', amount: 52.5}, {item: 'Plastic', amount: 60}, {item: 'Wire', amount: 90}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
@@ -477,7 +478,7 @@ let items = { // Default item data
     recipe: 'Motor', recipes: {
       'Motor': {out: 5, in: [{item: 'Rotor', amount: 10}, {item: 'Stator', amount: 10}], bypro: [], building: 'Assembler'},
       'Electric Motor': {out: 7.5, in: [{item: 'Rotor', amount: 7.5}, {item: 'Electromagnetic Control Rod', amount: 3.75}], bypro: [], building: 'Assembler'},
-      'Rigor Motor': {out: 7.5, in: [{item: 'Rotor', amount: 3.75}, {item: 'Stator', amount: 3.75}, {item: 'Crystal Oscillator', item: 1.25}], bypro: [], building: 'Manufacture'},
+      'Rigor Motor': {out: 7.5, in: [{item: 'Rotor', amount: 3.75}, {item: 'Stator', amount: 3.75}, {item: 'Crystal Oscillator', item: 1.25}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Heat Sink': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
@@ -497,9 +498,9 @@ let items = { // Default item data
   'Turbo Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 240496, 
     recipe: 'Turbo Motor', recipes: {
-      'Turbo Motor': {out: 1.875, in: [{item: 'Cooling Device', amount: 7.5}, {item: 'Radio Control Unit', amount: 3.75}, {item: 'Motor', amount: 7.5}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacture'},
-      'Turbo Electric Motor': {out: 2.8125, in: [{item: 'Radio Control Unit', amount: 8.4375}, {item: 'Motor', amount: 6.5625}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacture'},
-      'Turbo Pressure Motor': {out: 3.75, in: [{item: 'Motor', amount: 7.5}, {item: 'Pressure Conversion Cube', amount: 1.875}, {item: 'Packaged Nitrogen Gas', amount: 45}, {item: 'Stator', amount: 15}], bypro: [], building: 'Manufacture'},
+      'Turbo Motor': {out: 1.875, in: [{item: 'Cooling Device', amount: 7.5}, {item: 'Radio Control Unit', amount: 3.75}, {item: 'Motor', amount: 7.5}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
+      'Turbo Electric Motor': {out: 2.8125, in: [{item: 'Radio Control Unit', amount: 8.4375}, {item: 'Motor', amount: 6.5625}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
+      'Turbo Pressure Motor': {out: 3.75, in: [{item: 'Motor', amount: 7.5}, {item: 'Pressure Conversion Cube', amount: 1.875}, {item: 'Packaged Nitrogen Gas', amount: 45}, {item: 'Stator', amount: 15}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Wire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
@@ -546,39 +547,39 @@ let items = { // Default item data
   'High-Speed Connector': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3776, 
     recipe: 'High-Speed Connector', recipes: {
-      'High-Speed Connector': {out: 3.75, in: [{item: 'Quickwire', amount: 210}, {item: 'Cable', amount: 37.5}, {item: 'Circuit Board', item: 3.75}], bypro: [], building: 'Manufacture'},
-      'Silicon High-Speed Connector': {out: 3, in: [{item: 'Quickwire', amount: 90}, {item: 'Circuit Board', item: 3}, {item: 'Silica', amount: 37.5}], bypro: [], building: 'Manufacture'},
+      'High-Speed Connector': {out: 3.75, in: [{item: 'Quickwire', amount: 210}, {item: 'Cable', amount: 37.5}, {item: 'Circuit Board', item: 3.75}], bypro: [], building: 'Manufacturer'},
+      'Silicon High-Speed Connector': {out: 3, in: [{item: 'Quickwire', amount: 90}, {item: 'Circuit Board', item: 3}, {item: 'Silica', amount: 37.5}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Crystal Oscillator': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3072, 
     recipe: 'Crystal Oscillator', recipes: {
-      'Crystal Oscillator': {out: 1, in: [{item: 'Quartz Crystal', amount: 18}, {item: 'Cable', amount: 14}, {item: 'Reinforced Iron Plate', amount: 2.5}], bypro: [], building: 'Manufacture'},
-      'Insulated Crystal Oscillator': {out: 1.875, in: [{item: 'Quartz Crystal', amount: 18.75}, {item: 'Rubber', amount: 13.125}, {item: 'AI Control Unit', amount: 1.875}], bypro: [], building: 'Manufacture'},
+      'Crystal Oscillator': {out: 1, in: [{item: 'Quartz Crystal', amount: 18}, {item: 'Cable', amount: 14}, {item: 'Reinforced Iron Plate', amount: 2.5}], bypro: [], building: 'Manufacturer'},
+      'Insulated Crystal Oscillator': {out: 1.875, in: [{item: 'Quartz Crystal', amount: 18.75}, {item: 'Rubber', amount: 13.125}, {item: 'AI Control Unit', amount: 1.875}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Computer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8352, 
     recipe: 'Computer', recipes: {
-      'Computer': {out: 2.5, in: [{item: 'Circuit Board', amount: 10}, {item: 'Cable', amount: 20}, {item: 'Plastic', amount: 40}], bypro: [], building: 'Manufacture'},
-      'Caterium Computer': {out: 3.75, in: [{item: 'Circuit Board', amount: 15}, {item: 'Quickwire', amount: 52.5}, {item: 'Rubber', amount: 22.5}], bypro: [], building: 'Manufacture'},
+      'Computer': {out: 2.5, in: [{item: 'Circuit Board', amount: 10}, {item: 'Cable', amount: 20}, {item: 'Plastic', amount: 40}], bypro: [], building: 'Manufacturer'},
+      'Caterium Computer': {out: 3.75, in: [{item: 'Circuit Board', amount: 15}, {item: 'Quickwire', amount: 52.5}, {item: 'Rubber', amount: 22.5}], bypro: [], building: 'Manufacturer'},
       'Crystal Computer': {out: (10 / 3), in: [{item: 'Circuit Board', amount: 5}, {item: 'Crystal Oscillator', amount: (5 / 2)}], bypro: [], building: 'Assembler'},
     }
   },
   'Supercomputer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 97352, 
     recipe: 'Supercomputer', recipes: {
-      'Supercomputer': {out: 1.875, in: [{item: 'Computer', amount: 7.5}, {item: 'AI Limiter', amount: 3.75}, {item: 'High-Speed Connector', amount: 5.625}, {item: 'Plastic', amount: 52.5}], bypro: [], building: 'Manufacture'},
+      'Supercomputer': {out: 1.875, in: [{item: 'Computer', amount: 7.5}, {item: 'AI Limiter', amount: 3.75}, {item: 'High-Speed Connector', amount: 5.625}, {item: 'Plastic', amount: 52.5}], bypro: [], building: 'Manufacturer'},
       'OC Supercomputer': {out: 3, in: [{item: 'Radio Control Unit', amount: 6}, {item: 'Cooling System', amount: 6}], bypro: [], building: 'Assembler'},
-      'Super-State Computer': {out: 2.4, in: [{item: 'Computer', amount: 7.2}, {item: 'Electromagnetic Control Rod', amount: 2.4}, {item: 'Battery', amount: 24}, {item: 'Wire', amount: 60}], bypro: [], building: 'Manufacture'},
+      'Super-State Computer': {out: 2.4, in: [{item: 'Computer', amount: 7.2}, {item: 'Electromagnetic Control Rod', amount: 2.4}, {item: 'Battery', amount: 24}, {item: 'Wire', amount: 60}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Radio Control Unit': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32352, 
     recipe: 'Radio Control Unit', recipes: {
-      'Radio Control Unit': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 40}, {item: 'Crystal Oscillator', amount: 1.25}, {item: 'Computer', amount: 2.5}], bypro: [], building: 'Manufacture'},
-      'Radio Connection Unit': {out: 3.75, in: [{item: 'Heat Sink', amount: 15}, {item: 'High-Speed Connector', amount: 7.5}, {item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Manufacture'},
-      'Radio Control System': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 90}, {item: 'Crystal Oscillator', amount: 1.5}, {item: 'Circuit Board', amount: 15}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacture'},
+      'Radio Control Unit': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 40}, {item: 'Crystal Oscillator', amount: 1.25}, {item: 'Computer', amount: 2.5}], bypro: [], building: 'Manufacturer'},
+      'Radio Connection Unit': {out: 3.75, in: [{item: 'Heat Sink', amount: 15}, {item: 'High-Speed Connector', amount: 7.5}, {item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Manufacturer'},
+      'Radio Control System': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 90}, {item: 'Crystal Oscillator', amount: 1.5}, {item: 'Circuit Board', amount: 15}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Plastic': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
@@ -656,60 +657,323 @@ let items = { // Default item data
     }
   },
   'Packaged Oil': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
-    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
-    recipe: 'Plastic', recipes: {
-      'Plastic': {out: 20, in: [{item: 'Crude Oil', amount: 30}], bypro: [{item: 'Heavy Oil Residue', amount: 10}], building: 'Refinery'},
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 180, 
+    recipe: 'Packaged Oil', recipes: {
+      'Packaged Oil': {out: 30, in: [{item: 'Crude Oil', amount: 30}, {item: 'Empty Canister', amount: 30}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Oil Residue'
-  'Packaged Fuel'
-  'Packaged Turbofuel'
-  'Packaged Rocket Fuel'
-  'Packaged Ionized Fuel'
-  'Empty Canister'
-  'Empty Fluid Tank'
-  'Alumina Solution'
-  'Sulfuric Acid'
-  'Nitric Acid'
-  'Dissolved Silica'
-  'Packaged Water'
-  'Packaged Alumina Solution'
-  'Packaged Sulfuric Acid'
-  'Packaged Nitric Acid'
-  'Packaged Nitrogen Gas'
-  'Pressure Conversion Cube'
-  'Electromagnetic Control Rod'
-  'Encased Uranium Cell'
-  'Non-Fissle Uranium'
-  'Plutonium Pellet'
-  'Encased Plutonium Cell'
-  'Ficsonium'
-  'Uranium Fuel Rod'
-  'Plutonium Fuel Rod'
-  'Ficsonium Fuel Rod'
-  'Uranium Waste'
-  'Plutonium Waste'
-  'Time Crystal'
-  'SAM Fluctuator'
-  'Dark Matter Residue'
-  'Dark Matter Crystal'
-  'Superposition Oscillator'
-  'Power Shard'
-  'Singularity Cell'
-  'Neural-Quantum Processor'
-  'Alien Power Matrix'
-  'Smart Plating'
-  'Versatile Framework'
-  'Automated Wiring'
-  'Modular Engine'
-  'Adaptive Control Unit'
-  'Assemble Director System'
-  'Magnetic Field Generator'
-  'Thermal Propulsion Rocket'
-  'Nuclear Pasta'
-  'Biochemical Sculptor'
-  'AI Expansion Server'
-  'Ballistic Warp Drive'
+  'Packaged Heavy Oil Residue': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 180, 
+    recipe: 'Packaged Heavy Oil Residue', recipes: {
+      'Packaged Heavy Oil Residue': {out: 30, in: [{item: 'Heavy Oil Residue', amount: 30}, {item: 'Empty Canister', amount: 30}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 270, 
+    recipe: 'Packaged Fuel', recipes: {
+      'Packaged Fuel': {out: 40, in: [{item: 'Fuel', amount: 40}, {item: 'Empty Canister', amount: 40}], bypro: [], building: 'Packager'},
+      'Diluted Packaged Fuel': {out: 60, in: [{item: 'Heavy Oil Residue', amount: 30}, {item: 'Packaged Water', amount: 60}], bypro: [], building: 'Refinery'},
+    }
+  },
+  'Packaged Turbofuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 570, 
+    recipe: 'Packaged Turbofuel', recipes: {
+      'Packaged Turbofuel': {out: 20, in: [{item: 'Turbofuel', amount: 20}, {item: 'Empty Canister', amount: 20}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Rocket Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1028, 
+    recipe: 'Packaged Rocket Fuel', recipes: {
+      'Packaged Rocket Fuel': {out: 60, in: [{item: 'Rocket Fuel', amount: 120}, {item: 'Empty Fluid Tank', amount: 60}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Ionized Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 5246, 
+    recipe: 'Packaged Ionized Fuel', recipes: {
+      'Packaged Ionized Fuel': {out: 40, in: [{item: 'Ionized Fuel', amount: 80}, {item: 'Empty Fluid Tank', amount: 40}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Empty Canister': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 60, 
+    recipe: 'Empty Canister', recipes: {
+      'Empty Canister': {out: 60, in: [{item: 'Plastic', amount: 30}], bypro: [], building: 'Constructor'},
+      'Coated Iron Canister': {out: 60, in: [{item: 'Iron Plate', amount: 30}, {item: 'Copper Sheet', amount: 15}], bypro: [], building: 'Assembler'},
+      'Steel Canister': {out: 40, in: [{item: 'Steel Ingot', amount: 40}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Empty Fluid Tank': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 170, 
+    recipe: 'Empty Fluid Tank', recipes: {
+      'Empty Fluid Tank': {out: 60, in: [{item: 'Aluminum Ingot', amount: 60}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Alumina Solution': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Alumina Solution', recipes: {
+      'Alumina Solution': {out: 120, in: [{item: 'Bauxite', amount: 120}, {item: 'Water', amount: 180}], bypro: [{item: 'Silica', amount: 50}], building: 'Refinery'},
+      'Unpackaged Alumina Solution': {out: 120, in: [{item: 'Packaged Alumina Solution', amount: 120}], bypro: [{item: 'Empty Canister', amount: 120}], building: 'Packager'},
+      'Sloppy Alumina': {out: 240, in: [{item: 'Bauxite', amount: 200}, {item: 'Water', amount: 200}], bypro: [], building: 'Refinery'},
+    }
+  },
+  'Sulfuric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Sulfuric Acid', recipes: {
+      'Sulfuric Acid': {out: 50, in: [{item: 'Sulfur', amount: 50}, {item: 'Water', amount: 50}], bypro: [], building: 'Refinery'},
+      'Unpackaged Sulfuric Acid': {out: 60, in: [{item: 'Packaged Sulfuric Acid', amount: 60}], bypro: [{item: 'Empty Canister', amount: 60}], building: 'Packager'},
+      'Encased Uranium Cell': {out: 10, in: [{item: 'Uranium', amount: 50}, {item: 'Concrete', amount: 15}, {item: 'Sulfuric Acid', amount: 40}], bypro: [{item: 'Encased Uranium Cell', amount: 25}], building: 'Blender'},
+    }
+  },
+  'Nitric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Nitric Acid', recipes: {
+      'Nitric Acid': {out: 30, in: [{item: 'Nitrogen Gas', amount: 120}, {item: 'Water', amount: 30}, {item: 'Iron Plate', amount: 10}], bypro: [], building: 'Blender'},
+      'Unpackaged Nitric Acid': {out: 20, in: [{item: 'Packaged Nitric Acid', amount: 20}], bypro: [{item: 'Empty Canister', amount: 20}], building: 'Packager'},
+    }
+  },
+  'Dissolved Silica': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Dissolved Silica', recipes: {
+      'Dissolved Silica': {out: 60, in: [{item: 'Raw Quartz', amount: 120}, {item: 'Nitric Acid', amount: 10}], bypro: [{item: 'Quartz Crystal', amount: 75}], building: 'Refinery'},
+    }
+  },
+  'Packaged Water': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 130, 
+    recipe: 'Packaged Water', recipes: {
+      'Packaged Water': {out: 60, in: [{item: 'Water', amount: 60}, {item: 'Empty Canister', amount: 60}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Alumina Solution': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 160, 
+    recipe: 'Packaged Alumina Solution', recipes: {
+      'Packaged Alumina Solution': {out: 120, in: [{item: 'Alumina Solution', amount: 120}, {item: 'Empty Canister', amount: 120}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Sulfuric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 152, 
+    recipe: 'Packaged Sulfuric Acid', recipes: {
+      'Packaged Sulfuric Acid': {out: 40, in: [{item: 'Sulfuric Acid', amount: 40}, {item: 'Empty Canister', amount: 40}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Nitric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 412, 
+    recipe: 'Packaged Nitric Acid', recipes: {
+      'Packaged Nitric Acid': {out: 30, in: [{item: 'Nitric Acid', amount: 30}, {item: 'Empty Fluid Tank', amount: 30}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Packaged Nitrogen Gas': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 312, 
+    recipe: 'Packaged Nitrogen Gas', recipes: {
+      'Packaged Nitrogen Gas': {out: 60, in: [{item: 'Nitrogen Gas', amount: 240}, {item: 'Empty Fluid Tank', amount: 60}], bypro: [], building: 'Packager'},
+    }
+  },
+  'Pressure Conversion Cube': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Pressure Conversion Cube', recipes: {
+      'Pressure Conversion Cube': {out: 1, in: [{item: 'Fused Modular Frame', amount: 1}, {item: 'Radio Control Unit', amount: 2}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Electromagnetic Control Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2560, 
+    recipe: 'Electromagnetic Control Rod', recipes: {
+      'Electromagnetic Control Rod': {out: 4, in: [{item: 'Stator', amount: 6}, {item: 'AI Limiter', amount: 4}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Encased Uranium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 147, 
+    recipe: 'Encased Uranium Cell', recipes: {
+      'Encased Uranium Cell': {out: 25, in: [{item: 'Uranium', amount: 50}, {item: 'Concrete', amount: 15}, {item: 'Sulfric Acid', amount: 40}], bypro: [{item: 'Sulfric Acid', amount: 10}], building: 'Blender'},
+      'Infused Uranium Cell': {out: 20, in: [{item: 'Uranium', amount: 25}, {item: 'Silica', amount: 15}, {item: 'Sulfur', amount: 25}, {item: 'Quickwire', amount: 75}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Non-Fissle Uranium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Non-Fissle Uranium', recipes: {
+      'Non-Fissle Uranium': {out: 50, in: [{item: 'Uranium Waste', amount: 37.5}, {item: 'Silica', amount: 25}, {item: 'Nitric Acid', amount: 15}, {item: 'Sulfuric Acid', amount: 15}], bypro: [{item: 'Water', amount: 15}], building: 'Blender'},
+      'Fertile Uranium': {out: 100, in: [{item: 'Uranium Waste', amount: 25}, {item: 'Uranium', amount: 25}, {item: 'Nitric Acid', amount: 15}, {item: 'Sulfuric Acid', amount: 25}], bypro: [{item: 'Water', amount: 40}], building: 'Blender'},
+    }
+  },
+  'Plutonium Pellet': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Plutonium Pellet', recipes: {
+      'Plutonium Pellet': {out: 30, in: [{item: 'Non-Fissle Uranium', amount: 100}, {item: 'Uranium Waste', amount: 25}], bypro: [], building: 'Particle Accelerator 1'},
+    }
+  },
+  'Encased Plutonium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Encased Plutonium Cell', recipes: {
+      'Encased Plutonium Cell': {out: 5, in: [{item: 'Plutonium Pellet', amount: 10}, {item: 'Concrete', amount: 20}], bypro: [], building: 'Assembler'},
+      'Instant Plutonium Cell': {out: 10, in: [{item: 'Non-Fissile Uranium', amount: 75}, {item: 'Aluminum Casing', amount: 10}], bypro: [], building: 'Particle Accelerator 1'},
+    }
+  },
+  'Ficsonium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Ficsonium', recipes: {
+      'Ficsonium': {out: 10, in: [{item: 'Plutonium Waste', amount: 10}, {item: 'Singularity Cell', amount: 10}, {item: 'Dark Matter Residue', amount: 200}], bypro: [], building: 'Particle Accelerator 2'},
+    }
+  },
+  'Uranium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 43468, 
+    recipe: 'Uranium Fuel Rod', recipes: {
+      'Uranium Fuel Rod': {out: 0.4, in: [{item: 'Encased Uranium Cell', amount: 20}, {item: 'Encased Industrial Beam', amount: 1.2}, {item: 'Electromagnetic Control Rod', amount: 2}], bypro: [], building: 'Manufacturer'},
+      'Uranium Fuel Unit': {out: 0.6, in: [{item: 'Encased Uranium Cell', amount: 20}, {item: 'Electromagnetic Control Rod', amount: 2}, {item: 'Crystal Oscillator', amount: 0.6}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Plutonium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 153184, 
+    recipe: 'Plutonium Fuel Rod', recipes: {
+      'Plutonium Fuel Rod': {out: 0.25, in: [{item: 'Encased Plutonium Cell', amount: 7.5}, {item: 'Steel Beam', amount: 4.5}, {item: 'Electromagnetic Control Rod', amount: 1.5}, {item: 'Heat Sink', amount: 2.5}], bypro: [], building: 'Manufacturer'},
+      'Plutonium Fuel Unit': {out: 0.5, in: [{item: 'Encased Plutonium Cell', amount: 10}, {item: 'Pressure Conversion Cube', amount: 0.5}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Ficsonium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Ficsonium Fuel Rod', recipes: {
+      'Ficsonium Fuel Rod': {out: 2.5, in: [{item: 'Ficsonium', amount: 5}, {item: 'Electromagnetic Control Rod', amount: 5}, {item: 'Ficsite Trigon', amount: 100}, {item: 'Excited Photonic Matter', amount: 50}], bypro: [{item: 'Dark Matter Residue', amount: 50}], building: 'Quantum Encoder'},
+    }
+  },
+  'Uranium Waste': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Uranium Waste', recipes: {
+      'Uranium Waste': {out: 10, in: [{item: 'Uranium Fuel Rod', amount: 0.2}, {item: 'Water', amount: 240}], bypro: [], building: 'Nuclear Power Plant'},
+    }
+  },
+  'Plutonium Waste': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Plutonium Waste', recipes: {
+      'Plutonium Waste': {out: 1, in: [{item: 'Plutonium Fuel Rod', amount: 0.1}, {item: 'Water', amount: 240}], bypro: [], building: 'Nuclear Power Plant'},
+    }
+  },
+  'Time Crystal': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 960, 
+    recipe: 'Time Crystal', recipes: {
+      'Time Crystal': {out: 6, in: [{item: 'Diamonds', amount: 12}], bypro: [], building: 'Converter'},
+    }
+  },
+  'SAM Fluctuator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1968, 
+    recipe: 'SAM Fluctuator', recipes: {
+      'SAM Fluctuator': {out: 10, in: [{item: 'Reanimated SAM', amount: 60}, {item: 'Wire', amount: 50}, {item: 'Steel Pipe', amount: 30}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Dark Matter Residue': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Dark Matter Residue', recipes: {
+      'Dark Matter Residue': {out: 100, in: [{item: 'Reanimated SAM', amount: 50}], bypro: [], building: 'Converter'},
+    }
+  },
+  'Dark Matter Crystal': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1780, 
+    recipe: 'Dark Matter Crystal', recipes: {
+      'Dark Matter Crystal': {out: 30, in: [{item: 'Diamonds', amount: 30}, {item: 'Dark Matter Residue', amount: 150}], bypro: [], building: 'Particle Accelerator 2'},
+      'Dark Matter Crystallization': {out: 20, in: [{item: 'Dark Matter Residue', amount: 200}], bypro: [], building: 'Particle Accelerator 2'},
+      'Dark Matter Trap': {out: 60, in: [{item: 'Time Crystal', amount: 30}, {item: 'Dark Matter Residue', amount: 150}], bypro: [], building: 'Particle Accelerator 2'},
+    }
+  },
+  'Superposition Oscillator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 37292, 
+    recipe: 'Superposition Oscillator', recipes: {
+      'Superposition Oscillator': {out: 5, in: [{item: 'Dark Matter Crystal', amount: 30}, {item: 'Crystal Oscillator', amount: 5}, {item: 'Alclad Aluminum Sheet', amount: 45}, {item: 'Exited Photonic Matter', amount: 125}], bypro: [{item: 'Dark Matter Residue', amount: 125}], building: 'Quantum Encoder'},
+    }
+  },
+  'Power Shard': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Power Shard', recipes: {
+      'Power Shard': {out: 5, in: [{item: 'Time Crystal', amount: 10}, {item: 'Dark Matter Crystal', amount: 10}, {item: 'Quartz Crystal', amount: 60}, {item: 'Exited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
+    }
+  },
+  'Singularity Cell': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 114675, 
+    recipe: 'Singularity Cell', recipes: {
+      'Singularity Cell': {out: 10, in: [{item: 'Nuclear Pasta', amount: 1}, {item: 'Dark Matter Crystal', amount: 20}, {item: 'Iron Plate', amount: 100}, {item: 'Concrete', amount: 200}], bypro: [], building: 'Manfacture'},
+    }
+  },
+  'Neural-Quantum Processor': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 248034, 
+    recipe: 'Neural-Quantum Processor', recipes: {
+      'Neural-Quantum Processor': {out: 3, in: [{item: 'Time Crystal', amount: 15}, {item: 'Supercomputer', amount: 3}, {item: 'Ficsite Trigon', amount: 45}, {item: 'Exited Photonic Matter', amount: 75}], bypro: [{item: 'Dark Matter Residue', amount: 75}], building: 'Quantum Encoder'},
+    }
+  },
+  'Alien Power Matrix': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 210, 
+    recipe: 'Alien Power Matrix', recipes: {
+      'Alien Power Matrix': {out: 2.5, in: [{item: 'SAM Fluctuator', amount: 12.5}, {item: 'Power Shard', amount: 7.5}, {item: 'Superposition Oscillator', amount: 7.5}, {item: 'Exited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
+    }
+  },
+  'Smart Plating': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 520, 
+    recipe: 'Smart Plating', recipes: {
+      'Smart Plating': {out: 2, in: [{item: 'Reinforce Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Assembler'},
+      'Plastic Smart Plating': {out: 5, in: [{item: 'Reinforce Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}, {item: 'Plastic', amount: 7.5}], bypro: [], building: 'Manfacture'},
+    }
+  },
+  'Versatile Framework': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1176, 
+    recipe: 'Versatile Framework', recipes: {
+      'Versatile Framework': {out: 5, in: [{item: 'Modular Frame', amount: 2.5}, {item: 'Steel Beam', amount: 30}], bypro: [], building: 'Assembler'},
+      'Flexable Framework': {out: 7.5, in: [{item: 'Modular Frame', amount: 3.75}, {item: 'Steel Beam', amount: 22.5}, {item: 'Rubber', amount: 30}], bypro: [], building: 'Manfacture'},
+    }
+  },
+  'Automated Wiring': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1440, 
+    recipe: 'Automated Wiring', recipes: {
+      'Automated Wiring': {out: 2.5, in: [{item: 'Stator', amount: 2.5}, {item: 'Cable', amount: 50}], bypro: [], building: 'Assembler'},
+      'Automated Speed Wiring': {out: 7.5, in: [{item: 'Stator', amount: 3.75}, {item: 'Wire', amount: 75}, {item: 'High-Speed Connector', amount: 1.875}], bypro: [], building: 'Manfacture'},
+    }
+  },
+  'Modular Engine': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 9960, 
+    recipe: 'Modular Engine', recipes: {
+      'Modular Engine': {out: 1, in: [{item: 'Smart Plating', amount: 2}, {item: 'Motor', amount: 2}, {item: 'Rubber', amount: 15}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Adaptive Control Unit': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 76368, 
+    recipe: 'Adaptive Control Unit', recipes: {
+      'Adaptive Control Unit': {out: 1, in: [{item: 'Automated Wiring', amount: 5}, {item: 'Circuit Board', amount: 5}, {item: 'Heavy Modular Frame', amount: 1}, {item: 'Computer', amount: 2}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Assemble Director System': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 500176, 
+    recipe: 'Assemble Director System', recipes: {
+      'Assemble Director System': {out: 0.75, in: [{item: 'Adaptive Control Unit', amount: 1.5}, {item: 'Supercomputer', amount: 0.75}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Magnetic Field Generator': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 11000, 
+    recipe: 'Magnetic Field Generator', recipes: {
+      'Magnetic Field Generator': {out: 1, in: [{item: 'Versatile Framework', amount: 2.5}, {item: 'Electromagnetic Control Rod', amount: 1}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Thermal Propulsion Rocket': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 728508, 
+    recipe: 'Thermal Propulsion Rocket', recipes: {
+      'Thermal Propulsion Rocket': {out: 1, in: [{item: 'Modular Engine', amount: 2.5}, {item: 'Turbo Motor', amount: 1}, {item: 'Cooling System', amount: 3}, {item: 'Fused Modular Frame', amount: 1}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Nuclear Pasta': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 538976, 
+    recipe: 'Nuclear Pasta', recipes: {
+      'Nuclear Pasta': {out: 0.5, in: [{item: 'Copper Powder', amount: 100}, {item: 'Pressure Convertion Cube', amount: 0.5}], bypro: [], building: 'Particle Accelerator 2'},
+    }
+  },
+  'Biochemical Sculptor': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 301778, 
+    recipe: 'Biochemical Sculptor', recipes: {
+      'Biochemical Sculptor': {out: 2, in: [{item: 'Assemble Director System', amount: 0.5}, {item: 'Ficsite Trigon', amount: 40}, {item: 'Water', amount: 10}], bypro: [], building: 'Blender'},
+    }
+  },
+  'AI Expansion Server': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 597652, 
+    recipe: 'AI Expansion Server', recipes: {
+      'AI Expansion Server': {out: 4, in: [{item: 'Magnetic Field Generator', amount: 4}, {item: 'Neural-Quantum Processor', amount: 4}, {item: 'Superposition Oscillator', amount: 4}, {item: 'Exited Photonic Matter', amount: 100}], bypro: [{item: 'Dark Matter Residue', amount: 100}], building: 'Quantum Encoder'},
+    }
+  },
+  'Ballistic Warp Drive': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
+    recipe: 'Ballistic Warp Drive', recipes: {
+      'Ballistic Warp Drive': {out: 1, in: [{item: 'Thermal Propulsion Rocket', amount: 1}, {item: 'Singularity Cell', amount: 5}, {item: 'Superposition Oscillator', amount: 2}, {item: 'Dark Matter Crystal', amount: 40}], bypro: [], building: 'Manufacturer'},
+    }
+  },
   'Black Powder'
   'Smokeless Powder'
   'Iron Rebar'
