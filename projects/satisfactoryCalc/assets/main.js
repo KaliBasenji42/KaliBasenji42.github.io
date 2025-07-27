@@ -962,50 +962,212 @@ let items = { // Default item data
       'Biochemical Sculptor': {out: 2, in: [{item: 'Assemble Director System', amount: 0.5}, {item: 'Ficsite Trigon', amount: 40}, {item: 'Water', amount: 10}], bypro: [], building: 'Blender'},
     }
   },
+  'Ballistic Warp Drive': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2895334, 
+    recipe: 'Ballistic Warp Drive', recipes: {
+      'Ballistic Warp Drive': {out: 1, in: [{item: 'Thermal Propulsion Rocket', amount: 1}, {item: 'Singularity Cell', amount: 5}, {item: 'Superposition Oscillator', amount: 2}, {item: 'Dark Matter Crystal', amount: 40}], bypro: [], building: 'Manufacturer'},
+    }
+  },
   'AI Expansion Server': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 597652, 
     recipe: 'AI Expansion Server', recipes: {
       'AI Expansion Server': {out: 4, in: [{item: 'Magnetic Field Generator', amount: 4}, {item: 'Neural-Quantum Processor', amount: 4}, {item: 'Superposition Oscillator', amount: 4}, {item: 'Exited Photonic Matter', amount: 100}], bypro: [{item: 'Dark Matter Residue', amount: 100}], building: 'Quantum Encoder'},
     }
   },
-  'Ballistic Warp Drive': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
-    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
-    recipe: 'Ballistic Warp Drive', recipes: {
-      'Ballistic Warp Drive': {out: 1, in: [{item: 'Thermal Propulsion Rocket', amount: 1}, {item: 'Singularity Cell', amount: 5}, {item: 'Superposition Oscillator', amount: 2}, {item: 'Dark Matter Crystal', amount: 40}], bypro: [], building: 'Manufacturer'},
+  'Black Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 14, 
+    recipe: 'Black Powder', recipes: {
+      'Black Powder': {out: 30, in: [{item: 'Sulfur', amount: 15}, {item: 'Coal', amount: 15}], bypro: [], building: 'Assembler'},
+      'Fine Black Powder': {out: 45, in: [{item: 'Sulfur', amount: 7.5}, {item: 'Compacted Coal', amount: 15}], bypro: [], building: 'Assembler'},
     }
   },
-  'Black Powder'
-  'Smokeless Powder'
-  'Iron Rebar'
-  'Stun Rebar'
-  'Shatter Rebar'
-  'Explosive Rebar'
-  'Rifle Ammo'
-  'Homing Rifle Ammo'
-  'Turbo Rifle Ammo'
-  'Nobelisk'
-  'Gas Nobelisk'
-  'Pulse Nobelisk'
-  'Cluster Nobelisk'
-  'Nuke Nobelisk'
-  'Gas Filter'
-  'Iodine Infused Filter'
-  'Gift'
-  'Candy Cane'
-  'Actual Snow'
-  'Bow'
-  'Tree Branch'
-  'Red Ornament'
-  'Blue Ornament'
-  'Copper Ornament'
-  'Iron Ornament'
-  'Ornament Bundle'
-  'Decoration'
-  'Wonder Star'
-  'Snowball'
-  'Fancy Firework'
-  'Sparkly Firework'
-  'Sweet Firework'
+  'Smokeless Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 58, 
+    recipe: 'Smokeless Powder', recipes: {
+      'Smokeless Powder': {out: 20, in: [{item: 'Black Powder', amount: 20}, {item: 'Heavy Oil Residue', amount: 10}], bypro: [], building: 'Refinery'},
+    }
+  },
+  'Iron Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8, 
+    recipe: 'Iron Rebar', recipes: {
+      'Iron Rebar': {out: 15, in: [{item: 'Iron', amount: 15}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Stun Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 186, 
+    recipe: 'Stun Rebar', recipes: {
+      'Stun Rebar': {out: 10, in: [{item: 'Iron Rebar', amount: 10}, {item: 'Quickwire', amount: 50}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Shatter Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 332, 
+    recipe: 'Shatter Rebar', recipes: {
+      'Shatter Rebar': {out: 5, in: [{item: 'Iron Rebar', amount: 10}, {item: 'Quartz Crystal', amount: 15}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Explosive Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 360, 
+    recipe: 'Explosive Rebar', recipes: {
+      'Explosive Rebar': {out: 5, in: [{item: 'Iron Bar', amount: 10}, {item: 'Smokeless Powder', amount: 10}, {item: 'Steel Pipe', amount: 10}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 25, 
+    recipe: 'Rifle Ammo', recipes: {
+      'Rifle Ammo': {out: 75, in: [{item: 'Smokeless Powder', amount: 10}, {item: 'Copper Sheet', amount: 15}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Homing Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 855, 
+    recipe: 'Homing Rifle Ammo', recipes: {
+      'Homing Rifle Ammo': {out: 25, in: [{item: 'Rifle Ammo', amount: 50}, {item: 'High-Speed Connector', amount: 1}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Turbo Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 120, 
+    recipe: 'Turbo Rifle Ammo', recipes: {
+      'Turbo Rifle Ammo': {out: 250, in: [{item: 'Rifle Ammo', amount: 125}, {item: 'Aluminum Casing', amount: 15}, {item: 'Packaged Turbofuel', amount: 15}], bypro: [], building: 'Manufacturer'},
+      'Turbo Rifle Ammo (Blender)': {out: 250, in: [{item: 'Rifle Ammo', amount: 125}, {item: 'Aluminum Casing', amount: 15}, {item: 'Turbofuel', amount: 15}], bypro: [], building: 'Blender'},
+    }
+  },
+  'Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 152, 
+    recipe: 'Nobelisk', recipes: {
+      'Nobelisk': {out: 10, in: [{item: 'Black Powder', amount: 20}, {item: 'Steel Pipe', amount: 20}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Gas Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 544, 
+    recipe: 'Gas Nobelisk', recipes: {
+      'Gas Nobelisk': {out: 5, in: [{item: 'Nobelisk', amount: 5}, {item: 'Biomass', amount: 50}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Pulse Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1533, 
+    recipe: 'Pulse Nobelisk', recipes: {
+      'Pulse Nobelisk': {out: 5, in: [{item: 'Nobelisk', amount: 5}, {item: 'Crystal Oscillator', amount: 1}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Cluster Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1376, 
+    recipe: 'Cluster Nobelisk', recipes: {
+      'Cluster Nobelisk': {out: 2.5, in: [{item: 'Nobelisk', amount: 7.5}, {item: 'Smokeless Powder', amount: 10}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Nuke Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 19600, 
+    recipe: 'Nuke Nobelisk', recipes: {
+      'Nuke Nobelisk': {out: 0.5, in: [{item: 'Nobelisk', amount: 2.5}, {item: 'Smokeless Powder', amount: 5}, {item: 'Encased Uranium Cell', amount: 10}, {item: 'AI Limiter', amount: 3}], bypro: [], building: 'Manufacurer'},
+    }
+  },
+  'Gas Filter': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 608, 
+    recipe: 'Gas Filter', recipes: {
+      'Gas Filter': {out: 7.5, in: [{item: 'Fabric', amount: 15}, {item: 'Coal', amount: 30}, {item: 'Iron Plate', amount: 15}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Iodine-Infused Filter': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2274, 
+    recipe: 'Iodine-Infused Filter', recipes: {
+      'Iodine-Infused Filter': {out: 3.75, in: [{item: 'Gas Filter', amount: 3.75}, {item: 'Quickwire', amount: 30}, {item: 'Aluminum Casing', amount: 3.75}], bypro: [], building: 'Manufacturer'},
+    }
+  },
+  'Gift': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1, 
+    recipe: 'Gift', recipes: {
+      'Gift': {out: 15, in: [], bypro: [], building: 'FICSMAS Tree'},
+    }
+  },
+  'Candy Cane': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
+    recipe: 'Candy Cane', recipes: {
+      'Candy Cane': {out: 5, in: [{item: 'Gift', amount: 15}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Actual Snow': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 5, 
+    recipe: 'Actual Snow', recipes: {
+      'Actual Snow': {out: 10, in: [{item: 'Gift', amount: 25}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Bow': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 4, 
+    recipe: 'Bow', recipes: {
+      'Bow': {out: 5, in: [{item: 'Gift', amount: 10}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Tree Branch': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
+    recipe: 'Tree Branch', recipes: {
+      'Tree Branch': {out: 10, in: [{item: 'Gift', amount: 10}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Red Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
+    recipe: 'Red Ornament', recipes: {
+      'Red Ornament': {out: 5, in: [{item: 'Gift', amount: 5}], bypro: [], building: 'Smelter'},
+    }
+  },
+  'Blue Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1, 
+    recipe: 'Blue Ornament', recipes: {
+      'Blue Ornament': {out: 10, in: [{item: 'Gift', amount: 5}], bypro: [], building: 'Smelter'},
+    }
+  },
+  'Copper Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32, 
+    recipe: 'Copper Ornament', recipes: {
+      'Copper Ornament': {out: 5, in: [{item: 'Red Ornament', amount: 10}, {item: 'Copper Ingot', amount: 10}], bypro: [], building: 'Foundry'},
+    }
+  },
+  'Iron Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 18, 
+    recipe: 'Iron Ornament', recipes: {
+      'Iron Ornament': {out: 5, in: [{item: 'Blue Ornament', amount: 15}, {item: 'Iron Ingot', amount: 15}], bypro: [], building: 'Foundry'},
+    }
+  },
+  'Ornament Bundle': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 100, 
+    recipe: 'Ornament Bundle', recipes: {
+      'Ornament Bundle': {out: 5, in: [{item: 'Iron Ornament', amount: 5}, {item: 'Copper Ornament', amount: 5}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Wreath': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 630, 
+    recipe: 'Wreath', recipes: {
+      'Wreath': {out: 2, in: [{item: 'Tree Branch', amount: 15}, {item: 'Ornament Bundle', amount: 6}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Wonder Star': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6540, 
+    recipe: 'Wonder Star', recipes: {
+      'Wonder Star': {out: 1, in: [{item: 'Wreath', amount: 5}, {item: 'Candy Cane', amount: 20}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Snowball': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 30, 
+    recipe: 'Snowball', recipes: {
+      'Snowball': {out: 5, in: [{item: 'Actual Snow', amount: 15}], bypro: [], building: 'Constructor'},
+    }
+  },
+  'Fancy Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 40, 
+    recipe: 'Fancy Fireworks', recipes: {
+      'Fancy Fireworks': {out: 2.5, in: [{item: 'Tree Branch', amount: 10}, {item: 'Bow', amount: 7.5}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Sparkly Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32, 
+    recipe: 'Sparkly Fireworks', recipes: {
+      'Sparkly Fireworks': {out: 2.5, in: [{item: 'Tree Branch', amount: 7.5}, {item: 'Actual Snow', amount: 15}], bypro: [], building: 'Assembler'},
+    }
+  },
+  'Sweet Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 60, 
+    recipe: 'Sweet Fireworks', recipes: {
+      'Sweet Fireworks': {out: 2.5, in: [{item: 'Tree Branch', amount: 15}, {item: 'Candy Cane', amount: 7.5}], bypro: [], building: 'Assembler'},
+    }
+  },
 };
 
 let calcTable = {};
