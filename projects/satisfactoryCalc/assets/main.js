@@ -14,7 +14,7 @@ let settings = {
 };
 
 let items = { // Default item data
-  'Iron Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iron Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -30,7 +30,7 @@ let items = { // Default item data
       'Iron Ore (Limestone)': {out: 120, in: [{item: 'Limestone', amount: 240}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Copper Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Copper Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -47,7 +47,7 @@ let items = { // Default item data
       'Copper Ore (Sulfur)': {out: 120, in: [{item: 'Sulfur', amount: 120}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Caterium Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Caterium Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 7, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -64,7 +64,7 @@ let items = { // Default item data
       'Caterium Ore (Quartz)': {out: 120, in: [{item: 'Raw Quartz', amount: 120}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Limestone': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Limestone': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#fce5cd', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -80,7 +80,7 @@ let items = { // Default item data
       'Limestone (Sulfur)': {out: 120, in: [{item: 'Sulfur', amount: 20}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Coal': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Coal': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -99,7 +99,7 @@ let items = { // Default item data
       'Charcoal': {out: 150, in: [{item: 'Wood', amount: 15}], building: 'Constructor'},
     }
   },
-  'Raw Quartz': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Raw Quartz': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#d5a6bd', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 15, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -116,7 +116,7 @@ let items = { // Default item data
       'Raw Quartz (Coal)': {out: 120, in: [{item: 'Coal', amount: 240}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Sulfur': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Sulfur': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#f1c232', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 11, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -133,7 +133,7 @@ let items = { // Default item data
       'Sulfur (Iron)': {out: 120, in: [{item: 'Iron Ore', amount: 300}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Bauxite': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Bauxite': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#dd7e6b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -150,7 +150,7 @@ let items = { // Default item data
       'Bauxite (Copper)': {out: 120, in: [{item: 'Copper Ore', amount: 180}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Uranium': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Uranium': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 35, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -166,7 +166,7 @@ let items = { // Default item data
       'Uranium Ore (Bauxite)': {out: 120, in: [{item: 'Bauxite', amount: 480}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
-  'Water': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Water': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#7ab0d4', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -175,7 +175,7 @@ let items = { // Default item data
       'Unpackage Water': {out: 120, in: [{item: 'Packaged Water', amount: 120}], bypro: [{item: 'Empty Canister', amount: 120}], building: 'Packager'},
     }
   },
-  'Crude Oil': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Crude Oil': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#190019', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -186,7 +186,7 @@ let items = { // Default item data
       'Unpackage Oil': {out: 60, in: [{item: 'Packaged Oil', amount: 60}], bypro: [{item: 'Empty Canister', amount: 60}], building: 'Packager'},
     }
   },
-  'Nitrogen Gas': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Nitrogen Gas': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#595959', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -196,7 +196,7 @@ let items = { // Default item data
       'Nitrogen Gas (Caterium)': {out: 120, in: [{item: 'Caterium Ore', amount: 120}, {item: 'SAM', amount: 10}], building: 'Converter'},
     }
   },
-  'SAM': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'SAM': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '##8e7cc3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 20, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -211,19 +211,19 @@ let items = { // Default item data
       'Pure - Miner Mk. 3': {out: 480, in: [], bypro: [], building: 'Miner Mk. 3'},
     }
   },
-  'Excited Photonic Matter': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Excited Photonic Matter': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 13, color: '#76f5e8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Excited Photonic Matter', recipes: {
       'Excited Photonic Matter': {out: 200, in: [], bypro: [], building: 'Converter'}
     }
   },
-  'Biomass': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', 
+  'Biomass': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '##93c47d', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
     }
   },
-  'Iron Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iron Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
     recipe: 'Iron Ingot', recipes: {
       'Iron Ingot': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
@@ -233,7 +233,7 @@ let items = { // Default item data
       'Pure Iron Ingot': {out: 65, in: [{item: 'Iron Ore', amount: 35}, {item: 'Water', amount: 20}], bypro: [], building: 'Refinery'},
     }
   },
-  'Copper Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Copper Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
     recipe: 'Copper Ingot', recipes: {
       'Copper Ingot': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
@@ -243,7 +243,7 @@ let items = { // Default item data
       'Tempered Copper Ingot': {out: 60, in: [{item: 'Copper Ore', amount: 25}, {item: 'Petroleum Coke', amount: 40}], bypro: [], building: 'Foundry'},
     }
   },
-  'Caterium Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Caterium Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 42, 
     recipe: 'Caterium Ingot', recipes: {
       'Caterium Ingot': {out: 15, in: [{item: 'Caterium Ore', amount: 45}], bypro: [], building: 'Smelter'},
@@ -252,7 +252,7 @@ let items = { // Default item data
       'Tempered Caterium Ingot': {out: 22.5, in: [{item: 'Caterium Ore', amount: 45}, {item: 'Petroleum Coke', amount: 15}], bypro: [], building: 'Foundry'},
     }
   },
-  'Steel Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Steel Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8, 
     recipe: 'Steel Ingot', recipes: {
       'Steel Ingot': {out: 45, in: [{item: 'Iron Ore', amount: 45}, {item: 'Coal', amount: 45}], bypro: [], building: 'Foundry'},
@@ -261,7 +261,7 @@ let items = { // Default item data
       'Solid Steel Ingot': {out: 60, in: [{item: 'Iron Ingot', amount: 40}, {item: 'Coal', amount: 40}], bypro: [], building: 'Foundry'},
     }
   },
-  'Concrete': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Concrete': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#fce5cd', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12, 
     recipe: 'Concrete', recipes: {
       'Concrete': {out: 15, in: [{item: 'Limestone', amount: 45}], bypro: [], building: 'Constructor'},
@@ -270,7 +270,7 @@ let items = { // Default item data
       'Wet Concrete': {out: 80, in: [{item: 'Limestone', amount: 120}, {item: 'Water', amount: 100}], bypro: [], building: 'Refinery'},
     }
   },
-  'Silica': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Silica': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#ead1dc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 20, 
     recipe: 'Silica', recipes: {
       'Silica': {out: 37.5, in: [{item: 'Raw Quartz', amount: 22.5}], bypro: [], building: 'Constructor'},
@@ -279,7 +279,7 @@ let items = { // Default item data
       'Alumina Solution': {out: 50, in: [{item: 'Bauxite', amount: 120}, {item: 'Water', amount: 180}], bypro: [{item: 'Alumina Solution', amount: 120}], building: 'Refinery '},
     }
   },
-  'Quartz Crystal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Quartz Crystal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d9d2e9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 50, 
     recipe: 'Quartz Crystal', recipes: {
       'Quartz Crystal': {out: 22.5, in: [{item: 'Raw Quartz', amount: 37.5}], bypro: [], building: 'Constructor'},
@@ -288,26 +288,26 @@ let items = { // Default item data
       'Quartz Purification': {out: 75, in: [{item: 'Raw Quartz', amount: 120}, {item: 'Nitric Acid', amount: 10}], bypro: [{item: 'Dissolved Silica', amount: 60}], building: 'Refinery'},
     }
   },
-  'Copper Powder': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Copper Powder': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 72, 
     recipe: 'Copper Powder', recipes: {
       'Copper Powder': {out: 50, in: [{item: 'Copper Ingot', amount: 300}], bypro: [], building: 'Constructor'},
     }
   },
-  'Compacted Coal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Compacted Coal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 28, 
     recipe: 'Compacted Coal', recipes: {
       'Compacted Coal': {out: 25, in: [{item: 'Coal', amount: 25}, {item: 'Sulfur', amount: 25}], bypro: [], building: 'Assembler'},
     }
   },
-  'Aluminum Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Aluminum Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 131, 
     recipe: 'Aluminum Ingot', recipes: {
       'Aluminum Ingot': {out: 60, in: [{item: 'Aluminum Scrap', amount: 90}, {item: 'Silica', amount: 75}], bypro: [], building: 'Foundry'},
       'Pure Aluminum Ingot': {out: 30, in: [{item: 'Aluminum Scrap', amount: 60}], bypro: [], building: 'Smelter'},
     }
   },
-  'Aluminum Scrap': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Aluminum Scrap': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 27, 
     recipe: 'Aluminum Scrap', recipes: {
       'Aluminum Scrap': {out: 360, in: [{item: 'Alumina Solution', amount: 240}, {item: 'Coal', amount: 120}], bypro: [{item: 'Water', amount: 120}], building: 'Refinery'},
@@ -315,7 +315,7 @@ let items = { // Default item data
       'Instant Scrap': {out: 300, in: [{item: 'Bauxite', amount: 150}, {item: 'Coal', amount: 100}, {item: 'Sulfuric Acid', amount: 50}, {item: 'Water', amount: 60}], bypro: [{item: 'Water', amount: 50}], building: 'Blender'},
     }
   },
-  'Diamonds': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Diamonds': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#cfe2f3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 240, 
     recipe: 'Diamonds', recipes: {
       'Diamonds': {out: 30, in: [{item: 'Coal', amount: 600}], bypro: [], building: 'Particle Accelerator 1'},
@@ -326,13 +326,13 @@ let items = { // Default item data
       'Turbo Diamonds': {out: 60, in: [{item: 'Coal', amount: 600}, {item: 'Packaged Turbofuel'}], bypro: [], building: 'Particle Accelerator 1'},
     }
   },
-  'Reanimated SAM': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Reanimated SAM': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 160, 
     recipe: 'Reanimated SAM', recipes: {
       'Reanimated SAM': {out: 30, in: [{item: 'SAM', amount: 120}], bypro: [], building: 'Constructor'},
     }
   },
-  'Ficsite Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ficsite Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#e69138', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1936, 
     recipe: 'Ficsite Ingot (Aluminum)', recipes: {
       'Ficsite Ingot (Aluminum)': {out: 30, in: [{item: 'Reanimated SAM', amount: 60}, {item: 'Aluminum Ingot', amount: 120}], bypro: [], building: 'Converter'},
@@ -340,7 +340,7 @@ let items = { // Default item data
       'Ficsite Ingot (Iron)': {out: 10, in: [{item: 'Reanimated SAM', amount: 40}, {item: 'Iron Ingot', amount: 240}], bypro: [], building: 'Converter'},
     }
   },
-  'Iron Plate': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iron Plate': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
     recipe: 'Iron Plate', recipes: {
       'Iron Plate': {out: 20, in: [{item: 'Iron Ingot', amount: 30}], bypro: [], building: 'Constructor'},
@@ -348,7 +348,7 @@ let items = { // Default item data
       'Steel Cast Plate': {out: 45, in: [{item: 'Iron Ingot', amount: 15}, {item: 'Steel Ingot', amount: 15}], bypro: [], building: 'Foundry'},
     }
   },
-  'Iron Rod': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iron Rod': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 4, 
     recipe: 'Iron Rod', recipes: {
       'Iron Rod': {out: 15, in: [{item: 'Iron Ingot', amount: 15}], bypro: [], building: 'Constructor'},
@@ -356,7 +356,7 @@ let items = { // Default item data
       'Steel Rod': {out: 48, in: [{item: 'Steel Ingot', amount: 12}], bypro: [], building: 'Constructor'},
     }
   },
-  'Screws': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Screws': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#a4c2f4', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
     recipe: 'Screws', recipes: {
       'Screws': {out: 40, in: [{item: 'Iron Rod', amount: 10}], bypro: [], building: 'Constructor'},
@@ -364,7 +364,7 @@ let items = { // Default item data
       'Steel Screws': {out: 260, in: [{item: 'Steel Beam', amount: 5}], bypro: [], building: 'Constructor'},
     }
   },
-  'Reinforced Iron Plate': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Reinforced Iron Plate': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 120, 
     recipe: 'Reinforced Iron Plate', recipes: {
       'Reinforced Iron Plate': {out: 5, in: [{item: 'Iron Plate', amount: 30}, {item: 'Screws', amount: 60}], bypro: [], building: 'Assembler'},
@@ -373,7 +373,7 @@ let items = { // Default item data
       'Stitched Iron Plate': {out: 5.625, in: [{item: 'Iron Plate', amount: 18.75}, {item: 'Wire', amount: 37.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 408, 
     recipe: 'Modular Frame', recipes: {
       'Modular Frame': {out: 2, in: [{item: 'Reinforced Iron Plate', amount: 3}, {item: 'Iron Rod', amount: 12}], bypro: [], building: 'Assembler'},
@@ -381,14 +381,14 @@ let items = { // Default item data
       'Steeled Frame': {out: 3, in: [{item: 'Reinforced Iron Plate', amount: 2}, {item: 'Steel Pipe', amount: 10}], bypro: [], building: 'Assembler'},
     }
   },
-  'Copper Sheet': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Copper Sheet': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 24, 
     recipe: 'Copper Sheet', recipes: {
       'Copper Sheet': {out: 10, in: [{item: 'Copper Ingot', amount: 20}], bypro: [], building: 'Constructor'},
       'Steamed Copper Sheet': {out: 22.5, in: [{item: 'Copper Ingot', amount: 22.5}, {item: 'Water', amount: 22.5}], bypro: [], building: 'Refinery'},
     }
   },
-  'Steel Pipe': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Steel Pipe': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#666666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 24, 
     recipe: 'Steel Pipe', recipes: {
       'Steel Pipe': {out: 20, in: [{item: 'Steel Ingot', amount: 30}], bypro: [], building: 'Constructor'},
@@ -396,7 +396,7 @@ let items = { // Default item data
       'Molded Steel Pipe': {out: 50, in: [{item: 'Steel Ingot', amount: 50}, {item: 'Concrete', amount: 30}], bypro: [], building: 'Foundry'},
     }
   },
-  'Steel Beam': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Steel Beam': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#dd7e6b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 64, 
     recipe: 'Steel Beam', recipes: {
       'Steel Beam': {out: 15, in: [{item: 'Steel Ingot', amount: 60}], bypro: [], building: 'Constructor'},
@@ -404,14 +404,14 @@ let items = { // Default item data
       'Molded Beam': {out: 45, in: [{item: 'Steel Ingot', amount: 120}, {item: 'Concrete', amount: 80}], bypro: [], building: 'Foundry'},
     }
   },
-  'Encased Industrial Beam': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Encased Industrial Beam': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#f4cccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 528, 
     recipe: 'Encased Industrial Beam', recipes: {
       'Encased Industrial Beam': {out: 6, in: [{item: 'Steel Beam', amount: 18}, {item: 'Concrete', amount: 36}], bypro: [], building: 'Assembler'},
       'Encased Industrial Pipe': {out: 4, in: [{item: 'Steel Pipe', amount: 24}, {item: 'Concrete', amount: 20}], bypro: [], building: 'Assembler'},
     }
   },
-  'Heavy Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Heavy Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 10800, 
     recipe: 'Heavy Modular Frame', recipes: {
       'Heavy Modular Frame': {out: 2, in: [{item: 'Modular Frame', amount: 10}, {item: 'Steel Pipe', amount: 40}, {item: 'Encased Industrial Beam', amount: 10}, {item: 'Screws', amount: 240}], bypro: [], building: 'Manufacturer'},
@@ -419,39 +419,39 @@ let items = { // Default item data
       'Heavy Flexible Frame': {out: 3.75, in: [{item: 'Modular Frame', amount: 18.75}, {item: 'Encased Industrial Beam', amount: 11.25}, {item: 'Rubber', amount: 75}, {item: 'Screws', amount: 390}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Fused Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Fused Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 62840, 
     recipe: 'Fused Modular Frame', recipes: {
       'Fused Modular Frame': {out: 1.5, in: [{item: 'Heavy Modular Frame', amount: 1.5}, {item: 'Aluminum Casing', amount: 75}, {item: 'Nitrogen Gas', item: 37.5}], bypro: [], building: 'Blender'},
       'Heat-Fused Frame': {out: 3, in: [{item: 'Heavy Modular Frame', amount: 3}, {item: 'Aluminum Ingot', amount: 150}, {item: 'Nitric Acid', item: 24}, {item: 'Fuel', amount: 30}], bypro: [], building: 'Blender'},
     }
   },
-  'Alclad Aluminum Sheet': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Alclad Aluminum Sheet': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 266, 
     recipe: 'Alclad Aluminum Sheet', recipes: {
       'Alclad Aluminum Sheet': {out: 30, in: [{item: 'Aluminum', amount: 30}, {item: 'Copper Ingot', amount: 10}], bypro: [], building: 'Assembler'},
     }
   },
-  'Aluminum Casing': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Aluminum Casing': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 393, 
     recipe: 'Aluminum Casing', recipes: {
       'Aluminum Casing': {out: 60, in: [{item: 'Aluminum Ingot', amount: 90}], bypro: [], building: 'Constructor'},
       'Alclad Casing': {out: 112.5, in: [{item: 'Aluminum Ingot', amount: 150}, {item: 'Copper Ingot', amount: 75}], bypro: [], building: 'Assembler'},
     }
   },
-  'Fabric': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Fabric': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 13, color: '#f3f3f3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 140, 
     recipe: 'Polyester Fabric', recipes: {
       'Polyester Fabric': {out: 30, in: [{item: 'Polymer Resin', amount: 30}, {item: 'Water', amount: 30}], bypro: [], building: 'Refiner'},
     }
   },
-  'Ficsite Trigon': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ficsite Trigon': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '#e69138', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1291, 
     recipe: 'Ficsite Trigon', recipes: {
       'Ficsite Trigon': {out: 30, in: [{item: 'Ficsite Ingot', amount: 10}], bypro: [], building: 'Constructor'},
     }
   },
-  'Rotor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Rotor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#a4c2f4', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 140, 
     recipe: 'Rotor', recipes: {
       'Rotor': {out: 4, in: [{item: 'Iron Rod', amount: 20}, {item: 'Screws', amount: 100}], bypro: [], building: 'Assembler'},
@@ -459,21 +459,21 @@ let items = { // Default item data
       'Steel Rotor': {out: 5, in: [{item: 'Steel Pipe', amount: 10}, {item: 'Wire', amount: 30}], bypro: [], building: 'Assembler'},
     }
   },
-  'Stator': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Stator': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#ea9999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 240, 
     recipe: 'Stator', recipes: {
       'Stator': {out: 5, in: [{item: 'Steel Pipe', amount: 15}, {item: 'Wire', amount: 40}], bypro: [], building: 'Assembler'},
       'Quickwire Stator': {out: 8, in: [{item: 'Steel Pipe', amount: 16}, {item: 'Quickwire', amount: 60}], bypro: [], building: 'Assembler'},
     }
   },
-  'Battery': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Battery': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 465, 
     recipe: 'Battery', recipes: {
       'Battery': {out: 20, in: [{item: 'Sulfuric Acid', amount: 50}, {item: 'Alumina Solution', amount: 40}, {item: 'Aluminum Casing', amount: 20}], bypro: [{item: 'Water', amount: 30}], building: 'Blender'},
       'Classic Battery': {out: 30, in: [{item: 'Sulfur', amount: 45}, {item: 'Alclad Aluminum Sheet', amount: 52.5}, {item: 'Plastic', amount: 60}, {item: 'Wire', amount: 90}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1520, 
     recipe: 'Motor', recipes: {
       'Motor': {out: 5, in: [{item: 'Rotor', amount: 10}, {item: 'Stator', amount: 10}], bypro: [], building: 'Assembler'},
@@ -481,21 +481,21 @@ let items = { // Default item data
       'Rigor Motor': {out: 7.5, in: [{item: 'Rotor', amount: 3.75}, {item: 'Stator', amount: 3.75}, {item: 'Crystal Oscillator', item: 1.25}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Heat Sink': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Heat Sink': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2804, 
     recipe: 'Heat Sink', recipes: {
       'Heat Sink': {out: 7.5, in: [{item: 'Alclad Aluminum Sheet', amount: 37.5}, {item: 'Copper Sheet', amount: 22.5}], bypro: [], building: 'Assembler'},
       'Heat Exchanger': {out: 10, in: [{item: 'Aluminum Casing', amount: 30}, {item: 'Rubber', amount: 30}], bypro: [], building: 'Assembler'},
     }
   },
-  'Cooling System': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Cooling System': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12006, 
     recipe: 'Cooling System', recipes: {
       'Cooling System': {out: 6, in: [{item: 'Heat Sink', amount: 12}, {item: 'Rubber', amount: 12}, {item: 'Water', amount: 30}, {item: 'Nitrogen Gas', amount: 150}], bypro: [], building: 'Blender'},
       'Cooling Device': {out: 5, in: [{item: 'Heat Sink', amount: 10}, {item: 'Motor', amount: 2.5}, {item: 'Nitrogen Gas', amount: 60}], bypro: [], building: 'Blender'},
     }
   },
-  'Turbo Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', 
+  'Turbo Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 240496, 
     recipe: 'Turbo Motor', recipes: {
       'Turbo Motor': {out: 1.875, in: [{item: 'Cooling Device', amount: 7.5}, {item: 'Radio Control Unit', amount: 3.75}, {item: 'Motor', amount: 7.5}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
@@ -503,7 +503,7 @@ let items = { // Default item data
       'Turbo Pressure Motor': {out: 3.75, in: [{item: 'Motor', amount: 7.5}, {item: 'Pressure Conversion Cube', amount: 1.875}, {item: 'Packaged Nitrogen Gas', amount: 45}, {item: 'Stator', amount: 15}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Wire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Wire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
     recipe: 'Wire', recipes: {
       'Wire': {out: 30, in: [{item: 'Copper Ingot', amount: 15}], bypro: [], building: 'Constructor'},
@@ -512,7 +512,7 @@ let items = { // Default item data
       'Iron Wire': {out: 22.5, in: [{item: 'Iron Ingot', amount: 12.5}], bypro: [], building: 'Constructor'},
     }
   },
-  'Cable': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Cable': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 24, 
     recipe: 'Cable', recipes: {
       'Cable': {out: 30, in: [{item: 'Wire', amount: 60}], bypro: [], building: 'Constructor'},
@@ -521,14 +521,14 @@ let items = { // Default item data
       'Quickwire Cable': {out: 27.5, in: [{item: 'Quickwire', amount: 7.5}, {item: 'Rubber', amount: 5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Quickwire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Quickwire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#fff2cc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 17, 
     recipe: 'Quickwire', recipes: {
       'Quickwire': {out: 60, in: [{item: 'Caterium Ingot', amount: 12}], bypro: [], building: 'Constructor'},
       'Fused Quickwire': {out: 90, in: [{item: 'Caterium Ingot', amount: 7.5}, {item: 'Copper Ingot', amount: 37.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Circuit Board': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Circuit Board': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 696, 
     recipe: 'Circuit Board', recipes: {
       'Circuit Board': {out: 7.5, in: [{item: 'Copper Sheet', amount: 15}, {item: 'Plastic', amount: 30}], bypro: [], building: 'Assembler'},
@@ -537,28 +537,28 @@ let items = { // Default item data
       'Silicon Circuit Board': {out: 12.5, in: [{item: 'Copper Sheet', amount: 27.5}, {item: 'Silica', amount: 27.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'AI Limiter': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'AI Limiter': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#a2c4c9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 920, 
     recipe: 'AI Limiter', recipes: {
       'AI Limiter': {out: 5, in: [{item: 'Copper Sheet', amount: 25}, {item: 'Quickwire', amount: 100}], bypro: [], building: 'Assembler'},
       'Plastic AI Limiter': {out: 8, in: [{item: 'Quickwire', amount: 120}, {item: 'Plastic', amount: 28}], bypro: [], building: 'Assembler'},
     }
   },
-  'High-Speed Connector': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'High-Speed Connector': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#6aa84f', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3776, 
     recipe: 'High-Speed Connector', recipes: {
       'High-Speed Connector': {out: 3.75, in: [{item: 'Quickwire', amount: 210}, {item: 'Cable', amount: 37.5}, {item: 'Circuit Board', item: 3.75}], bypro: [], building: 'Manufacturer'},
       'Silicon High-Speed Connector': {out: 3, in: [{item: 'Quickwire', amount: 90}, {item: 'Circuit Board', item: 3}, {item: 'Silica', amount: 37.5}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Crystal Oscillator': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Crystal Oscillator': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d5a6bd', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3072, 
     recipe: 'Crystal Oscillator', recipes: {
       'Crystal Oscillator': {out: 1, in: [{item: 'Quartz Crystal', amount: 18}, {item: 'Cable', amount: 14}, {item: 'Reinforced Iron Plate', amount: 2.5}], bypro: [], building: 'Manufacturer'},
       'Insulated Crystal Oscillator': {out: 1.875, in: [{item: 'Quartz Crystal', amount: 18.75}, {item: 'Rubber', amount: 13.125}, {item: 'AI Control Unit', amount: 1.875}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Computer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Computer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8352, 
     recipe: 'Computer', recipes: {
       'Computer': {out: 2.5, in: [{item: 'Circuit Board', amount: 10}, {item: 'Cable', amount: 20}, {item: 'Plastic', amount: 40}], bypro: [], building: 'Manufacturer'},
@@ -566,7 +566,7 @@ let items = { // Default item data
       'Crystal Computer': {out: (10 / 3), in: [{item: 'Circuit Board', amount: 5}, {item: 'Crystal Oscillator', amount: (5 / 2)}], bypro: [], building: 'Assembler'},
     }
   },
-  'Supercomputer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Supercomputer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 97352, 
     recipe: 'Supercomputer', recipes: {
       'Supercomputer': {out: 1.875, in: [{item: 'Computer', amount: 7.5}, {item: 'AI Limiter', amount: 3.75}, {item: 'High-Speed Connector', amount: 5.625}, {item: 'Plastic', amount: 52.5}], bypro: [], building: 'Manufacturer'},
@@ -574,7 +574,7 @@ let items = { // Default item data
       'Super-State Computer': {out: 2.4, in: [{item: 'Computer', amount: 7.2}, {item: 'Electromagnetic Control Rod', amount: 2.4}, {item: 'Battery', amount: 24}, {item: 'Wire', amount: 60}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Radio Control Unit': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', 
+  'Radio Control Unit': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#ffd966', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32352, 
     recipe: 'Radio Control Unit', recipes: {
       'Radio Control Unit': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 40}, {item: 'Crystal Oscillator', amount: 1.25}, {item: 'Computer', amount: 2.5}], bypro: [], building: 'Manufacturer'},
@@ -582,7 +582,7 @@ let items = { // Default item data
       'Radio Control System': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 90}, {item: 'Crystal Oscillator', amount: 1.5}, {item: 'Circuit Board', amount: 15}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Plastic': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Plastic': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#a4c2f4', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 75, 
     recipe: 'Plastic', recipes: {
       'Plastic': {out: 20, in: [{item: 'Crude Oil', amount: 30}], bypro: [{item: 'Heavy Oil Residue', amount: 10}], building: 'Refinery'},
@@ -590,7 +590,7 @@ let items = { // Default item data
       'Recycled Plastic': {out: 60, in: [{item: 'Rubber', amount: 30}, {item: 'Fuel', amount: 30}], bypro: [], building: 'Refinery'},
     }
   },
-  'Rubber': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Rubber': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#666666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 60, 
     recipe: 'Rubber', recipes: {
       'Rubber': {out: 20, in: [{item: 'Crude Oil', amount: 30}], bypro: [{item: 'Heavy Oil Residue', amount: 20}], building: 'Refinery'},
@@ -598,7 +598,7 @@ let items = { // Default item data
       'Recycled Rubber': {out: 60, in: [{item: 'Plastic', amount: 30}, {item: 'Fuel', amount: 30}], bypro: [], building: 'Refinery'},
     }
   },
-  'Polymer Resin': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Polymer Resin': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#6fa8dc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12, 
     recipe: 'Polymer Resin', recipes: {
       'Polymer Resin': {out: 130, in: [{item: 'Crude Oil', amount: 60}], bypro: [{item: 'Heavy Oil Residue', amount: 20}], building: 'Refinery'},
@@ -606,13 +606,13 @@ let items = { // Default item data
       'Heavy Oil Residue': {out: 20, in: [{item: 'Crude Oil', amount: 30}], bypro: [{item: 'Heavy Oil Residue', amount: 40}], building: 'Refinery'},
     }
   },
-  'Petroleum Coke': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Petroleum Coke': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 20, 
     recipe: 'Petroleum Coke', recipes: {
       'Petroleum Coke': {out: 120, in: [{item: 'Heavy Oil Residue', amount: 40}], bypro: [], building: 'Refinery'},
     }
   },
-  'Heavy Oil Residue': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Heavy Oil Residue': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#6d2d78', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Heavy Oil Residue', recipes: {
       'Heavy Oil Residue': {out: 40, in: [{item: 'Crude Oil', amount: 30}], bypro: [{item: 'Polymer Resin', amount: 20}], building: 'Refinery'},
@@ -622,7 +622,7 @@ let items = { // Default item data
       'Polymer Resin': {out: 20, in: [{item: 'Crude Oil', amount: 60}], bypro: [{item: 'Polymer Resin', amount: 130}], building: 'Refinery'},
     }
   },
-  'Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#eb7d15', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Fuel', recipes: {
       'Fuel': {out: 40, in: [{item: 'Crude Oil', amount: 60}], bypro: [{item: 'Polymer Resin', amount: 30}], building: 'Refinery'},
@@ -631,7 +631,7 @@ let items = { // Default item data
       'Diluted Fuel': {out: 100, in: [{item: 'Heavy Oil Residue', amount: 50}, {item: 'Water', amount: 100}], bypro: [], building: 'Blender'},
     }
   },
-  'Turbofuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Turbofuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d4292e', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Turbofuel', recipes: {
       'Turbofuel': {out: 18.75, in: [{item: 'Fuel', amount: 22.5}, {item: 'Compacted Coal', amount: 15}], bypro: [], building: 'Refinery'},
@@ -640,7 +640,7 @@ let items = { // Default item data
       'Turbo Blend Fuel': {out: 45, in: [{item: 'Fuel', amount: 15}, {item: 'Heavy Oil Residue', amount: 30}, {item: 'Sulfur', amount: 22.5}, {item: 'Petroleum Coke', amount: 22.5}], bypro: [], building: 'Blender'},
     }
   },
-  'Rocket Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Rocket Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#bd251a', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Rocket Fuel', recipes: {
       'Rocket Fuel': {out: 100, in: [{item: 'Turbofuel', amount: 60}, {item: 'Nitric Acid', amount: 10}], bypro: [{item: 'Compacted Coal', amount: 10}], building: 'Blender'},
@@ -648,7 +648,7 @@ let items = { // Default item data
       'Nitro Rocket Fuel': {out: 150, in: [{item: 'Fuel', amount: 100}, {item: 'Nitrogen Gas', amount: 10}], bypro: [{item: 'Compacted Coal', amount: 10}], building: 'Blender'},
     }
   },
-  'Ionized Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ionized Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#d55f1a', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Ionized Fuel', recipes: {
       'Ionized Fuel': {out: 40, in: [{item: 'Rocket Fuel', amount: 40}, {item: 'Power Shard', amount: 2.5}], bypro: [{item: 'Compacted Coal', amount: 5}], building: 'Refinery'},
@@ -656,44 +656,44 @@ let items = { // Default item data
       'Dark-Ion Fuel': {out: 10, in: [{item: 'Packaged Rocket Fuel', amount: 240}, {item: 'Dark Matter Crystal', amount: 80}], bypro: [{item: 'Compacted Coal', amount: 40}], building: 'Converter'},
     }
   },
-  'Packaged Oil': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Oil': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#666666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 180, 
     recipe: 'Packaged Oil', recipes: {
       'Packaged Oil': {out: 30, in: [{item: 'Crude Oil', amount: 30}, {item: 'Empty Canister', amount: 30}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Heavy Oil Residue': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Heavy Oil Residue': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#8e7cc3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 180, 
     recipe: 'Packaged Heavy Oil Residue', recipes: {
       'Packaged Heavy Oil Residue': {out: 30, in: [{item: 'Heavy Oil Residue', amount: 30}, {item: 'Empty Canister', amount: 30}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 270, 
     recipe: 'Packaged Fuel', recipes: {
       'Packaged Fuel': {out: 40, in: [{item: 'Fuel', amount: 40}, {item: 'Empty Canister', amount: 40}], bypro: [], building: 'Packager'},
       'Diluted Packaged Fuel': {out: 60, in: [{item: 'Heavy Oil Residue', amount: 30}, {item: 'Packaged Water', amount: 60}], bypro: [], building: 'Refinery'},
     }
   },
-  'Packaged Turbofuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Turbofuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#e06666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 570, 
     recipe: 'Packaged Turbofuel', recipes: {
       'Packaged Turbofuel': {out: 20, in: [{item: 'Turbofuel', amount: 20}, {item: 'Empty Canister', amount: 20}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Rocket Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Rocket Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 13, color: '#cc0000', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1028, 
     recipe: 'Packaged Rocket Fuel', recipes: {
       'Packaged Rocket Fuel': {out: 60, in: [{item: 'Rocket Fuel', amount: 120}, {item: 'Empty Fluid Tank', amount: 60}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Ionized Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Ionized Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '#ffd966', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 5246, 
     recipe: 'Packaged Ionized Fuel', recipes: {
       'Packaged Ionized Fuel': {out: 40, in: [{item: 'Ionized Fuel', amount: 80}, {item: 'Empty Fluid Tank', amount: 40}], bypro: [], building: 'Packager'},
     }
   },
-  'Empty Canister': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Empty Canister': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 60, 
     recipe: 'Empty Canister', recipes: {
       'Empty Canister': {out: 60, in: [{item: 'Plastic', amount: 30}], bypro: [], building: 'Constructor'},
@@ -701,13 +701,13 @@ let items = { // Default item data
       'Steel Canister': {out: 40, in: [{item: 'Steel Ingot', amount: 40}], bypro: [], building: 'Constructor'},
     }
   },
-  'Empty Fluid Tank': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Empty Fluid Tank': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 170, 
     recipe: 'Empty Fluid Tank', recipes: {
       'Empty Fluid Tank': {out: 60, in: [{item: 'Aluminum Ingot', amount: 60}], bypro: [], building: 'Constructor'},
     }
   },
-  'Alumina Solution': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Alumina Solution': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#c1c1c1', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Alumina Solution', recipes: {
       'Alumina Solution': {out: 120, in: [{item: 'Bauxite', amount: 120}, {item: 'Water', amount: 180}], bypro: [{item: 'Silica', amount: 50}], building: 'Refinery'},
@@ -715,7 +715,7 @@ let items = { // Default item data
       'Sloppy Alumina': {out: 240, in: [{item: 'Bauxite', amount: 200}, {item: 'Water', amount: 200}], bypro: [], building: 'Refinery'},
     }
   },
-  'Sulfuric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Sulfuric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#ffff00', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Sulfuric Acid', recipes: {
       'Sulfuric Acid': {out: 50, in: [{item: 'Sulfur', amount: 50}, {item: 'Water', amount: 50}], bypro: [], building: 'Refinery'},
@@ -723,145 +723,145 @@ let items = { // Default item data
       'Encased Uranium Cell': {out: 10, in: [{item: 'Uranium', amount: 50}, {item: 'Concrete', amount: 15}, {item: 'Sulfuric Acid', amount: 40}], bypro: [{item: 'Encased Uranium Cell', amount: 25}], building: 'Blender'},
     }
   },
-  'Nitric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Nitric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#d9d9a2', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Nitric Acid', recipes: {
       'Nitric Acid': {out: 30, in: [{item: 'Nitrogen Gas', amount: 120}, {item: 'Water', amount: 30}, {item: 'Iron Plate', amount: 10}], bypro: [], building: 'Blender'},
       'Unpackaged Nitric Acid': {out: 20, in: [{item: 'Packaged Nitric Acid', amount: 20}], bypro: [{item: 'Empty Canister', amount: 20}], building: 'Packager'},
     }
   },
-  'Dissolved Silica': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Dissolved Silica': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#e2beee', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Dissolved Silica', recipes: {
       'Dissolved Silica': {out: 60, in: [{item: 'Raw Quartz', amount: 120}, {item: 'Nitric Acid', amount: 10}], bypro: [{item: 'Quartz Crystal', amount: 75}], building: 'Refinery'},
     }
   },
-  'Packaged Water': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Water': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#a4c2f4', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 130, 
     recipe: 'Packaged Water', recipes: {
       'Packaged Water': {out: 60, in: [{item: 'Water', amount: 60}, {item: 'Empty Canister', amount: 60}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Alumina Solution': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Alumina Solution': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 160, 
     recipe: 'Packaged Alumina Solution', recipes: {
       'Packaged Alumina Solution': {out: 120, in: [{item: 'Alumina Solution', amount: 120}, {item: 'Empty Canister', amount: 120}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Sulfuric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Sulfuric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 152, 
     recipe: 'Packaged Sulfuric Acid', recipes: {
       'Packaged Sulfuric Acid': {out: 40, in: [{item: 'Sulfuric Acid', amount: 40}, {item: 'Empty Canister', amount: 40}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Nitric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Nitric Acid': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#efefef', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 412, 
     recipe: 'Packaged Nitric Acid', recipes: {
       'Packaged Nitric Acid': {out: 30, in: [{item: 'Nitric Acid', amount: 30}, {item: 'Empty Fluid Tank', amount: 30}], bypro: [], building: 'Packager'},
     }
   },
-  'Packaged Nitrogen Gas': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Packaged Nitrogen Gas': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#ffffff', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 312, 
     recipe: 'Packaged Nitrogen Gas', recipes: {
       'Packaged Nitrogen Gas': {out: 60, in: [{item: 'Nitrogen Gas', amount: 240}, {item: 'Empty Fluid Tank', amount: 60}], bypro: [], building: 'Packager'},
     }
   },
-  'Pressure Conversion Cube': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', 
+  'Pressure Conversion Cube': {category: 'Fluid', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Pressure Conversion Cube', recipes: {
       'Pressure Conversion Cube': {out: 1, in: [{item: 'Fused Modular Frame', amount: 1}, {item: 'Radio Control Unit', amount: 2}], bypro: [], building: 'Assembler'},
     }
   },
-  'Electromagnetic Control Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Electromagnetic Control Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2560, 
     recipe: 'Electromagnetic Control Rod', recipes: {
       'Electromagnetic Control Rod': {out: 4, in: [{item: 'Stator', amount: 6}, {item: 'AI Limiter', amount: 4}], bypro: [], building: 'Assembler'},
     }
   },
-  'Encased Uranium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Encased Uranium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 147, 
     recipe: 'Encased Uranium Cell', recipes: {
       'Encased Uranium Cell': {out: 25, in: [{item: 'Uranium', amount: 50}, {item: 'Concrete', amount: 15}, {item: 'Sulfric Acid', amount: 40}], bypro: [{item: 'Sulfric Acid', amount: 10}], building: 'Blender'},
       'Infused Uranium Cell': {out: 20, in: [{item: 'Uranium', amount: 25}, {item: 'Silica', amount: 15}, {item: 'Sulfur', amount: 25}, {item: 'Quickwire', amount: 75}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Non-Fissle Uranium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Non-Fissle Uranium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#d9ead3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Non-Fissle Uranium', recipes: {
       'Non-Fissle Uranium': {out: 50, in: [{item: 'Uranium Waste', amount: 37.5}, {item: 'Silica', amount: 25}, {item: 'Nitric Acid', amount: 15}, {item: 'Sulfuric Acid', amount: 15}], bypro: [{item: 'Water', amount: 15}], building: 'Blender'},
       'Fertile Uranium': {out: 100, in: [{item: 'Uranium Waste', amount: 25}, {item: 'Uranium', amount: 25}, {item: 'Nitric Acid', amount: 15}, {item: 'Sulfuric Acid', amount: 25}], bypro: [{item: 'Water', amount: 40}], building: 'Blender'},
     }
   },
-  'Plutonium Pellet': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Plutonium Pellet': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#d0e0e3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Plutonium Pellet', recipes: {
       'Plutonium Pellet': {out: 30, in: [{item: 'Non-Fissle Uranium', amount: 100}, {item: 'Uranium Waste', amount: 25}], bypro: [], building: 'Particle Accelerator 1'},
     }
   },
-  'Encased Plutonium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Encased Plutonium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#a2c4c9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Encased Plutonium Cell', recipes: {
       'Encased Plutonium Cell': {out: 5, in: [{item: 'Plutonium Pellet', amount: 10}, {item: 'Concrete', amount: 20}], bypro: [], building: 'Assembler'},
       'Instant Plutonium Cell': {out: 10, in: [{item: 'Non-Fissile Uranium', amount: 75}, {item: 'Aluminum Casing', amount: 10}], bypro: [], building: 'Particle Accelerator 1'},
     }
   },
-  'Ficsonium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ficsonium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Ficsonium', recipes: {
       'Ficsonium': {out: 10, in: [{item: 'Plutonium Waste', amount: 10}, {item: 'Singularity Cell', amount: 10}, {item: 'Dark Matter Residue', amount: 200}], bypro: [], building: 'Particle Accelerator 2'},
     }
   },
-  'Uranium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Uranium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#93c47d', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 43468, 
     recipe: 'Uranium Fuel Rod', recipes: {
       'Uranium Fuel Rod': {out: 0.4, in: [{item: 'Encased Uranium Cell', amount: 20}, {item: 'Encased Industrial Beam', amount: 1.2}, {item: 'Electromagnetic Control Rod', amount: 2}], bypro: [], building: 'Manufacturer'},
       'Uranium Fuel Unit': {out: 0.6, in: [{item: 'Encased Uranium Cell', amount: 20}, {item: 'Electromagnetic Control Rod', amount: 2}, {item: 'Crystal Oscillator', amount: 0.6}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Plutonium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Plutonium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#9fc5e8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 153184, 
     recipe: 'Plutonium Fuel Rod', recipes: {
       'Plutonium Fuel Rod': {out: 0.25, in: [{item: 'Encased Plutonium Cell', amount: 7.5}, {item: 'Steel Beam', amount: 4.5}, {item: 'Electromagnetic Control Rod', amount: 1.5}, {item: 'Heat Sink', amount: 2.5}], bypro: [], building: 'Manufacturer'},
       'Plutonium Fuel Unit': {out: 0.5, in: [{item: 'Encased Plutonium Cell', amount: 10}, {item: 'Pressure Conversion Cube', amount: 0.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Ficsonium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ficsonium Fuel Rod': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#ffd966', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Ficsonium Fuel Rod', recipes: {
       'Ficsonium Fuel Rod': {out: 2.5, in: [{item: 'Ficsonium', amount: 5}, {item: 'Electromagnetic Control Rod', amount: 5}, {item: 'Ficsite Trigon', amount: 100}, {item: 'Excited Photonic Matter', amount: 50}], bypro: [{item: 'Dark Matter Residue', amount: 50}], building: 'Quantum Encoder'},
     }
   },
-  'Uranium Waste': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Uranium Waste': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#6aa84f', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Uranium Waste', recipes: {
       'Uranium Waste': {out: 10, in: [{item: 'Uranium Fuel Rod', amount: 0.2}, {item: 'Water', amount: 240}], bypro: [], building: 'Nuclear Power Plant'},
     }
   },
-  'Plutonium Waste': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', 
+  'Plutonium Waste': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#a2c4c9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Plutonium Waste', recipes: {
       'Plutonium Waste': {out: 1, in: [{item: 'Plutonium Fuel Rod', amount: 0.1}, {item: 'Water', amount: 240}], bypro: [], building: 'Nuclear Power Plant'},
     }
   },
-  'Time Crystal': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Time Crystal': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#cfe2f3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 960, 
     recipe: 'Time Crystal', recipes: {
       'Time Crystal': {out: 6, in: [{item: 'Diamonds', amount: 12}], bypro: [], building: 'Converter'},
     }
   },
-  'SAM Fluctuator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'SAM Fluctuator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1968, 
     recipe: 'SAM Fluctuator', recipes: {
       'SAM Fluctuator': {out: 10, in: [{item: 'Reanimated SAM', amount: 60}, {item: 'Wire', amount: 50}, {item: 'Steel Pipe', amount: 30}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Dark Matter Residue': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Dark Matter Residue': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Dark Matter Residue', recipes: {
       'Dark Matter Residue': {out: 100, in: [{item: 'Reanimated SAM', amount: 50}], bypro: [], building: 'Converter'},
     }
   },
-  'Dark Matter Crystal': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Dark Matter Crystal': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#8e7cc3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1780, 
     recipe: 'Dark Matter Crystal', recipes: {
       'Dark Matter Crystal': {out: 30, in: [{item: 'Diamonds', amount: 30}, {item: 'Dark Matter Residue', amount: 150}], bypro: [], building: 'Particle Accelerator 2'},
@@ -869,300 +869,300 @@ let items = { // Default item data
       'Dark Matter Trap': {out: 60, in: [{item: 'Time Crystal', amount: 30}, {item: 'Dark Matter Residue', amount: 150}], bypro: [], building: 'Particle Accelerator 2'},
     }
   },
-  'Superposition Oscillator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Superposition Oscillator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 37292, 
     recipe: 'Superposition Oscillator', recipes: {
       'Superposition Oscillator': {out: 5, in: [{item: 'Dark Matter Crystal', amount: 30}, {item: 'Crystal Oscillator', amount: 5}, {item: 'Alclad Aluminum Sheet', amount: 45}, {item: 'Exited Photonic Matter', amount: 125}], bypro: [{item: 'Dark Matter Residue', amount: 125}], building: 'Quantum Encoder'},
     }
   },
-  'Power Shard': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Power Shard': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#9fc5e8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, 
     recipe: 'Power Shard', recipes: {
       'Power Shard': {out: 5, in: [{item: 'Time Crystal', amount: 10}, {item: 'Dark Matter Crystal', amount: 10}, {item: 'Quartz Crystal', amount: 60}, {item: 'Exited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
     }
   },
-  'Singularity Cell': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Singularity Cell': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#fce5cd', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 114675, 
     recipe: 'Singularity Cell', recipes: {
       'Singularity Cell': {out: 10, in: [{item: 'Nuclear Pasta', amount: 1}, {item: 'Dark Matter Crystal', amount: 20}, {item: 'Iron Plate', amount: 100}, {item: 'Concrete', amount: 200}], bypro: [], building: 'Manfacture'},
     }
   },
-  'Neural-Quantum Processor': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Neural-Quantum Processor': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#3d85c6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 248034, 
     recipe: 'Neural-Quantum Processor', recipes: {
       'Neural-Quantum Processor': {out: 3, in: [{item: 'Time Crystal', amount: 15}, {item: 'Supercomputer', amount: 3}, {item: 'Ficsite Trigon', amount: 45}, {item: 'Exited Photonic Matter', amount: 75}], bypro: [{item: 'Dark Matter Residue', amount: 75}], building: 'Quantum Encoder'},
     }
   },
-  'Alien Power Matrix': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', 
+  'Alien Power Matrix': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#ead1dc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 210, 
     recipe: 'Alien Power Matrix', recipes: {
       'Alien Power Matrix': {out: 2.5, in: [{item: 'SAM Fluctuator', amount: 12.5}, {item: 'Power Shard', amount: 7.5}, {item: 'Superposition Oscillator', amount: 7.5}, {item: 'Exited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
     }
   },
-  'Smart Plating': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Smart Plating': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 520, 
     recipe: 'Smart Plating', recipes: {
       'Smart Plating': {out: 2, in: [{item: 'Reinforce Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Assembler'},
       'Plastic Smart Plating': {out: 5, in: [{item: 'Reinforce Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}, {item: 'Plastic', amount: 7.5}], bypro: [], building: 'Manfacture'},
     }
   },
-  'Versatile Framework': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Versatile Framework': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#e6b8af', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1176, 
     recipe: 'Versatile Framework', recipes: {
       'Versatile Framework': {out: 5, in: [{item: 'Modular Frame', amount: 2.5}, {item: 'Steel Beam', amount: 30}], bypro: [], building: 'Assembler'},
       'Flexable Framework': {out: 7.5, in: [{item: 'Modular Frame', amount: 3.75}, {item: 'Steel Beam', amount: 22.5}, {item: 'Rubber', amount: 30}], bypro: [], building: 'Manfacture'},
     }
   },
-  'Automated Wiring': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Automated Wiring': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1440, 
     recipe: 'Automated Wiring', recipes: {
       'Automated Wiring': {out: 2.5, in: [{item: 'Stator', amount: 2.5}, {item: 'Cable', amount: 50}], bypro: [], building: 'Assembler'},
       'Automated Speed Wiring': {out: 7.5, in: [{item: 'Stator', amount: 3.75}, {item: 'Wire', amount: 75}, {item: 'High-Speed Connector', amount: 1.875}], bypro: [], building: 'Manfacture'},
     }
   },
-  'Modular Engine': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Modular Engine': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 9960, 
     recipe: 'Modular Engine', recipes: {
       'Modular Engine': {out: 1, in: [{item: 'Smart Plating', amount: 2}, {item: 'Motor', amount: 2}, {item: 'Rubber', amount: 15}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Adaptive Control Unit': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Adaptive Control Unit': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 76368, 
     recipe: 'Adaptive Control Unit', recipes: {
       'Adaptive Control Unit': {out: 1, in: [{item: 'Automated Wiring', amount: 5}, {item: 'Circuit Board', amount: 5}, {item: 'Heavy Modular Frame', amount: 1}, {item: 'Computer', amount: 2}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Assemble Director System': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Assemble Director System': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 500176, 
     recipe: 'Assemble Director System', recipes: {
       'Assemble Director System': {out: 0.75, in: [{item: 'Adaptive Control Unit', amount: 1.5}, {item: 'Supercomputer', amount: 0.75}], bypro: [], building: 'Assembler'},
     }
   },
-  'Magnetic Field Generator': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Magnetic Field Generator': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 11000, 
     recipe: 'Magnetic Field Generator', recipes: {
       'Magnetic Field Generator': {out: 1, in: [{item: 'Versatile Framework', amount: 2.5}, {item: 'Electromagnetic Control Rod', amount: 1}], bypro: [], building: 'Assembler'},
     }
   },
-  'Thermal Propulsion Rocket': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Thermal Propulsion Rocket': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#e06666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 728508, 
     recipe: 'Thermal Propulsion Rocket', recipes: {
       'Thermal Propulsion Rocket': {out: 1, in: [{item: 'Modular Engine', amount: 2.5}, {item: 'Turbo Motor', amount: 1}, {item: 'Cooling System', amount: 3}, {item: 'Fused Modular Frame', amount: 1}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Nuclear Pasta': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Nuclear Pasta': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#a2c4c9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 538976, 
     recipe: 'Nuclear Pasta', recipes: {
       'Nuclear Pasta': {out: 0.5, in: [{item: 'Copper Powder', amount: 100}, {item: 'Pressure Convertion Cube', amount: 0.5}], bypro: [], building: 'Particle Accelerator 2'},
     }
   },
-  'Biochemical Sculptor': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Biochemical Sculptor': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#ea9999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 301778, 
     recipe: 'Biochemical Sculptor', recipes: {
       'Biochemical Sculptor': {out: 2, in: [{item: 'Assemble Director System', amount: 0.5}, {item: 'Ficsite Trigon', amount: 40}, {item: 'Water', amount: 10}], bypro: [], building: 'Blender'},
     }
   },
-  'Ballistic Warp Drive': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ballistic Warp Drive': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2895334, 
     recipe: 'Ballistic Warp Drive', recipes: {
       'Ballistic Warp Drive': {out: 1, in: [{item: 'Thermal Propulsion Rocket', amount: 1}, {item: 'Singularity Cell', amount: 5}, {item: 'Superposition Oscillator', amount: 2}, {item: 'Dark Matter Crystal', amount: 40}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'AI Expansion Server': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', 
+  'AI Expansion Server': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#f4cccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 597652, 
     recipe: 'AI Expansion Server', recipes: {
       'AI Expansion Server': {out: 4, in: [{item: 'Magnetic Field Generator', amount: 4}, {item: 'Neural-Quantum Processor', amount: 4}, {item: 'Superposition Oscillator', amount: 4}, {item: 'Exited Photonic Matter', amount: 100}], bypro: [{item: 'Dark Matter Residue', amount: 100}], building: 'Quantum Encoder'},
     }
   },
-  'Black Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Black Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#666666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 14, 
     recipe: 'Black Powder', recipes: {
       'Black Powder': {out: 30, in: [{item: 'Sulfur', amount: 15}, {item: 'Coal', amount: 15}], bypro: [], building: 'Assembler'},
       'Fine Black Powder': {out: 45, in: [{item: 'Sulfur', amount: 7.5}, {item: 'Compacted Coal', amount: 15}], bypro: [], building: 'Assembler'},
     }
   },
-  'Smokeless Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Smokeless Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 58, 
     recipe: 'Smokeless Powder', recipes: {
       'Smokeless Powder': {out: 20, in: [{item: 'Black Powder', amount: 20}, {item: 'Heavy Oil Residue', amount: 10}], bypro: [], building: 'Refinery'},
     }
   },
-  'Iron Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iron Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8, 
     recipe: 'Iron Rebar', recipes: {
       'Iron Rebar': {out: 15, in: [{item: 'Iron', amount: 15}], bypro: [], building: 'Constructor'},
     }
   },
-  'Stun Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Stun Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#a4c2f4', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 186, 
     recipe: 'Stun Rebar', recipes: {
       'Stun Rebar': {out: 10, in: [{item: 'Iron Rebar', amount: 10}, {item: 'Quickwire', amount: 50}], bypro: [], building: 'Assembler'},
     }
   },
-  'Shatter Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Shatter Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 332, 
     recipe: 'Shatter Rebar', recipes: {
       'Shatter Rebar': {out: 5, in: [{item: 'Iron Rebar', amount: 10}, {item: 'Quartz Crystal', amount: 15}], bypro: [], building: 'Assembler'},
     }
   },
-  'Explosive Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Explosive Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#ea9999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 360, 
     recipe: 'Explosive Rebar', recipes: {
       'Explosive Rebar': {out: 5, in: [{item: 'Iron Bar', amount: 10}, {item: 'Smokeless Powder', amount: 10}, {item: 'Steel Pipe', amount: 10}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 25, 
     recipe: 'Rifle Ammo', recipes: {
       'Rifle Ammo': {out: 75, in: [{item: 'Smokeless Powder', amount: 10}, {item: 'Copper Sheet', amount: 15}], bypro: [], building: 'Assembler'},
     }
   },
-  'Homing Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Homing Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 855, 
     recipe: 'Homing Rifle Ammo', recipes: {
       'Homing Rifle Ammo': {out: 25, in: [{item: 'Rifle Ammo', amount: 50}, {item: 'High-Speed Connector', amount: 1}], bypro: [], building: 'Assembler'},
     }
   },
-  'Turbo Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Turbo Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#ea9999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 120, 
     recipe: 'Turbo Rifle Ammo', recipes: {
       'Turbo Rifle Ammo': {out: 250, in: [{item: 'Rifle Ammo', amount: 125}, {item: 'Aluminum Casing', amount: 15}, {item: 'Packaged Turbofuel', amount: 15}], bypro: [], building: 'Manufacturer'},
       'Turbo Rifle Ammo (Blender)': {out: 250, in: [{item: 'Rifle Ammo', amount: 125}, {item: 'Aluminum Casing', amount: 15}, {item: 'Turbofuel', amount: 15}], bypro: [], building: 'Blender'},
     }
   },
-  'Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#e06666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 152, 
     recipe: 'Nobelisk', recipes: {
       'Nobelisk': {out: 10, in: [{item: 'Black Powder', amount: 20}, {item: 'Steel Pipe', amount: 20}], bypro: [], building: 'Assembler'},
     }
   },
-  'Gas Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Gas Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 544, 
     recipe: 'Gas Nobelisk', recipes: {
       'Gas Nobelisk': {out: 5, in: [{item: 'Nobelisk', amount: 5}, {item: 'Biomass', amount: 50}], bypro: [], building: 'Assembler'},
     }
   },
-  'Pulse Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Pulse Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#a2c4c9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1533, 
     recipe: 'Pulse Nobelisk', recipes: {
       'Pulse Nobelisk': {out: 5, in: [{item: 'Nobelisk', amount: 5}, {item: 'Crystal Oscillator', amount: 1}], bypro: [], building: 'Assembler'},
     }
   },
-  'Cluster Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Cluster Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1376, 
     recipe: 'Cluster Nobelisk', recipes: {
       'Cluster Nobelisk': {out: 2.5, in: [{item: 'Nobelisk', amount: 7.5}, {item: 'Smokeless Powder', amount: 10}], bypro: [], building: 'Assembler'},
     }
   },
-  'Nuke Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Nuke Nobelisk': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 13, color: '#93c47d', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 19600, 
     recipe: 'Nuke Nobelisk', recipes: {
       'Nuke Nobelisk': {out: 0.5, in: [{item: 'Nobelisk', amount: 2.5}, {item: 'Smokeless Powder', amount: 5}, {item: 'Encased Uranium Cell', amount: 10}, {item: 'AI Limiter', amount: 3}], bypro: [], building: 'Manufacurer'},
     }
   },
-  'Gas Filter': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Gas Filter': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '#666666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 608, 
     recipe: 'Gas Filter', recipes: {
       'Gas Filter': {out: 7.5, in: [{item: 'Fabric', amount: 15}, {item: 'Coal', amount: 30}, {item: 'Iron Plate', amount: 15}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Iodine-Infused Filter': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iodine-Infused Filter': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 15, color: '#f1c232', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2274, 
     recipe: 'Iodine-Infused Filter', recipes: {
       'Iodine-Infused Filter': {out: 3.75, in: [{item: 'Gas Filter', amount: 3.75}, {item: 'Quickwire', amount: 30}, {item: 'Aluminum Casing', amount: 3.75}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Gift': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Gift': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1, 
     recipe: 'Gift', recipes: {
       'Gift': {out: 15, in: [], bypro: [], building: 'FICSMAS Tree'},
     }
   },
-  'Candy Cane': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Candy Cane': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#f4cccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
     recipe: 'Candy Cane', recipes: {
       'Candy Cane': {out: 5, in: [{item: 'Gift', amount: 15}], bypro: [], building: 'Constructor'},
     }
   },
-  'Actual Snow': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Actual Snow': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#ffffff', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 5, 
     recipe: 'Actual Snow', recipes: {
       'Actual Snow': {out: 10, in: [{item: 'Gift', amount: 25}], bypro: [], building: 'Constructor'},
     }
   },
-  'Bow': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Bow': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#ea9999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 4, 
     recipe: 'Bow', recipes: {
       'Bow': {out: 5, in: [{item: 'Gift', amount: 10}], bypro: [], building: 'Constructor'},
     }
   },
-  'Tree Branch': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Tree Branch': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#76a5af', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
     recipe: 'Tree Branch', recipes: {
       'Tree Branch': {out: 10, in: [{item: 'Gift', amount: 10}], bypro: [], building: 'Constructor'},
     }
   },
-  'Red Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Red Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#e06666', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, 
     recipe: 'Red Ornament', recipes: {
       'Red Ornament': {out: 5, in: [{item: 'Gift', amount: 5}], bypro: [], building: 'Smelter'},
     }
   },
-  'Blue Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Blue Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#6d9eeb', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1, 
     recipe: 'Blue Ornament', recipes: {
       'Blue Ornament': {out: 10, in: [{item: 'Gift', amount: 5}], bypro: [], building: 'Smelter'},
     }
   },
-  'Copper Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Copper Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32, 
     recipe: 'Copper Ornament', recipes: {
       'Copper Ornament': {out: 5, in: [{item: 'Red Ornament', amount: 10}, {item: 'Copper Ingot', amount: 10}], bypro: [], building: 'Foundry'},
     }
   },
-  'Iron Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Iron Ornament': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#efefef', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 18, 
     recipe: 'Iron Ornament', recipes: {
       'Iron Ornament': {out: 5, in: [{item: 'Blue Ornament', amount: 15}, {item: 'Iron Ingot', amount: 15}], bypro: [], building: 'Foundry'},
     }
   },
-  'Ornament Bundle': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Ornament Bundle': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 100, 
     recipe: 'Ornament Bundle', recipes: {
       'Ornament Bundle': {out: 5, in: [{item: 'Iron Ornament', amount: 5}, {item: 'Copper Ornament', amount: 5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Wreath': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Wreath': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#93c47d', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 630, 
     recipe: 'Wreath', recipes: {
       'Wreath': {out: 2, in: [{item: 'Tree Branch', amount: 15}, {item: 'Ornament Bundle', amount: 6}], bypro: [], building: 'Assembler'},
     }
   },
-  'Wonder Star': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Wonder Star': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#ffd966', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6540, 
     recipe: 'Wonder Star', recipes: {
       'Wonder Star': {out: 1, in: [{item: 'Wreath', amount: 5}, {item: 'Candy Cane', amount: 20}], bypro: [], building: 'Assembler'},
     }
   },
-  'Snowball': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Snowball': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#f3f3f3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 30, 
     recipe: 'Snowball', recipes: {
       'Snowball': {out: 5, in: [{item: 'Actual Snow', amount: 15}], bypro: [], building: 'Constructor'},
     }
   },
-  'Fancy Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Fancy Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 13, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 40, 
     recipe: 'Fancy Fireworks', recipes: {
       'Fancy Fireworks': {out: 2.5, in: [{item: 'Tree Branch', amount: 10}, {item: 'Bow', amount: 7.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Sparkly Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Sparkly Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32, 
     recipe: 'Sparkly Fireworks', recipes: {
       'Sparkly Fireworks': {out: 2.5, in: [{item: 'Tree Branch', amount: 7.5}, {item: 'Actual Snow', amount: 15}], bypro: [], building: 'Assembler'},
     }
   },
-  'Sweet Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', 
+  'Sweet Fireworks': {category: 'Ficsmas', complete: false, inpDemand: 0, status: 'resolved', pos: 15, color: '#b4a7d6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 60, 
     recipe: 'Sweet Fireworks', recipes: {
       'Sweet Fireworks': {out: 2.5, in: [{item: 'Tree Branch', amount: 15}, {item: 'Candy Cane', amount: 7.5}], bypro: [], building: 'Assembler'},
