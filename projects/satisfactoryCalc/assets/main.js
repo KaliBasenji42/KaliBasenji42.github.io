@@ -6,13 +6,6 @@ const headHTML = `
 const bodyHTML = `
   `;
 
-let currentMenu = 'none';
-
-let settings = {
-  'Max Calculation Iterations': 100,
-  'Number Input Digits': 3,
-};
-
 let items = { // Default item data
   'Iron Ore': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1, 
@@ -1170,10 +1163,156 @@ let items = { // Default item data
   },
 };
 
+let buildings = {
+  'Miner 1': {
+    'Average MW': 5,
+    'Max MW': 5,
+    'Min MW': 5,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Miner 2': {
+    'Average MW': 15,
+    'Max MW': 15,
+    'Min MW': 15,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Miner 3': {
+    'Average MW': 45,
+    'Max MW': 45,
+    'Min MW': 45,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Resource Well': {
+    'Average MW': 150,
+    'Max MW': 150,
+    'Min MW': 150,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Water Extractor': {
+    'Average MW': 20,
+    'Max MW': 20,
+    'Min MW': 20,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Oil Extractor': {
+    'Average MW': 40,
+    'Max MW': 40,
+    'Min MW': 40,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Constructor': {
+    'Average MW': 4,
+    'Max MW': 4,
+    'Min MW': 4,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Assembler': {
+    'Average MW': 15,
+    'Max MW': 15,
+    'Min MW': 15,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Manufacturer': {
+    'Average MW': 55,
+    'Max MW': 55,
+    'Min MW': 55,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Smelter': {
+    'Average MW': 4,
+    'Max MW': 4,
+    'Min MW': 4,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Foundry': {
+    'Average MW': 16,
+    'Max MW': 16,
+    'Min MW': 16,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Refinery': {
+    'Average MW': 30,
+    'Max MW': 30,
+    'Min MW': 30,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Blender': {
+    'Average MW': 75,
+    'Max MW': 75,
+    'Min MW': 75,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Particle Acc. 1': {
+    'Average MW': 500,
+    'Max MW': 750,
+    'Min MW': 250,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Particle Acc. 2': {
+    'Average MW': 1000,
+    'Max MW': 1500,
+    'Min MW': 500,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Packager': {
+    'Average MW': 10,
+    'Max MW': 10,
+    'Min MW': 10,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Nuclear Power': {
+    'Average MW': -2500,
+    'Max MW': -2500,
+    'Min MW': -2500,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Q Encoder': {
+    'Average MW': 1000,
+    'Max MW': 2000,
+    'Min MW': 0,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'Converter': {
+    'Average MW': 250,
+    'Max MW': 400,
+    'Min MW': 100,
+    'Total': 0,
+    'Total MW': 0,
+  },
+  'FICSMAS Tree': {
+    'Average MW': 0,
+    'Max MW': 0,
+    'Min MW': 0,
+    'Total': 0,
+    'Total MW': 0,
+  },
+};
+
 let calcTable = {};
 
-let buildings = {
-  
+let currentMenu = 'none';
+
+let settings = {
+  'Max Calculation Iterations': 100,
+  'Number Input Digits': 3,
 };
 
 let unresolved = new Set;
