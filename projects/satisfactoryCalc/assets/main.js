@@ -189,7 +189,7 @@ let items = { // Default item data
       'Nitrogen Gas (Caterium)': {out: 120, in: [{item: 'Caterium Ore', amount: 120}, {item: 'SAM', amount: 10}], building: 'Converter'},
     }
   },
-  'SAM': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '##8e7cc3', 
+  'SAM': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#8e7cc3', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 20, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -210,7 +210,7 @@ let items = { // Default item data
       'Excited Photonic Matter': {out: 200, in: [], bypro: [], building: 'Converter'}
     }
   },
-  'Biomass': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '##93c47d', 
+  'Biomass': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 14, color: '#93c47d', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 12, 
     recipe: 'Future Problem :3', recipes: {
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
@@ -496,7 +496,7 @@ let items = { // Default item data
       'Turbo Pressure Motor': {out: 3.75, in: [{item: 'Motor', amount: 7.5}, {item: 'Pressure Conversion Cube', amount: 1.875}, {item: 'Packaged Nitrogen Gas', amount: 45}, {item: 'Stator', amount: 15}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Wire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#f9cb9c', 
+  'Wire': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, 
     recipe: 'Wire', recipes: {
       'Wire': {out: 30, in: [{item: 'Copper Ingot', amount: 15}], bypro: [], building: 'Constructor'},
@@ -505,7 +505,7 @@ let items = { // Default item data
       'Iron Wire': {out: 22.5, in: [{item: 'Iron Ingot', amount: 12.5}], bypro: [], building: 'Constructor'},
     }
   },
-  'Cable': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#999999', 
+  'Cable': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#999999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 24, 
     recipe: 'Cable', recipes: {
       'Cable': {out: 30, in: [{item: 'Wire', amount: 60}], bypro: [], building: 'Constructor'},
@@ -514,14 +514,14 @@ let items = { // Default item data
       'Quickwire Cable': {out: 27.5, in: [{item: 'Quickwire', amount: 7.5}, {item: 'Rubber', amount: 5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Quickwire': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#fff2cc', 
+  'Quickwire': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#fff2cc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 17, 
     recipe: 'Quickwire', recipes: {
       'Quickwire': {out: 60, in: [{item: 'Caterium Ingot', amount: 12}], bypro: [], building: 'Constructor'},
       'Fused Quickwire': {out: 90, in: [{item: 'Caterium Ingot', amount: 7.5}, {item: 'Copper Ingot', amount: 37.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'Circuit Board': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#b6d7a8', 
+  'Circuit Board': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 696, 
     recipe: 'Circuit Board', recipes: {
       'Circuit Board': {out: 7.5, in: [{item: 'Copper Sheet', amount: 15}, {item: 'Plastic', amount: 30}], bypro: [], building: 'Assembler'},
@@ -530,28 +530,28 @@ let items = { // Default item data
       'Silicon Circuit Board': {out: 12.5, in: [{item: 'Copper Sheet', amount: 27.5}, {item: 'Silica', amount: 27.5}], bypro: [], building: 'Assembler'},
     }
   },
-  'AI Limiter': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#a2c4c9', 
+  'AI Limiter': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#a2c4c9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 920, 
     recipe: 'AI Limiter', recipes: {
       'AI Limiter': {out: 5, in: [{item: 'Copper Sheet', amount: 25}, {item: 'Quickwire', amount: 100}], bypro: [], building: 'Assembler'},
       'Plastic AI Limiter': {out: 8, in: [{item: 'Quickwire', amount: 120}, {item: 'Plastic', amount: 28}], bypro: [], building: 'Assembler'},
     }
   },
-  'High-Speed Connector': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#6aa84f', 
+  'High-Speed Connector': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#6aa84f', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3776, 
     recipe: 'High-Speed Connector', recipes: {
       'High-Speed Connector': {out: 3.75, in: [{item: 'Quickwire', amount: 210}, {item: 'Cable', amount: 37.5}, {item: 'Circuit Board', item: 3.75}], bypro: [], building: 'Manufacturer'},
       'Silicon High-Speed Connector': {out: 3, in: [{item: 'Quickwire', amount: 90}, {item: 'Circuit Board', item: 3}, {item: 'Silica', amount: 37.5}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Crystal Oscillator': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d5a6bd', 
+  'Crystal Oscillator': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d5a6bd', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3072, 
     recipe: 'Crystal Oscillator', recipes: {
       'Crystal Oscillator': {out: 1, in: [{item: 'Quartz Crystal', amount: 18}, {item: 'Cable', amount: 14}, {item: 'Reinforced Iron Plate', amount: 2.5}], bypro: [], building: 'Manufacturer'},
       'Insulated Crystal Oscillator': {out: 1.875, in: [{item: 'Quartz Crystal', amount: 18.75}, {item: 'Rubber', amount: 13.125}, {item: 'AI Control Unit', amount: 1.875}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Computer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#f9cb9c', 
+  'Computer': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8352, 
     recipe: 'Computer', recipes: {
       'Computer': {out: 2.5, in: [{item: 'Circuit Board', amount: 10}, {item: 'Cable', amount: 20}, {item: 'Plastic', amount: 40}], bypro: [], building: 'Manufacturer'},
@@ -559,7 +559,7 @@ let items = { // Default item data
       'Crystal Computer': {out: (10 / 3), in: [{item: 'Circuit Board', amount: 5}, {item: 'Crystal Oscillator', amount: (5 / 2)}], bypro: [], building: 'Assembler'},
     }
   },
-  'Supercomputer': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#f6b26b', 
+  'Supercomputer': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#f6b26b', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 97352, 
     recipe: 'Supercomputer', recipes: {
       'Supercomputer': {out: 1.875, in: [{item: 'Computer', amount: 7.5}, {item: 'AI Limiter', amount: 3.75}, {item: 'High-Speed Connector', amount: 5.625}, {item: 'Plastic', amount: 52.5}], bypro: [], building: 'Manufacturer'},
@@ -567,7 +567,7 @@ let items = { // Default item data
       'Super-State Computer': {out: 2.4, in: [{item: 'Computer', amount: 7.2}, {item: 'Electromagnetic Control Rod', amount: 2.4}, {item: 'Battery', amount: 24}, {item: 'Wire', amount: 60}], bypro: [], building: 'Manufacturer'},
     }
   },
-  'Radio Control Unit': {category: 'Electric', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#ffd966', 
+  'Radio Control Unit': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 9, color: '#ffd966', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 32352, 
     recipe: 'Radio Control Unit', recipes: {
       'Radio Control Unit': {out: 2.5, in: [{item: 'Aluminum Casing', amount: 40}, {item: 'Crystal Oscillator', amount: 1.25}, {item: 'Computer', amount: 2.5}], bypro: [], building: 'Manufacturer'},
@@ -1163,13 +1163,15 @@ let items = { // Default item data
   },
 };
 
-let buildings = {
+let buildings = { // Default building data
   'Miner 1': {
     'Average MW': 5,
     'Max MW': 5,
     'Min MW': 5,
     'Total': 0,
     'Total MW': 0,
+    pos: 0,
+    color: '#b7b7b7',
   },
   'Miner 2': {
     'Average MW': 15,
@@ -1177,6 +1179,8 @@ let buildings = {
     'Min MW': 15,
     'Total': 0,
     'Total MW': 0,
+    pos: 1,
+    color: '#cccccc',
   },
   'Miner 3': {
     'Average MW': 45,
@@ -1184,6 +1188,8 @@ let buildings = {
     'Min MW': 45,
     'Total': 0,
     'Total MW': 0,
+    pos: 2,
+    color: '#d9d9d9',
   },
   'Resource Well': {
     'Average MW': 150,
@@ -1306,17 +1312,310 @@ let buildings = {
   },
 };
 
-let calcTable = {};
+let categories = { // Default category data
+  'Raw': {pos: 0, color: '#e6b8af'},
+  'Mineral / Ingot': {pos: 1, color: '#ead1dc'},
+  'Standard Part': {pos: 2, color: '#b7b7b7'},
+  'Industrial': {pos: 3, color: '#f6b26b'},
+  'Electronic': {pos: 4, color: '#93c47d'},
+  'Oil': {pos: 5, color: '#666666'},
+  'Fluid': {pos: 6, color: '#ffe599'},
+  'Nuclear': {pos: 7, color: '#a2c4c9'},
+  'Quantum': {pos: 8, color: '#d5a6bd'},
+  'Space Elevator': {pos: 9, color: '#b4a7d6'},
+  'Weapons': {pos: 10, color: '#ea9999'},
+  'Ficsmas': {pos: 11, color: '#e06666'},
+}
 
-let currentMenu = 'none';
+let calcTable = {}; // Holds more data for each item
 
-let settings = {
-  'Max Calculation Iterations': 100,
-  'Number Input Digits': 3,
+let settings = { // Default settings
+  'maxCalcIter': 100, // Number of calculations before throwing error
+  'NumInpDgts': 3, // Number of digits allowed for number inputs
 };
 
-let unresolved = new Set;
+let unresolved = new Set; // Set of the names of all unresolved items
+let solving = new Set; // Set of the names of all the items being resolved
 
-let solving = new Set;
+// Elements
 
-// Functions
+let toolbar; // Toolbar
+let greyout; // Menu Grey-Out
+let Xs; // Menu Xs
+
+let settingsForm; // Settings Form
+let uploadForm; // Upload Form
+let downloadLink; // Upload Link
+
+let MITbl; // Main Interface Table
+let MIForm; // Main Interface Form
+
+// Rendering Functions
+
+function textColor(BGColor) { // Returns best (contrast) text color
+  // BGColor: background color in hex
+  
+  let red = parseInt(BGColor.slice(1, 3), 16);
+  let green = parseInt(BGColor.slice(3, 5), 16);
+  let blue = parseInt(BGColor.slice(5, 7), 16);
+  
+  if(((red * 0.299) + (green * 0.587) + (blue * 0.114)) < 128) {
+    return '#FFFFFF'
+  }
+  
+  return '#000000'
+  
+}
+
+function sortRows(obj) { // Sorts object based on position data (for rendering rows)
+  
+  let array = []; // Array to be sorted
+  
+  for(key in obj) { // Add [key, pos] pair to array
+    array.push([key, obj[key]['pos']]);
+  }
+  
+  array.sort(function(a, b){return a[1] - b[1]}); // Sort array
+  
+  return array // Return
+  
+}
+
+function filtCategory(obj, category) { // Filt items based on category (for sorting)
+  
+  let out = {}; // Object to be returned
+  
+  for(key in obj) { // Add 'key': {'pos': pos} object to out
+    if(obj[key]['category'] == category) out[key] = {'pos': obj[key]['pos']};
+  }
+  
+  return out // Return
+  
+}
+
+function renderMI() { // Render Main Interface
+  
+  // Variables
+  
+  MITbl = document.getElementById('MITbl');
+  
+  let cats = sortRows(categories); // Sorted categories
+  
+  // Column Headers
+  
+  let headRow = document.createElement('tr'); // Create table row for column headers
+  MITbl.appendChild(headRow); // Append row
+  
+  headRow.innerHTML = `
+    <th>Cat.</th><th>Item</th><th>Status</th><th>Complete</th>
+    <th>Inp. Demand</th><th>Calc. Demand</th><th>Demand</th>
+    <th>Bypro.</th><th>Max Clocking</th><th>Sloop Mult.</th>
+    <th>Buildings</th><th>Recipe</th>
+  `; // Labels/Headers of each column
+  
+  for(let cat of cats) { // For each category
+    
+    let catItems = sortRows(filtCategory(items, cat[0])); // Sorted items, filtered by category
+    // (Array)
+    
+    let catRow = document.createElement('tr'); // Create table row for category
+    MITbl.appendChild(catRow); // Append row
+    
+    let catHead = document.createElement('th'); // Create table header
+    catRow.appendChild(catHead); // Append header
+    catHead.className = 'catHead'; // Class
+    catHead.rowSpan = (catItems.length + 1); // rowSpan
+    catHead.innerHTML = '<div><div>' + cat[0] + '</div></div>'; // innerHTML
+    catHead.style.backgroundColor = categories[cat[0]]['color']; // BG Color
+    catHead.style.color = textColor(categories[cat[0]]['color']); // Text Color
+    
+    for(let catItem of catItems) { // For each item name
+      
+      let item = items[catItem[0]]; // Item object
+      
+      let itemRow = document.createElement('tr'); // Create table row for items
+      MITbl.appendChild(itemRow); // Append row
+      
+      // Header
+      
+      let itemHead = document.createElement('th'); // Create item header
+      itemRow.appendChild(itemHead); // Append header
+      itemHead.innerText = catItem[0]; // innerText
+      itemHead.style.backgroundColor = item['color']; // BG Color
+      itemHead.style.color = textColor(item['color']); // Text Color
+      
+      // Each column/td
+      
+    }
+    
+  }
+  
+}
+
+function render() {
+  
+  renderMI();
+  
+  expandAll();
+  
+}
+
+// Button Functions
+
+function closeAllMenus() { // Close the menu
+  
+  greyout.style.display = 'none';
+  
+  for(let child of greyout.children) {
+    child.style.display = 'none';
+  }
+  
+}
+
+// Event Listner
+
+document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
+  
+  // Rendering
+  
+  render();
+  
+  // Menus
+  
+  toolbar = document.getElementById('toolbar');
+  greyout = document.getElementById('menuGreyout');
+  Xs = document.getElementsByClassName('X');
+  
+  for(let child of toolbar.children) { // Loop to auto create onclick for menus
+    
+    let id = child.id;
+    let menu = document.querySelector('#menuGreyout > #' + id);
+    
+    child.addEventListener('click', function() {
+      closeAllMenus(); // Clear (incase  another menu is open)
+      greyout.style.display = 'block';
+      menu.style.display = 'block';
+    });
+  }
+  
+  for(let child of Xs) { // Loop to auto create onclick for Xs
+    
+    child.addEventListener('click', function() {
+      closeAllMenus();
+    });
+  }
+  
+  // Upload
+  
+  uploadForm = document.getElementById('uploadForm');
+  
+  uploadForm.addEventListener('submit', function() {
+    
+    event.preventDefault();
+    
+    // Variables and Constants
+    
+    let file = document.getElementById('uploadFile').files[0];
+    let fileOut = document.getElementById('uploadOut');
+    
+    // Read File
+    
+    if(file) { // If file exists
+      
+      if(file.type == 'application/json') { // If file is JSON
+        
+        fileOut.innerHTML = '🔄 Processing';
+        
+        const reader = new FileReader();
+        
+        reader.onload = function(event) { // Read file
+          
+          const json = event.target.result;
+          
+          try {
+            
+            const index = JSON.parse(json); // Create object
+            
+            items = index['items'];
+            buildings = index['buildings'];
+            
+            //console.log(items);
+            //console.log(buildings);
+            
+            fileOut.innerHTML = '✅ Loaded';
+            
+          }
+          
+          catch(error) {
+            
+            fileOut.innerHTML = '⚠️ Processing Error';
+            
+            console.log('Processing Error:');
+            console.log(error);
+            
+          }
+          
+        }
+        
+        reader.readAsText(file);
+        
+      }
+      
+      else fileOut.innerText = '⚠️ Wrong Type';
+      
+    }
+    
+    else fileOut.innerText = '❌ No File';
+    
+  });
+  
+  // Download
+  
+  downloadLink = document.getElementById('downloadLink');
+  let downloadBttn = document.querySelector('#toolbar > #download');
+  
+  downloadBttn.addEventListener('click', function() {
+    
+    let json = { // Creat object
+      'items': items,
+      'buildings': buildings,
+    };
+    
+    let jsonStr = JSON.stringify(json); // Stringy 😋
+    
+    let blob = new Blob([jsonStr], {type: 'application/json'}); // Blob
+    
+    let url = URL.createObjectURL(blob); // URL
+    
+    downloadLink.innerText = url; // Set text
+    downloadLink.href = url; // Set href
+    
+  });
+  
+  // Settings
+  
+  settingsForm = document.getElementById('settingsForm');
+  
+  for(let key in settings) { // Load current
+    document.getElementById(key).value = settings[key];
+  }
+  
+  settingsForm.addEventListener('submit', function() {
+    
+    event.preventDefault();
+    
+    for(let key in settings) { // Set
+      settings[key] = document.getElementById(key).value;
+    }
+    
+    closeAllMenus();
+    
+  });
+  
+});
+
+document.addEventListener('keydown', function() { // Keydown
+  
+  if(event.key === 'Escape' || event.key === 'Esc') closeAllMenus(); // Escape menus
+  
+});

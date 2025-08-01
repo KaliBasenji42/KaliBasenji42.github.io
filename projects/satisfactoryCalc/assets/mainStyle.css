@@ -18,6 +18,8 @@ body {
   
   height: 3rem;
   width: 100vw;
+  
+  z-index: 1;
 }
 
 #toolbar > * {
@@ -48,5 +50,88 @@ body {
   height: 100vh;
   
   background-color: rgba(64, 64, 64, 0.5);
-  z-index: 1;
+  z-index: 2;
+}
+
+#menuGreyout > * {
+  background-color: rgb(240, 240, 240);
+  position: fixed;
+  
+  width: 32rem;
+  height: 24rem;
+  left: calc(50% - 16rem);
+  top: calc(50% - 12rem);
+  
+  padding: 1rem;
+  
+  overflow-y: scroll;
+  z-index: 3;
+}
+
+.X {
+  position: absolute;
+  
+  width: 3rem;
+  height: 3rem;
+  
+  cursor: pointer;
+  
+  top: 0;
+  right: 0;
+}
+
+.X:hover {
+  background-color: rgb(192, 192, 192);
+}
+
+.subTtl {
+  font-size: 0.875rem;
+  color: rgb(64, 64, 64);
+}
+
+/* Tables */
+
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: black 1px solid;
+  white-space: nowrap;
+}
+
+th {
+  text-align: center;
+}
+
+.catHead {
+  width: 2rem;
+  padding: 0;
+  margin: 0;
+  
+  position: relative;
+}
+
+.catHead > * {
+  width: 1rem;
+  margin-left: 15%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  
+  position: absolute;
+}
+
+.catHead > * > * {
+  font-size: 1rem;
+  white-space: nowrap;
+  
+  writing-mode: sideways-lr;
+  text-orientation: sideways;
+  
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
 }

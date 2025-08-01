@@ -43,14 +43,55 @@
 <!--End-->
   
   <div id="toolbar">
-    <div id="loadBttn" title="Load"><img src="assets/images/folder.png"></div>
-    <div id="saveBttn" title="Save"><img src="assets/images/file.png"></div>
-    <div id="uploadBttn" title="Upload"><img src="assets/images/upload.png"></div>
-    <div id="downloadBttn" title="Download"><img src="assets/images/download.png"></div>
-    <div id="settingsBttn" title="Settings"><img src="assets/images/settings.png"></div>
+    <div id="load" title="Load"><img src="assets/images/folder.png"></div>
+    <div id="save" title="Save"><img src="assets/images/file.png"></div>
+    <div id="upload" title="Upload"><img src="assets/images/upload.png"></div>
+    <div id="download" title="Download"><img src="assets/images/download.png"></div>
+    <div id="settings" title="Settings"><img src="assets/images/settings.png"></div>
   </div>
   
   <div id="menuGreyout" style="display: none;">
+    <div id="load" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h1>WIP</h1>
+    </div>
+    <div id="save" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h1>WIP</h1>
+    </div>
+    <div id="upload" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      <form id="uploadForm">
+        <label for="uploadFile">Select a file:</label><br>
+        <input type="file" id="uploadFile" name="uploadFile" accept="application/json"><br>
+        
+        <input type="submit" value="Submit"><br>
+        
+        <label id="uploadOut">... Awaiting Input</label>
+      </form>
+    </div>
+    <div id="download" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <br><br>
+      <a target="_blank" id="downloadLink">Loading...</a>
+    </div>
+    <div id="settings" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      <form id="settingsForm">
+        <label for="maxCalcIter">Max Calculation Iterations:</label><br>
+        <input type="number" id="maxCalcIter" name="maxCalcIter" min="1" max="1000000"><br>
+        <div class="subTtl">Number of calculations before throwing error.</div><br>
+        
+        <label for="NumInpDgts">Number Input Digits:</label><br>
+        <input type="number" id="NumInpDgts" name="NumInpDgts" min="0" max="10"><br>
+        <div class="subTtl">Number of digits allowed for number inputs.</div><br>
+        
+        <input type="submit" value="Submit">
+      </form>
+    </div>
   </div>
   
   <h1>Satisfactory Build Calculator (WIP)</h1>
@@ -62,28 +103,28 @@
   <h2>Main Interface<span><button class="sectBttn" id="MIBttn" onclick="expndOrClps('MISect', 'MIBttn')">🔽</button></span></h2>
   
   <div class="sect" id="MISect">
-    Hi!
+    <form id="MIForm">
+      <table id="MITbl"></table>
+    </form>
   </div>
   
   <h2>Recipes<span><button class="sectBttn" id="RecBttn" onclick="expndOrClps('RecSect', 'RecBttn')">🔽</button></span></h2>
   
   <div class="sect" id="RecSect">
-    Hi!
+    <table id="RecTbl"></table>
   </div>
   
   <h2>Calc. Tables 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
   
   <div class="sect" id="CTSect">
-    Hi!
+    <table id="CTTbl"></table>
   </div>
   
   <h2>Buildings, Power, & Awesome Points<span><button class="sectBttn" id="BPAPBttn" onclick="expndOrClps('BPAPSect', 'BPAPBttn')">🔽</button></span></h2>
   
   <div class="sect" id="BPAPSect">
-    Hi!
+    <table id="BPAPTbl"></table>
   </div>
-  
-  <script>expandAll()</script>
   
 </body>
 
