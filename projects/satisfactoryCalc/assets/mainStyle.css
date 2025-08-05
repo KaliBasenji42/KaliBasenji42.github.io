@@ -4,6 +4,10 @@ body {
   margin-top: 4rem;
 }
 
+table {
+  color: rgb(0, 0, 0) !important;
+}
+
 /* Tool Bar */
 
 #toolbar {
@@ -22,22 +26,40 @@ body {
   z-index: 1;
 }
 
-#toolbar > * {
+.menuBttn, .toolBttn {
   height: 3rem;
   width: 3rem;
   cursor: pointer;
 }
 
-#toolbar > *:hover {
+.menuBttn:hover, .toolBttn:hover {
   background-color: rgb(192, 192, 192);
   
   height: 3rem;
   width: 3rem;
 }
 
-#toolbar > * > img {
+.menuBttn > img, .toolBttn > img {
   height: 3rem;
   width: 3rem;
+}
+
+.toolInfo {
+  line-height: 3rem;
+  font-size: 1.5rem;
+  
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.toolInfo#percentComplete {
+  color: rgb(0, 128, 64);
+}
+.toolInfo#power {
+  color: rgb(128, 128, 0);
+}
+.toolInfo#awesomePts {
+  color: rgb(128, 64, 0);
 }
 
 /* Menus */
@@ -134,4 +156,26 @@ th {
   bottom: 0;
   left: 0;
   height: 100%;
+}
+
+/* Misc */
+
+.wideTH {
+  min-width: 10rem;
+}
+
+.numInp {
+  background-color: inherit;
+}
+
+#themeButton {
+  z-index: 100;
+}
+
+.greater {
+  background-color: rgb(0, 240, 240) !important;
+}
+
+.less {
+  background-color: rgb(240, 0, 0) !important;
 }

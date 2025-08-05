@@ -1342,6 +1342,8 @@ let solving = new Set; // Set of the names of all the items being resolved
 let toolbar; // Toolbar
 let greyout; // Menu Grey-Out
 let Xs; // Menu Xs
+let menuBttns; // Toolbar Buttons
+let toolSubmit; // Toolbar Submit
 
 let settingsForm; // Settings Form
 let uploadForm; // Upload Form
@@ -1349,6 +1351,14 @@ let downloadLink; // Upload Link
 
 let MITbl; // Main Interface Table
 let MIForm; // Main Interface Form
+
+// Math/Calc Functions
+
+function calculate() { // Calculate items
+  
+  console.log('Hi!')
+  
+}
 
 // Rendering Functions
 
@@ -1401,16 +1411,28 @@ function renderMI() { // Render Main Interface
   
   let cats = sortRows(categories); // Sorted categories
   
+  // Reset
+  
+  MITbl.innerHTML = '';
+  
   // Column Headers
   
   let headRow = document.createElement('tr'); // Create table row for column headers
   MITbl.appendChild(headRow); // Append row
   
   headRow.innerHTML = `
-    <th>Cat.</th><th>Item</th><th>Status</th><th>Complete</th>
-    <th>Inp. Demand</th><th>Calc. Demand</th><th>Demand</th>
-    <th>Bypro.</th><th>Max Clocking</th><th>Sloop Mult.</th>
-    <th>Buildings</th><th>Recipe</th>
+    <th style="background-color: rgb(192, 128, 128);" title="Category">Cat.</th>
+    <th style="background-color: rgb(128, 128, 128);" title="Item Name">Item</th>
+    <th style="background-color: rgb(128, 255, 192);" title="Calculation Status">Status</th>
+    <th style="background-color: rgb(128, 192, 192);" title="Is Complete (Input)">Complete</th>
+    <th style="background-color: rgb(128, 128, 255);" title="Input Demand" class="wideTH">Inp. Demand</th>
+    <th style="background-color: rgb(128, 225, 128);" title="Calculated Demand" class="wideTH">Calc. Demand</th>
+    <th style="background-color: rgb(255, 192, 128);" title="Total Demand" class="wideTH">Demand</th>
+    <th style="background-color: rgb(255, 255, 128);" title="Byproduct" class="wideTH">Bypro.</th>
+    <th style="background-color: rgb(128, 192, 255);" title="Max Overclocking for Buildings" class="wideTH">Max Clocking (%)</th>
+    <th style="background-color: rgb(255, 128, 128);" title="Somersloop Multiplication" class="wideTH">Sloop Mult.</th>
+    <th style="background-color: rgb(192, 128, 192);" title="Number of Buildings (Decimal)" class="wideTH">Buildings</th>
+    <th style="background-color: rgb(255, 128, 192);" title="Selected Recipe" class="wideTH">Recipe</th>
   `; // Labels/Headers of each column
   
   for(let cat of cats) { // For each category
@@ -1435,6 +1457,7 @@ function renderMI() { // Render Main Interface
       
       let itemRow = document.createElement('tr'); // Create table row for items
       MITbl.appendChild(itemRow); // Append row
+      itemRow.id = catItem[0]; // Set Row ID to item name
       
       // Header
       
@@ -1446,6 +1469,106 @@ function renderMI() { // Render Main Interface
       
       // Each column/td
       
+      let statusTD = document.createElement('td'); // Declare
+      itemRow.appendChild(statusTD); // Append
+      statusTD.id = 'status'; // Set ID
+      statusTD.style.backgroundColor = 'rgb(192, 255, 224)'; // BG Color
+      statusTD.style.textAlign = 'center'; // Center Text
+      statusTD.innerText = '🔄' // Initial Status (Loading)
+      statusTD.title = 'Awaiting Input...' // Title
+      
+      let completeTD = document.createElement('td'); // Declare
+      itemRow.appendChild(completeTD); // Append
+      completeTD.id = 'complete'; // Set ID
+      completeTD.style.backgroundColor = 'rgb(192, 224, 224)'; // Color
+      completeTD.style.textAlign = 'center'; // Center Text
+      let completeInp = document.createElement('input'); // Declare form inp
+      completeTD.appendChild(completeInp); // Append inp
+      completeInp.id = 'completeInp'; // Set ID inp
+      completeInp.type = 'checkbox'; // Type = checkbox
+      completeInp.checked = item['complete']; // Item complete
+      
+      let inpDemandTD = document.createElement('td'); // Declare
+      itemRow.appendChild(inpDemandTD); // Append
+      inpDemandTD.id = 'inpDemand'; // Set ID
+      inpDemandTD.style.backgroundColor = 'rgb(192, 192, 255)'; // Color
+      let inpDemandInp = document.createElement('input'); // Declare form inp
+      inpDemandTD.appendChild(inpDemandInp); // Append inp
+      inpDemandInp.id = 'inpDemandInp'; // Set ID inp
+      inpDemandInp.type = 'number'; // Type = number
+      inpDemandInp.className = 'numInp'; // Class
+      inpDemandInp.value = item['inpDemand']; // Item inpDemand
+      
+      let calcDemandTD = document.createElement('td'); // Declare
+      itemRow.appendChild(calcDemandTD); // Append
+      calcDemandTD.id = 'calcDemand'; // Set ID
+      calcDemandTD.style.backgroundColor = 'rgb(192, 225, 192)'; // Color
+      calcDemandTD.innerText = item['calcDemand'].toPrecision(10); // Item calcDemand
+      if(item['calcDemand'] > 0) calcDemandTD.className = 'greater'; // If greater than 0, class
+      if(item['calcDemand'] < 0) calcDemandTD.className = 'less'; // If less than 0, class
+      
+      let demandTD = document.createElement('td'); // Declare
+      itemRow.appendChild(demandTD); // Append
+      demandTD.id = 'demand'; // Set ID
+      demandTD.style.backgroundColor = 'rgb(255, 224, 192)'; // Color
+      demandTD.innerText = (item['inpDemand'] + item['calcDemand']).toPrecision(10); // Item inpDemand + calcDemand
+      if(item['inpDemand'] + item['calcDemand'] > 0) demandTD.className = 'greater'; // If greater than 0, class
+      if(item['inpDemand'] + item['calcDemand'] < 0) demandTD.className = 'less'; // If less than 0, class
+      
+      let byproTD = document.createElement('td'); // Declare
+      itemRow.appendChild(byproTD); // Append
+      byproTD.id = 'bypro'; // Set ID
+      byproTD.style.backgroundColor = 'rgb(255, 255, 192)'; // Color
+      byproTD.innerText = item['byproduct'].toPrecision(10); // Item byproduct
+      if(item['byproduct'] > 0) byproTD.className = 'greater'; // If greater than 0, class
+      if(item['byproduct'] < 0) byproTD.className = 'less'; // If less than 0, class
+      
+      let maxClockingTD = document.createElement('td'); // Declare
+      itemRow.appendChild(maxClockingTD); // Append
+      maxClockingTD.id = 'maxClocking'; // Set ID
+      maxClockingTD.style.backgroundColor = 'rgb(192, 224, 255)'; // Color
+      let maxClockingInp = document.createElement('input'); // Declare form inp
+      maxClockingTD.appendChild(maxClockingInp); // Append inp
+      maxClockingInp.id = 'maxClockingInp'; // Set ID inp
+      maxClockingInp.type = 'number'; // Type = number
+      maxClockingInp.className = 'numInp'; // Class
+      maxClockingInp.value = item['maxClock'] * 100; // Item maxClocking
+      
+      let sloopMultTD = document.createElement('td'); // Declare
+      itemRow.appendChild(sloopMultTD); // Append
+      sloopMultTD.id = 'sloopMult'; // Set ID
+      sloopMultTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
+      let sloopMultInp = document.createElement('input'); // Declare form inp
+      sloopMultTD.appendChild(sloopMultInp); // Append inp
+      sloopMultInp.id = 'sloopMultInp'; // Set ID inp
+      sloopMultInp.type = 'number'; // Type = number
+      sloopMultInp.className = 'numInp'; // Class
+      sloopMultInp.value = item['sloopMult']; // Item sloopMult
+      
+      let buildingsTD = document.createElement('td'); // Declare
+      itemRow.appendChild(buildingsTD); // Append
+      buildingsTD.id = 'bypro'; // Set ID
+      buildingsTD.style.backgroundColor = 'rgb(224, 192, 224)'; // Color
+      buildingsTD.innerText = item['buildings'].toPrecision(10); // Item buildings
+      if(item['buildings'] > 0) buildingsTD.className = 'greater'; // If greater than 0, class
+      if(item['buildings'] < 0) buildingsTD.className = 'less'; // If less than 0, class
+      
+      let recipeTD = document.createElement('td'); // Declare
+      itemRow.appendChild(recipeTD); // Append
+      recipeTD.id = 'bypro'; // Set ID
+      recipeTD.style.backgroundColor = 'rgb(255, 192, 224)'; // Color
+      let recipeInp = document.createElement('select'); // Declare form inp
+      recipeTD.appendChild(recipeInp); // Append inp
+      recipeInp.id = 'recipeInp'; // Set ID inp
+      recipeInp.className = 'numInp'; // Class
+      for(let recipe in item['recipes']) {
+        let option = document.createElement('option'); // Declare
+        recipeInp.appendChild(option); // Append
+        option.value = recipe; // Set value as recipe
+        option.innerText = recipe; // Set innerText as recipe
+        if(recipe == item['recipe']) option.selected = true; // Item recipe (selected recipe)
+      }
+      
     }
     
   }
@@ -1454,9 +1577,14 @@ function renderMI() { // Render Main Interface
 
 function render() {
   
+  // Individual Render Functions
+  
   renderMI();
   
-  expandAll();
+  // Other
+  
+  expandAll(); // Expand Sections (After Render)
+  applySettings(); // Apply settings to rendered stuff
   
 }
 
@@ -1468,6 +1596,16 @@ function closeAllMenus() { // Close the menu
   
   for(let child of greyout.children) {
     child.style.display = 'none';
+  }
+  
+}
+
+function applySettings() {
+  
+  let numInps = document.querySelectorAll('.numInp');
+  
+  for(let inp of numInps) {
+    inp.step = '' + (10 ** (-1 * settings['NumInpDgts']));
   }
   
 }
@@ -1485,8 +1623,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   toolbar = document.getElementById('toolbar');
   greyout = document.getElementById('menuGreyout');
   Xs = document.getElementsByClassName('X');
+  menuBttns = document.getElementsByClassName('menuBttn');
   
-  for(let child of toolbar.children) { // Loop to auto create onclick for menus
+  for(let child of menuBttns) { // Loop to auto create onclick for menus
     
     let id = child.id;
     let menu = document.querySelector('#menuGreyout > #' + id);
@@ -1504,6 +1643,13 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       closeAllMenus();
     });
   }
+  
+  // Toolbar Submit
+  
+  toolSubmit = document.querySelector('#toolbar > #submit');
+  console.log(toolSubmit);
+  
+  toolSubmit.addEventListener('click', calculate);
   
   // Upload
   
@@ -1607,6 +1753,8 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     for(let key in settings) { // Set
       settings[key] = document.getElementById(key).value;
     }
+    
+    applySettings();
     
     closeAllMenus();
     
