@@ -1647,7 +1647,6 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   // Toolbar Submit
   
   toolSubmit = document.querySelector('#toolbar > #submit');
-  console.log(toolSubmit);
   
   toolSubmit.addEventListener('click', calculate);
   
@@ -1738,6 +1737,17 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
   });
   
+  // Load Settings
+  
+  try {
+    let localStorageSettings = localStorage.getItem('SatisfactoryCalc - Settings');
+    if(localStorageSettings === null) throw('Does not exist in localStorage, taking default');
+    settings = JSON.parse(localStorageSettings);
+  }
+  catch(err) {
+    console.log('localStorage Loading Error (Settings):\n' + err);
+  }
+  
   // Settings
   
   settingsForm = document.getElementById('settingsForm');
@@ -1754,7 +1764,16 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       settings[key] = document.getElementById(key).value;
     }
     
+    // Apply, Save, Close
+    
     applySettings();
+    
+    try {
+      localStorage.setItem('SatisfactoryCalc - Settings', JSON.stringify(settings));
+    }
+    catch(err) {
+      console.log('localStorage Saving Error (Settings):\n' + err);
+    }
     
     closeAllMenus();
     
