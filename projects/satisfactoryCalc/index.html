@@ -112,41 +112,59 @@
     </form>
     
     <h3>Edit Item</h3>
-    <form if="MIEditItemForm">
+    <form id="MIEditItemForm">
       <label for="itemName">Item Name:</label>
       <input type="text" id="itemName" name="itemName"><br>
-      <input type="checkbox" id="addCheck" name="addCheck">
-      <label for="addCheck">Add Item?</label><br>
-      <input type="checkbox" id="removeCheck" name="removeCheck">
-      <label for="removeCheck">Remove Item (if it exists)?</label><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
       <br>
       
-      <label for="category">Category:</label>
-      <input type="text" id="category" name="category"><br>
-      <label for="color">Color:</label>
-      <input type="color" id="color" name="color"><br>
+      <input type="checkbox" id="itemAddCheck" name="itemAddCheck">
+      <label for="itemAddCheck">Add Item (don't forget to add recipes)?</label><br>
+      <input type="checkbox" id="itemRemoveCheck" name="itemRemoveCheck">
+      <label for="itemRemoveCheck">Remove Item (if it exists)?</label><br>
+      <input type="checkbox" id="itemMovePos" name="itemMovePos">
+      <label for="itemMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <br>
+      
+      <label for="itemCategory">Category:</label>
+      <input type="text" id="itemCategory" name="itemCategory"><br>
+      <label for="itemPos">Position:</label>
+      <input type="number" id="itemPos" name="itemPos"><br>
+      <label for="itemColor">Color:</label>
+      <input type="color" id="itemColor" name="itemColor"><br>
+      <label for="awesomePts">Awesome Points:</label>
+      <input type="number" id="awesomePts" name="awesomePts"><br>
       <br>
       
       <input type="submit" value="Submit"><br>
-      <output id="MIEditItemFormOut">...Awaiting Input</output><br>
+      <output id="out">...Awaiting Input</output><br>
     </form>
     
     <h3>Edit Category</h3>
-    <form if="MIEditCatForm">
+    <form id="MIEditCatForm">
       <label for="catName">Category Name:</label>
-      <input type="text" id="itemName" name="itemName"><br>
-      <input type="checkbox" id="addCheck" name="addCheck">
-      <label for="addCheck">Add Category?</label><br>
-      <input type="checkbox" id="removeCheck" name="removeCheck">
-      <label for="removeCheck">Remove Category (if it exists)?</label><br>
+      <input type="text" id="catName" name="catName"><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
       <br>
       
-      <label for="color">Color:</label>
-      <input type="color" id="color" name="color"><br>
+      <input type="checkbox" id="catAddCheck" name="catAddCheck">
+      <label for="catAddCheck">Add Category?</label><br>
+      <input type="checkbox" id="catRemoveCheck" name="catRemoveCheck">
+      <label for="catRemoveCheck">Remove Category (if it exists)?</label><br>
+      <input type="checkbox" id="catMovePos" name="catMovePos">
+      <label for="catMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <br>
+      
+      <label for="catPos">Position:</label>
+      <input type="number" id="catPos" name="catPos"><br>
+      <label for="catColor">Color:</label>
+      <input type="color" id="catColor" name="catColor"><br>
       <br>
       
       <input type="submit" value="Submit"><br>
-      <output id="MIEditCatFormOut">...Awaiting Input</output><br>
+      <output id="out">...Awaiting Input</output><br>
     </form>
     <br>
   </div>
