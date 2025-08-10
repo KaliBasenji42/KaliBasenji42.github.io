@@ -88,8 +88,8 @@ let items = { // Default item data
       'Pure - Miner Mk. 3': {out: 480, in: [], bypro: [], building: 'Miner Mk. 3'},
       'Coal (Iron)': {out: 120, in: [{item: 'Iron Ore', amount: 180}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
       'Coal (Limestone)': {out: 120, in: [{item: 'Limestone', amount: 360}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
-      'Biocoal': {out: 45, in: [{item: 'Biomass', amount: 37.5}], building: 'Constructor'},
-      'Charcoal': {out: 150, in: [{item: 'Wood', amount: 15}], building: 'Constructor'},
+      'Biocoal': {out: 45, in: [{item: 'Biomass', amount: 37.5}], bypro: [], building: 'Constructor'},
+      'Charcoal': {out: 150, in: [{item: 'Wood', amount: 15}], bypro: [], building: 'Constructor'},
     }
   },
   'Raw Quartz': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#d5a6bd', 
@@ -185,8 +185,8 @@ let items = { // Default item data
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
       'Resource Well': {out: 800, in: [], bypro: [], building: 'Resource Well'},
       'Unpackage Nitrogen Gas': {out: 240, in: [{item: 'Packaged Nitrogen Gas', amount: 60}], bypro: [{item: 'Empty Fluid Tank', amount: 60}], building: 'Packager'},
-      'Nitrogen Gas (Bauxite)': {out: 120, in: [{item: 'Bauxite', amount: 100}, {item: 'SAM', amount: 10}], building: 'Converter'},
-      'Nitrogen Gas (Caterium)': {out: 120, in: [{item: 'Caterium Ore', amount: 120}, {item: 'SAM', amount: 10}], building: 'Converter'},
+      'Nitrogen Gas (Bauxite)': {out: 120, in: [{item: 'Bauxite', amount: 100}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
+      'Nitrogen Gas (Caterium)': {out: 120, in: [{item: 'Caterium Ore', amount: 120}, {item: 'SAM', amount: 10}], bypro: [], building: 'Converter'},
     }
   },
   'SAM': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#8e7cc3', 
@@ -316,7 +316,7 @@ let items = { // Default item data
       'Oil-Based Diamonds': {out: 40, in: [{item: 'Oil', amount: 200}], bypro: [], building: 'Particle Accelerator 1'},
       'Petroleum Diamonds': {out: 30, in: [{item: 'Petroleum Coke', amount: 720}], bypro: [], building: 'Particle Accelerator 1'},
       'Pink Diamonds': {out: 15, in: [{item: 'Coal', amount: 120}, {item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Converter'},
-      'Turbo Diamonds': {out: 60, in: [{item: 'Coal', amount: 600}, {item: 'Packaged Turbofuel'}], bypro: [], building: 'Particle Accelerator 1'},
+      'Turbo Diamonds': {out: 60, in: [{item: 'Coal', amount: 600}, {item: 'Packaged Turbofuel', amount: 40}], bypro: [], building: 'Particle Accelerator 1'},
     }
   },
   'Reanimated SAM': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#b4a7d6', 
@@ -415,8 +415,8 @@ let items = { // Default item data
   'Fused Modular Frame': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 10, color: '#f9cb9c', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 62840, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Fused Modular Frame', recipes: {
-      'Fused Modular Frame': {out: 1.5, in: [{item: 'Heavy Modular Frame', amount: 1.5}, {item: 'Aluminum Casing', amount: 75}, {item: 'Nitrogen Gas', item: 37.5}], bypro: [], building: 'Blender'},
-      'Heat-Fused Frame': {out: 3, in: [{item: 'Heavy Modular Frame', amount: 3}, {item: 'Aluminum Ingot', amount: 150}, {item: 'Nitric Acid', item: 24}, {item: 'Fuel', amount: 30}], bypro: [], building: 'Blender'},
+      'Fused Modular Frame': {out: 1.5, in: [{item: 'Heavy Modular Frame', amount: 1.5}, {item: 'Aluminum Casing', amount: 75}, {item: 'Nitrogen Gas', amount: 37.5}], bypro: [], building: 'Blender'},
+      'Heat-Fused Frame': {out: 3, in: [{item: 'Heavy Modular Frame', amount: 3}, {item: 'Aluminum Ingot', amount: 150}, {item: 'Nitric Acid', amount: 24}, {item: 'Fuel', amount: 30}], bypro: [], building: 'Blender'},
     }
   },
   'Alclad Aluminum Sheet': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#d9d9d9', 
@@ -471,7 +471,7 @@ let items = { // Default item data
     recipe: 'Motor', recipes: {
       'Motor': {out: 5, in: [{item: 'Rotor', amount: 10}, {item: 'Stator', amount: 10}], bypro: [], building: 'Assembler'},
       'Electric Motor': {out: 7.5, in: [{item: 'Rotor', amount: 7.5}, {item: 'Electromagnetic Control Rod', amount: 3.75}], bypro: [], building: 'Assembler'},
-      'Rigor Motor': {out: 7.5, in: [{item: 'Rotor', amount: 3.75}, {item: 'Stator', amount: 3.75}, {item: 'Crystal Oscillator', item: 1.25}], bypro: [], building: 'Manufacturer'},
+      'Rigor Motor': {out: 7.5, in: [{item: 'Rotor', amount: 3.75}, {item: 'Stator', amount: 3.75}, {item: 'Crystal Oscillator', amount: 1.25}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Heat Sink': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#d9d9d9', 
@@ -540,8 +540,8 @@ let items = { // Default item data
   'High-Speed Connector': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#6aa84f', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3776, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'High-Speed Connector', recipes: {
-      'High-Speed Connector': {out: 3.75, in: [{item: 'Quickwire', amount: 210}, {item: 'Cable', amount: 37.5}, {item: 'Circuit Board', item: 3.75}], bypro: [], building: 'Manufacturer'},
-      'Silicon High-Speed Connector': {out: 3, in: [{item: 'Quickwire', amount: 90}, {item: 'Circuit Board', item: 3}, {item: 'Silica', amount: 37.5}], bypro: [], building: 'Manufacturer'},
+      'High-Speed Connector': {out: 3.75, in: [{item: 'Quickwire', amount: 210}, {item: 'Cable', amount: 37.5}, {item: 'Circuit Board', amount: 3.75}], bypro: [], building: 'Manufacturer'},
+      'Silicon High-Speed Connector': {out: 3, in: [{item: 'Quickwire', amount: 90}, {item: 'Circuit Board', amount: 3}, {item: 'Silica', amount: 37.5}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Crystal Oscillator': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d5a6bd', 
@@ -1676,23 +1676,32 @@ function renderRec() { // Render Main Interface
     
     for(let catItem of catItems) { // For each item name
       
+      let itemRowA = document.createElement('tr'); // Create table row for items
+      RecTbl.appendChild(itemRowA); // Append row
+      
       let item = items[catItem[0]]; // Item object
+      
+      // Headers
+      
+      let itemHead = document.createElement('th'); // Create item header
+      itemRowA.appendChild(itemHead); // Append header
+      itemHead.innerText = catItem[0]; // innerText
+      itemHead.style.backgroundColor = item['color']; // BG Color
+      itemHead.style.color = textColor(item['color']); // Text Color
+      itemHead.rowSpan = Object.keys(item['recipes']).length + 1; // Item rowSpan
+      
+      catRowSpan += Object.keys(item['recipes']).length + 1; // Add to rowspan, for catHead
       
       for(let recipe in item['recipes']) {
         
         let itemRow = document.createElement('tr'); // Create table row for items
         RecTbl.appendChild(itemRow); // Append row
-        itemRow.id = catItem[0]; // Set Row ID to item name
         
-        catRowSpan += 1; // Add to rowspan, for catHead
+        let rec = item['recipes'][recipe]; // Recipe 
+        //console.log(catItem[0] + ': ' + recipe);
+        //console.log(rec);
         
         // Headers
-        
-        let itemHead = document.createElement('th'); // Create item header
-        itemRow.appendChild(itemHead); // Append header
-        itemHead.innerText = catItem[0]; // innerText
-        itemHead.style.backgroundColor = item['color']; // BG Color
-        itemHead.style.color = textColor(item['color']); // Text Color
         
         let recipeHead = document.createElement('th'); // Create recipe header
         itemRow.appendChild(recipeHead); // Append header
@@ -1703,131 +1712,91 @@ function renderRec() { // Render Main Interface
         
         let outTD = document.createElement('td'); // Declare
         itemRow.appendChild(outTD); // Append
-        outTD.id = 'out'; // Set ID
         outTD.style.backgroundColor = 'rgb(224, 192, 255)'; // BG Color
-        outTD.innerText = item['recipes'][recipe]['out'].toPrecision(10); // Recipe output
+        outTD.innerText = rec['out'].toPrecision(10); // Recipe output
         
-        let completeTD = document.createElement('td'); // Declare
-        itemRow.appendChild(completeTD); // Append
-        completeTD.id = 'complete'; // Set ID
-        completeTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
-        completeTD.style.textAlign = 'center'; // Center Text
-        let completeInp = document.createElement('input'); // Declare form inp
-        completeTD.appendChild(completeInp); // Append inp
-        completeInp.id = 'completeInp'; // Set ID inp
-        completeInp.type = 'checkbox'; // Type = checkbox
-        completeInp.checked = item['complete']; // Item complete
-        
-        let inpDemandTD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpDemandTD); // Append
-        inpDemandTD.id = 'inpDemand'; // Set ID
-        inpDemandTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
-        let inpDemandInp = document.createElement('input'); // Declare form inp
-        inpDemandTD.appendChild(inpDemandInp); // Append inp
-        inpDemandInp.id = 'inpDemandInp'; // Set ID inp
-        inpDemandInp.type = 'number'; // Type = number
-        inpDemandInp.className = 'numInp'; // Class
-        inpDemandInp.value = item['inpDemand']; // Item inpDemand
-        
-        let calcDemandTD = document.createElement('td'); // Declare
-        itemRow.appendChild(calcDemandTD); // Append
-        calcDemandTD.id = 'calcDemand'; // Set ID
-        calcDemandTD.style.backgroundColor = 'rgb(192, 225, 192)'; // Color
-        calcDemandTD.innerText = item['calcDemand'].toPrecision(10); // Item calcDemand
-        if(item['calcDemand'] > 0) calcDemandTD.className = 'greater'; // If greater than 0, class
-        if(item['calcDemand'] < 0) calcDemandTD.className = 'less'; // If less than 0, class
-        
-        let demandTD = document.createElement('td'); // Declare
-        itemRow.appendChild(demandTD); // Append
-        demandTD.id = 'demand'; // Set ID
-        demandTD.style.backgroundColor = 'rgb(255, 224, 192)'; // Color
-        demandTD.innerText = (item['inpDemand'] + item['calcDemand']).toPrecision(10); // Item inpDemand + calcDemand
-        if(item['inpDemand'] + item['calcDemand'] > 0) demandTD.className = 'greater'; // If greater than 0, class
-        if(item['inpDemand'] + item['calcDemand'] < 0) demandTD.className = 'less'; // If less than 0, class
-        
-        let byproTD = document.createElement('td'); // Declare
-        itemRow.appendChild(byproTD); // Append
-        byproTD.id = 'bypro'; // Set ID
-        byproTD.style.backgroundColor = 'rgb(255, 255, 192)'; // Color
-        byproTD.innerText = item['byproduct'].toPrecision(10); // Item byproduct
-        if(item['byproduct'] > 0) byproTD.className = 'greater'; // If greater than 0, class
-        if(item['byproduct'] < 0) byproTD.className = 'less'; // If less than 0, class
-        
-        let maxClockingTD = document.createElement('td'); // Declare
-        itemRow.appendChild(maxClockingTD); // Append
-        maxClockingTD.id = 'maxClocking'; // Set ID
-        maxClockingTD.style.backgroundColor = 'rgb(192, 224, 255)'; // Color
-        let maxClockingInp = document.createElement('input'); // Declare form inp
-        maxClockingTD.appendChild(maxClockingInp); // Append inp
-        maxClockingInp.id = 'maxClockingInp'; // Set ID inp
-        maxClockingInp.type = 'number'; // Type = number
-        maxClockingInp.className = 'numInp'; // Class
-        maxClockingInp.value = item['maxClock'] * 100; // Item maxClocking
-        
-        let sloopMultTD = document.createElement('td'); // Declare
-        itemRow.appendChild(sloopMultTD); // Append
-        sloopMultTD.id = 'sloopMult'; // Set ID
-        sloopMultTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
-        let sloopMultInp = document.createElement('input'); // Declare form inp
-        sloopMultTD.appendChild(sloopMultInp); // Append inp
-        sloopMultInp.id = 'sloopMultInp'; // Set ID inp
-        sloopMultInp.type = 'number'; // Type = number
-        sloopMultInp.className = 'numInp'; // Class
-        sloopMultInp.value = item['sloopMult']; // Item sloopMult
-        
-        let buildingsTD = document.createElement('td'); // Declare
-        itemRow.appendChild(buildingsTD); // Append
-        buildingsTD.id = 'bypro'; // Set ID
-        buildingsTD.style.backgroundColor = 'rgb(224, 192, 224)'; // Color
-        buildingsTD.innerText = item['buildings'].toPrecision(10); // Item buildings
-        if(item['buildings'] > 0) buildingsTD.className = 'greater'; // If greater than 0, class
-        if(item['buildings'] < 0) buildingsTD.className = 'less'; // If less than 0, class
-        
-        let recipeTD = document.createElement('td'); // Declare
-        itemRow.appendChild(recipeTD); // Append
-        recipeTD.id = 'bypro'; // Set ID
-        recipeTD.style.backgroundColor = 'rgb(255, 192, 224)'; // Color
-        let recipeInp = document.createElement('select'); // Declare form inp
-        recipeTD.appendChild(recipeInp); // Append inp
-        recipeInp.id = 'recipeInp'; // Set ID inp
-        recipeInp.className = 'numInp'; // Class
-        for(let recipe in item['recipes']) {
-          let option = document.createElement('option'); // Declare
-          recipeInp.appendChild(option); // Append
-          option.value = recipe; // Set value as recipe
-          option.innerText = recipe; // Set innerText as recipe
-          if(recipe == item['recipe']) option.selected = true; // Item recipe (selected recipe)
+        let inpItem1TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpItem1TD); // Append
+        inpItem1TD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
+        inpItem1TD.style.textAlign = 'center'; // Center Text
+        if(rec['in'].length > 0) { // If input item 1 exists
+          inpItem1TD.innerText = rec['in'][0]['item']; // Recipe input item 1
+          
+          let childItem = items[rec['in'][0]['item']]; // Child item
+          console.log(childItem);
+          if(childItem !== undefined) { // If color is defined
+            inpItem1TD.style.backgroundColor = childItem['color']; // BG Color
+            inpItem1TD.style.color = textColor(childItem['color']); // Text Color
+          }
         }
         
-        let powerTD = document.createElement('td'); // Declare
-        itemRow.appendChild(powerTD); // Append
-        powerTD.id = 'bypro'; // Set ID
-        powerTD.style.backgroundColor = 'rgb(255, 255, 224)'; // Color
-        powerTD.innerText = item['power'].toPrecision(10); // Item power
-        if(item['power'] > 0) powerTD.className = 'greater'; // If greater than 0, class
-        if(item['power'] < 0) powerTD.className = 'less'; // If less than 0, class
+        let inpAmount1TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpAmount1TD); // Append
+        inpAmount1TD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
+        if(rec['in'].length > 0) { // If input amount 1 exists
+          inpAmount1TD.innerText = rec['in'][0]['amount'].toPrecision(10); // Recipe input amount 1
+        }
         
-        let awesomePtsTD = document.createElement('td'); // Declare
-        itemRow.appendChild(awesomePtsTD); // Append
-        awesomePtsTD.id = 'awesomePts'; // Set ID
-        awesomePtsTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
-        awesomePtsTD.innerText = item['awesomePts']; // Item awesome points
+        let inpItem2TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpItem2TD); // Append
+        inpItem2TD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
+        if(rec['in'].length > 1) { // If input item 2 exists
+          inpItem2TD.innerText = rec['in'][1]['item']; // Recipe input item 2
+        }
         
-        let awesomePtsInpTD = document.createElement('td'); // Declare
-        itemRow.appendChild(awesomePtsInpTD); // Append
-        awesomePtsInpTD.id = 'bypro'; // Set ID
-        awesomePtsInpTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
-        awesomePtsInpTD.innerText = item['awesomePtsInp'].toPrecision(10); // Item awesome points input demand
-        if(item['awesomePtsInp'] > 0) awesomePtsInpTD.className = 'greater'; // If greater than 0, class
-        if(item['awesomePtsInp'] < 0) awesomePtsInpTD.className = 'less'; // If less than 0, class
+        let inpAmount2TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpAmount2TD); // Append
+        inpAmount2TD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
+        if(rec['in'].length > 1) { // If input amount 2 exists
+          inpAmount2TD.innerText = rec['in'][1]['amount'].toPrecision(10); // Recipe input amount 2
+        }
         
-        let awesomePtsByproTD = document.createElement('td'); // Declare
-        itemRow.appendChild(awesomePtsByproTD); // Append
-        awesomePtsByproTD.id = 'awesomePtsBypro'; // Set ID
-        awesomePtsByproTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
-        awesomePtsByproTD.innerText = item['awesomePtsBypro'].toPrecision(10); // Item awesome points byproduct
-        if(item['awesomePtsBypro'] > 0) awesomePtsByproTD.className = 'greater'; // If greater than 0, class
-        if(item['awesomePtsBypro'] < 0) awesomePtsByproTD.className = 'less'; // If less than 0, class
+        let inpItem3TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpItem3TD); // Append
+        inpItem3TD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
+        if(rec['in'].length > 2) { // If input item 3 exists
+          inpItem3TD.innerText = rec['in'][2]['item']; // Recipe input item 3
+        }
+        
+        let inpAmount3TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpAmount3TD); // Append
+        inpAmount3TD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
+        if(rec['in'].length > 2) { // If input amount 3 exists
+          inpAmount3TD.innerText = rec['in'][2]['amount'].toPrecision(10); // Recipe input amount 3
+        }
+        
+        let inpItem4TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpItem4TD); // Append
+        inpItem4TD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
+        if(rec['in'].length > 3) { // If input item 4 exists
+          inpItem4TD.innerText = rec['in'][3]['item']; // Recipe input item 4
+        }
+        
+        let inpAmount4TD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpAmount4TD); // Append
+        inpAmount4TD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
+        if(rec['in'].length > 3) { // If input amount 4 exists
+          inpAmount4TD.innerText = rec['in'][3]['amount'].toPrecision(10); // Recipe input amount 4
+        }
+        
+        let byproItem1TD = document.createElement('td'); // Declare
+        itemRow.appendChild(byproItem1TD); // Append
+        byproItem1TD.style.backgroundColor = 'rgb(255, 192, 224)'; // BG Color
+        if(rec['bypro'].length > 0) { // If bypro item 1 exists
+          byproItem1TD.innerText = rec['bypro'][0]['item']; // Recipe bypro item 1
+        }
+        
+        let byproAmount1TD = document.createElement('td'); // Declare
+        itemRow.appendChild(byproAmount1TD); // Append
+        byproAmount1TD.style.backgroundColor = 'rgb(255, 192, 224)'; // BG Color
+        if(rec['bypro'].length > 0) { // If input bypro 1 exists
+          byproAmount1TD.innerText = rec['bypro'][0]['amount'].toPrecision(10); // Recipe bypro amount 1
+        }
+        
+        let buildingTD = document.createElement('td'); // Declare
+        itemRow.appendChild(buildingTD); // Append
+        buildingTD.style.backgroundColor = 'rgb(255, 224, 192)'; // BG Color
+        buildingTD.innerText = rec['building']; // Recipe building
         
       }
       
