@@ -1357,7 +1357,19 @@ let MIEditCatForm; // Main Interface Edit Category Form
 
 function calculate() { // Calculate items
   
-  console.log('Hi!');
+  // Add to unresolved
+  
+  for(let item in items) {
+    unresolved.add(item);
+  }
+  
+  // While unresolved
+  
+  while(unresolved.length > 0) {
+    
+    // WIP
+    
+  }
   
 }
 
@@ -1610,11 +1622,229 @@ function renderMI() { // Render Main Interface
   
 }
 
+function renderRec() { // Render Main Interface
+  
+  // Variables
+  
+  RecTbl = document.getElementById('RecTbl');
+  
+  let cats = sortRows(categories); // Sorted categories
+  
+  // Reset
+  
+  RecTbl.innerHTML = '';
+  
+  // Column Headers
+  
+  let headRow = document.createElement('tr'); // Create table row for column headers
+  RecTbl.appendChild(headRow); // Append row
+  
+  headRow.innerHTML = `
+    <th style="background-color: rgb(192, 128, 128);" title="Category">Cat.</th>
+    <th style="background-color: rgb(128, 128, 128);" title="Item Name">Item</th>
+    <th style="background-color: rgb(192, 192, 192);" title="Recipe Name">Recipe</th>
+    <th style="background-color: rgb(192, 128, 255);" title="Output" class="wideTH">Out</th>
+    <th style="background-color: rgb(255, 128, 128);" title="Input Item 1" class="wideTH">Input 1</th>
+    <th style="background-color: rgb(255, 128, 128);" title="Input Amount 1" class="wideTH">Inp. Amount 1</th>
+    <th style="background-color: rgb(255, 255, 128);" title="Input Item 2" class="wideTH">Input 2</th>
+    <th style="background-color: rgb(255, 255, 128);" title="Input Amount 2" class="wideTH">Inp Amount 2</th>
+    <th style="background-color: rgb(128, 255, 128);" title="Input Item 3" class="wideTH">Input 3</th>
+    <th style="background-color: rgb(128, 255, 128);" title="Input Amount 3" class="wideTH">Inp. Amount 3</th>
+    <th style="background-color: rgb(128, 128, 255);" title="Input Item 4" class="wideTH">Input 4</th>
+    <th style="background-color: rgb(128, 128, 255);" title="Input Amount 4" class="wideTH">Inp. Amount 4</th>
+    <th style="background-color: rgb(255, 128, 192);" title="Byproduct Item 1" class="wideTH">Bypro. 1</th>
+    <th style="background-color: rgb(255, 128, 192);" title="Byproduct Amount 1" class="wideTH">Bypro. Amount 1</th>
+    <th style="background-color: rgb(255, 192, 128);" title="Building" class="wideTH">Building</th>
+  `; // Labels/Headers of each column
+  
+  for(let cat of cats) { // For each category
+    
+    let catItems = sortRows(filtCategory(items, cat[0])); // Sorted items, filtered by category
+    // (Array)
+    
+    let catRow = document.createElement('tr'); // Create table row for category
+    RecTbl.appendChild(catRow); // Append row
+    
+    let catHead = document.createElement('th'); // Create table header
+    catRow.appendChild(catHead); // Append header
+    catHead.className = 'catHead'; // Class
+    catHead.innerHTML = '<div><div>' + cat[0] + '</div></div>'; // innerHTML
+    catHead.style.backgroundColor = categories[cat[0]]['color']; // BG Color
+    catHead.style.color = textColor(categories[cat[0]]['color']); // Text Color
+    
+    let catRowSpan = 1; // Initail rowspan, for catHead
+    
+    for(let catItem of catItems) { // For each item name
+      
+      let item = items[catItem[0]]; // Item object
+      
+      for(let recipe in item['recipes']) {
+        
+        let itemRow = document.createElement('tr'); // Create table row for items
+        RecTbl.appendChild(itemRow); // Append row
+        itemRow.id = catItem[0]; // Set Row ID to item name
+        
+        catRowSpan += 1; // Add to rowspan, for catHead
+        
+        // Headers
+        
+        let itemHead = document.createElement('th'); // Create item header
+        itemRow.appendChild(itemHead); // Append header
+        itemHead.innerText = catItem[0]; // innerText
+        itemHead.style.backgroundColor = item['color']; // BG Color
+        itemHead.style.color = textColor(item['color']); // Text Color
+        
+        let recipeHead = document.createElement('th'); // Create recipe header
+        itemRow.appendChild(recipeHead); // Append header
+        recipeHead.innerText = recipe; // innerText
+        recipeHead.style.backgroundColor = 'rgb(224, 224, 224)'; // BG Color
+        
+        // Each column/td
+        
+        let outTD = document.createElement('td'); // Declare
+        itemRow.appendChild(outTD); // Append
+        outTD.id = 'out'; // Set ID
+        outTD.style.backgroundColor = 'rgb(224, 192, 255)'; // BG Color
+        outTD.innerText = item['recipes'][recipe]['out'].toPrecision(10); // Recipe output
+        
+        let completeTD = document.createElement('td'); // Declare
+        itemRow.appendChild(completeTD); // Append
+        completeTD.id = 'complete'; // Set ID
+        completeTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
+        completeTD.style.textAlign = 'center'; // Center Text
+        let completeInp = document.createElement('input'); // Declare form inp
+        completeTD.appendChild(completeInp); // Append inp
+        completeInp.id = 'completeInp'; // Set ID inp
+        completeInp.type = 'checkbox'; // Type = checkbox
+        completeInp.checked = item['complete']; // Item complete
+        
+        let inpDemandTD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpDemandTD); // Append
+        inpDemandTD.id = 'inpDemand'; // Set ID
+        inpDemandTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
+        let inpDemandInp = document.createElement('input'); // Declare form inp
+        inpDemandTD.appendChild(inpDemandInp); // Append inp
+        inpDemandInp.id = 'inpDemandInp'; // Set ID inp
+        inpDemandInp.type = 'number'; // Type = number
+        inpDemandInp.className = 'numInp'; // Class
+        inpDemandInp.value = item['inpDemand']; // Item inpDemand
+        
+        let calcDemandTD = document.createElement('td'); // Declare
+        itemRow.appendChild(calcDemandTD); // Append
+        calcDemandTD.id = 'calcDemand'; // Set ID
+        calcDemandTD.style.backgroundColor = 'rgb(192, 225, 192)'; // Color
+        calcDemandTD.innerText = item['calcDemand'].toPrecision(10); // Item calcDemand
+        if(item['calcDemand'] > 0) calcDemandTD.className = 'greater'; // If greater than 0, class
+        if(item['calcDemand'] < 0) calcDemandTD.className = 'less'; // If less than 0, class
+        
+        let demandTD = document.createElement('td'); // Declare
+        itemRow.appendChild(demandTD); // Append
+        demandTD.id = 'demand'; // Set ID
+        demandTD.style.backgroundColor = 'rgb(255, 224, 192)'; // Color
+        demandTD.innerText = (item['inpDemand'] + item['calcDemand']).toPrecision(10); // Item inpDemand + calcDemand
+        if(item['inpDemand'] + item['calcDemand'] > 0) demandTD.className = 'greater'; // If greater than 0, class
+        if(item['inpDemand'] + item['calcDemand'] < 0) demandTD.className = 'less'; // If less than 0, class
+        
+        let byproTD = document.createElement('td'); // Declare
+        itemRow.appendChild(byproTD); // Append
+        byproTD.id = 'bypro'; // Set ID
+        byproTD.style.backgroundColor = 'rgb(255, 255, 192)'; // Color
+        byproTD.innerText = item['byproduct'].toPrecision(10); // Item byproduct
+        if(item['byproduct'] > 0) byproTD.className = 'greater'; // If greater than 0, class
+        if(item['byproduct'] < 0) byproTD.className = 'less'; // If less than 0, class
+        
+        let maxClockingTD = document.createElement('td'); // Declare
+        itemRow.appendChild(maxClockingTD); // Append
+        maxClockingTD.id = 'maxClocking'; // Set ID
+        maxClockingTD.style.backgroundColor = 'rgb(192, 224, 255)'; // Color
+        let maxClockingInp = document.createElement('input'); // Declare form inp
+        maxClockingTD.appendChild(maxClockingInp); // Append inp
+        maxClockingInp.id = 'maxClockingInp'; // Set ID inp
+        maxClockingInp.type = 'number'; // Type = number
+        maxClockingInp.className = 'numInp'; // Class
+        maxClockingInp.value = item['maxClock'] * 100; // Item maxClocking
+        
+        let sloopMultTD = document.createElement('td'); // Declare
+        itemRow.appendChild(sloopMultTD); // Append
+        sloopMultTD.id = 'sloopMult'; // Set ID
+        sloopMultTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Color
+        let sloopMultInp = document.createElement('input'); // Declare form inp
+        sloopMultTD.appendChild(sloopMultInp); // Append inp
+        sloopMultInp.id = 'sloopMultInp'; // Set ID inp
+        sloopMultInp.type = 'number'; // Type = number
+        sloopMultInp.className = 'numInp'; // Class
+        sloopMultInp.value = item['sloopMult']; // Item sloopMult
+        
+        let buildingsTD = document.createElement('td'); // Declare
+        itemRow.appendChild(buildingsTD); // Append
+        buildingsTD.id = 'bypro'; // Set ID
+        buildingsTD.style.backgroundColor = 'rgb(224, 192, 224)'; // Color
+        buildingsTD.innerText = item['buildings'].toPrecision(10); // Item buildings
+        if(item['buildings'] > 0) buildingsTD.className = 'greater'; // If greater than 0, class
+        if(item['buildings'] < 0) buildingsTD.className = 'less'; // If less than 0, class
+        
+        let recipeTD = document.createElement('td'); // Declare
+        itemRow.appendChild(recipeTD); // Append
+        recipeTD.id = 'bypro'; // Set ID
+        recipeTD.style.backgroundColor = 'rgb(255, 192, 224)'; // Color
+        let recipeInp = document.createElement('select'); // Declare form inp
+        recipeTD.appendChild(recipeInp); // Append inp
+        recipeInp.id = 'recipeInp'; // Set ID inp
+        recipeInp.className = 'numInp'; // Class
+        for(let recipe in item['recipes']) {
+          let option = document.createElement('option'); // Declare
+          recipeInp.appendChild(option); // Append
+          option.value = recipe; // Set value as recipe
+          option.innerText = recipe; // Set innerText as recipe
+          if(recipe == item['recipe']) option.selected = true; // Item recipe (selected recipe)
+        }
+        
+        let powerTD = document.createElement('td'); // Declare
+        itemRow.appendChild(powerTD); // Append
+        powerTD.id = 'bypro'; // Set ID
+        powerTD.style.backgroundColor = 'rgb(255, 255, 224)'; // Color
+        powerTD.innerText = item['power'].toPrecision(10); // Item power
+        if(item['power'] > 0) powerTD.className = 'greater'; // If greater than 0, class
+        if(item['power'] < 0) powerTD.className = 'less'; // If less than 0, class
+        
+        let awesomePtsTD = document.createElement('td'); // Declare
+        itemRow.appendChild(awesomePtsTD); // Append
+        awesomePtsTD.id = 'awesomePts'; // Set ID
+        awesomePtsTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
+        awesomePtsTD.innerText = item['awesomePts']; // Item awesome points
+        
+        let awesomePtsInpTD = document.createElement('td'); // Declare
+        itemRow.appendChild(awesomePtsInpTD); // Append
+        awesomePtsInpTD.id = 'bypro'; // Set ID
+        awesomePtsInpTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
+        awesomePtsInpTD.innerText = item['awesomePtsInp'].toPrecision(10); // Item awesome points input demand
+        if(item['awesomePtsInp'] > 0) awesomePtsInpTD.className = 'greater'; // If greater than 0, class
+        if(item['awesomePtsInp'] < 0) awesomePtsInpTD.className = 'less'; // If less than 0, class
+        
+        let awesomePtsByproTD = document.createElement('td'); // Declare
+        itemRow.appendChild(awesomePtsByproTD); // Append
+        awesomePtsByproTD.id = 'awesomePtsBypro'; // Set ID
+        awesomePtsByproTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
+        awesomePtsByproTD.innerText = item['awesomePtsBypro'].toPrecision(10); // Item awesome points byproduct
+        if(item['awesomePtsBypro'] > 0) awesomePtsByproTD.className = 'greater'; // If greater than 0, class
+        if(item['awesomePtsBypro'] < 0) awesomePtsByproTD.className = 'less'; // If less than 0, class
+        
+      }
+      
+    }
+    
+    catHead.rowSpan = catRowSpan; // rowSpan for catHead
+    
+  }
+  
+}
+
 function render() {
   
   // Individual Render Functions
   
   renderMI();
+  renderRec();
   
   // Other
   
@@ -1915,7 +2145,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       items[itemName] = {
         'category': category, 'complete': false, 'inpDemand': 0, 'status': 'resolved', 'pos': pos, 'color': color, 
-        'calcDemand': 0, 'byproduct': 0, 'maxClock': 1, 'sloopMult': 1, 'buildings': 0, 'awesomePts': awesomePts, 'awesomePtsInp': 0, 'awesomePtsBypro': 0, 
+        'calcDemand': 0, 'byproduct': 0, 'maxClock': 1, 'sloopMult': 1, 'buildings': 0, 'awesomePts': awesomePts, 'awesomePtsInp': 0, 'awesomePtsBypro': 0, power: 0, 
         recipe: 'None', recipes: {} 
       };
       
@@ -1923,7 +2153,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       if(posTaken && movePos) {
         for(let key in filtCategory(items, category)) {
-          console.log(key + ': ' + items[key]['pos']);
+          //console.log(key + ': ' + items[key]['pos']);
         }
       }
       
@@ -1962,7 +2192,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       if(posTaken && movePos) {
         for(let key in filtCategory(items, category)) {
-          console.log(key + ': ' + items[key]['pos']);
+          //console.log(key + ': ' + items[key]['pos']);
         }
       }
       
@@ -2087,7 +2317,6 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       if(posTaken && movePos) {
         for(let key in categories) {
           if(categories[key]['pos'] >= pos) categories[key]['pos'] += 1;
-          console.log(key + ': ' + categories[key]['pos']);
         }
       }
       
@@ -2102,7 +2331,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       if(posTaken && movePos) {
         for(let key in categories) {
-          console.log(key + ': ' + categories[key]['pos']);
+          //console.log(key + ': ' + categories[key]['pos']);
         }
       }
       
@@ -2139,7 +2368,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       if(posTaken && movePos) {
         for(let key in categories) {
-          console.log(key + ': ' + categories[key]['pos']);
+          //console.log(key + ': ' + categories[key]['pos']);
         }
       }
       
