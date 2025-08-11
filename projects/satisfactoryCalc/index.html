@@ -104,6 +104,10 @@
   <div>Default data from <a href="https://satisfactory.wiki.gg/wiki" target="_blank">The Satisfactory Wiki</a></div>
   <div>Shout out to (although no sources used from) <a href="https://satisfactory-calculator.com/" target="_blank">Satisfactory Calculator</a></div>
   
+  <br>
+  <button onclick="expandAll()">Expand All</button>
+  <button onclick="collapseAll()">Collapse All</button>
+  
   <h2>Main Interface<span><button class="sectBttn" id="MIBttn" onclick="expndOrClps('MISect', 'MIBttn')">🔽</button></span></h2>
   
   <div class="sect" id="MISect">
@@ -175,16 +179,16 @@
     <table id="RecTbl"></table>
   </div>
   
-  <h2>Calc. Tables 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
-  
-  <div class="sect" id="CTSect">
-    <table id="CTTbl"></table>
-  </div>
-  
   <h2>Buildings, Power, & Awesome Points<span><button class="sectBttn" id="BPAPBttn" onclick="expndOrClps('BPAPSect', 'BPAPBttn')">🔽</button></span></h2>
   
   <div class="sect" id="BPAPSect">
     <table id="BPAPTbl"></table>
+  </div>
+  
+  <h2>Calc. Tables 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
+  
+  <div class="sect" id="CTSect">
+    <table id="CTTbl"></table>
   </div>
   
 </body>

@@ -216,6 +216,12 @@ let items = { // Default item data
       'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
     }
   },
+  'Wood': {category: 'Raw', complete: false, inpDemand: 0, status: 'resolved', pos: 15, color: '#fce5cd', 
+    calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 30, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
+    recipe: 'Future Problem :3', recipes: {
+      'Future Problem :3': {out: 1, in: [], bypro: [], building: 'The Void'},
+    }
+  },
   'Iron Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 2, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Iron Ingot', recipes: {
@@ -313,7 +319,7 @@ let items = { // Default item data
     recipe: 'Diamonds', recipes: {
       'Diamonds': {out: 30, in: [{item: 'Coal', amount: 600}], bypro: [], building: 'Particle Accelerator 1'},
       'Cloudy Diamonds': {out: 20, in: [{item: 'Coal', amount: 240}, {item: 'Limestone', amount: 480}], bypro: [], building: 'Particle Accelerator 1'},
-      'Oil-Based Diamonds': {out: 40, in: [{item: 'Oil', amount: 200}], bypro: [], building: 'Particle Accelerator 1'},
+      'Oil-Based Diamonds': {out: 40, in: [{item: 'Crude Oil', amount: 200}], bypro: [], building: 'Particle Accelerator 1'},
       'Petroleum Diamonds': {out: 30, in: [{item: 'Petroleum Coke', amount: 720}], bypro: [], building: 'Particle Accelerator 1'},
       'Pink Diamonds': {out: 15, in: [{item: 'Coal', amount: 120}, {item: 'Quartz Crystal', amount: 45}], bypro: [], building: 'Converter'},
       'Turbo Diamonds': {out: 60, in: [{item: 'Coal', amount: 600}, {item: 'Packaged Turbofuel', amount: 40}], bypro: [], building: 'Particle Accelerator 1'},
@@ -422,7 +428,7 @@ let items = { // Default item data
   'Alclad Aluminum Sheet': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#d9d9d9', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 266, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Alclad Aluminum Sheet', recipes: {
-      'Alclad Aluminum Sheet': {out: 30, in: [{item: 'Aluminum', amount: 30}, {item: 'Copper Ingot', amount: 10}], bypro: [], building: 'Assembler'},
+      'Alclad Aluminum Sheet': {out: 30, in: [{item: 'Aluminum Ingot', amount: 30}, {item: 'Copper Ingot', amount: 10}], bypro: [], building: 'Assembler'},
     }
   },
   'Aluminum Casing': {category: 'Standard Part', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#cccccc', 
@@ -491,7 +497,7 @@ let items = { // Default item data
   'Turbo Motor': {category: 'Industrial', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#ffe599', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 240496, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Turbo Motor', recipes: {
-      'Turbo Motor': {out: 1.875, in: [{item: 'Cooling Device', amount: 7.5}, {item: 'Radio Control Unit', amount: 3.75}, {item: 'Motor', amount: 7.5}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
+      'Turbo Motor': {out: 1.875, in: [{item: 'Cooling System', amount: 7.5}, {item: 'Radio Control Unit', amount: 3.75}, {item: 'Motor', amount: 7.5}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
       'Turbo Electric Motor': {out: 2.8125, in: [{item: 'Radio Control Unit', amount: 8.4375}, {item: 'Motor', amount: 6.5625}, {item: 'Rubber', amount: 45}], bypro: [], building: 'Manufacturer'},
       'Turbo Pressure Motor': {out: 3.75, in: [{item: 'Motor', amount: 7.5}, {item: 'Pressure Conversion Cube', amount: 1.875}, {item: 'Packaged Nitrogen Gas', amount: 45}, {item: 'Stator', amount: 15}], bypro: [], building: 'Manufacturer'},
     }
@@ -774,7 +780,7 @@ let items = { // Default item data
   'Encased Uranium Cell': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#b6d7a8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 147, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Encased Uranium Cell', recipes: {
-      'Encased Uranium Cell': {out: 25, in: [{item: 'Uranium', amount: 50}, {item: 'Concrete', amount: 15}, {item: 'Sulfric Acid', amount: 40}], bypro: [{item: 'Sulfric Acid', amount: 10}], building: 'Blender'},
+      'Encased Uranium Cell': {out: 25, in: [{item: 'Uranium', amount: 50}, {item: 'Concrete', amount: 15}, {item: 'Sulfuric Acid', amount: 40}], bypro: [{item: 'Sulfuric Acid', amount: 10}], building: 'Blender'},
       'Infused Uranium Cell': {out: 20, in: [{item: 'Uranium', amount: 25}, {item: 'Silica', amount: 15}, {item: 'Sulfur', amount: 25}, {item: 'Quickwire', amount: 75}], bypro: [], building: 'Manufacturer'},
     }
   },
@@ -795,7 +801,7 @@ let items = { // Default item data
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Encased Plutonium Cell', recipes: {
       'Encased Plutonium Cell': {out: 5, in: [{item: 'Plutonium Pellet', amount: 10}, {item: 'Concrete', amount: 20}], bypro: [], building: 'Assembler'},
-      'Instant Plutonium Cell': {out: 10, in: [{item: 'Non-Fissile Uranium', amount: 75}, {item: 'Aluminum Casing', amount: 10}], bypro: [], building: 'Particle Accelerator 1'},
+      'Instant Plutonium Cell': {out: 10, in: [{item: 'Non-Fissle Uranium', amount: 75}, {item: 'Aluminum Casing', amount: 10}], bypro: [], building: 'Particle Accelerator 1'},
     }
   },
   'Ficsonium': {category: 'Nuclear', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#ffe599', 
@@ -865,13 +871,13 @@ let items = { // Default item data
   'Superposition Oscillator': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 4, color: '#cccccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 37292, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Superposition Oscillator', recipes: {
-      'Superposition Oscillator': {out: 5, in: [{item: 'Dark Matter Crystal', amount: 30}, {item: 'Crystal Oscillator', amount: 5}, {item: 'Alclad Aluminum Sheet', amount: 45}, {item: 'Exited Photonic Matter', amount: 125}], bypro: [{item: 'Dark Matter Residue', amount: 125}], building: 'Quantum Encoder'},
+      'Superposition Oscillator': {out: 5, in: [{item: 'Dark Matter Crystal', amount: 30}, {item: 'Crystal Oscillator', amount: 5}, {item: 'Alclad Aluminum Sheet', amount: 45}, {item: 'Excited Photonic Matter', amount: 125}], bypro: [{item: 'Dark Matter Residue', amount: 125}], building: 'Quantum Encoder'},
     }
   },
   'Power Shard': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#9fc5e8', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 0, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Power Shard', recipes: {
-      'Power Shard': {out: 5, in: [{item: 'Time Crystal', amount: 10}, {item: 'Dark Matter Crystal', amount: 10}, {item: 'Quartz Crystal', amount: 60}, {item: 'Exited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
+      'Power Shard': {out: 5, in: [{item: 'Time Crystal', amount: 10}, {item: 'Dark Matter Crystal', amount: 10}, {item: 'Quartz Crystal', amount: 60}, {item: 'Excited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
     }
   },
   'Singularity Cell': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#fce5cd', 
@@ -883,20 +889,20 @@ let items = { // Default item data
   'Neural-Quantum Processor': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#3d85c6', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 248034, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Neural-Quantum Processor', recipes: {
-      'Neural-Quantum Processor': {out: 3, in: [{item: 'Time Crystal', amount: 15}, {item: 'Supercomputer', amount: 3}, {item: 'Ficsite Trigon', amount: 45}, {item: 'Exited Photonic Matter', amount: 75}], bypro: [{item: 'Dark Matter Residue', amount: 75}], building: 'Quantum Encoder'},
+      'Neural-Quantum Processor': {out: 3, in: [{item: 'Time Crystal', amount: 15}, {item: 'Supercomputer', amount: 3}, {item: 'Ficsite Trigon', amount: 45}, {item: 'Excited Photonic Matter', amount: 75}], bypro: [{item: 'Dark Matter Residue', amount: 75}], building: 'Quantum Encoder'},
     }
   },
   'Alien Power Matrix': {category: 'Quantum', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#ead1dc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 210, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Alien Power Matrix', recipes: {
-      'Alien Power Matrix': {out: 2.5, in: [{item: 'SAM Fluctuator', amount: 12.5}, {item: 'Power Shard', amount: 7.5}, {item: 'Superposition Oscillator', amount: 7.5}, {item: 'Exited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
+      'Alien Power Matrix': {out: 2.5, in: [{item: 'SAM Fluctuator', amount: 12.5}, {item: 'Power Shard', amount: 7.5}, {item: 'Superposition Oscillator', amount: 7.5}, {item: 'Excited Photonic Matter', amount: 60}], bypro: [{item: 'Dark Matter Residue', amount: 60}], building: 'Quantum Encoder'},
     }
   },
   'Smart Plating': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 520, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Smart Plating', recipes: {
-      'Smart Plating': {out: 2, in: [{item: 'Reinforce Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Assembler'},
-      'Plastic Smart Plating': {out: 5, in: [{item: 'Reinforce Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}, {item: 'Plastic', amount: 7.5}], bypro: [], building: 'Manfacture'},
+      'Smart Plating': {out: 2, in: [{item: 'Reinforced Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Assembler'},
+      'Plastic Smart Plating': {out: 5, in: [{item: 'Reinforced Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}, {item: 'Plastic', amount: 7.5}], bypro: [], building: 'Manfacture'},
     }
   },
   'Versatile Framework': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#e6b8af', 
@@ -964,7 +970,7 @@ let items = { // Default item data
   'AI Expansion Server': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 11, color: '#f4cccc', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 597652, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'AI Expansion Server', recipes: {
-      'AI Expansion Server': {out: 4, in: [{item: 'Magnetic Field Generator', amount: 4}, {item: 'Neural-Quantum Processor', amount: 4}, {item: 'Superposition Oscillator', amount: 4}, {item: 'Exited Photonic Matter', amount: 100}], bypro: [{item: 'Dark Matter Residue', amount: 100}], building: 'Quantum Encoder'},
+      'AI Expansion Server': {out: 4, in: [{item: 'Magnetic Field Generator', amount: 4}, {item: 'Neural-Quantum Processor', amount: 4}, {item: 'Superposition Oscillator', amount: 4}, {item: 'Excited Photonic Matter', amount: 100}], bypro: [{item: 'Dark Matter Residue', amount: 100}], building: 'Quantum Encoder'},
     }
   },
   'Black Powder': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 0, color: '#666666', 
@@ -983,7 +989,7 @@ let items = { // Default item data
   'Iron Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#b7b7b7', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 8, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Iron Rebar', recipes: {
-      'Iron Rebar': {out: 15, in: [{item: 'Iron', amount: 15}], bypro: [], building: 'Constructor'},
+      'Iron Rebar': {out: 15, in: [{item: 'Iron Rod', amount: 15}], bypro: [], building: 'Constructor'},
     }
   },
   'Stun Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#a4c2f4', 
@@ -1001,7 +1007,7 @@ let items = { // Default item data
   'Explosive Rebar': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 5, color: '#ea9999', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 360, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Explosive Rebar', recipes: {
-      'Explosive Rebar': {out: 5, in: [{item: 'Iron Bar', amount: 10}, {item: 'Smokeless Powder', amount: 10}, {item: 'Steel Pipe', amount: 10}], bypro: [], building: 'Manufacturer'},
+      'Explosive Rebar': {out: 5, in: [{item: 'Iron Rebar', amount: 10}, {item: 'Smokeless Powder', amount: 10}, {item: 'Steel Pipe', amount: 10}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Rifle Ammo': {category: 'Weapons', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#f9cb9c', 
@@ -1723,7 +1729,7 @@ function renderRec() { // Render Main Interface
           inpItem1TD.innerText = rec['in'][0]['item']; // Recipe input item 1
           
           let childItem = items[rec['in'][0]['item']]; // Child item
-          console.log(childItem);
+          //console.log(childItem);
           if(childItem !== undefined) { // If color is defined
             inpItem1TD.style.backgroundColor = childItem['color']; // BG Color
             inpItem1TD.style.color = textColor(childItem['color']); // Text Color
@@ -1740,8 +1746,16 @@ function renderRec() { // Render Main Interface
         let inpItem2TD = document.createElement('td'); // Declare
         itemRow.appendChild(inpItem2TD); // Append
         inpItem2TD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
+        inpItem2TD.style.textAlign = 'center'; // Center Text
         if(rec['in'].length > 1) { // If input item 2 exists
           inpItem2TD.innerText = rec['in'][1]['item']; // Recipe input item 2
+          
+          let childItem = items[rec['in'][1]['item']]; // Child item
+          //console.log(childItem);
+          if(childItem !== undefined) { // If color is defined
+            inpItem2TD.style.backgroundColor = childItem['color']; // BG Color
+            inpItem2TD.style.color = textColor(childItem['color']); // Text Color
+          }
         }
         
         let inpAmount2TD = document.createElement('td'); // Declare
@@ -1754,8 +1768,16 @@ function renderRec() { // Render Main Interface
         let inpItem3TD = document.createElement('td'); // Declare
         itemRow.appendChild(inpItem3TD); // Append
         inpItem3TD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
+        inpItem3TD.style.textAlign = 'center'; // Center Text
         if(rec['in'].length > 2) { // If input item 3 exists
           inpItem3TD.innerText = rec['in'][2]['item']; // Recipe input item 3
+          
+          let childItem = items[rec['in'][2]['item']]; // Child item
+          //console.log(childItem);
+          if(childItem !== undefined) { // If color is defined
+            inpItem3TD.style.backgroundColor = childItem['color']; // BG Color
+            inpItem3TD.style.color = textColor(childItem['color']); // Text Color
+          }
         }
         
         let inpAmount3TD = document.createElement('td'); // Declare
@@ -1768,8 +1790,16 @@ function renderRec() { // Render Main Interface
         let inpItem4TD = document.createElement('td'); // Declare
         itemRow.appendChild(inpItem4TD); // Append
         inpItem4TD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
+        inpItem4TD.style.textAlign = 'center'; // Center Text
         if(rec['in'].length > 3) { // If input item 4 exists
           inpItem4TD.innerText = rec['in'][3]['item']; // Recipe input item 4
+          
+          let childItem = items[rec['in'][3]['item']]; // Child item
+          //console.log(childItem);
+          if(childItem !== undefined) { // If color is defined
+            inpItem4TD.style.backgroundColor = childItem['color']; // BG Color
+            inpItem4TD.style.color = textColor(childItem['color']); // Text Color
+          }
         }
         
         let inpAmount4TD = document.createElement('td'); // Declare
@@ -1782,8 +1812,16 @@ function renderRec() { // Render Main Interface
         let byproItem1TD = document.createElement('td'); // Declare
         itemRow.appendChild(byproItem1TD); // Append
         byproItem1TD.style.backgroundColor = 'rgb(255, 192, 224)'; // BG Color
+        byproItem1TD.style.textAlign = 'center'; // Center Text
         if(rec['bypro'].length > 0) { // If bypro item 1 exists
           byproItem1TD.innerText = rec['bypro'][0]['item']; // Recipe bypro item 1
+          
+          let childItem = items[rec['bypro'][0]['item']]; // Child item
+          //console.log(childItem);
+          if(childItem !== undefined) { // If color is defined
+            byproItem1TD.style.backgroundColor = childItem['color']; // BG Color
+            byproItem1TD.style.color = textColor(childItem['color']); // Text Color
+          }
         }
         
         let byproAmount1TD = document.createElement('td'); // Declare
