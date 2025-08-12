@@ -6,6 +6,7 @@ body {
 
 table {
   color: rgb(0, 0, 0) !important;
+  overflow-y: hidden;
 }
 
 /* Tool Bar */
@@ -164,7 +165,7 @@ th {
   min-width: 10rem;
 }
 
-.numInp {
+#MITbl > * > * > .numInp {
   background-color: inherit;
 }
 

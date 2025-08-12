@@ -177,6 +177,64 @@
   
   <div class="sect" id="RecSect">
     <table id="RecTbl"></table>
+    
+    <h3>Edit Recipe</h3>
+    <form id="MIEditrecForm">
+      <label for="itemName">Item Name:</label>
+      <input type="text" id="itemName" name="itemName"><br>
+      <label for="recName">Recipe Name:</label>
+      <input type="text" id="recName" name="recName"><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
+      <br>
+      
+      <input type="checkbox" id="recAddCheck" name="recAddCheck">
+      <label for="recAddCheck">Add Recipe?</label><br>
+      <input type="checkbox" id="recRemoveCheck" name="recRemoveCheck">
+      <label for="recRemoveCheck">Remove Recipe (if it exists)?</label><br>
+      <br>
+      
+      <label for="out">Output Amount:</label>
+      <input type="number" id="out" name="out" class="numInp"><br>
+      <label for="building">Building:</label>
+      <input type="text" id="building" name="building"><br>
+      <label for="numInp">Number of Inputs:</label>
+      <input type="number" id="numInp" name="numInp" min="0" max="4"><br>
+      <label for="numBypro">Number of Byproducts:</label>
+      <input type="number" id="numBypro" name="numBypro" min="0" max="1"><br>
+      <br>
+      
+      <label for="inpItem1">Input Item 1:</label>
+      <input type="text" id="inpItem1" name="inpItem1"><br>
+      <label for="inpItem1">Input Amount 1:</label>
+      <input type="number" id="inpItem1" name="inpItem1" class="numInp"><br>
+      
+      <label for="inpItem2">Input Item 2:</label>
+      <input type="text" id="inpItem2" name="inpItem2"><br>
+      <label for="inpItem2">Input Amount 2:</label>
+      <input type="number" id="inpItem2" name="inpItem2" class="numInp"><br>
+      
+      <label for="inpItem3">Input Item 3:</label>
+      <input type="text" id="inpItem3" name="inpItem3"><br>
+      <label for="inpItem3">Input Amount 3:</label>
+      <input type="number" id="inpItem3" name="inpItem3" class="numInp"><br>
+      
+      <label for="inpItem4">Input Item 4:</label>
+      <input type="text" id="inpItem4" name="inpItem4"><br>
+      <label for="inpItem4">Input Amount 4:</label>
+      <input type="number" id="inpItem4" name="inpItem4" class="numInp"><br>
+      <br>
+      
+      <label for="byproItem1">Byproduct Item 1:</label>
+      <input type="text" id="byproItem1" name="byproItem1"><br>
+      <label for="byproItem1">Byproduct Amount 1:</label>
+      <input type="number" id="byproItem1" name="byproItem1" class="numInp"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      <output id="out">...Awaiting Input</output><br>
+    </form>
+    
   </div>
   
   <h2>Buildings, Power, & Awesome Points<span><button class="sectBttn" id="BPAPBttn" onclick="expndOrClps('BPAPSect', 'BPAPBttn')">🔽</button></span></h2>
