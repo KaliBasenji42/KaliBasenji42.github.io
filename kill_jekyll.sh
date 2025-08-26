@@ -3,7 +3,7 @@
 # Variables
 
 PORT=4000
-TARGET_DIR="/home/jekyll/KaliBasenji42.github.io"
+TARGET_DIR="/home/kalibasenji42/jekyll/KaliBasenji42.github.io"
 
 # Find the PID(s) of Jekyll (Based on Port)
 PIDS=$(lsof -t -i:$PORT )
