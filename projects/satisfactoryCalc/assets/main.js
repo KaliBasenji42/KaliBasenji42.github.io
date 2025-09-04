@@ -1358,6 +1358,7 @@ let downloadLink; // Upload Link
 let MITbl; // Main Interface Table
 let MIEditItemForm; // Main Interface Edit Item Form
 let MIEditCatForm; // Main Interface Edit Category Form
+let RecEditForm; // Recipe Edit Form
 
 // Math/Calc Functions
 
@@ -2080,21 +2081,11 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     let posTaken = false;
     let catItems = filtCategory(items, category);
     
-    // Exists & Category Exists
+    // Item & Category Exists
     
-    for(let key in items) {
-      if(itemName == key) {
-        exists = true;
-        break
-      }
-    }
+    if(items[itemName]) exists = true;
     
-    for(let key in categories) {
-      if(category == key) {
-        catExists = true;
-        break
-      }
-    }
+    if(categories[category]) catExists = true;
     
     // Pos Taken
     
@@ -2167,6 +2158,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       out.innerText = '✅ Added';
       render();
       return
+      
     }
     
     // Edit
@@ -2218,17 +2210,12 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     let out = document.querySelector('#MIEditItemForm > #LDOut'); // Out
     
-    // Exists
+    // Item Exists
     
     let itemName = document.querySelector('#MIEditItemForm > #itemName').value;
     let exists = false;
     
-    for(let key in items) {
-      if(itemName == key) {
-        exists = true;
-        break
-      }
-    }
+    if(items[itemName]) exists = true;
     
     if(!exists) {
       out.innerText = '⚠️ Does not exist';
@@ -2246,7 +2233,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
   });
   
-  // Category Item
+  // Edit Category
   
   MIEditCatForm = document.getElementById('MIEditCatForm');
   
@@ -2271,14 +2258,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     let exists = false;
     let posTaken = false;
     
-    // Exists Exists
+    // Category Exists
     
-    for(let key in categories) {
-      if(catName == key) {
-        exists = true;
-        break
-      }
-    }
+    if(categories[catName]) exists = true;
     
     // Pos Taken
     
@@ -2345,6 +2327,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       out.innerText = '✅ Added';
       render();
       return
+      
     }
     
     // Edit
@@ -2394,17 +2377,12 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     let out = document.querySelector('#MIEditCatForm > #LDOut'); // Out
     
-    // Exists
+    // Item Exists
     
     let catName = document.querySelector('#MIEditCatForm > #catName').value;
     let exists = false;
     
-    for(let key in categories) {
-      if(catName == key) {
-        exists = true;
-        break
-      }
-    }
+    if(categories[catName]) exists = true;
     
     if(!exists) {
       out.innerText = '⚠️ Does not exist';
@@ -2415,6 +2393,226 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     document.querySelector('#MIEditCatForm > #catPos').value = categories[catName].pos;
     document.querySelector('#MIEditCatForm > #catColor').value = categories[catName].color;
+    
+    out.innerText = '✅ Loaded';
+    
+  });
+  
+  // Edit Recipe
+  
+  RecEditForm = document.getElementById('RecEditForm');
+  
+  RecEditForm.addEventListener('submit', function() {
+    
+    event.preventDefault();
+    
+    // Out
+    
+    let out = document.querySelector('#RecEditForm > #out');
+    out.innerText = '🔄';
+    
+    // Variables
+    
+    let itemName = document.querySelector('#RecEditForm > #itemName').value;
+    let recName = document.querySelector('#RecEditForm > #recName').value;
+    let add = document.querySelector('#RecEditForm > #recAddCheck').checked;
+    let remove = document.querySelector('#RecEditForm > #recRemoveCheck').checked;
+    
+    let outAmnt = parseInt(document.querySelector('#RecEditForm > #outAmnt').value);
+    let building = document.querySelector('#RecEditForm > #building').value;
+    let numInp = parseInt(document.querySelector('#RecEditForm > #numInp').value);
+    let numBypro = parseInt(document.querySelector('#RecEditForm > #numBypro').value);
+    
+    let inpItems = [
+      document.querySelector('#RecEditForm > #inpItem1').value, 
+      document.querySelector('#RecEditForm > #inpItem2').value, 
+      document.querySelector('#RecEditForm > #inpItem3').value, 
+      document.querySelector('#RecEditForm > #inpItem4').value, 
+    ];
+    
+    let inpAmnts = [
+      parseInt(document.querySelector('#RecEditForm > #inpAmnt1').value), 
+      parseInt(document.querySelector('#RecEditForm > #inpAmnt2').value), 
+      parseInt(document.querySelector('#RecEditForm > #inpAmnt3').value), 
+      parseInt(document.querySelector('#RecEditForm > #inpAmnt4').value), 
+    ];
+    
+    let byproItems = [
+      document.querySelector('#RecEditForm > #byproItem1').value, 
+    ];
+    
+    let byproAmnts = [
+      parseInt(document.querySelector('#RecEditForm > #byproAmnt1').value), 
+    ];
+    
+    let exists = false;
+    
+    // Rec Exists
+    
+    if(items[itemName]) {
+      if(items[itemName]['recipes'][recName]) exists = true;
+    }
+    
+    // Error
+    
+    if(add && remove) {
+      out.innerText = '⚠️ Both "Add" and "Remove" where selected';
+      return
+    }
+    
+    if(add && exists) {
+      out.innerText = '⚠️ Already exists';
+      return
+    }
+    
+    if(!add && !exists) {
+      out.innerText = '⚠️ Does not exist';
+      return
+    }
+    
+    // Remove
+    
+    if(remove) {
+      delete items[itemName]['recipes'][recName];
+      out.innerText = '✅ Removed';
+      render();
+      return
+    }
+    
+    // Add
+    
+    if(add) {
+      
+      // Add
+      
+      items[itemName]['recipes'][recName] = {
+        'out': outAmnt, 
+        'in': [], 
+        'bypro': [], 
+        'building': building, 
+      };
+      
+      // Items
+      
+      for(let i = 0; i < numInp; i++) {
+        items[itemName]['recipes'][recName]['in'].push({'item': inpItems[i], 'amount': inpAmnts[i]});
+      }
+      
+      // Bypros
+      
+      for(let i = 0; i < numBypro; i++) {
+        items[itemName]['recipes'][recName]['bypro'].push({'item': byproItems[i], 'amount': byproAmnts[i]});
+      }
+      
+      // Out
+      
+      out.innerText = '✅ Added';
+      render();
+      return
+      
+    }
+    
+    // Edit
+    
+    if(true) { // (If for orginization)
+      
+      // Edit
+      
+      items[itemName]['recipes'][recName] = {
+        'out': outAmnt, 
+        'in': [], 
+        'bypro': [], 
+        'building': building, 
+      };
+      
+      // Items
+      
+      for(let i = 0; i < numInp; i++) {
+        items[itemName]['recipes'][recName]['in'].push({'item': inpItems[i], 'amount': inpAmnts[i]});
+      }
+      
+      // Bypros
+      
+      for(let i = 0; i < numBypro; i++) {
+        items[itemName]['recipes'][recName]['bypro'].push({'item': byproItems[i], 'amount': byproAmnts[i]});
+      }
+      
+      // Out
+      
+      out.innerText = '✅ Edited';
+      render();
+      return
+      
+    }
+    
+  });
+  
+  // Edit Recipe Load Defaults
+  
+  let RecEditFormLoadDefault = document.querySelector('#RecEditForm > #loadDefault');
+  
+  RecEditFormLoadDefault.addEventListener('click', function() {
+    
+    let out = document.querySelector('#RecEditForm > #LDOut'); // Out
+    
+    // Rec Exists
+    
+    let itemName = document.querySelector('#RecEditForm > #itemName').value;
+    let recName = document.querySelector('#RecEditForm > #recName').value;
+    let exists = false;
+    
+    if(items[itemName]) {
+      if(items[itemName]['recipes'][recName]) exists = true;
+    }
+    
+    if(!exists) {
+      out.innerText = '⚠️ Does not exist';
+      return
+    }
+    
+    // Variables
+    
+    let numInp = items[itemName]['recipes'][recName].in.length;
+    let numBypro = items[itemName]['recipes'][recName].bypro.length;
+    
+    let inpItems = [
+      document.querySelector('#RecEditForm > #inpItem1'), 
+      document.querySelector('#RecEditForm > #inpItem2'), 
+      document.querySelector('#RecEditForm > #inpItem3'), 
+      document.querySelector('#RecEditForm > #inpItem4'), 
+    ];
+    
+    let inpAmnts = [
+      document.querySelector('#RecEditForm > #inpAmnt1'), 
+      document.querySelector('#RecEditForm > #inpAmnt2'), 
+      document.querySelector('#RecEditForm > #inpAmnt3'), 
+      document.querySelector('#RecEditForm > #inpAmnt4'), 
+    ];
+    
+    let byproItems = [
+      document.querySelector('#RecEditForm > #byproItem1'), 
+    ];
+    
+    let byproAmnts = [
+      document.querySelector('#RecEditForm > #byproAmnt1'), 
+    ];
+    
+    // Set
+    
+    document.querySelector('#RecEditForm > #outAmnt').value = items[itemName]['recipes'][recName].out;
+    document.querySelector('#RecEditForm > #building').value = items[itemName]['recipes'][recName].building;
+    document.querySelector('#RecEditForm > #numInp').value = numInp;
+    document.querySelector('#RecEditForm > #numBypro').value = numBypro;
+    
+    for(let i = 0; i < numInp; i++) { // Items
+      inpItems[i].value = items[itemName]['recipes'][recName]['in'][i].item;
+      inpAmnts[i].value = items[itemName]['recipes'][recName]['in'][i].amount;
+    }
+    
+    for(let i = 0; i < numBypro; i++) { // Bypros
+      byproItems[i].value = items[itemName]['recipes'][recName]['bypro'][i].item;
+      byproAmnts[i].value = items[itemName]['recipes'][recName]['bypro'][i].amount;
+    }
     
     out.innerText = '✅ Loaded';
     
