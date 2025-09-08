@@ -117,6 +117,19 @@ table {
   color: rgb(64, 64, 64);
 }
 
+.menuTtl {
+  margin-top: 0;
+}
+
+#menuGreyout > * > #loadList {
+  height: 12rem;
+  overflow: scroll;
+  
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(224, 224, 224) rgb(255, 255, 255) rgb(255, 255, 255) rgb(224, 224, 224);
+}
+
 /* Tables */
 
 table {
@@ -172,6 +185,9 @@ th {
     height: 12rem;
     left: calc(50% - 8rem);
     top: calc(50% - 6rem);
+  }
+  #menuGreyout > * > #loadList {
+    height: 6rem;
   }
 }
 

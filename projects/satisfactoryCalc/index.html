@@ -29,6 +29,8 @@
 
 <body style="background-color: rgb(224, 160, 244);">
   
+  <script src="assets/vars.js"></script>
+  
 <!--Start-->
   
   <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
@@ -58,15 +60,31 @@
     <div id="load" style="display: none;">
       <img class="X" src="assets/images/X.png">
       
-      <h1>WIP</h1>
+      <h2 class="menuTtl">Load - localStorage</h2>
+      
+      <div id="loadList"></div>
+      
+      <label id="loadOut">... Awaiting Input</label>
     </div>
+    
     <div id="save" style="display: none;">
       <img class="X" src="assets/images/X.png">
       
-      <h1>WIP</h1>
+      <h2 class="menuTtl">Save - localStorage</h2>
+      
+      <form id="saveForm">
+        <label for="saveName">Save Name:</label>
+        <input id="saveName" type="text" name="saveName"><br>
+        <input type="submit" value="Submit"><br>
+        <label id="saveOut">... Awaiting Input</label>
+      </form>
     </div>
+    
     <div id="upload" style="display: none;">
       <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Upload</h2>
+      
       <form id="uploadForm">
         <label for="uploadFile">Select a file:</label><br>
         <input type="file" id="uploadFile" name="uploadFile" accept="application/json"><br>
@@ -76,14 +94,19 @@
         <label id="uploadOut">... Awaiting Input</label>
       </form>
     </div>
+    
     <div id="download" style="display: none;">
       <img class="X" src="assets/images/X.png">
       
-      <br><br>
+      <h2 class="menuTtl">Download</h2>
+      
       <a target="_blank" id="downloadLink">Loading...</a>
     </div>
     <div id="settings" style="display: none;">
       <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Settings</h2>
+      
       <form id="settingsForm">
         <label for="maxCalcIter">Max Calculation Iterations:</label><br>
         <input type="number" id="maxCalcIter" name="maxCalcIter" min="1" max="1000000"><br>
