@@ -331,7 +331,7 @@ let items = { // Default item data
       'Reanimated SAM': {out: 30, in: [{item: 'SAM', amount: 120}], bypro: [], building: 'Constructor'},
     }
   },
-  'Ficsite Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 12, color: '#e69138', 
+  'Ficsite Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 13, color: '#e69138', 
     calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1936, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Ficsite Ingot (Aluminum)', recipes: {
       'Ficsite Ingot (Aluminum)': {out: 30, in: [{item: 'Reanimated SAM', amount: 60}, {item: 'Aluminum Ingot', amount: 120}], bypro: [], building: 'Converter'},
@@ -1432,7 +1432,13 @@ let downloadLink; // Upload Link
 let MITbl; // Main Interface Table
 let MIEditItemForm; // Main Interface Edit Item Form
 let MIEditCatForm; // Main Interface Edit Category Form
+
+let RecTbl; // Recipe Table
 let RecEditForm; // Recipe Edit Form
+
+let BPAPTbl; // Buildings, Power, & Awesome Poimts Table
+let BPAPEditForm; // Buildings, Power, & Awesome Points Edit Building Form
+let awesomeTbl; // Awesome Points Tbl
 
 // Math/Calc Functions
 
@@ -1497,6 +1503,39 @@ function filtCategory(obj, category) { // Filt items based on category (for sort
   
 }
 
+function renderToolbar() { // Render Toolbar
+  
+  // Variables
+  
+  let toolbar = document.getElementById('toolbar');
+  
+  let length = 0;
+  
+  let complete = 0;
+  let power = 0;
+  let awesomePts = 0;
+  
+  // Get Values
+  
+  for(key in items) {
+    
+    let item = items[key];
+    length ++;
+    
+    if(item['complete']) complete++;
+    power += item['power'];
+    awesomePts += item['awesomePtsInp'] + item['awesomePtsBypro'];
+    
+  }
+  
+  // Set
+  
+  toolbar.getElementById('percentComplete').innerText = '' + (complete / length).toPrecision(4) + '%';
+  toolbar.getElementById('power').innerText = '' + (power).toPrecision(4) + ' MW';
+  toolbar.getElementById('awesomePts').innerText = '' + (awesomePts).toPrecision(4) + ' Pts.';
+  
+}
+
 function renderMI() { // Render Main Interface
   
   // Variables
@@ -1548,6 +1587,7 @@ function renderMI() { // Render Main Interface
     catHead.innerHTML = '<div><div>' + cat[0] + '</div></div>'; // innerHTML
     catHead.style.backgroundColor = categories[cat[0]]['color']; // BG Color
     catHead.style.color = textColor(categories[cat[0]]['color']); // Text Color
+    catHead.title = 'Pos: ' + categories[cat[0]].pos;
     
     for(let catItem of catItems) { // For each item name
       
@@ -1564,6 +1604,7 @@ function renderMI() { // Render Main Interface
       itemHead.innerText = catItem[0]; // innerText
       itemHead.style.backgroundColor = item['color']; // BG Color
       itemHead.style.color = textColor(item['color']); // Text Color
+      itemHead.title = 'Pos: ' + item.pos;
       
       // Each column/td
       
@@ -1975,6 +2016,7 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
     head.innerText = sortedBuilding[0]; // innerText
     head.style.backgroundColor = building['color']; // BG Color
     head.style.color = textColor(building['color']); // Text Color
+    head.title = 'Pos: ' + building.pos;
     
     // Each column/td
     
@@ -2065,31 +2107,101 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
   row.appendChild(maxPowerTD); // Append
   maxPowerTD.id = 'maxPower'; // Set ID
   maxPowerTD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
-  maxPowerTD.innerText = building['Max MW']; // Max Power
+  maxPowerTD.innerText = totalMaxPower; // Max Power
   
   let minPowerTD = document.createElement('td'); // Declare
   row.appendChild(minPowerTD); // Append
   minPowerTD.id = 'minPower'; // Set ID
   minPowerTD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
-  minPowerTD.innerText = building['Min MW']; // Min Power
+  minPowerTD.innerText = totalMinPower; // Min Power
   
   let powerTotalTD = document.createElement('td'); // Declare
   row.appendChild(powerTotalTD); // Append
   powerTotalTD.id = 'totalPower'; // Set ID
   powerTotalTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
-  powerTotalTD.innerText = building['Total MW'].toPrecision(10); // Total Power
+  powerTotalTD.innerText = totalTotalPower.toPrecision(10); // Total Power
   
   let maxTotalPowerTD = document.createElement('td'); // Declare
   row.appendChild(maxTotalPowerTD); // Append
   maxTotalPowerTD.id = 'maxTotalPower'; // Set ID
   maxTotalPowerTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
-  maxTotalPowerTD.innerText = building['Max Total MW'].toPrecision(10); // Max Total Power
+  maxTotalPowerTD.innerText = totalMaxTotalPower.toPrecision(10); // Max Total Power
   
   let minTotalPowerTD = document.createElement('td'); // Declare
   row.appendChild(minTotalPowerTD); // Append
   minTotalPowerTD.id = 'minTotalPower'; // Set ID
   minTotalPowerTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
-  minTotalPowerTD.innerText = building['Min Total MW'].toPrecision(10); // Min Total Power
+  minTotalPowerTD.innerText = totalMinTotalPower.toPrecision(10); // Min Total Power
+  
+  // Awesome Points
+  
+  // Variables
+  
+  awesomeTbl = document.getElementById('awesomeTbl');
+  
+  // Reset
+  
+  awesomeTbl.innerHTML = '';
+  
+  // Title
+  
+  let awesomeTitle = document.createElement('tr'); // Create awesome title
+  awesomeTbl.appendChild(awesomeTitle); // Append title
+  awesomeTitle.innerHTML = `
+    <th style="background-color: rgb(255, 192, 128);" title="Awesome Points" colspan="3">Awesome Points</th>
+  ` // Title TH
+  
+  // Column Headers
+  
+  let awesomeRow = document.createElement('tr'); // Create awesome row
+  awesomeTbl.appendChild(awesomeRow); // Append row
+  awesomeRow.innerHTML = `
+    <th style="background-color: rgb(128, 128, 255);" title="Awesome Points from Input Demand" class="wideTH">Input Demand</th>
+    <th style="background-color: rgb(255, 255, 128);" title="Awesome Points from Byproducts" class="wideTH">Byproducts</th>
+    <th style="background-color: rgb(255, 128, 128);" title="Awesome Points from Both" class="wideTH">Total</th>
+  ` // Labels/Headers of each column
+  
+  // Data Row
+  
+  let awesomeDataRow = document.createElement('tr'); // Create awesome data row
+  awesomeTbl.appendChild(awesomeDataRow); // Append row
+  awesomeDataRow.id = 'awesomeRow'; // set row ID
+  
+  // Data
+  
+  let awesomeInpDemand = 0;
+  let awesomeByproduct = 0;
+  
+  for(key in items) {
+    
+    let item = items[key];
+    
+    awesomeInpDemand += item['awesomePtsInp'];
+    awesomeByproduct += item['awesomePtsBypro'];
+    
+  }
+  
+  let awesomeTotal = awesomeInpDemand + awesomeByproduct;
+  
+  // Each Data Point
+  
+  let awesomeInpDemandTD = document.createElement('td'); // Declare
+  awesomeDataRow.appendChild(awesomeInpDemandTD); // Append
+  awesomeInpDemandTD.id = 'inpDemand'; // Set ID
+  awesomeInpDemandTD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
+  awesomeInpDemandTD.innerText = awesomeInpDemand; // Demand
+  
+  let awesomeByproductTD = document.createElement('td'); // Declare
+  awesomeDataRow.appendChild(awesomeByproductTD); // Append
+  awesomeByproductTD.id = 'byproduct'; // Set ID
+  awesomeByproductTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
+  awesomeByproductTD.innerText = awesomeByproduct; // Demand
+  
+  let awesomeTotalTD = document.createElement('td'); // Declare
+  awesomeDataRow.appendChild(awesomeTotalTD); // Append
+  awesomeTotalTD.id = 'total'; // Set ID
+  awesomeTotalTD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
+  awesomeTotalTD.innerText = awesomeTotal; // Demand
   
 }
 
@@ -2318,6 +2430,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     let add = document.querySelector('#MIEditItemForm > #itemAddCheck').checked;
     let remove = document.querySelector('#MIEditItemForm > #itemRemoveCheck').checked;
     let movePos = document.querySelector('#MIEditItemForm > #itemMovePos').checked;
+    
     let category = document.querySelector('#MIEditItemForm > #itemCategory').value;
     let pos = parseInt(document.querySelector('#MIEditItemForm > #itemPos').value);
     let color = document.querySelector('#MIEditItemForm > #itemColor').value;
@@ -2444,6 +2557,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       out.innerText = '✅ Edited';
       render();
+      return
       
     }
     
@@ -2611,6 +2725,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       out.innerText = '✅ Edited';
       render();
+      return
       
     }
     
@@ -2860,6 +2975,177 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       byproItems[i].value = items[itemName]['recipes'][recName]['bypro'][i].item;
       byproAmnts[i].value = items[itemName]['recipes'][recName]['bypro'][i].amount;
     }
+    
+    out.innerText = '✅ Loaded';
+    
+  });
+  
+  // Edit Item
+  
+  BPAPEditForm = document.getElementById('BPAPEditForm');
+  
+  BPAPEditForm.addEventListener('submit', function() {
+    
+    event.preventDefault();
+    
+    // Out
+    
+    let out = document.querySelector('#BPAPEditForm > #out');
+    out.innerText = '🔄';
+    
+    // Variables
+    
+    let buildingName = document.querySelector('#BPAPEditForm > #buildingName').value;
+    let add = document.querySelector('#BPAPEditForm > #BPAPAddCheck').checked;
+    let remove = document.querySelector('#BPAPEditForm > #BPAPRemoveCheck').checked;
+    let movePos = document.querySelector('#BPAPEditForm > #BPAPMovePos').checked;
+    
+    let pos = parseInt(document.querySelector('#BPAPEditForm > #BPAPPos').value);
+    let color = document.querySelector('#BPAPEditForm > #BPAPColor').value;
+    let avrgPower = parseInt(document.querySelector('#BPAPEditForm > #avrgPower').value);
+    let maxPower = parseInt(document.querySelector('#BPAPEditForm > #maxPower').value);
+    let minPower = parseInt(document.querySelector('#BPAPEditForm > #minPower').value);
+    
+    let exists = false;
+    let posTaken = false;
+    
+    // Building Exists
+    
+    if(buildings[buildingName]) exists = true;
+    
+    // Pos Taken
+    
+    for(let key in buildings) {
+      if(buildings[key].pos == pos) {
+        posTaken = true;
+        break
+      }
+    }
+    
+    // Error
+    
+    if(add && remove) {
+      out.innerText = '⚠️ Both "Add" and "Remove" where selected';
+      return
+    }
+    
+    if(add && exists) {
+      out.innerText = '⚠️ Already exists';
+      return
+    }
+    
+    if(!add && !exists) {
+      out.innerText = '⚠️ Does not exist';
+      return
+    }
+    
+    // Remove
+    
+    if(remove) {
+      delete buildings[buildingName];
+      out.innerText = '✅ Removed';
+      render();
+      return
+    }
+    
+    // Add
+    
+    if(add) {
+      
+      // Move pos
+      
+      if(posTaken && movePos) {
+        for(let key in buildings) {
+          if(buildings[key]['pos'] >= pos) buildings[key]['pos'] += 1;
+        }
+      }
+      
+      // Add
+      
+      buildings[buildingName] = {
+        'Average MW': avrgPower,
+        'Max MW': maxPower,
+        'Min MW': minPower,
+        'Total': 0,
+        'Total MW': 0,
+        'Max Total MW': 0,
+        'Min Total MW': 0,
+        'pos': pos,
+        'color': color,
+      };
+      
+      // Out
+      
+      out.innerText = '✅ Added';
+      render();
+      return
+      
+    }
+    
+    // Edit
+    
+    if(true) { // (If for orginization)
+      
+      // Move pos
+      
+      let OGPos = buildings[buildingName]['pos']; // Original Position
+      
+      if(posTaken && movePos) {
+        for(let key in buildings) {
+          if(buildings[key]['pos'] >= pos && buildings[key]['pos'] < OGPos) {
+            buildings[key]['pos'] += 1;
+          }
+          if(buildings[key]['pos'] <= pos && buildings[key]['pos'] > OGPos) {
+            buildings[key]['pos'] += -1;
+          }
+        }
+      }
+      
+      // Edit
+      
+      buildings[buildingName]['Average MW'] = avrgPower;
+      buildings[buildingName]['Max MW'] = maxPower;
+      buildings[buildingName]['Min MW'] = minPower;
+      buildings[buildingName]['pos'] = pos;
+      buildings[buildingName]['color'] = color;
+      
+      // Out
+      
+      out.innerText = '✅ Edited';
+      render();
+      return
+      
+    }
+    
+  });
+  
+  // Edit BPAP Load Defaults
+  
+  let BPAPEditFormLoadDefault = document.querySelector('#BPAPEditForm > #loadDefault');
+  
+  BPAPEditFormLoadDefault.addEventListener('click', function() {
+    
+    let out = document.querySelector('#BPAPEditForm > #LDOut'); // Out
+    
+    // Item Exists
+    
+    let buildingName = document.querySelector('#BPAPEditForm > #buildingName').value;
+    let exists = false;
+    
+    if(buildings[buildingName]) exists = true;
+    
+    if(!exists) {
+      out.innerText = '⚠️ Does not exist';
+      return
+    }
+    
+    // Set
+    
+    document.querySelector('#BPAPEditForm > #BPAPPos').value = buildings[buildingName].pos;
+    document.querySelector('#BPAPEditForm > #BPAPColor').value = buildings[buildingName].color;
+    document.querySelector('#BPAPEditForm > #avrgPower').value = buildings[buildingName]['Average MW'];
+    document.querySelector('#BPAPEditForm > #maxPower').value = buildings[buildingName]['Max MW'];
+    document.querySelector('#BPAPEditForm > #minPower').value = buildings[buildingName]['Min MW'];
     
     out.innerText = '✅ Loaded';
     
