@@ -807,6 +807,12 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
   
 }
 
+function renderCT() { // Render Calc. Tables (and Solve Table)
+  
+  
+  
+}
+
 function render() { // Render Everything
   
   // Individual Render Functions
@@ -817,7 +823,6 @@ function render() { // Render Everything
   
   // Other
   
-  expandAll(); // Expand Sections (After Render)
   applySettings(); // Apply settings to rendered stuff
   
 }
@@ -938,6 +943,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   // Rendering
   
   render();
+  expandAll();
   
   // Menus
   
