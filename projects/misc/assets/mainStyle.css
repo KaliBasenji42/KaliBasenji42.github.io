@@ -25,6 +25,10 @@ a.nav:hover, a.nav:active, a.navArrow:hover, a.navArrow:active {
   background-color: rgb(192, 128, 128);
 }
 
+div.navArrow {
+  background-color: rgb(192, 160, 160);
+}
+
 /* Body */
 
 .body {
