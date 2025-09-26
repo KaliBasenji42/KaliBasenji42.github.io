@@ -6,41 +6,45 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 
 # File Structure
 
-<code style="white-space: pre; overflow-x: scroll;">
-
-┌─ assetsHome *- For home page*
-│  ├─ icon.png
-│  ├─ main.js *- JS ran on home page*
-│  └─ mainStyle.css *- CSS linked on home page*
-├─ assets *- Files used by many HTML files*
-│  ├─ areFilesLinked.js *- Sets link warning's disp to 'none'*
-│  ├─ chapter.js *- Sets up and gives functions for chapter like navigation*
-│  ├─ icon.png *- Default icon*
-│  ├─ main.js *- Basic JS ran on most HTML files (such as load animation)*
-│  ├─ mainStyle.css *- Basic CSS used on most HTML files*
-│  └─ orbitDiagram.js *- Allows for a star system representation graphic*
-├─ projects
-│  └─ *project - Project Name, so it may be easily copied*
-│     ├─ assets
-│     │  ├─ *Folder - Other folders, such as "images/"*
-│     │  ├─ icon.png
-│     │  ├─ main.js *- JS ran on all HTML files in the Project*
-│     │  ├─ mainStyle.css *- CSS linked on all HTML files in the Project*
-│     │  └─ *file.ext - Other files*
-│     ├─ *Folder - Page subfolder*
-│     ├─ index.html *- Project's home page*
-│     └─ *page.html - Other HTML pages*
-├─ _config.yml *- Jekyll Config*
-├─ 404.html *- Served when HTML file is not found (Raspi)*
-├─ index.html *- Home page*
-├─ kill_jekyll.sh *- Kills server (Raspi)*
-├─ README.md *- This file!*
-├─ restart_jekyll.sh *- Restarts server (Raspi)*
-├─ setup.py *- Explained below*
-├─ status.txt *- Used to return server status*
-└─ template.html *- Explained below*
-
-</code>
+<pre style="white-space: pre; overflow-x: scroll;">
+.
+├── assets <i>- Files used by many HTML files</i>
+│   ├── areFilesLinked.js <i>- Sets link warning's disp to 'none'</i>
+│   ├── chapter.js <i>- Sets up and gives functions for chapter like navigation</i>
+│   ├── embedHTML.js <i>- Allows for embedding of external HTML</i>
+│   ├── icon.png <i>- Default icon</i>
+│   ├── main.js <i>- Basic JS ran on most HTML files (such as load animation)</i>
+│   ├── mainStyle.css <i>- Basic CSS used on most HTML files</i>
+│   ├── orbitDiagram.js <i>- Codes for a star system representation graphic</i>
+│   └── wordCount.js <i>- Declares word count functionality</i>
+├── assetsHome <i>- Files used by index/home page</i>
+│   ├── main.js <i>- JS for home page</i>
+│   └── mainStyle.css <i>- CSS for home page</i>
+├── download <i>- Folder containing download-ables</i>
+│   └── <i>downloads</i>
+├── projects <i>- Folder for Projects</i>
+│   └── <i>project - Project name, so it may be easily copied</i>
+│       ├── assets
+│       │   ├── <i>folder - Other folders, such as "images/"</i>
+│       │   ├── icon.png <i>- Icon image</i>
+│       │   ├── main.js <i>- JS ran on all HTML files in the Project</i>
+│       │   ├── mainStyle.css <i>- CSS linked on all HTML files in the Project</i>
+│       │   └── <i>file.ext - Other files</i>
+│       ├── <i>folder - Page subfolder</i>
+│       ├── index.html <i>- Project's home page</i>
+│       └── <i>page.html - Other HTML pages</i>
+├── 404.html <i>- Served when HTML file is not found</i>
+├── LICENSE.md
+├── README.md <i>- This file!</i>
+├── _config.yml <i>- Jekyll config</i>
+├── index.html <i>- Home page</i>
+├── kill_jekyll.sh <i>- Kills server (Raspi)</i>
+├── restartT.txt <i>- For displaying restart time (Raspi) (in file instructions)</i>
+├── restart_jekyll.sh <i>- Restarts server (Raspi)</i>
+├── setup.py <i>- Explained below</i>
+├── status.txt <i>- Used to return server status</i>
+└── template.html <i>- Explained below</i>
+</pre>
 
 # Template
 
