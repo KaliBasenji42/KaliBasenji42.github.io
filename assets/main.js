@@ -125,8 +125,6 @@ function updateTheme() {
     styleSheetStrings[theme]
   );
   
-  
-  
 }
 
 function nextTheme(add) {
