@@ -9,12 +9,19 @@ const bodyHTML = `
 let calcTable = {}; // Holds more data for each item
 
 let settings = { // Default settings
-  'maxCalcIter': 100, // Number of calculations before throwing error
+  'maxCalcIter': 1000, // Number of calculations before throwing error
   'NumInpDgts': 3, // Number of digits allowed for number inputs
 };
 
 let unresolved = new Set; // Set of the names of all unresolved items
 let solving = new Set; // Set of the names of all the items being resolved
+let iterations = 0; // Number of calculation iterations
+
+let statusKey = {
+  'resolved': '✅',
+  'solving': '🔄',
+  'waiting': '⏸️',
+}
 
 // Elements
 
@@ -46,19 +53,66 @@ let awesomeTbl; // Awesome Points Tbl
 
 function calculate() { // Calculate items
   
-  // Add to unresolved
+  // Reset
+  
+  iterations = 0;
+  
+  // Each Item
   
   for(let item in items) {
-    unresolved.add(item);
+    
+    unresolved.add(item); // Add to unresolved
+    
+    // Get Values
+    
+    let itemRow = document.querySelector('#MITbl > #' + item.replaceAll(' ', '_'));
+    
+    items[item].complete = itemRow.querySelector('#completeInp').checked;
+    items[item].inpDemand = parseFloat(itemRow.querySelector('#inpDemandInp').value);
+    items[item].maxClock = parseFloat(itemRow.querySelector('#maxClockingInp').value);
+    items[item].sloopMult = parseFloat(itemRow.querySelector('#sloopMultInp').value);
+    items[item].recipe = itemRow.querySelector('#recipeInp').value;
+    
   }
   
   // While unresolved
   
-  while(unresolved.length > 0) {
+  while(unresolved.size > 0) {
     
-    // WIP
+    // Iterations
+    
+    iterations ++;
+    
+    if(iterations % settings['maxCalcIter'] == 0 && iterations > 0) {
+      if(!window.confirm('' + iterations + ' iterations. Continue?')) render(); return
+    }
+    
+    // Waiting Status
+    
+    for(let item in items) {
+      items[item].status = 'waiting';
+    }
+    
+    // Set Solving to Unsolved
+    
+    solving.clear();
+    
+    unresolved.forEach((item) => {
+      solving.add(item);
+      items[item].status = 'solving';
+    });
+    
+    // Solving Loop
+    
+    
     
   }
+  
+  for(let item in items) {
+    items[item].status = 'resolved';
+  }
+  
+  render();
   
 }
 
@@ -197,7 +251,7 @@ function renderMI() { // Render Main Interface
       
       let itemRow = document.createElement('tr'); // Create table row for items
       MITbl.appendChild(itemRow); // Append row
-      itemRow.id = catItem[0]; // Set Row ID to item name
+      itemRow.id = catItem[0].replaceAll(' ', '_'); // Set Row ID to item name
       
       // Header
       
@@ -215,8 +269,8 @@ function renderMI() { // Render Main Interface
       statusTD.id = 'status'; // Set ID
       statusTD.style.backgroundColor = 'rgb(192, 255, 224)'; // BG Color
       statusTD.style.textAlign = 'center'; // Center Text
-      statusTD.innerText = '🔄' // Initial Status (Loading)
-      statusTD.title = 'Awaiting Input...' // Title
+      statusTD.innerText = statusKey[item['status']] // Status
+      statusTD.title = item['status'] // Title
       
       let completeTD = document.createElement('td'); // Declare
       itemRow.appendChild(completeTD); // Append
@@ -288,7 +342,7 @@ function renderMI() { // Render Main Interface
       
       let buildingsTD = document.createElement('td'); // Declare
       itemRow.appendChild(buildingsTD); // Append
-      buildingsTD.id = 'bypro'; // Set ID
+      buildingsTD.id = 'buildings'; // Set ID
       buildingsTD.style.backgroundColor = 'rgb(224, 192, 224)'; // Color
       buildingsTD.innerText = item['buildings'].toPrecision(10); // Item buildings
       if(item['buildings'] > 0) buildingsTD.className = 'greater'; // If greater than 0, class
@@ -296,7 +350,7 @@ function renderMI() { // Render Main Interface
       
       let recipeTD = document.createElement('td'); // Declare
       itemRow.appendChild(recipeTD); // Append
-      recipeTD.id = 'bypro'; // Set ID
+      recipeTD.id = 'recipe'; // Set ID
       recipeTD.style.backgroundColor = 'rgb(255, 192, 224)'; // Color
       let recipeInp = document.createElement('select'); // Declare form inp
       recipeTD.appendChild(recipeInp); // Append inp
@@ -312,7 +366,7 @@ function renderMI() { // Render Main Interface
       
       let powerTD = document.createElement('td'); // Declare
       itemRow.appendChild(powerTD); // Append
-      powerTD.id = 'bypro'; // Set ID
+      powerTD.id = 'power'; // Set ID
       powerTD.style.backgroundColor = 'rgb(255, 255, 224)'; // Color
       powerTD.innerText = item['power'].toPrecision(10); // Item power
       if(item['power'] > 0) powerTD.className = 'greater'; // If greater than 0, class
@@ -326,7 +380,7 @@ function renderMI() { // Render Main Interface
       
       let awesomePtsInpTD = document.createElement('td'); // Declare
       itemRow.appendChild(awesomePtsInpTD); // Append
-      awesomePtsInpTD.id = 'bypro'; // Set ID
+      awesomePtsInpTD.id = 'awesomePtsInp'; // Set ID
       awesomePtsInpTD.style.backgroundColor = 'rgb(255, 224, 224)'; // Color
       awesomePtsInpTD.innerText = item['awesomePtsInp'].toPrecision(10); // Item awesome points input demand
       if(item['awesomePtsInp'] > 0) awesomePtsInpTD.className = 'greater'; // If greater than 0, class
@@ -609,7 +663,7 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
     
     let row = document.createElement('tr'); // Create table row for buildings
     BPAPTbl.appendChild(row); // Append row
-    row.id = sortedBuilding[0]; // Set Row ID to building name
+    row.id = sortedBuilding[0].replaceAll(' ', '_'); // Set Row ID to building name
     
     // Header
     
@@ -1214,6 +1268,11 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Error
     
+    if(itemName.includes('_')) {
+      out.innerText = '⚠️ Illegal Character "_"';
+      return
+    }
+    
     if(add && remove) {
       out.innerText = '⚠️ Both "Add" and "Remove" where selected';
       return
@@ -1779,6 +1838,11 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     }
     
     // Error
+    
+    if(itemName.includes('_')) {
+      out.innerText = '⚠️ Illegal Character "_"';
+      return
+    }
     
     if(add && remove) {
       out.innerText = '⚠️ Both "Add" and "Remove" where selected';

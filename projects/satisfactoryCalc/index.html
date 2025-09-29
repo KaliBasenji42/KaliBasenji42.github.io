@@ -110,7 +110,7 @@
       <form id="settingsForm">
         <label for="maxCalcIter">Max Calculation Iterations:</label><br>
         <input type="number" id="maxCalcIter" name="maxCalcIter" min="1" max="1000000"><br>
-        <div class="subTtl">Number of calculations before throwing error.</div><br>
+        <div class="subTtl">Number of calculations before throwing warning.</div><br>
         
         <label for="NumInpDgts">Number Input Digits:</label><br>
         <input type="number" id="NumInpDgts" name="NumInpDgts" min="0" max="10"><br>
@@ -134,9 +134,7 @@
   <h2>Main Interface<span><button class="sectBttn" id="MIBttn" onclick="expndOrClps('MISect', 'MIBttn')">🔽</button></span></h2>
   
   <div class="sect" id="MISect">
-    <form id="MIForm">
-      <table id="MITbl"></table>
-    </form>
+    <table id="MITbl"></table>
     
     <h3>Edit Item</h3>
     <form id="MIEditItemForm">
