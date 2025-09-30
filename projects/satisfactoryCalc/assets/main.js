@@ -24,6 +24,7 @@ let statusKey = {
 }
 
 // Elements
+// Globally declared here, defined on DOM load
 
 let toolbar; // Toolbar
 let greyout; // Menu Grey-Out
@@ -49,6 +50,9 @@ let BPAPTbl; // Buildings, Power, & Awesome Poimts Table
 let BPAPEditForm; // Buildings, Power, & Awesome Points Edit Building Form
 let awesomeTbl; // Awesome Points Tbl
 
+let CTTble; // Calc Table (Each Items demand of Each Item)
+let solveReqTbl; // Log of each solve request
+
 // Math/Calc Functions
 
 function calculate() { // Calculate items
@@ -57,7 +61,13 @@ function calculate() { // Calculate items
   
   iterations = 0;
   
-  // Each Item
+  unresolved.clear();
+  
+  calcTable = {};
+  
+  solveReqTbl.innerHTML = '<tr><th>Recipe</th><th>Item Src</th><th>Amount</th><th>Requested</th><th>Amount</th></tr>';
+  
+  // Each Item (Init)
   
   for(let item in items) {
     
@@ -69,13 +79,23 @@ function calculate() { // Calculate items
     
     items[item].complete = itemRow.querySelector('#completeInp').checked;
     items[item].inpDemand = parseFloat(itemRow.querySelector('#inpDemandInp').value);
-    items[item].maxClock = parseFloat(itemRow.querySelector('#maxClockingInp').value);
+    items[item].maxClock = parseFloat(itemRow.querySelector('#maxClockingInp').value / 100);
     items[item].sloopMult = parseFloat(itemRow.querySelector('#sloopMultInp').value);
     items[item].recipe = itemRow.querySelector('#recipeInp').value;
     
+    // Reset Calc
+    
+    items[item].calc = 0;
+    items[item].calcDemand = 0;
+    items[item].byproduct = 0;
+    
+    // Calc Table
+    
+    calcTable[item] = {};
+    
   }
   
-  // While unresolved
+  // While unresolved / Demand
   
   while(unresolved.size > 0) {
     
@@ -87,26 +107,88 @@ function calculate() { // Calculate items
       if(!window.confirm('' + iterations + ' iterations. Continue?')) render(); return
     }
     
+    // solveReqTbl
+    
+    solveReqTbl.innerHTML += '<tr><th colspan="5">Iteration ' + iterations + '</th></tr>';
+    
     // Waiting Status
     
     for(let item in items) {
       items[item].status = 'waiting';
     }
     
-    // Set Solving to Unsolved
+    // Move Items Unresolved --> Solving
     
     solving.clear();
     
-    unresolved.forEach((item) => {
-      solving.add(item);
-      items[item].status = 'solving';
+    unresolved.forEach((itemKey) => {
+      solving.add(itemKey);
+      items[itemKey].status = 'solving';
     });
+    
+    unresolved.clear();
     
     // Solving Loop
     
-    
+    solving.forEach((itemKey) => {
+      
+      // Variables
+      
+      let item = items[itemKey];
+      let recipe = item.recipes[item.recipe];
+      let demand = item.inpDemand + item.calcDemand;
+      
+      // Each Recipe Item
+      
+      for(let itemIn in recipe.in) { // In
+        
+        let itemDemand = (demand * recipe.in[itemIn].amount) / (recipe.out * item.maxClock * item.sloopMult); // Demand
+        
+        if(itemDemand != 0) {
+          unresolved.add(recipe.in[itemIn].item); // Add to Unresolved
+          items[recipe.in[itemIn].item].calc += itemDemand; // Add to Calc
+        }
+        
+        // solveReqTbl
+        solveReqTbl.innerHTML += '<tr><td>' + item.recipe + '</td><td>' + itemKey + '</td><td>' + 
+                                 demand + '</td><td>' + recipe.in[itemIn].item + '</td><td>' + itemDemand + '</td></tr>';
+        
+        // Set calcDemand
+        
+        if(items[recipe.in[itemIn].item].calc > 0) { // Calc > 0
+          items[recipe.in[itemIn].item].calcDemand = items[recipe.in[itemIn].item].calc;
+        }
+        else items[recipe.in[itemIn].item].calcDemand = 0;
+        
+      }
+      
+      for(let itemBypro in recipe.bypro) { // Bypro
+        
+        let itemDemand = - (demand * recipe.bypro[itemBypro].amount) / (recipe.out * item.maxClock * item.sloopMult); // Bypro
+        
+        if(itemDemand != 0) {
+          unresolved.add(recipe.bypro[itemBypro].item); // Add to Unresolved
+          items[recipe.bypro[itemBypro].item].calc += itemDemand; // Add to Calc
+        }
+        
+        // solveReqTbl
+        solveReqTbl.innerHTML += '<tr><td>' + item.recipe + '</td><td>' + itemKey + '</td><td>' + 
+                                 demand + '</td><td>' + recipe.bypro[itemBypro].item + '</td><td>' + itemDemand + '</td></tr>';
+        
+        // Set Bypro
+        
+        if(items[recipe.bypro[itemBypro].item].calc < 0) { // Calc < 0
+          items[recipe.bypro[itemBypro].item].byproduct = -items[recipe.bypro[itemBypro].item].calc;
+        }
+        else items[recipe.bypro[itemBypro].item].byproduct = 0;
+        
+      }
+      
+    });
     
   }
+  
+  // Ind. Item Calculations
   
   for(let item in items) {
     items[item].status = 'resolved';
@@ -176,8 +258,8 @@ function renderToolbar() { // Render Toolbar
   for(let key in items) {
     
     let item = items[key];
-    length ++;
     
+    if(item['calcDemand'] + item['inpDemand'] != 0) length ++;
     if(item['complete']) complete++;
     power += item['power'];
     awesomePts += item['awesomePtsInp'] + item['awesomePtsBypro'];
@@ -186,9 +268,9 @@ function renderToolbar() { // Render Toolbar
   
   // Set
   
-  toolbar.getElementById('percentComplete').innerText = '' + (complete / length).toPrecision(4) + '%';
-  toolbar.getElementById('power').innerText = '' + (power).toPrecision(4) + ' MW';
-  toolbar.getElementById('awesomePts').innerText = '' + (awesomePts).toPrecision(4) + ' Pts.';
+  toolbar.querySelector('#percentComplete').innerText = '' + ((complete / length) * 100).toPrecision(4) + '%';
+  toolbar.querySelector('#power').innerText = '' + (power).toPrecision(4) + ' MW';
+  toolbar.querySelector('#awesomePts').innerText = '' + (awesomePts).toPrecision(4) + ' Pts.';
   
 }
 
@@ -215,6 +297,7 @@ function renderMI() { // Render Main Interface
     <th style="background-color: rgb(128, 255, 192);" title="Calculation Status">Status</th>
     <th style="background-color: rgb(128, 192, 192);" title="Is Complete (Input)">Complete</th>
     <th style="background-color: rgb(128, 128, 255);" title="Input Demand" class="wideTH">Inp. Demand</th>
+    <th style="background-color: rgb(192, 192, 192);" title="Calculated Value" class="wideTH">Calc</th>
     <th style="background-color: rgb(128, 225, 128);" title="Calculated Demand" class="wideTH">Calc. Demand</th>
     <th style="background-color: rgb(255, 192, 128);" title="Total Demand" class="wideTH">Demand</th>
     <th style="background-color: rgb(255, 255, 128);" title="Byproduct" class="wideTH">Bypro.</th>
@@ -293,6 +376,14 @@ function renderMI() { // Render Main Interface
       inpDemandInp.type = 'number'; // Type = number
       inpDemandInp.className = 'numInp'; // Class
       inpDemandInp.value = item['inpDemand']; // Item inpDemand
+      
+      let calcTD = document.createElement('td'); // Declare
+      itemRow.appendChild(calcTD); // Append
+      calcTD.id = 'calc'; // Set ID
+      calcTD.style.backgroundColor = 'rgb(224, 224, 224)'; // Color
+      calcTD.innerText = item['calc'].toPrecision(10); // Item calc
+      if(item['calc'] > 0) calcTD.className = 'greater'; // If greater than 0, class
+      if(item['calc'] < 0) calcTD.className = 'less'; // If less than 0, class
       
       let calcDemandTD = document.createElement('td'); // Declare
       itemRow.appendChild(calcDemandTD); // Append
@@ -871,9 +962,11 @@ function render() { // Render Everything
   
   // Individual Render Functions
   
+  renderToolbar();
   renderMI();
   renderRec();
   renderBPAP();
+  renderCT();
   
   // Other
   
@@ -1970,6 +2063,11 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     out.innerText = '✅ Loaded';
     
   });
+  
+  // Calc. Tables
+  
+  CTTble = document.getElementById('CTTble');
+  solveReqTbl = document.getElementById('solveReqTbl');
   
 });
 
