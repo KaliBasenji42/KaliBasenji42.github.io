@@ -229,7 +229,7 @@ let items = { // Default item data
   'Copper Ingot': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#f6b26b', 
     calc: 0, calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 6, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, 
     recipe: 'Copper Ingot', recipes: {
-      'Copper Ingot': {out: 30, in: [{item: 'Iron Ore', amount: 30}], bypro: [], building: 'Smelter'},
+      'Copper Ingot': {out: 30, in: [{item: 'Copper Ore', amount: 30}], bypro: [], building: 'Smelter'},
       'Copper Alloy Ingot': {out: 100, in: [{item: 'Copper Ore', amount: 50}, {item: 'Iron Ore', amount: 50}], bypro: [], building: 'Foundry'},
       'Leached Copper Ingot': {out: 110, in: [{item: 'Copper Ore', amount: 45}, {item: 'Sulfuric Acid', amount: 25}], bypro: [], building: 'Refinery'},
       'Pure Copper Ingot': {out: 37.5, in: [{item: 'Copper Ore', amount: 15}, {item: 'Water', amount: 20}], bypro: [], building: 'Refinery'},

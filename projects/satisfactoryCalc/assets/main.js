@@ -9,7 +9,7 @@ const bodyHTML = `
 let calcTable = {}; // Holds more data for each item
 
 let settings = { // Default settings
-  'maxCalcIter': 1000, // Number of calculations before throwing error
+  'maxCalcIter': 100, // Number of calculations before throwing error
   'NumInpDgts': 3, // Number of digits allowed for number inputs
 };
 
@@ -51,7 +51,6 @@ let BPAPEditForm; // Buildings, Power, & Awesome Points Edit Building Form
 let awesomeTbl; // Awesome Points Tbl
 
 let CTTble; // Calc Table (Each Items demand of Each Item)
-let solveReqTbl; // Log of each solve request
 
 // Math/Calc Functions
 
@@ -64,8 +63,6 @@ function calculate() { // Calculate items
   unresolved.clear();
   
   calcTable = {};
-  
-  solveReqTbl.innerHTML = '<tr><th>Recipe</th><th>Item Src</th><th>Amount</th><th>Requested</th><th>Amount</th></tr>';
   
   // Each Item (Init)
   
@@ -104,12 +101,8 @@ function calculate() { // Calculate items
     iterations ++;
     
     if(iterations % settings['maxCalcIter'] == 0 && iterations > 0) {
-      if(!window.confirm('' + iterations + ' iterations. Continue?')) render(); return
+      if(!window.confirm('' + iterations + ' iterations. Continue?')) {render(); return}
     }
-    
-    // solveReqTbl
-    
-    solveReqTbl.innerHTML += '<tr><th colspan="5">Iteration ' + iterations + '</th></tr>';
     
     // Waiting Status
     
@@ -132,9 +125,23 @@ function calculate() { // Calculate items
     
     solving.forEach((itemKey) => {
       
+      let item = items[itemKey];
+      
+      // Update
+      
+      item.calc = 0;
+      item.calcDemand = 0;
+      item.byproduct = 0;
+      
+      for(const [key, value] of Object.entries(calcTable[itemKey])) { // Sum
+        if(typeof value === "number") item.calc += value;
+      }
+      
+      if(item.calc < 0) item.byproduct = -item.calc;
+      else item.calcDemand = item.calc;
+      
       // Variables
       
-      let item = items[itemKey];
       let recipe = item.recipes[item.recipe];
       let demand = item.inpDemand + item.calcDemand;
       
@@ -146,19 +153,8 @@ function calculate() { // Calculate items
         
         if(itemDemand != 0) {
           unresolved.add(recipe.in[itemIn].item); // Add to Unresolved
-          items[recipe.in[itemIn].item].calc += itemDemand; // Add to Calc
+          calcTable[recipe.in[itemIn].item][itemKey + ' - In ' + itemIn] = itemDemand; // Add to calcTable
         }
-        
-        // solveReqTbl
-        solveReqTbl.innerHTML += '<tr><td>' + item.recipe + '</td><td>' + itemKey + '</td><td>' + 
-                                 demand + '</td><td>' + recipe.in[itemIn].item + '</td><td>' + itemDemand + '</td></tr>';
-        
-        // Set calcDemand
-        
-        if(items[recipe.in[itemIn].item].calc > 0) { // Calc > 0
-          items[recipe.in[itemIn].item].calcDemand = items[recipe.in[itemIn].item].calc;
-        }
-        else items[recipe.in[itemIn].item].calcDemand = 0;
         
       }
       
@@ -168,19 +164,8 @@ function calculate() { // Calculate items
         
         if(itemDemand != 0) {
           unresolved.add(recipe.bypro[itemBypro].item); // Add to Unresolved
-          items[recipe.bypro[itemBypro].item].calc += itemDemand; // Add to Calc
+          calcTable[recipe.bypro[itemBypro].item][itemKey + ' - Bypro ' + itemBypro] = itemDemand; // Add to calcTable
         }
-        
-        // solveReqTbl
-        solveReqTbl.innerHTML += '<tr><td>' + item.recipe + '</td><td>' + itemKey + '</td><td>' + 
-                                 demand + '</td><td>' + recipe.bypro[itemBypro].item + '</td><td>' + itemDemand + '</td></tr>';
-        
-        // Set Bypro
-        
-        if(items[recipe.bypro[itemBypro].item].calc < 0) { // Calc < 0
-          items[recipe.bypro[itemBypro].item].byproduct = -items[recipe.bypro[itemBypro].item].calc;
-        }
-        else items[recipe.bypro[itemBypro].item].byproduct = 0;
         
       }
       
@@ -952,7 +937,7 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
   
 }
 
-function renderCT() { // Render Calc. Tables (and Solve Table)
+function renderCT() { // Render Calc Table
   
   
   
@@ -2064,10 +2049,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
   });
   
-  // Calc. Tables
+  // Calc Table
   
   CTTble = document.getElementById('CTTble');
-  solveReqTbl = document.getElementById('solveReqTbl');
   
 });
 
