@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Theme
 
-let sheet = new CSSStyleSheet();
-document.adoptedStyleSheets.push(sheet);
+let themeSheet = new CSSStyleSheet();
+document.adoptedStyleSheets.push(themeSheet);
 
-let styleSheetStrings = {
+let themeStyleSheetStrings = {
   'default': `
 body {
   color: rgb(0, 0, 0);
@@ -121,8 +121,8 @@ function updateTheme() {
   
   let theme = localStorage.getItem('theme');
   
-  sheet.replace(
-    styleSheetStrings[theme]
+  themeSheet.replace(
+    themeStyleSheetStrings[theme]
   );
   
 }
@@ -131,7 +131,7 @@ function nextTheme(add) {
   
   // Variables
   
-  let themeKeys = Object.keys(styleSheetStrings);
+  let themeKeys = Object.keys(themeStyleSheetStrings);
   
   let currentTheme = localStorage.getItem('theme');
   let currentPos = themeKeys.indexOf(currentTheme);

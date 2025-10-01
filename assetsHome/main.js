@@ -8,7 +8,7 @@ const bodyHTML = `
 
 let warnRotate = 30;
 let warn;
-let boomRotate = 360;
+let boomRotate = 300;
 let boom;
 
 // Functions
@@ -79,13 +79,15 @@ function outputData(usage) {
   
   // Variables
   
-  let barElem = document.getElementsByClassName('dataBar')[0];
+  let barElem = document.getElementById('dataBar');
   let textElem = document.getElementById('data');
   let DTElem = document.getElementById('DT');
   let DTSect = document.getElementById('DT Sect');
-  let warn = document.getElementsByClassName('warn')[0];
-  let boom = document.getElementsByClassName('BOOM')[0];
-  let how = document.getElementsByClassName('how')[0];
+  let warn = document.getElementById('warn');
+  let boom = document.getElementById('boom');
+  let how = document.getElementById('how');
+  let fourtytwo = document.getElementById('fourtytwo');
+  let bomb = document.getElementById('bomb');
   
   let quota = 5 * 1024 * 1024;
   
@@ -144,14 +146,14 @@ function outputData(usage) {
   
   textElem.innerHTML = '' + numForm(usage) + 
                        ' Bytes / ' + numForm(quota) + 
-                       ' Bytes (' + Math.floor(percent) + '%)';
+                       ' Bytes (' + percent.toPrecision(4) + '%)';
   
   barElem.style.width = '' + Math.abs(percent) + '%';
   barElem.style.backgroundColor = color;
   
   // Warning
   
-  if(frac > 0.9) {
+  if(frac >= 0.85) {
     warn.style.display = 'block';
     warn.style.rotate = '0deg';
   }
@@ -169,6 +171,16 @@ function outputData(usage) {
     barElem.style.left = '0';
   }
   
+  if(Math.floor(percent) == 42) {
+    fourtytwo.style.display = 'block';
+  }
+  else fourtytwo.style.display = 'none';
+  
+  if(frac >= 0.99) {
+    bomb.style.display = 'block';
+  }
+  else bomb.style.display = 'none';
+  
 }
 
 // Events
@@ -179,19 +191,19 @@ document.addEventListener('DOMContentLoaded', function () {
   
   outputData(getUsage());
   
-  warn = document.getElementsByClassName('warn')[0];
-  boom = document.getElementsByClassName('BOOM')[0];
+  warn = document.getElementById('warn');
+  boom = document.getElementById('boom');
   
   setInterval(function() {
     warnRotate = warnRotate * -1;
-    if(frac > 0.95) warn.style.rotate = '' + warnRotate + 'deg';
-  }, 1000);
+    if(frac >= 0.95) warn.style.rotate = '' + warnRotate + 'deg';
+  }, 1100);
   
   boom.style.rotate = '' + boomRotate + 'deg';
   setInterval(function() {
     boomRotate = boomRotate * -1;
     boom.style.rotate = '' + boomRotate + 'deg';
     boom.style.opacity = '1';
-  }, 5000);
+  }, 5100);
   
 });
