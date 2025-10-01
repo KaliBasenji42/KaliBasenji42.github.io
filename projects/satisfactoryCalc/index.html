@@ -102,6 +102,7 @@
       
       <a target="_blank" id="downloadLink">Loading...</a>
     </div>
+    
     <div id="settings" style="display: none;">
       <img class="X" src="assets/images/X.png">
       
@@ -115,6 +116,22 @@
         <label for="NumInpDgts">Number Input Digits:</label><br>
         <input type="number" id="NumInpDgts" name="NumInpDgts" min="0" max="10"><br>
         <div class="subTtl">Number of digits allowed for number inputs.</div><br>
+        
+        <label for="zeroIsComplete">Zero Is Complete:</label><br>
+        <input type="checkbox" id="zeroIsComplete" name="zeroIsComplete"><br>
+        <div class="subTtl">Do not count unaffected items in complete %.</div><br>
+        
+        <label for="reuseBypro">Reuse Bypro:</label><br>
+        <input type="checkbox" id="reuseBypro" name="reuseBypro"><br>
+        <div class="subTtl">Should reuse byproduct to discount demand.</div><br>
+        
+        <label for="greaterColor">Greater Color:</label><br>
+        <input type="color" id="greaterColor" name="greaterColor"><br>
+        <div class="subTtl">Color of cells greater than 0.</div><br>
+        
+        <label for="lessColor">Less Color:</label><br>
+        <input type="color" id="lessColor" name="lessColor"><br>
+        <div class="subTtl">Color of cells less than 0.</div><br>
         
         <input type="submit" value="Submit">
       </form>
@@ -130,6 +147,9 @@
   <br>
   <button onclick="expandAll()">Expand All</button>
   <button onclick="collapseAll()">Collapse All</button>
+  <br><br>
+  <button onclick="checkAll()">Check all as Complete</button>
+  <button onclick="checkAll(false)">Uncheck all as Complete</button>
   
   <h2>Main Interface<span><button class="sectBttn" id="MIBttn" onclick="expndOrClps('MISect', 'MIBttn')">🔽</button></span></h2>
   
@@ -298,10 +318,11 @@
     
   </div>
   
-  <h2>Calc. Tables 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
+  <h2>Calc. Table 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
   
   <div class="sect" id="CTSect">
     <table id="CTTbl"></table>
+    <br>
   </div>
   
 </body>

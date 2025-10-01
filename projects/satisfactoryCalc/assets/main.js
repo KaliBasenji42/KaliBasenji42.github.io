@@ -11,6 +11,10 @@ let calcTable = {}; // Holds more data for each item
 let settings = { // Default settings
   'maxCalcIter': 100, // Number of calculations before throwing error
   'NumInpDgts': 3, // Number of digits allowed for number inputs
+  'zeroIsComplete': true, // Do not count unaffected items in complete %
+  'reuseBypro': true, // Should reuse byproduct to discount demand
+  'greaterColor': '#00ffff', // Color of cells greater than 0
+  'lessColor': '#ff0000', // Color of cells less than 0
 };
 
 let unresolved = new Set; // Set of the names of all unresolved items
@@ -22,6 +26,15 @@ let statusKey = {
   'solving': '🔄',
   'waiting': '⏸️',
 }
+
+let highlightSheet = new CSSStyleSheet();
+document.adoptedStyleSheets.push(highlightSheet);
+highlightSheet.replace(
+  '.greater {background-color: ' + settings.greaterColor + ' !important;}' +
+  '.less {background-color: ' + settings.lessColor + ' !important;}'
+);
+
+const clockPowerExp = Math.log(2.5) / Math.log(2); // Exponential satisfactory uses for (over)clocking
 
 // Elements
 // Globally declared here, defined on DOM load
@@ -53,6 +66,24 @@ let awesomeTbl; // Awesome Points Tbl
 let CTTble; // Calc Table (Each Items demand of Each Item)
 
 // Math/Calc Functions
+
+function powerInd(MWKey, clock, sloopMult) { // Power for individual positive MW building
+  return MWKey * (sloopMult ** 2) * (clock ** clockPowerExp);
+}
+
+function power(buildings, MWKey, maxClock, sloopMult) { // Function for calculating power usage
+  
+  let bFloor = Math.floor(buildings); // Floor of buildings (whole buildings)
+  let bFrac = buildings - bFloor; // Fractional building remainder
+  
+  if(MWKey > 0) {
+    return ( bFloor * powerInd(MWKey, maxClock, sloopMult) ) + 
+      powerInd(MWKey, maxClock * bFrac, sloopMult)
+  }
+  
+  else return buildings * MWKey * maxClock
+  
+}
 
 function calculate() { // Calculate items
   
@@ -134,11 +165,19 @@ function calculate() { // Calculate items
       item.byproduct = 0;
       
       for(const [key, value] of Object.entries(calcTable[itemKey])) { // Sum
-        if(typeof value === "number") item.calc += value;
+        if(typeof value === "number") {
+          if(settings.reuseBypro) item.calc += value;
+          else {
+            if(value > 0) item.calcDemand += value;
+            else item.byproduct += -value;
+          }
+        }
       }
       
-      if(item.calc < 0) item.byproduct = -item.calc;
-      else item.calcDemand = item.calc;
+      if(settings.reuseBypro) {
+        if(item.calc < 0) item.byproduct = -item.calc;
+        else item.calcDemand = item.calc;
+      }
       
       // Variables
       
@@ -149,18 +188,18 @@ function calculate() { // Calculate items
       
       for(let itemIn in recipe.in) { // In
         
-        let itemDemand = (demand * recipe.in[itemIn].amount) / (recipe.out * item.maxClock * item.sloopMult); // Demand
+        let itemDemand = (demand * recipe.in[itemIn].amount) / (recipe.out * item.sloopMult); // Demand
         
         if(itemDemand != 0) {
           unresolved.add(recipe.in[itemIn].item); // Add to Unresolved
-          calcTable[recipe.in[itemIn].item][itemKey + ' - In ' + itemIn] = itemDemand; // Add to calcTable
+          calcTable[recipe.in[itemIn].item][itemKey + ' - Input ' + itemIn] = itemDemand; // Add to calcTable
         }
         
       }
       
       for(let itemBypro in recipe.bypro) { // Bypro
         
-        let itemDemand = - (demand * recipe.bypro[itemBypro].amount) / (recipe.out * item.maxClock * item.sloopMult); // Bypro
+        let itemDemand = - (demand * recipe.bypro[itemBypro].amount) / (recipe.out * item.sloopMult); // Bypro
         
         if(itemDemand != 0) {
           unresolved.add(recipe.bypro[itemBypro].item); // Add to Unresolved
@@ -175,8 +214,44 @@ function calculate() { // Calculate items
   
   // Ind. Item Calculations
   
-  for(let item in items) {
-    items[item].status = 'resolved';
+  for(let itemKey in items) {
+    
+    let item = items[itemKey]; // Item
+    let recipe = item.recipes[item.recipe]; // Item's Recipe
+    let building = buildings[recipe.building]; // Item's Building
+    
+    item.status = 'resolved'; // Resolved
+    
+    // Buildings
+    
+    item.buildings = (item.calcDemand + item.inpDemand) / (item.sloopMult * item.maxClock * recipe.out);
+    
+    // Power
+    
+    item.power = power(item.buildings, building['Average MW'], item.maxClock, item.sloopMult);
+    item.powerMax = power(item.buildings, building['Max MW'], item.maxClock, item.sloopMult);
+    item.powerMin = power(item.buildings, building['Min MW'], item.maxClock, item.sloopMult);
+    
+    // Awesome Points
+    
+    item.awesomePtsInp = item.inpDemand * item.awesomePts;
+    item.awesomePtsBypro = item.byproduct * item.awesomePts;
+    
+    // Buildings
+    
+    for(let buildingKey in buildings) {
+      
+      let building = buildings[buildingKey]; // Building
+      
+      if(buildingKey == recipe.building) { // Match
+        building['Total'] += Math.ceil(item.buildings);
+        building['Total MW'] += item.power;
+        building['Max Total MW'] += item.powerMax;
+        building['Min Total MW'] += item.powerMin;
+      }
+      
+    }
+    
   }
   
   render();
@@ -244,7 +319,7 @@ function renderToolbar() { // Render Toolbar
     
     let item = items[key];
     
-    if(item['calcDemand'] + item['inpDemand'] != 0) length ++;
+    if((item['calcDemand'] + item['inpDemand'] != 0) || !settings.zeroIsComplete) length ++;
     if(item['complete']) complete++;
     power += item['power'];
     awesomePts += item['awesomePtsInp'] + item['awesomePtsBypro'];
@@ -253,9 +328,9 @@ function renderToolbar() { // Render Toolbar
   
   // Set
   
-  toolbar.querySelector('#percentComplete').innerText = '' + ((complete / length) * 100).toPrecision(4) + '%';
-  toolbar.querySelector('#power').innerText = '' + (power).toPrecision(4) + ' MW';
-  toolbar.querySelector('#awesomePts').innerText = '' + (awesomePts).toPrecision(4) + ' Pts.';
+  toolbar.querySelector('#percentComplete').innerText = '' + ((complete / length) * 100).toPrecision(6) + '%';
+  toolbar.querySelector('#power').innerText = '' + (power).toPrecision(6) + ' MW';
+  toolbar.querySelector('#awesomePts').innerText = '' + (awesomePts).toPrecision(6) + ' Pts.';
   
 }
 
@@ -290,7 +365,9 @@ function renderMI() { // Render Main Interface
     <th style="background-color: rgb(255, 128, 128);" title="Somersloop Multiplication" class="wideTH">Sloop Mult.</th>
     <th style="background-color: rgb(192, 128, 192);" title="Number of Buildings (Decimal)" class="wideTH">Buildings</th>
     <th style="background-color: rgb(255, 128, 192);" title="Selected Recipe" class="wideTH">Recipe</th>
-    <th style="background-color: rgb(255, 255, 192);" title="Power" class="wideTH">Power</th>
+    <th style="background-color: rgb(255, 255, 192);" title="Average MW" class="wideTH">Power</th>
+    <th style="background-color: rgb(255, 255, 192);" title="Maximum MW" class="wideTH">Power Max</th>
+    <th style="background-color: rgb(255, 255, 192);" title="Minimum MW" class="wideTH">Power Min</th>
     <th style="background-color: rgb(255, 192, 192);" title="Awesome Points per Item" class="wideTH">Awe. Pts. Key</th>
     <th style="background-color: rgb(255, 192, 192);" title="Awesome Points from Input Demand" class="wideTH">A.P. InpDemand</th>
     <th style="background-color: rgb(255, 192, 192);" title="Awesome Points from Byproduct" class="wideTH">A.P. Bypro.</th>
@@ -447,6 +524,22 @@ function renderMI() { // Render Main Interface
       powerTD.innerText = item['power'].toPrecision(10); // Item power
       if(item['power'] > 0) powerTD.className = 'greater'; // If greater than 0, class
       if(item['power'] < 0) powerTD.className = 'less'; // If less than 0, class
+      
+      let powerMaxTD = document.createElement('td'); // Declare
+      itemRow.appendChild(powerMaxTD); // Append
+      powerMaxTD.id = 'powerMax'; // Set ID
+      powerMaxTD.style.backgroundColor = 'rgb(255, 255, 224)'; // Color
+      powerMaxTD.innerText = item['powerMax'].toPrecision(10); // Item power max
+      if(item['powerMax'] > 0) powerMaxTD.className = 'greater'; // If greater than 0, class
+      if(item['powerMax'] < 0) powerMaxTD.className = 'less'; // If less than 0, class
+      
+      let powerMinTD = document.createElement('td'); // Declare
+      itemRow.appendChild(powerMinTD); // Append
+      powerMinTD.id = 'powerMin'; // Set ID
+      powerMinTD.style.backgroundColor = 'rgb(255, 255, 224)'; // Color
+      powerMinTD.innerText = item['powerMin'].toPrecision(10); // Item power max
+      if(item['powerMin'] > 0) powerMinTD.className = 'greater'; // If greater than 0, class
+      if(item['powerMin'] < 0) powerMinTD.className = 'less'; // If less than 0, class
       
       let awesomePtsTD = document.createElement('td'); // Declare
       itemRow.appendChild(awesomePtsTD); // Append
@@ -939,7 +1032,131 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
 
 function renderCT() { // Render Calc Table
   
+  // Variables
   
+  CTTble = document.getElementById('CTTbl');
+  
+  let cats = sortRows(categories); // Sorted categories
+  let itemList = []; // Items to conserve order
+  
+  // Reset
+  
+  CTTble.innerHTML = '';
+  
+  // Column Headers
+  
+  let headRow = document.createElement('tr'); // Create table row for column headers
+  let subHeadRow = document.createElement('tr'); // Create table row for column sub headers
+  CTTble.appendChild(headRow); // Append rows
+  CTTble.appendChild(subHeadRow);
+  
+  // Labels/Headers of each column
+  
+  headRow.innerHTML = `
+    <th style="background-color: rgb(192, 128, 128);" rowspan="2" title="Category">Cat.</th>
+    <th style="background-color: rgb(128, 128, 128);" rowspan="2" title="Item Name">Item</th>
+  `; 
+  
+  subHeadRow.innerHTML = '';
+  
+  for(let itemKey in items) {
+    
+    itemList.push(itemKey); // itemList
+    let item = items[itemKey]; // item
+    
+    headRow.innerHTML += '<th colspan="2" style="background-color: ' + 
+                         item.color + '; color:' + textColor(item.color) + ';">' + itemKey + '</th>';
+    
+    subHeadRow.innerHTML += `
+      <th style="background-color: rgb(255, 128, 128);" class="thinTH">Input</th>
+      <th style="background-color: rgb(128, 128, 255);" class="thinTH">Bypro</th>
+    `;
+    
+  }
+  
+  for(let cat of cats) { // For each category
+    
+    let catItems = sortRows(filtCategory(items, cat[0])); // Sorted items, filtered by category
+    // (Array)
+    
+    let catRow = document.createElement('tr'); // Create table row for category
+    CTTble.appendChild(catRow); // Append row
+    
+    let catHead = document.createElement('th'); // Create table header
+    catRow.appendChild(catHead); // Append header
+    catHead.className = 'catHead'; // Class
+    catHead.rowSpan = (catItems.length + 1); // rowSpan
+    catHead.innerHTML = '<div><div>' + cat[0] + '</div></div>'; // innerHTML
+    catHead.style.backgroundColor = categories[cat[0]]['color']; // BG Color
+    catHead.style.color = textColor(categories[cat[0]]['color']); // Text Color
+    catHead.title = 'Pos: ' + categories[cat[0]].pos;
+    
+    for(let catItem of catItems) { // For each item name
+      
+      let item = items[catItem[0]]; // Item object
+      
+      let itemRow = document.createElement('tr'); // Create table row for items
+      CTTble.appendChild(itemRow); // Append row
+      itemRow.id = catItem[0].replaceAll(' ', '_'); // Set Row ID to item name
+      
+      // Header
+      
+      let itemHead = document.createElement('th'); // Create item header
+      itemRow.appendChild(itemHead); // Append header
+      itemHead.innerText = catItem[0]; // innerText
+      itemHead.style.backgroundColor = item['color']; // BG Color
+      itemHead.style.color = textColor(item['color']); // Text Color
+      itemHead.title = 'Pos: ' + item.pos;
+      
+      // Each column/td
+      
+      for(let listItem of itemList) {
+        
+        let calcItem = calcTable[catItem[0]]; // item's calcTable 
+        
+        // Input
+        
+        let inpTD = document.createElement('td'); // Declare
+        itemRow.appendChild(inpTD); // Append
+        inpTD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
+        inpTD.innerText = '0'; // Set
+        
+        // Bypro
+        
+        let byproTD = document.createElement('td'); // Declare
+        itemRow.appendChild(byproTD); // Append
+        byproTD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
+        byproTD.innerText = '0'; // Set
+        
+        for(let CIItemKey in calcItem) {
+          
+          let req = calcItem[CIItemKey]; // Requested amount
+          let keyPair = CIItemKey.split(' - '); // Source Item, Input # / Bypro #
+          //console.log(keyPair);
+          
+          // Input
+          
+          if(keyPair[1].includes('Input') && keyPair[0] == listItem) {
+            inpTD.innerText = req.toPrecision(10); // Set
+            if(req > 0) inpTD.className = 'greater'; // Greater
+            else inpTD.className = 'less'; // Less
+          }
+          
+          // Bypro
+          
+          if(keyPair[1].includes('Bypro') && keyPair[0] == listItem) {
+            byproTD.innerText = req.toPrecision(10); // Set
+            if(req > 0) byproTD.className = 'greater'; // Greater
+            else byproTD.className = 'less'; // Less
+          }
+          
+        }
+        
+      }
+      
+    }
+    
+  }
   
 }
 
@@ -973,11 +1190,16 @@ function closeAllMenus() { // Close the menu
 
 function applySettings() {
   
-  let numInps = document.querySelectorAll('.numInp');
+  let numInps = document.querySelectorAll('.numInp'); // Get NumInpDgts
   
-  for(let inp of numInps) {
+  for(let inp of numInps) { // Apply NumInpDgts
     inp.step = '' + (10 ** (-1 * settings['NumInpDgts']));
   }
+  
+  highlightSheet.replace( // Greater and Less CSS
+    '.greater {background-color: ' + settings.greaterColor + ' !important;}' +
+    '.less {background-color: ' + settings.lessColor + ' !important;}'
+  );
   
 }
 
@@ -1065,6 +1287,14 @@ function renderLoadList() { // Render Saves into LoadList
     listItem.innerHTML += ` <button onclick="removeSave('` + saveName + `')">Remove</button>`; // Remove Button
     
   }
+  
+}
+
+function checkAll(check = true) {
+  
+  for(let item in items) items[item].complete = check;
+  
+  render();
   
 }
 
@@ -1273,7 +1503,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   settingsForm = document.getElementById('settingsForm');
   
   for(let key in settings) { // Load current
-    document.getElementById(key).value = settings[key];
+    let inpElem = document.getElementById(key);
+    if(inpElem.type == 'checkbox') inpElem.checked = settings[key];
+    else inpElem.value = settings[key];
   }
   
   settingsForm.addEventListener('submit', function() {
@@ -1281,7 +1513,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     event.preventDefault();
     
     for(let key in settings) { // Set
-      settings[key] = document.getElementById(key).value;
+      let inpElem = document.getElementById(key);
+      if(inpElem.type == 'checkbox') settings[key] = inpElem.checked;
+      else settings[key] = inpElem.value;
     }
     
     // Apply, Save, Close

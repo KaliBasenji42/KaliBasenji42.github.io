@@ -198,6 +198,10 @@ th {
   min-width: 10rem;
 }
 
+.thinTH {
+  min-width: 7rem;
+}
+
 #MITbl > * > * > .numInp {
   background-color: inherit;
 }
@@ -206,10 +210,8 @@ th {
   z-index: 100;
 }
 
-.greater {
-  background-color: rgb(0, 240, 240) !important;
-}
-
-.less {
-  background-color: rgb(240, 0, 0) !important;
+[type="checkbox"] {
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
 }
