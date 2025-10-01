@@ -269,7 +269,7 @@ let items = { // Default item data
       'Silica': {out: 37.5, in: [{item: 'Raw Quartz', amount: 22.5}], bypro: [], building: 'Constructor'},
       'Cheap Silica': {out: 52.5, in: [{item: 'Raw Quartz', amount: 22.5}, {item: 'Limestone', amount: 37.5}], bypro: [], building: 'Assembler'},
       'Distilled Silica': {out: 270, in: [{item: 'Dissolved Silica', amount: 120}, {item: 'Limestone', amount: 50}, {item: 'Water', amount: 100}], bypro: [{item: 'Water', amount: 80}], building: 'Blender'},
-      'Alumina Solution': {out: 50, in: [{item: 'Bauxite', amount: 120}, {item: 'Water', amount: 180}], bypro: [{item: 'Alumina Solution', amount: 120}], building: 'Refinery '},
+      'Alumina Solution': {out: 50, in: [{item: 'Bauxite', amount: 120}, {item: 'Water', amount: 180}], bypro: [{item: 'Alumina Solution', amount: 120}], building: 'Refinery'},
     }
   },
   'Quartz Crystal': {category: 'Mineral / Ingot', complete: false, inpDemand: 0, status: 'resolved', pos: 6, color: '#d9d2e9', 
@@ -548,7 +548,7 @@ let items = { // Default item data
     calc: 0, calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 3072, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, powerMax: 0, powerMin: 0, 
     recipe: 'Crystal Oscillator', recipes: {
       'Crystal Oscillator': {out: 1, in: [{item: 'Quartz Crystal', amount: 18}, {item: 'Cable', amount: 14}, {item: 'Reinforced Iron Plate', amount: 2.5}], bypro: [], building: 'Manufacturer'},
-      'Insulated Crystal Oscillator': {out: 1.875, in: [{item: 'Quartz Crystal', amount: 18.75}, {item: 'Rubber', amount: 13.125}, {item: 'AI Control Unit', amount: 1.875}], bypro: [], building: 'Manufacturer'},
+      'Insulated Crystal Oscillator': {out: 1.875, in: [{item: 'Quartz Crystal', amount: 18.75}, {item: 'Rubber', amount: 13.125}, {item: 'AI Limiter', amount: 1.875}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Computer': {category: 'Electronic', complete: false, inpDemand: 0, status: 'resolved', pos: 7, color: '#f9cb9c', 
@@ -896,21 +896,21 @@ let items = { // Default item data
     calc: 0, calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 520, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, powerMax: 0, powerMin: 0, 
     recipe: 'Smart Plating', recipes: {
       'Smart Plating': {out: 2, in: [{item: 'Reinforced Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}], bypro: [], building: 'Assembler'},
-      'Plastic Smart Plating': {out: 5, in: [{item: 'Reinforced Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}, {item: 'Plastic', amount: 7.5}], bypro: [], building: 'Manfacture'},
+      'Plastic Smart Plating': {out: 5, in: [{item: 'Reinforced Iron Plate', amount: 2}, {item: 'Rotor', amount: 2}, {item: 'Plastic', amount: 7.5}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Versatile Framework': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 1, color: '#e6b8af', 
     calc: 0, calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1176, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, powerMax: 0, powerMin: 0, 
     recipe: 'Versatile Framework', recipes: {
       'Versatile Framework': {out: 5, in: [{item: 'Modular Frame', amount: 2.5}, {item: 'Steel Beam', amount: 30}], bypro: [], building: 'Assembler'},
-      'Flexable Framework': {out: 7.5, in: [{item: 'Modular Frame', amount: 3.75}, {item: 'Steel Beam', amount: 22.5}, {item: 'Rubber', amount: 30}], bypro: [], building: 'Manfacture'},
+      'Flexable Framework': {out: 7.5, in: [{item: 'Modular Frame', amount: 3.75}, {item: 'Steel Beam', amount: 22.5}, {item: 'Rubber', amount: 30}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Automated Wiring': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 2, color: '#999999', 
     calc: 0, calcDemand: 0, byproduct: 0, maxClock: 1, sloopMult: 1, buildings: 0, awesomePts: 1440, awesomePtsInp: 0, awesomePtsBypro: 0, power: 0, powerMax: 0, powerMin: 0, 
     recipe: 'Automated Wiring', recipes: {
       'Automated Wiring': {out: 2.5, in: [{item: 'Stator', amount: 2.5}, {item: 'Cable', amount: 50}], bypro: [], building: 'Assembler'},
-      'Automated Speed Wiring': {out: 7.5, in: [{item: 'Stator', amount: 3.75}, {item: 'Wire', amount: 75}, {item: 'High-Speed Connector', amount: 1.875}], bypro: [], building: 'Manfacture'},
+      'Automated Speed Wiring': {out: 7.5, in: [{item: 'Stator', amount: 3.75}, {item: 'Wire', amount: 75}, {item: 'High-Speed Connector', amount: 1.875}], bypro: [], building: 'Manufacturer'},
     }
   },
   'Modular Engine': {category: 'Space Elevator', complete: false, inpDemand: 0, status: 'resolved', pos: 3, color: '#ffe599', 
@@ -1164,7 +1164,7 @@ let items = { // Default item data
 };
 
 let buildings = { // Default building data
-  'Miner 1': {
+  'Miner Mk. 1': {
     'Average MW': 5,
     'Max MW': 5,
     'Min MW': 5,
@@ -1175,7 +1175,7 @@ let buildings = { // Default building data
     pos: 0,
     color: '#b7b7b7',
   },
-  'Miner 2': {
+  'Miner Mk. 2': {
     'Average MW': 15,
     'Max MW': 15,
     'Min MW': 15,
@@ -1186,7 +1186,7 @@ let buildings = { // Default building data
     pos: 1,
     color: '#cccccc',
   },
-  'Miner 3': {
+  'Miner Mk. 3': {
     'Average MW': 45,
     'Max MW': 45,
     'Min MW': 45,
