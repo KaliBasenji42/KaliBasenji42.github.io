@@ -52,6 +52,34 @@ function expndOrClps(ID, bttnID) {
   
 }
 
+function collapseAll() {
+  
+  let sections = document.getElementsByClassName('sect');
+  let sectBttns = document.getElementsByClassName('sectBttn');
+  
+  for(let i = 0; i < sections.length; i++) {
+    
+    sections[i].style.maxHeight = "0px";
+    sectBttns[i].style.transform = "rotate(270deg)";
+    
+  }
+  
+}
+
+function expandAll() {
+  
+  let sections = document.getElementsByClassName('sect');
+  let sectBttns = document.getElementsByClassName('sectBttn');
+  
+  for(let i = 0; i < sections.length; i++) {
+    
+    sections[i].style.maxHeight = "" + (sections[i].scrollHeight + 100) + "px";
+    sectBttns[i].style.transform = "rotate(0deg)";
+    
+  }
+  
+}
+
 // Set Elements
 
 for(let i = 0; i < head.length; i++) head[i].innerHTML += headHTML;

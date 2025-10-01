@@ -235,7 +235,7 @@ function createDecayChain(isos, tbl) {
     let color = 'rgb(' + red + ',' + green + ',' + blue +')';
     
     let textColor = 'rgb(0,0,0)';
-    if(((red * 0.3) + (green * 0.59) + (blue * 0.11)) < 128) {
+    if(((red * 0.299) + (green * 0.587) + (blue * 0.114)) < 128) {
       textColor = 'rgb(255,255,255)';
     }
     

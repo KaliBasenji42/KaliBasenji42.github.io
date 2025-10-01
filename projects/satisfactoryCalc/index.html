@@ -29,6 +29,8 @@
 
 <body style="background-color: rgb(224, 160, 244);">
   
+  <script src="assets/vars.js"></script>
+  
 <!--Start-->
   
   <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
@@ -42,9 +44,286 @@
   
 <!--End-->
   
-  <h1>Satisfactory Build Calculator</h1>
+  <div id="toolbar">
+    <div id="load" title="Load" class="menuBttn"><img src="assets/images/folder.png"></div>
+    <div id="save" title="Save" class="menuBttn"><img src="assets/images/file.png"></div>
+    <div id="upload" title="Upload" class="menuBttn"><img src="assets/images/upload.png"></div>
+    <div id="download" title="Download" class="menuBttn"><img src="assets/images/download.png"></div>
+    <div id="settings" title="Settings" class="menuBttn"><img src="assets/images/settings.png"></div>
+    <div id="submit" title="Calculate" class="toolBttn"><img src="assets/images/check.png"></div>
+    <div id="percentComplete" title="% Complete" class="toolInfo">0%</div>
+    <div id="power" title="Power" class="toolInfo">0 MW</div>
+    <div id="awesomePts" title="Total Awesome Points" class="toolInfo">0 Pts.</div>
+  </div>
   
-  <h2>WIP</h2>
+  <div id="menuGreyout" style="display: none;">
+    <div id="load" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Load - localStorage</h2>
+      
+      <div id="loadList"></div>
+      
+      <label id="loadOut">... Awaiting Input</label>
+    </div>
+    
+    <div id="save" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Save - localStorage</h2>
+      
+      <form id="saveForm">
+        <label for="saveName">Save Name:</label>
+        <input id="saveName" type="text" name="saveName"><br>
+        <input type="submit" value="Submit"><br>
+        <label id="saveOut">... Awaiting Input</label>
+      </form>
+    </div>
+    
+    <div id="upload" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Upload</h2>
+      
+      <form id="uploadForm">
+        <label for="uploadFile">Select a file:</label><br>
+        <input type="file" id="uploadFile" name="uploadFile" accept="application/json"><br>
+        
+        <input type="submit" value="Submit"><br>
+        
+        <label id="uploadOut">... Awaiting Input</label>
+      </form>
+    </div>
+    
+    <div id="download" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Download</h2>
+      
+      <a target="_blank" id="downloadLink">Loading...</a>
+    </div>
+    
+    <div id="settings" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Settings</h2>
+      
+      <form id="settingsForm">
+        <label for="maxCalcIter">Max Calculation Iterations:</label><br>
+        <input type="number" id="maxCalcIter" name="maxCalcIter" min="1" max="1000000"><br>
+        <div class="subTtl">Number of calculations before throwing warning.</div><br>
+        
+        <label for="NumInpDgts">Number Input Digits:</label><br>
+        <input type="number" id="NumInpDgts" name="NumInpDgts" min="0" max="10"><br>
+        <div class="subTtl">Number of digits allowed for number inputs.</div><br>
+        
+        <label for="zeroIsComplete">Zero Is Complete:</label><br>
+        <input type="checkbox" id="zeroIsComplete" name="zeroIsComplete"><br>
+        <div class="subTtl">Do not count unaffected items in complete %.</div><br>
+        
+        <label for="reuseBypro">Reuse Bypro:</label><br>
+        <input type="checkbox" id="reuseBypro" name="reuseBypro"><br>
+        <div class="subTtl">Should reuse byproduct to discount demand.</div><br>
+        
+        <label for="greaterColor">Greater Color:</label><br>
+        <input type="color" id="greaterColor" name="greaterColor"><br>
+        <div class="subTtl">Color of cells greater than 0.</div><br>
+        
+        <label for="lessColor">Less Color:</label><br>
+        <input type="color" id="lessColor" name="lessColor"><br>
+        <div class="subTtl">Color of cells less than 0.</div><br>
+        
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+  
+  <h1>Satisfactory Build Calculator (WIP)</h1>
+  
+  <a href="../../">Website Homepage</a>
+  <div>Default data from <a href="https://satisfactory.wiki.gg/wiki" target="_blank">The Satisfactory Wiki</a></div>
+  <div>Shout out to (although no sources used from) <a href="https://satisfactory-calculator.com/" target="_blank">Satisfactory Calculator</a></div>
+  
+  <br>
+  <button onclick="expandAll()">Expand All</button>
+  <button onclick="collapseAll()">Collapse All</button>
+  <br><br>
+  <button onclick="checkAll()">Check all as Complete</button>
+  <button onclick="checkAll(false)">Uncheck all as Complete</button>
+  
+  <h2>Main Interface<span><button class="sectBttn" id="MIBttn" onclick="expndOrClps('MISect', 'MIBttn')">🔽</button></span></h2>
+  
+  <div class="sect" id="MISect">
+    <table id="MITbl"></table>
+    
+    <h3>Edit Item</h3>
+    <form id="MIEditItemForm">
+      <label for="itemName">Item Name:</label>
+      <input type="text" id="itemName" name="itemName"><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
+      <br>
+      
+      <input type="checkbox" id="itemAddCheck" name="itemAddCheck">
+      <label for="itemAddCheck">Add Item (don't forget to add recipes)?</label><br>
+      <input type="checkbox" id="itemRemoveCheck" name="itemRemoveCheck">
+      <label for="itemRemoveCheck">Remove Item (if it exists)?</label><br>
+      <input type="checkbox" id="itemMovePos" name="itemMovePos">
+      <label for="itemMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <br>
+      
+      <label for="itemCategory">Category:</label>
+      <input type="text" id="itemCategory" name="itemCategory"><br>
+      <label for="itemPos">Position:</label>
+      <input type="number" id="itemPos" name="itemPos"><br>
+      <label for="itemColor">Color:</label>
+      <input type="color" id="itemColor" name="itemColor"><br>
+      <label for="awesomePts">Awesome Points:</label>
+      <input type="number" id="awesomePts" name="awesomePts"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      <output id="out">...Awaiting Input</output><br>
+    </form>
+    
+    <h3>Edit Category</h3>
+    <form id="MIEditCatForm">
+      <label for="catName">Category Name:</label>
+      <input type="text" id="catName" name="catName"><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
+      <br>
+      
+      <input type="checkbox" id="catAddCheck" name="catAddCheck">
+      <label for="catAddCheck">Add Category?</label><br>
+      <input type="checkbox" id="catRemoveCheck" name="catRemoveCheck">
+      <label for="catRemoveCheck">Remove Category (if it exists)?</label><br>
+      <input type="checkbox" id="catMovePos" name="catMovePos">
+      <label for="catMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <br>
+      
+      <label for="catPos">Position:</label>
+      <input type="number" id="catPos" name="catPos"><br>
+      <label for="catColor">Color:</label>
+      <input type="color" id="catColor" name="catColor"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      <output id="out">...Awaiting Input</output><br>
+    </form>
+    <br>
+  </div>
+  
+  <h2>Recipes<span><button class="sectBttn" id="RecBttn" onclick="expndOrClps('RecSect', 'RecBttn')">🔽</button></span></h2>
+  
+  <div class="sect" id="RecSect">
+    <table id="RecTbl"></table>
+    
+    <h3>Edit Recipe</h3>
+    <form id="RecEditForm">
+      <label for="itemName">Item Name:</label>
+      <input type="text" id="itemName" name="itemName"><br>
+      <label for="recName">Recipe Name:</label>
+      <input type="text" id="recName" name="recName"><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
+      <br>
+      
+      <input type="checkbox" id="recAddCheck" name="recAddCheck">
+      <label for="recAddCheck">Add Recipe?</label><br>
+      <input type="checkbox" id="recRemoveCheck" name="recRemoveCheck">
+      <label for="recRemoveCheck">Remove Recipe (if it exists)?</label><br>
+      <br>
+      
+      <label for="outAmnt">Output Amount:</label>
+      <input type="number" id="outAmnt" name="outAmnt" class="numInp"><br>
+      <label for="building">Building:</label>
+      <input type="text" id="building" name="building"><br>
+      <label for="numInp">Number of Inputs:</label>
+      <input type="number" id="numInp" name="numInp" min="0" max="4"><br>
+      <label for="numBypro">Number of Byproducts:</label>
+      <input type="number" id="numBypro" name="numBypro" min="0" max="1"><br>
+      <br>
+      
+      <label for="inpItem1">Input Item 1:</label>
+      <input type="text" id="inpItem1" name="inpItem1"><br>
+      <label for="inpAmnt1">Input Amount 1:</label>
+      <input type="number" id="inpAmnt1" name="inpAmnt1" class="numInp"><br>
+      
+      <label for="inpItem2">Input Item 2:</label>
+      <input type="text" id="inpItem2" name="inpItem2"><br>
+      <label for="inpAmnt2">Input Amount 2:</label>
+      <input type="number" id="inpAmnt2" name="inpAmnt2" class="numInp"><br>
+      
+      <label for="inpItem3">Input Item 3:</label>
+      <input type="text" id="inpItem3" name="inpItem3"><br>
+      <label for="inpAmnt3">Input Amount 3:</label>
+      <input type="number" id="inpAmnt3" name="inpAmnt3" class="numInp"><br>
+      
+      <label for="inpItem4">Input Item 4:</label>
+      <input type="text" id="inpItem4" name="inpItem4"><br>
+      <label for="inpAmnt4">Input Amount 4:</label>
+      <input type="number" id="inpAmnt4" name="inpAmnt4" class="numInp"><br>
+      <br>
+      
+      <label for="byproItem1">Byproduct Item 1:</label>
+      <input type="text" id="byproItem1" name="byproItem1"><br>
+      <label for="byproAmnt1">Byproduct Amount 1:</label>
+      <input type="number" id="byproAmnt1" name="byproAmnt1" class="numInp"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      <output id="out">...Awaiting Input</output><br>
+    </form>
+    
+  </div>
+  
+  <h2>Buildings, Power, & Awesome Points<span><button class="sectBttn" id="BPAPBttn" onclick="expndOrClps('BPAPSect', 'BPAPBttn')">🔽</button></span></h2>
+  
+  <div class="sect" id="BPAPSect">
+    <table id="BPAPTbl"></table>
+    <table id="awesomeTbl"></table>
+    
+    <h3>Edit Building</h3>
+    <form id="BPAPEditForm">
+      <label for="buildingName">Building Name:</label>
+      <input type="text" id="buildingName" name="buildingName"><br>
+      <input type="button" id="loadDefault" value="Load Default">
+      <output id="LDOut">...Awaiting Input</output><br>
+      <br>
+      
+      <input type="checkbox" id="BPAPAddCheck" name="BPAPAddCheck">
+      <label for="BPAPAddCheck">Add Building?</label><br>
+      <input type="checkbox" id="BPAPRemoveCheck" name="BPAPRemoveCheck">
+      <label for="BPAPRemoveCheck">Remove Building (if it exists)?</label><br>
+      <input type="checkbox" id="BPAPMovePos" name="BPAPMovePos">
+      <label for="BPAPMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <br>
+      
+      <label for="BPAPPos">Position:</label>
+      <input type="number" id="BPAPPos" name="BPAPPos"><br>
+      <label for="BPAPColor">Color:</label>
+      <input type="color" id="BPAPColor" name="BPAPColor"><br>
+      <label for="avrgPower">Average Power (MW):</label>
+      <input type="number" id="avrgPower" name="avrgPower"><br>
+      <label for="maxPower">Max Power (MW):</label>
+      <input type="number" id="maxPower" name="maxPower"><br>
+      <label for="minPower">Min Power (MW):</label>
+      <input type="number" id="minPower" name="minPower"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      <output id="out">...Awaiting Input</output><br>
+    </form>
+    
+  </div>
+  
+  <h2>Calc. Table 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
+  
+  <div class="sect" id="CTSect">
+    <table id="CTTbl"></table>
+    <br>
+  </div>
   
 </body>
 

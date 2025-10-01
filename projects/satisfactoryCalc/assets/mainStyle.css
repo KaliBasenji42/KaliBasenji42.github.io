@@ -1,0 +1,217 @@
+/* Elements */
+
+body {
+  margin-top: 4rem;
+}
+
+table {
+  color: rgb(0, 0, 0) !important;
+  overflow-y: hidden;
+}
+
+/* Tool Bar */
+
+#toolbar {
+  background-color: rgb(240, 240, 240);
+  
+  display: flex;
+  flex-direction: row;
+  
+  position: fixed;
+  left: 0;
+  top: 0;
+  
+  height: 3rem;
+  width: 100vw;
+  
+  overflow-x: auto;
+  overflow-y: hidden;
+  
+  z-index: 1;
+}
+
+.menuBttn, .toolBttn {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+
+.menuBttn:hover, .toolBttn:hover {
+  background-color: rgb(192, 192, 192);
+  
+  height: 3rem;
+  width: 3rem;
+}
+
+.menuBttn > img, .toolBttn > img {
+  height: 3rem;
+  width: 3rem;
+}
+
+.toolInfo {
+  line-height: 3rem;
+  font-size: 1.5rem;
+  
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  
+  white-space: nowrap;
+}
+
+.toolInfo#percentComplete {
+  color: rgb(0, 128, 64);
+}
+.toolInfo#power {
+  color: rgb(128, 128, 0);
+}
+.toolInfo#awesomePts {
+  color: rgb(128, 64, 0);
+}
+
+/* Menus */
+
+#menuGreyout {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  background-color: rgba(64, 64, 64, 0.5);
+  z-index: 2;
+}
+
+#menuGreyout > * {
+  background-color: rgb(240, 240, 240);
+  color: rgb(0, 0, 0);
+  position: fixed;
+  
+  width: 32rem;
+  height: 24rem;
+  left: calc(50% - 16rem);
+  top: calc(50% - 12rem);
+  
+  padding: 1rem;
+  
+  overflow-y: scroll;
+  z-index: 3;
+}
+
+.X {
+  position: absolute;
+  
+  width: 3rem;
+  height: 3rem;
+  
+  cursor: pointer;
+  
+  top: 0;
+  right: 0;
+}
+
+.X:hover {
+  background-color: rgb(192, 192, 192);
+}
+
+.subTtl {
+  font-size: 0.875rem;
+  color: rgb(64, 64, 64);
+}
+
+.menuTtl {
+  margin-top: 0;
+}
+
+#menuGreyout > * > #loadList {
+  height: 12rem;
+  overflow: scroll;
+  
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(224, 224, 224) rgb(255, 255, 255) rgb(255, 255, 255) rgb(224, 224, 224);
+}
+
+/* Tables */
+
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: black 1px solid;
+  white-space: nowrap;
+}
+
+th {
+  text-align: center;
+}
+
+.catHead {
+  width: 2rem;
+  padding: 0;
+  margin: 0;
+  
+  position: relative;
+}
+
+.catHead > * {
+  width: 1rem;
+  margin-left: 15%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  
+  position: absolute;
+}
+
+.catHead > * > * {
+  font-size: 1rem;
+  white-space: nowrap;
+  
+  writing-mode: sideways-lr;
+  text-orientation: sideways;
+  
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+}
+
+/* Media */
+
+@media screen and (max-width: 600px) {
+  #menuGreyout > * {
+    width: 16rem;
+    height: 12rem;
+    left: calc(50% - 8rem);
+    top: calc(50% - 6rem);
+  }
+  #menuGreyout > * > #loadList {
+    height: 6rem;
+  }
+}
+
+/* Misc */
+
+.wideTH {
+  min-width: 10rem;
+}
+
+.thinTH {
+  min-width: 7rem;
+}
+
+#MITbl > * > * > .numInp {
+  background-color: inherit;
+}
+
+#themeButton {
+  z-index: 100;
+}
+
+[type="checkbox"] {
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+}
