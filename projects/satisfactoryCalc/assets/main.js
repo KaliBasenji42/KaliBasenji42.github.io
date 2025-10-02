@@ -1489,6 +1489,8 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
             
             fileOut.innerHTML = '✅ Loaded';
             
+            render();
+            
           }
           
           catch(error) {
