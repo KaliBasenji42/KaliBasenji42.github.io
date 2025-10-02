@@ -638,7 +638,7 @@ let items = { // Default item data
     recipe: 'Rocket Fuel', recipes: {
       'Rocket Fuel': {out: 100, in: [{item: 'Turbofuel', amount: 60}, {item: 'Nitric Acid', amount: 10}], bypro: [{item: 'Compacted Coal', amount: 10}], building: 'Blender'},
       'Unpackaged Rocket Fuel': {out: 120, in: [{item: 'Packaged Rocket Fuel', amount: 60}], bypro: [{item: 'Empty Fluid Tank', amount: 60}], building: 'Packager'},
-      'Nitro Rocket Fuel': {out: 150, in: [{item: 'Fuel', amount: 100}, {item: 'Nitrogen Gas', amount: 10}], bypro: [{item: 'Compacted Coal', amount: 10}], building: 'Blender'},
+      'Nitro Rocket Fuel': {out: 150, in: [{item: 'Fuel', amount: 100}, {item: 'Nitrogen Gas', amount: 10}, {item: 'Sulfur', amount: 100}, {item: 'Coal', amount: 50}], bypro: [{item: 'Compacted Coal', amount: 10}], building: 'Blender'},
     }
   },
   'Ionized Fuel': {category: 'Oil', complete: false, inpDemand: 0, status: 'resolved', pos: 8, color: '#d55f1a', 
