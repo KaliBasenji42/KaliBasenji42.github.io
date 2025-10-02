@@ -44,6 +44,7 @@ let greyout; // Menu Grey-Out
 let Xs; // Menu Xs
 let menuBttns; // Toolbar Buttons
 let toolSubmit; // Toolbar Submit
+let toolStatus; // Status
 
 let saveForm; // Save Form
 let loadList; // Load List
@@ -85,7 +86,7 @@ function power(buildings, MWKey, maxClock, sloopMult) { // Function for calculat
   
 }
 
-function calculate() { // Calculate items
+async function calculate() { // Calculate items
   
   // Reset
   
@@ -132,7 +133,7 @@ function calculate() { // Calculate items
     iterations ++;
     
     if(iterations % settings['maxCalcIter'] == 0 && iterations > 0) {
-      if(!window.confirm('' + iterations + ' iterations. Continue?')) {render(); return}
+      if(!window.confirm('' + iterations + ' iterations. Continue?')) return
     }
     
     // Waiting Status
@@ -253,8 +254,6 @@ function calculate() { // Calculate items
     }
     
   }
-  
-  render();
   
 }
 
@@ -1160,7 +1159,7 @@ function renderCT() { // Render Calc Table
   
 }
 
-function render() { // Render Everything
+async function renderFuncs() { // Render Everything
   
   // Individual Render Functions
   
@@ -1173,6 +1172,25 @@ function render() { // Render Everything
   // Other
   
   applySettings(); // Apply settings to rendered stuff
+  
+}
+
+async function render() { // Render Everything
+  
+  // Status Rendering
+  
+  toolStatus = document.querySelector('#toolbar > #status');
+  toolStatus.innerText = '🖌️';
+  
+  await new Promise(resolve => setTimeout(resolve, 0));
+  
+  // Render
+  
+  await renderFuncs();
+  
+  // Status Done
+  
+  toolStatus.innerText = '✅';
   
 }
 
@@ -1290,6 +1308,35 @@ function renderLoadList() { // Render Saves into LoadList
   
 }
 
+async function calculateBttn () {
+  
+  // Status Calculating
+  
+  toolStatus = document.querySelector('#toolbar > #status');
+  toolStatus.innerText = '🔄';
+  
+  await new Promise(resolve => setTimeout(resolve, 0));
+  
+  // Calculate
+  
+  await calculate();
+  
+  // Status Rendering
+  
+  toolStatus.innerText = '🖌️';
+  
+  await new Promise(resolve => setTimeout(resolve, 0));
+  
+  // Render
+  
+  await renderFuncs();
+  
+  // Status Done
+  
+  toolStatus.innerText = '✅';
+  
+}
+
 function checkAll(check = true) {
   
   for(let item in items) items[item].complete = check;
@@ -1302,10 +1349,14 @@ function checkAll(check = true) {
 
 document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
+  // Status
+  
+  toolStatus = document.querySelector('#toolbar > #status');
+  toolStatus.title = 'Status:\n🖌️ = Rendering\n🔄 = Calculating\n✅ = Done';
+  
   // Rendering
   
-  render();
-  expandAll();
+  render().then(expandAll);
   
   // Menus
   
@@ -1337,7 +1388,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   toolSubmit = document.querySelector('#toolbar > #submit');
   
-  toolSubmit.addEventListener('click', calculate);
+  toolSubmit.addEventListener('click', calculateBttn);
   
   // Load
   
@@ -1630,7 +1681,8 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       
       items[itemName] = {
         'category': category, 'complete': false, 'inpDemand': 0, 'status': 'resolved', 'pos': pos, 'color': color, 
-        'calcDemand': 0, 'byproduct': 0, 'maxClock': 1, 'sloopMult': 1, 'buildings': 0, 'awesomePts': awesomePts, 'awesomePtsInp': 0, 'awesomePtsBypro': 0, power: 0, 
+        'calcDemand': 0, 'calc': 0, 'byproduct': 0, 'maxClock': 1, 'sloopMult': 1, 'buildings': 0, 
+        'awesomePts': awesomePts, 'awesomePtsInp': 0, 'awesomePtsBypro': 0, 'power': 0, 'powerMax': 0, 'powerMin': 0, 
         recipe: 'None', recipes: {} 
       };
       
