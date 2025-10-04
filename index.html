@@ -91,11 +91,6 @@
   </p>
   
   <p>
-    All data is shown in the table (you could export it by copying it). And to import data you would need to open the console (in inspector) and run:
-  </p>
-  <code style="font-size: 1.5em;">localStorage.setItem(<i>key</i>, <i>value</i>);</code>
-  
-  <p>
     More info here: <a href="https://www.w3schools.com/jsref/prop_win_localstorage.asp" target="_blank">Window localStorage Property | W3Schools.com</a>
   </p>
   
@@ -130,6 +125,25 @@
   </div>
   
   <script>expndOrClps('DT Sect', 'DT bttn');</script>
+  
+  <h2>Calculate Max localStorage</h2>
+  
+  <table id="LSCalcTbl" style="width: 100%;">
+    <tr><th>Size</th><th>Status</th><th>Increments</th></tr>
+    <tr id="tenK"><td>10k B</td><td class="status">⏸️ Waiting</td><td class="incrs">0</td></tr>
+    <tr id="hundred"><td>100 B</td><td class="status">⏸️ Waiting</td><td class="incrs">0</td></tr>
+    <tr id="ome"><td>1 B</td><td class="status">⏸️ Waiting</td><td class="incrs">0</td></tr>
+    <tr id="total"><th>Total:</th><td class="status">⏸️ Waiting</td><td class="total">0 B</td></tr>
+  </table>
+  
+  <br>
+  
+  <form id="LSCalcForm">
+    <input type="button" onclick="LSCalc()" value="Calculate"><br><br>
+    <label for="LSInp">Total Kilobytes (1024 B):</label>
+    <input id="LSInp" type="number" name="LSInp" min="0"><br><br>
+    <input type="submit" value="Submit">
+  </form>
   
   <br>
   
