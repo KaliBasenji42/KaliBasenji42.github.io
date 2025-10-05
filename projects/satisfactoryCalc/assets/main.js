@@ -1441,8 +1441,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
       saveOut.innerText = '✅ Saved (' + saveStr.length + ' bytes)';
     }
     catch(err) {
-      console.log('localStorage Saving Error (Save "' + saveName + '"):\n' + err);
-      saveOut.innerText = '⚠️ Processing Error';
+      console.log('localStorage Saving Error (Save "' + saveName + '"):');
+      console.log(err);
+      saveOut.innerText = '⚠️ ' + err;
     }
     
     renderLoadList();
@@ -1548,7 +1549,8 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     settings = JSON.parse(localStorageSettings);
   }
   catch(err) {
-    console.log('localStorage Loading Error (Settings):\n' + err);
+    console.log('localStorage Loading Error (Settings):');
+    console.log(err);
   }
   
   // Settings
@@ -1577,12 +1579,13 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     try {
       localStorage.setItem('SatisfactoryCalc - Settings', JSON.stringify(settings));
+      closeAllMenus();
     }
     catch(err) {
-      console.log('localStorage Saving Error (Settings):\n' + err);
+      console.log('localStorage Saving Error (Settings):\n');
+      console.log(err);
+      settingsForm.querySelector('output').innerText = '⚠️ ' + err;
     }
-    
-    closeAllMenus();
     
   });
   

@@ -11,9 +11,15 @@ let warn;
 let boomRotate = 300;
 let boom;
 
+let LSCalcForm;
+let LSCalcTbl;
+let LSValues;
+let LSStats;
+let calculating = false;
+
 // Functions
 
-function numForm(num) {
+function numForm(num) { // Takes int and returns str with commas
   
   let numStr = '' + num;
   let out = '';
@@ -33,9 +39,9 @@ function numForm(num) {
   
 }
 
-// Data
+// localStorage
 
-function clearData() {
+function clearData() { // Clears localStorage
   
   if(window.confirm('Clear All Data?')) {
     
@@ -47,7 +53,7 @@ function clearData() {
   
 }
 
-function removeData(key) {
+function removeData(key) { // Removes a specific localStorage key pair
   
   if(window.confirm('Remove "' + key + '"?')) {
     
@@ -59,7 +65,7 @@ function removeData(key) {
   
 }
 
-function getUsage() {
+function getUsage() { // Return bytes in localStorage as int
   
   let usage = 0;
   
@@ -67,7 +73,7 @@ function getUsage() {
     if(localStorage.hasOwnProperty(key)) {
       item = localStorage.getItem(key);
       
-      usage += item.length;
+      usage += item.length + key.length;
     }
   }
   
@@ -75,7 +81,7 @@ function getUsage() {
   
 }
 
-function outputData(usage) {
+function outputData(usage) { // Render localStorage graphics
   
   // Variables
   
@@ -89,7 +95,10 @@ function outputData(usage) {
   let fourtytwo = document.getElementById('fourtytwo');
   let bomb = document.getElementById('bomb');
   
-  let quota = 5 * 1024 * 1024;
+  let quotaStr = localStorage.getItem('LSQuota'); // Saved
+  
+  if(typeof(quotaStr) !== 'string') quota = 5 * 1024 * 1024; // Default
+  else quota = parseInt(quotaStr); // Saved
   
   DTElem.innerHTML = `
     <tr>
@@ -183,11 +192,112 @@ function outputData(usage) {
   
 }
 
+async function LSRender() { // Render in-between LSCalc()
+  
+  // Variables
+  
+  let tenK = document.querySelector('#LSCalcTbl > * > #tenK');
+  let hundred = document.querySelector('#LSCalcTbl > * > #hundred');
+  let one = document.querySelector('#LSCalcTbl > * > #one');
+  let total = document.querySelector('#LSCalcTbl > * > #total');
+  let elems = [tenK, hundred, one, total];
+  
+  // Wait
+  
+  await new Promise(resolve => setTimeout(resolve, 0));
+  await new Promise(resolve => requestAnimationFrame(resolve));
+  
+  // Set
+  
+  for(let i = 0; i < elems.length; i++) {
+    elems[i].querySelector('.status').innerText = LSStats[i];
+    elems[i].querySelector('.value').innerText = LSValues[i];
+  }
+  
+  total.querySelector('.value').innerText = '' + LSValues[3] + ' B';
+  
+}
+
+async function LSCalc(clear = true) { // Calculate LS Quota
+  // Clear: true: clear local storage key pair used, false: fill localStorage
+  
+  // Prevent Spam
+  
+  if(calculating) return
+  
+  calculating = true;
+  
+  // Variables
+  
+  LSStats = ['⏸️ Waiting', '⏸️ Waiting', '⏸️ Waiting', '🔄 Adding'];
+  LSValues = [0, 0, 0, 0];
+  
+  let LSInp = document.querySelector('#LSCalcForm > #LSInp');
+  
+  // Size Variables
+  
+  let sizeStr = '';
+  
+  let sizeStrs = ['', '', ''];
+  
+  for(let i = 0; i < 10000; i++) sizeStrs[0] += 'A';
+  for(let i = 0; i < 100; i++) sizeStrs[1] += 'B';
+  sizeStrs[2] += 'C';
+  
+  // Initial
+  
+  await LSRender();
+  
+  // Each Increment
+  
+  for(let i = 0; i < 3; i++) {
+    
+    LSStats[i] = '🔄 Adding'; // Loading Status
+    
+    while(LSStats[i] != '✅ Done') { // While not done
+      
+      LSValues[i]++; // Add to Iteration
+      
+      try {
+        
+        localStorage.setItem('LSCalc', sizeStr + sizeStrs[i]); // Set
+        
+        sizeStr = sizeStr + sizeStrs[i]; // Add if passed
+        
+      }
+      catch { LSStats[i] = '✅ Done'; } // If error, done
+      
+      LSValues[3] = getUsage(); // Get Usage
+      
+      await LSRender(); // Render
+      
+    }
+    
+  }
+  
+  // Done
+  
+  sizeStr = ''; // Reset long str (may help clear mem)
+  
+  LSStats[3] = '✅ Done';
+  
+  LSInp.value = getUsage(); // Set Form Input
+  
+  if(clear) localStorage.removeItem('LSCalc'); // Clear
+  
+  await LSRender();
+  
+  outputData(getUsage());
+  
+  calculating = false;
+  
+}
+
 // Events
 
 document.addEventListener('DOMContentLoaded', function () {
   
-  // Data
+  // localStorage
   
   outputData(getUsage());
   
@@ -205,5 +315,37 @@ document.addEventListener('DOMContentLoaded', function () {
     boom.style.rotate = '' + boomRotate + 'deg';
     boom.style.opacity = '1';
   }, 5100);
+  
+  // localStorage Form
+  
+  LSCalcTbl = document.getElementById('LSCalcTbl');
+  LSCalcForm = document.getElementById('LSCalcForm');
+  
+  LSCalcForm.onsubmit = (() => {
+    
+    event.preventDefault();
+    
+    // Variables
+    
+    let value = LSCalcForm.querySelector('#LSInp').value;
+    let output = LSCalcForm.querySelector('output');
+    
+    // Set
+    
+    try{
+      if(value == '') throw(new Error('Empty Value'));
+      
+      localStorage.setItem('LSQuota', value); // Save
+      output.innerText = '✅ Set'; // Output
+      outputData(getUsage()); // Re-Render
+    }
+    catch(error) {
+      output.innerText = '⚠️ ' + error; // Output
+      
+      console.log('Saving Error:'); // Log
+      console.log(error);
+    }
+    
+  });
   
 });

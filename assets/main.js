@@ -171,7 +171,15 @@ function nextTheme(add) {
   
   currentPos = (currentPos + add) % themeKeys.length;
   
-  localStorage.setItem('theme', themeKeys[currentPos]);
+  try {
+    localStorage.setItem('theme', themeKeys[currentPos]);
+    themeButton.innerText = '◪';
+  }
+  catch {
+    themeButton.innerText = '⚠️';
+    themeButton.title = 'localStorage Quota Full!';
+    return
+  }
   
   updateTheme();
   

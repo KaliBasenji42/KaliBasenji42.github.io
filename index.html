@@ -87,7 +87,12 @@
   <h1>Data - localStorage</h1>
   
   <p>
-    This is data stored on your local browser for this domain. This is not data saved on external servers. Chromium and Firefox based browsers (and most others) reserve 5 MBs (5,242,880 Bytes) of localStorage for each domain. My website assumes 5 MB, so this may be inaccurate depending on your browser.
+    This is data stored on your local browser for this domain. This is not data saved on external servers. Chromium and Firefox based browsers (and most others) reserve 5 MBs (5,242,880 Bytes) of localStorage quota for each domain. My website assumes 5 MB, by default. You can set the max quota below.
+  </p>
+  
+  <p>
+    If the quota is exceeded functions that save to local should show something like:<br><br>
+    ⚠️ QuotaExceededError: The quota has been exceeded.
   </p>
   
   <p>
@@ -126,23 +131,28 @@
   
   <script>expndOrClps('DT Sect', 'DT bttn');</script>
   
-  <h2>Calculate Max localStorage</h2>
+  <h2>Calculate Quota</h2>
+  
+  <div>
+    WARNING: Calculating may temporarily use a lot of RAM.
+  </div><br>
   
   <table id="LSCalcTbl" style="width: 100%;">
-    <tr><th>Size</th><th>Status</th><th>Increments</th></tr>
-    <tr id="tenK"><td>10k B</td><td class="status">⏸️ Waiting</td><td class="incrs">0</td></tr>
-    <tr id="hundred"><td>100 B</td><td class="status">⏸️ Waiting</td><td class="incrs">0</td></tr>
-    <tr id="ome"><td>1 B</td><td class="status">⏸️ Waiting</td><td class="incrs">0</td></tr>
-    <tr id="total"><th>Total:</th><td class="status">⏸️ Waiting</td><td class="total">0 B</td></tr>
+    <tr><th>Size</th><th>Status</th><th>Iterations (or Bytes)</th></tr>
+    <tr id="tenK"><td>10k B</td><td class="status">⏸️ Waiting</td><td class="value">0</td></tr>
+    <tr id="hundred"><td>100 B</td><td class="status">⏸️ Waiting</td><td class="value">0</td></tr>
+    <tr id="one"><td>1 B</td><td class="status">⏸️ Waiting</td><td class="value">0</td></tr>
+    <tr id="total"><th>Total:</th><td class="status">⏸️ Waiting</td><td class="value">0 B</td></tr>
   </table>
   
   <br>
   
   <form id="LSCalcForm">
     <input type="button" onclick="LSCalc()" value="Calculate"><br><br>
-    <label for="LSInp">Total Kilobytes (1024 B):</label>
+    <label for="LSInp">Total Bytes (what my website should think the max quota is):</label><br>
     <input id="LSInp" type="number" name="LSInp" min="0"><br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit"><br>
+    <output>... Awaiting Input</output>
   </form>
   
   <br>
