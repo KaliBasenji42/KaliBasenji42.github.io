@@ -71,9 +71,8 @@ function getUsage() { // Return bytes in localStorage as int
   
   for(let key in localStorage) {
     if(localStorage.hasOwnProperty(key)) {
-      item = localStorage.getItem(key);
-      
-      usage += item.length + key.length;
+      let item = localStorage.getItem(key); // LS Item
+      usage += item.length + key.length; // Add
     }
   }
   
@@ -293,6 +292,35 @@ async function LSCalc(clear = true) { // Calculate LS Quota
   
 }
 
+function LSExport() {
+  
+  // Variables
+  
+  let downloadLink = document.getElementById('LSDownload');
+  
+  let json = {};
+  
+  // Export Object
+  
+  for(let key in localStorage) {
+    if(localStorage.hasOwnProperty(key)) {
+      let item = localStorage.getItem(key); // LS Item
+      json[key] = item; // Set
+    }
+  }
+  
+  // URL
+  
+  let jsonStr = JSON.stringify(json, null, 2); // Stringy 😋
+  
+  let blob = new Blob([jsonStr], {type: 'application/json'}); // Blob
+  
+  let url = URL.createObjectURL(blob); // URL
+  
+  downloadLink.href = url; // Set href
+  
+}
+
 // Events
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -316,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
     boom.style.opacity = '1';
   }, 5100);
   
-  // localStorage Form
+  // localStorage Quota Form
   
   LSCalcTbl = document.getElementById('LSCalcTbl');
   LSCalcForm = document.getElementById('LSCalcForm');
@@ -345,6 +373,73 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log('Saving Error:'); // Log
       console.log(error);
     }
+    
+  });
+  
+  // localStorage Import Form
+  
+  LSImp = document.getElementById('LSImp');
+  LSImpForm = document.getElementById('LSImpForm');
+  
+  LSImpForm.onsubmit = (() => {
+    
+    event.preventDefault();
+    
+    // Variables
+    
+    let file = LSImpForm.querySelector('#LSImp').files[0];
+    let output = LSImpForm.querySelector('output');
+    
+    // Read File
+    
+    if(file) { // If file exists
+      
+      if(file.type == 'application/json') { // If file is JSON
+        
+        output.innerHTML = '🔄 Processing';
+        
+        const reader = new FileReader();
+        
+        reader.onload = function(event) { // Read file
+          
+          const json = event.target.result;
+          
+          try {
+            
+            const index = JSON.parse(json); // Create object
+            
+            for(let key in index) localStorage.setItem(key, index[key]);
+            
+            output.innerHTML = '✅ Loaded';
+            
+            // Output
+            
+            outputData(getUsage());
+            
+            updateTheme();
+            
+          }
+          
+          catch(error) {
+            
+            output.innerHTML = '⚠️ ' + error;
+            
+            console.log('Import Error:');
+            console.log(error);
+            
+          }
+          
+        }
+        
+        reader.readAsText(file);
+        
+      }
+      
+      else output.innerText = '⚠️ Wrong Type';
+      
+    }
+    
+    else output.innerText = '❌ No File';
     
   });
   

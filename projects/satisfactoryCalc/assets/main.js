@@ -1584,7 +1584,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     catch(err) {
       console.log('localStorage Saving Error (Settings):\n');
       console.log(err);
-      settingsForm.querySelector('output').innerText = '⚠️ ' + err;
+      settingsForm.querySelector('output').innerText = '⚠️ Applied, but not saved';
     }
     
   });

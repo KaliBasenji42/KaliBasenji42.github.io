@@ -131,6 +131,30 @@
   
   <script>expndOrClps('DT Sect', 'DT bttn');</script>
   
+  <h2>Export & Import</h2>
+  
+  <h3>Export</h3>
+  
+  <button onclick="LSExport()">Export</button><br><br>
+  <a id="LSDownload" target="_blank">Download</a>
+  
+  <h3>Import</h3>
+  
+  <p>This will redefine and add values from file, but keep all other values:</p>
+  
+  <table style="width: 100%;">
+    <tr><th>Is Defined in localStorage</th><th>Is Defined in File</th><th>Result</th></tr>
+    <tr><td>True</td><td>True</td><td><b>Overwritten by File</b></td></tr>
+    <tr><td>False</td><td>True</td><td>Added</td></tr>
+    <tr><td>True</td><td>False</td><td>Stays</td></tr>
+  </table><br>
+  
+  <form id="LSImpForm">
+    <input type="file" id="LSImp" name="LSImp"><br><br>
+    <input type="submit" accept="application/json" value="Submit"><br><br>
+    <output>... Awaiting Input</output>
+  </form>
+  
   <h2>Calculate Quota</h2>
   
   <div>
