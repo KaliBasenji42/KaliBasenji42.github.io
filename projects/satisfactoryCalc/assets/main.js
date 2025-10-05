@@ -36,6 +36,8 @@ highlightSheet.replace(
 
 const clockPowerExp = Math.log(2.5) / Math.log(2); // Exponential satisfactory uses for (over)clocking
 
+let calculating = false; // Is calculating (to prevent spam)
+
 // Elements
 // Globally declared here, defined on DOM load
 
@@ -87,6 +89,12 @@ function power(buildings, MWKey, maxClock, sloopMult) { // Function for calculat
 }
 
 async function calculate() { // Calculate items
+  
+  // Prevent Spam
+  
+  if(calculating) return
+  
+  calculating = true;
   
   // Reset
   
@@ -254,6 +262,8 @@ async function calculate() { // Calculate items
     }
     
   }
+  
+  calculating = false; // Prevent Spam
   
 }
 
@@ -1183,6 +1193,7 @@ async function render() { // Render Everything
   toolStatus.innerText = '🖌️';
   
   await new Promise(resolve => setTimeout(resolve, 0));
+  await new Promise(resolve => requestAnimationFrame(resolve));
   
   // Render
   
@@ -1316,6 +1327,7 @@ async function calculateBttn () {
   toolStatus.innerText = '🔄';
   
   await new Promise(resolve => setTimeout(resolve, 0));
+  await new Promise(resolve => requestAnimationFrame(resolve));
   
   // Calculate
   
@@ -1326,6 +1338,7 @@ async function calculateBttn () {
   toolStatus.innerText = '🖌️';
   
   await new Promise(resolve => setTimeout(resolve, 0));
+  await new Promise(resolve => requestAnimationFrame(resolve));
   
   // Render
   
@@ -2208,7 +2221,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Error
     
-    if(itemName.includes('_')) {
+    if(buildingName.includes('_')) {
       out.innerText = '⚠️ Illegal Character "_"';
       return
     }
