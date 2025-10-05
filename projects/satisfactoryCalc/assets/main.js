@@ -132,6 +132,19 @@ async function calculate() { // Calculate items
     
   }
   
+  // Reset Buildings
+  
+  for(let buildingKey in buildings) {
+    
+    let building = buildings[buildingKey]; // Building
+    
+    building['Total'] = 0;
+    building['Total MW'] = 0;
+    building['Max Total MW'] = 0;
+    building['Min Total MW'] = 0;
+    
+  }
+  
   // While unresolved / Demand
   
   while(unresolved.size > 0) {
