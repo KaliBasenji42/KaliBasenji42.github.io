@@ -113,6 +113,9 @@ table {
   color: rgb(0, 0, 0);
   background-color: rgb(224, 224, 224);
 }
+
+a {color: rgb(0, 96, 0);}
+a:hover {color: rgb(0, 128, 0);}
   `,
   'dark': `
 body {
@@ -128,6 +131,9 @@ table {
   color: rgb(225, 225, 225);
   background-color: rgb(32, 32, 32) !important;
 }
+
+a {color: rgb(64, 192, 64);}
+a:hover {color: rgb(64, 240, 64);}
   `,
   'light': `
 body {
@@ -142,6 +148,9 @@ table {
   color: rgb(0, 0, 0);
   background-color: rgb(224, 224, 224);
 }
+
+a {color: rgb(0, 96, 0);}
+a:hover {color: rgb(0, 128, 0);}
   `
 };
 
