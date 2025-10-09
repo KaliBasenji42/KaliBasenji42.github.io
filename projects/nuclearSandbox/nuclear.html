@@ -1,0 +1,317 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<!--End-->
+  <title>Nuclear Sandbox | Isotope Data & Process</title>
+<!--Start-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+  <script src="assets/nuclear.js"></script>
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../assets/areFilesLinked.js"></script>
+  
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
+  
+<!--End-->
+  
+<p><a href="../../">Home Page</a></p>
+  
+  <h1>Nuclear Sandbox | Isotope Data & Process</h1>
+  
+  <h2>
+    NuDat Status:<span id="NuDatStat">🔄</span>
+  </h2>
+  
+  <button onclick="loadNuDat()" class="dataBttn" title="Re-Fetch NuDat">
+    ↺
+  </button>
+  
+  <h2>Decay Chain
+    <span><button class="sectBttn" id="DC bttn" onclick="expndOrClps('DC Sect', 'DC bttn')">🔽</button></span>
+  </h2>
+  
+  <div id="DC Sect" class="sect">
+    
+    <form id="DCForm">
+      <label for="DCIsoInput">Isotope:</label>
+      <input type="text" id="DCIsoInput" name="DCIsoInput">
+      Example: "235U"<br>
+      <input type="submit" value="Load">
+    </form>
+    
+    <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
+    
+    <div class="DCCont">
+      <table class="DCTbl" id="DCTbl">
+      </table>
+    </div>
+    
+    <br>
+    
+    <table class="tbl info" id="selected">
+      <tr>
+        <th>Selected</th>
+      </tr>
+    </table>
+    <table class="tbl info" id="daughters">
+      <tr>
+        <th>Daughters</th>
+        <th>Info</th>
+      </tr>
+    </table>
+    <table class="tbl info" id="parents">
+      <tr>
+        <th>Parents</th>
+      </tr>
+    </table>
+    
+    <p>Horizontal Axis: N (Neutrons), Vertical Axis: Z (Protrons/Element)</p>
+    <p>Red: Selected, Green: Daughter, Blue: Parent</p>
+    
+    <table class="tbl">
+      <tr>
+        <th>Symbol</th>
+        <th>Mode</th>
+        <th>ΔZ</th>
+        <th>ΔN</th>
+      </tr>
+      <tr>
+        <td>B- / β⁻</td>
+        <td>Beta- (Electron)</td>
+        <td>1</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>N</td>
+        <td>Neutron</td>
+        <td>0</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>2N</td>
+        <td>2 Neutrons</td>
+        <td>0</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>B-N</td>
+        <td>Beta- and Neutron</td>
+        <td>1</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>Proton</td>
+        <td>-1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>B-A</td>
+        <td>Beta- and Alpha</td>
+        <td>-1</td>
+        <td>-3</td>
+      </tr>
+      <tr>
+        <td>B-2N</td>
+        <td>Beta- and 2 Neutrons</td>
+        <td>1</td>
+        <td>-3</td>
+      </tr>
+      <tr>
+        <td>B-3N</td>
+        <td>Beta- and 3 Neutrons</td>
+        <td>1</td>
+        <td>-4</td>
+      </tr>
+      <tr>
+        <td>2P</td>
+        <td>2 Protons</td>
+        <td>-2</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>B+ / EC / EC+B+</td>
+        <td>Beta+ (Positron) / Electron Capture</td>
+        <td>-1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>Alpha (He Nucleus)</td>
+        <td>-2</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>B-4N</td>
+        <td>Beta- and 4 Neutrons</td>
+        <td>1</td>
+        <td>-5</td>
+      </tr>
+      <tr>
+        <td>ECA</td>
+        <td>Electron Capture and Alpha</td>
+        <td>-3</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>ECP</td>
+        <td>Electron Capture and Proton</td>
+        <td>-2</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>EC2P</td>
+        <td>Electron Capture and 2 Protons</td>
+        <td>-3</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>EC3P</td>
+        <td>Electron Capture and 3 Protons</td>
+        <td>-4</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>ECAP</td>
+        <td>Electron Capture and Alpha and Proton</td>
+        <td>-4</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>3P</td>
+        <td>3 Protons</td>
+        <td>-3</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2B-</td>
+        <td>2 Beta-'s</td>
+        <td>2</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>14C</td>
+        <td>Carbon 14 Nucleus</td>
+        <td>-6</td>
+        <td>-8</td>
+      </tr>
+      <tr>
+        <td>24NE</td>
+        <td>Neon 24 Nucleus</td>
+        <td>-10</td>
+        <td>-14</td>
+      </tr>
+      <tr>
+        <td>20O</td>
+        <td>Oxygen 20 Nucleus</td>
+        <td>-8</td>
+        <td>-12</td>
+      </tr>
+      <tr>
+        <td>20NE / NE</td>
+        <td>Neon 20 Nucleus</td>
+        <td>-10</td>
+        <td>-10</td>
+      </tr>
+      <tr>
+        <td>25NE</td>
+        <td>Neon 25 Nucleus</td>
+        <td>-10</td>
+        <td>-15</td>
+      </tr>
+      <tr>
+        <td>28MG</td>
+        <td>Magnesium 28 Nucleus</td>
+        <td>-12</td>
+        <td>-16</td>
+      </tr>
+      <tr>
+        <td>22NE</td>
+        <td>Neon 22 Nucleus</td>
+        <td>-10</td>
+        <td>-12</td>
+      </tr>
+      <tr>
+        <td>MG</td>
+        <td>Magnesium 24 Nucleus</td>
+        <td>-12</td>
+        <td>-12</td>
+      </tr>
+    </table>
+    
+  </div>
+  
+  <script>expndOrClps('DC Sect', 'DC bttn');</script>
+  
+  <h2>Sources:</h2>
+  
+  <ul>
+    <li>National Nuclear Data Center, information extracted from the NuDat database, <a href="https://www.nndc.bnl.gov/nudat/" target="_blank">https://www.nndc.bnl.gov/nudat/</a></li>
+    <li>International Atomic Energy Agency's <a href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" target="_blank">Live Charts</a></li>
+  </ul>
+  
+</body>
+
+<!--Start-->
+
+<footer>
+  <div>
+    KaliBasenji42's Website<br>
+    Copyright (C) 2025  KaliBasenji42<br><br>
+    
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; version 2 of the License.<br><br>
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.<br><br>
+    
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.<br><br>
+    
+    <a href="../../LICENSE.md" target="_blank">Attached License</a><br>
+    <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank">GPL v2</a><br>
+    <a href="https://github.com/KaliBasenji42" target="_blank">KaliBasenji42's Github</a>
+  </div>
+</footer>
+
+<button id="themeButton" onclick="nextTheme(1)" title="Change Theme">◪</button>
+
+</html>
+
+<!--End-->
+
+<!--Hello!-->

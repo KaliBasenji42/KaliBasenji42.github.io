@@ -6,53 +6,137 @@ const headHTML = `
 const bodyHTML = `
   `;
 
-let menus;
-let currentMenu = 'none';
+// Nuclear Variables
 
-let fileNameInput;
+let NuDat = {};
 
-let DCForm;
+let decay = {
+  dict: {
+    // [Z, N] for each decay mode
+    'B-': [1, -1],
+    'β⁻': [1, -1],
+    'N': [0, -1],
+    '2N': [0, -2],
+    'B-N': [1, -2],
+    'P': [-1, 0],
+    'B-A': [-1, -3],
+    'B-2N': [1, -3],
+    'B-3N': [1, -4],
+    '2P': [-2, 0],
+    'EC': [-1, 1],
+    'B+': [-1, 1],
+    'EC+B+': [-1, 1],
+    'A': [-2, -2],
+    'B-4N': [1, -5],
+    'ECA': [-3, -1],
+    'ECP': [-2, 1],
+    'EC2P': [-3, 1],
+    'EC3P': [-4, 1],
+    'ECAP': [-4, -1],
+    '3P': [-3, 0],
+    '2B-': [2, -2],
+    '14C': [-6, -8],
+    '24NE': [-10, -14],
+    '20O': [-8, -12],
+    '20NE': [-10, -10],
+    'NE': [-10, -10],
+    '25NE': [-10, -15],
+    '28MG': [-12, -16],
+    '22NE': [-10, -12],
+    'MG': [-12, -12]
+  },
+  selectedIso: '',
+  parents: {}
+};
 
-let gameWindow;
-let active = true;
+// Nuclear Function
 
-// Game Functions
-
-function closeMenus() {
+function loadNuDat() {
   
-  for(let i = 0; i < menus.length; i++) {
+  let nuDatStatOutput = document.getElementById('NuDatStat');
+  
+  nuDatStatOutput.innerHTML = '🔄';
+  
+  fetch('assets/data/NuDat.json')
+    .then(response => {
+      
+      if(!response.ok) {
+        
+        nuDatStatOutput.innerHTML = '⚠️ Response Not OK';
+        
+        throw new Error('Response: ' + response.statusText);
+        
+      }
+      
+      return response.json();
+      
+    })
+    .then(data => {
+      
+      NuDat = data;
+      
+      nuDatStatOutput.innerHTML = '✅';
+      
+    })
+    .catch(error => {
+      
+      nuDatStatOutput.innerHTML = '⚠️ Failed to Fetch';
+      
+      console.log(error);
+      
+    });
+  
+}
+
+function ZNtoName(Z, N) {
+  
+  for(const iso in NuDat) {
     
-    menus[i].style.display = 'none';
+    if(NuDat[iso]['z'] == Z && NuDat[iso]['n'] == N) return NuDat[iso]['name'];
     
   }
   
-  currentMenu = 'none';
+}
+
+// Decay Functions
+
+function listDecayModes(all) {
+  // all: Log all
+  
+  let list = new Set();
+  
+  for(const iso in NuDat) {
+    
+    try {
+      
+      let modes = {};
+      
+      modes = NuDat[iso]['levels'][0]['decayModes']['observed'];
+      
+      for(const mode in modes) {
+        list.add(modes[mode]['mode']);
+        if(all) console.log(modes[mode]['mode'] + ' in ' + NuDat[iso]['name']);
+      }
+      
+    }
+    
+    catch {}
+    
+  }
+  
+  console.log(list);
   
 }
 
-function openMenu(ID) {
+function decayChange(mode) {
   
-  closeMenus();
+  // Returns [Z, N] change
   
-  document.getElementById(ID).style.display = 'block';
-  
-  currentMenu = ID;
-  
-}
+  for(key in decay['dict']) {
+    if(key == mode) return decay['dict'][mode];
+  }
 
-function saveFile() {
-  
-  input = fileNameInput.value;
-  
-  console.log('Save: ' + input);
-  
-}
-
-function openFile() {
-  
-  input = fileNameInput.value;
-  
-  console.log('Open: ' + input);
+  return [0, 0];
   
 }
 
@@ -60,114 +144,8 @@ function openFile() {
 
 document.addEventListener('DOMContentLoaded', function() {
   
-  // Elems & Variables
-  
-  menus = document.getElementsByClassName('menu');
-  
-  fileNameInput = document.getElementById('FileName');
-  
-  DCForm = document.getElementById('DCForm');
-  
-  gameWindow = document.getElementsByClassName('window')[0];
-  
-  // Menu
-  
-  for(let i = 0; i < menus.length; i++) {
-    
-    // X
-    
-    let menuX = document.createElement('button');
-    menus[i].appendChild(menuX);
-    menuX.className = 'bttn menuX';
-    menuX.onclick = function() {closeMenus();}
-    
-    let menuXImg = document.createElement('img');
-    menuX.appendChild(menuXImg);
-    menuXImg.className = 'bttnImg';
-    menuXImg.src = 'assets/images/X.png';
-    menuXImg.title = '[ESC]';
-    
-  }
-  
   // Data
   
   loadNuDat();
-  
-  // Decay Chain
-  
-  DCForm.addEventListener("submit", function(event) {
-    
-    event.preventDefault();
-    
-    let isoStr = document.getElementById('DCIsoInput').value; // Grab input isotope
-    let parent = NuDat[isoStr]; // Parent = input isotope in NuDat
-    
-    if(parent === undefined) return; // Return if input is not in NuDat
-    
-    let DCTbl = document.getElementById('DCTbl'); // Grab rendering table
-    let isosCountElem = document.getElementById('DCIsosCount'); // Grab isotope count elem
-    
-    let isos = new Set(); // Init isos
-    let newIsos = new Set([parent]); // init newIsos
-    
-    while(newIsos.size > 0) { // While newIsos is not empty (to get daughters all the way down)
-      
-      let tempIsos = new Set(newIsos); // Temporary set
-      
-      isos = isos.union(newIsos); // isos = isos + newIsos (Union)
-      newIsos.clear(); // Clear newIsos
-      
-      isosCountElem.innerHTML = isos.size; // Update count
-      
-      for(const iso of tempIsos) { // Each iso in tempIsos
-        
-        let modes = {}; // init modes
-        
-        if(iso['levels'][0].hasOwnProperty('decayModes')) {
-          
-          modes = iso['levels'][0]['decayModes']['observed']; // Set modes to iso's modes
-          
-        }
-        
-        for(const mode in modes){ // For each decay mode
-          
-          let Z = iso['z']; // Set Z (# of protons)
-          let N = iso['n']; // Set N (# of neutrons)
-          
-          let change = decayChange(modes[mode]['mode']); // Get change from mode
-          
-          if(!(change[0] == 0 && change[1] == 0)) { // If there was change
-            let daughter = NuDat[ZNtoName(Z + change[0], N + change[1])]; // Get daughter
-            newIsos.add(daughter); // Add daughter to newIsos
-            
-            //console.log(iso['name'] + ' ' + modes[mode]['mode'] + ' -> ' + daughter['name']);
-          }
-          
-        }
-        
-      }
-      
-    }
-    
-    createDecayChain(isos, DCTbl); // Create chain
-    
-  });
-  
-  // Key Press
-  
-  gameWindow.addEventListener('mouseenter', function() {active = true;});
-  gameWindow.addEventListener('mouseleave', function() {active = false;});
-  
-  document.addEventListener('keyup', function(event) {
-    
-    if(active) {
-      
-      if(event.key == 'Escape') closeMenus();
-      
-      if(event.key == 'f' || event.key == 'F') openMenu('MenuSave');
-      
-    }
-    
-  });
   
 });
