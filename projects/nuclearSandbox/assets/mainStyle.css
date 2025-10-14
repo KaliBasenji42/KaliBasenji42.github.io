@@ -94,6 +94,65 @@ img{
   height: 3rem;
 }
 
+/* Periodic Table */
+
+#selCont {
+  overflow-x: scroll;
+  width: 100%;
+}
+
+.selTbl > tbody > tr > td {
+  position: relative;
+  
+  text-align: center;
+  line-height: 3rem;
+  font-size: 1.25rem;
+  
+  min-width: 3rem;
+  min-height: 3rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.selTbl > tbody > tr > #a, .selTbl > tbody > tr > #l {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.selTbl > tbody > tr > td {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.selTbl > tbody > tr > .b {
+  border: 0;
+}
+
+.selTbl > tbody > tr > .elem {
+  cursor: pointer;
+}
+
+.selTbl > tbody > tr > .elem:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+
+.selTbl > tbody > tr > .elem > .zNote {
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
+.selTbl > tbody > tr > .elem > .wNote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
 /* Decay Chain */
 
 .DCCont {
@@ -128,9 +187,8 @@ img{
 
 .tbl {
   border-collapse: collapse;
-  background-color: rgb(240, 240, 240);
   max-width: 100%;
-  width: 30rem;
+  min-width: 30rem;
 }
 
 .info > tbody > tr > td {

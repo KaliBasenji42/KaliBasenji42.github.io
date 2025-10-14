@@ -43,48 +43,30 @@ let decay = {
     '25NE': [-10, -15],
     '28MG': [-12, -16],
     '22NE': [-10, -12],
-    'MG': [-12, -12]
-  },
-  selectedIso: '',
-  parents: {}
+    'SI': [-12, -12],
+    'MG': [-12, -12],
+    '34SI': [-12, -20],
+  }
 };
 
 // Nuclear Function
 
-function loadNuDat() {
+async function loadNuDat() {
   
   let nuDatStatOutput = document.getElementById('NuDatStat');
   
-  nuDatStatOutput.innerHTML = '🔄';
+  nuDatStatOutput.innerHTML = '🔄'; // Loading Status
   
-  fetch('assets/data/NuDat.json')
-    .then(response => {
-      
-      if(!response.ok) {
-        
-        nuDatStatOutput.innerHTML = '⚠️ Response Not OK';
-        
-        throw new Error('Response: ' + response.statusText);
-        
-      }
-      
-      return response.json();
-      
-    })
-    .then(data => {
-      
-      NuDat = data;
-      
-      nuDatStatOutput.innerHTML = '✅';
-      
-    })
-    .catch(error => {
-      
-      nuDatStatOutput.innerHTML = '⚠️ Failed to Fetch';
-      
-      console.log(error);
-      
-    });
+  let file = await fetch('assets/data/NuDat.json'); // Fetch file
+  
+  if(!file.ok) {
+    nuDatStatOutput.innerHTML = '⚠️ Response Not OK'; // Status
+    throw new Error('Response: ' + response.statusText); // Log Error
+  }
+  
+  NuDat = await file.json(); // Set
+  
+  nuDatStatOutput.innerHTML = '✅'; // Status
   
 }
 
@@ -98,6 +80,52 @@ function ZNtoName(Z, N) {
   
 }
 
+function listKeys(details) {
+  // details: Log first shown value
+  
+  let list = new Set();
+  
+  for(const iso in NuDat) {
+    
+    for(const key in NuDat[iso]) {
+      
+      if(details && !list.has(key)) {
+        console.log(iso + ': ' + key + ': ');
+        console.log(NuDat[iso][key]);
+      }
+      
+      list.add(key);
+      
+    }
+    
+  }
+  
+  return list
+  
+}
+
+function listLevelKeys() {
+  
+  let list = new Set();
+  
+  for(const iso in NuDat) {
+    
+    for(const level in NuDat[iso].levels) {
+      
+      for(const key in NuDat[iso].levels[level]) {
+        
+        list.add(key);
+        
+      }
+      
+    }
+    
+  }
+  
+  return list
+  
+}
+
 // Decay Functions
 
 function listDecayModes(all) {
@@ -107,24 +135,28 @@ function listDecayModes(all) {
   
   for(const iso in NuDat) {
     
-    try {
+    for(const level in NuDat[iso]['levels']) {
       
-      let modes = {};
-      
-      modes = NuDat[iso]['levels'][0]['decayModes']['observed'];
-      
-      for(const mode in modes) {
-        list.add(modes[mode]['mode']);
-        if(all) console.log(modes[mode]['mode'] + ' in ' + NuDat[iso]['name']);
+      try {
+        
+        let modes = {};
+        
+        modes = NuDat[iso]['levels'][level]['decayModes']['observed'];
+        
+        for(const mode in modes) {
+          list.add(modes[mode]['mode']);
+          if(all) console.log(modes[mode]['mode'] + ' in ' + NuDat[iso]['name']);
+        }
+        
       }
+      
+      catch {}
       
     }
     
-    catch {}
-    
   }
   
-  console.log(list);
+  return list
   
 }
 
@@ -143,9 +175,5 @@ function decayChange(mode) {
 // Events
 
 document.addEventListener('DOMContentLoaded', function() {
-  
-  // Data
-  
-  loadNuDat();
   
 });

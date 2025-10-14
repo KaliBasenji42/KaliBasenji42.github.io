@@ -52,6 +52,28 @@ function expndOrClps(ID, bttnID) {
   
 }
 
+function expand(ID, bttnID) {
+  
+  sect = document.getElementById(ID);
+  bttn = document.getElementById(bttnID);
+  height = "" + (sect.scrollHeight + 100) + "px";
+  
+  sect.style.maxHeight = height;
+  bttn.style.transform = "rotate(0deg)";
+  
+}
+
+function collapse(ID, bttnID) {
+  
+  sect = document.getElementById(ID);
+  bttn = document.getElementById(bttnID);
+  height = "" + (sect.scrollHeight + 100) + "px";
+  
+  sect.style.maxHeight = "0px";
+  bttn.style.transform = "rotate(270deg)";
+  
+}
+
 function collapseAll() {
   
   let sections = document.getElementsByClassName('sect');

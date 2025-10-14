@@ -58,6 +58,10 @@ document.addEventListener('DOMContentLoaded', function() {
   
   gameWindow = document.getElementsByClassName('window')[0];
   
+  // Load Data
+  
+  loadNuDat();
+  
   // Menu
   
   for(let i = 0; i < menus.length; i++) {
