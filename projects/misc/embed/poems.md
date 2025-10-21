@@ -28,7 +28,7 @@ For ages
 I do not know
 </pre>
 
-<h2>Too much to see</h2>
+<h2>Too Much to See</h2>
 
 <pre>
 Collision of water
@@ -43,4 +43,18 @@ Low pressure atmosphere
 
 Filled with mist
 Carrying soil
+</pre>
+
+<h2>Divine Tears</h2>
+
+<pre>
+Solar radiation shielded
+Ozone seeping into
+Olfactory system
+Soaked in dihydrogen monoxide
+
+Electrons cumulating
+Atmosphere ionizing
+Air undulating
+Emission of photons
 </pre>
