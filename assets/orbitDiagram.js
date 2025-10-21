@@ -73,7 +73,7 @@ function ODBoxScrollTo(object) { // Function for scrolling to a celestial
   
   ODBox.scrollTo({left: pos});
   
-  let dist = '' + Math.floor((ODBox.scrollLeft + (section * increment * -1) - 400) * dScale);
+  let dist = '' + Math.floor((ODBox.scrollLeft + (section * increment * -1) - offset) * dScale);
   
   output.innerHTML = 'Scroll: ' + ODBox.scrollLeft + '<br>Section: ' + section + '<br>Distance: ' + dist + ' km';
   
@@ -98,7 +98,7 @@ function ODBoxScrollToPx(pos, smooth) { // Function for scrolling to a pixel pos
   
   ODBox.scrollTo({left: pos});
   
-  let dist = '' + Math.floor((ODBox.scrollLeft + (section * increment * -1) - 400) * dScale);
+  let dist = '' + Math.floor((ODBox.scrollLeft + (section * increment * -1) - offset) * dScale);
   
   output.innerHTML = 'Scroll: ' + ODBox.scrollLeft + '<br>Section: ' + section + '<br>Distance: ' + dist + ' km';
   
@@ -159,8 +159,8 @@ function dScaleAdd() { // Add to distance scale (for button)
 function render(smooth) { // Function for setting celestials' styles
   // Smooth: boolean for wether to animate transition
   
-  rDisp.innerHTML = 'Radius px = km / ' + rScale;
-  dDisp.innerHTML = 'Distance px = km / ' + dScale;
+  rDisp.innerHTML = '1 Radius px = ' + rScale + ' km';
+  dDisp.innerHTML = '1 Distance px = ' + dScale + ' km';
   
   for(let i = 0; i < celestials.length; i++) {
     
@@ -300,7 +300,7 @@ function createScrollNav() {
 
 ODBox.addEventListener('scroll', function() {
   
-  let dist = '' + Math.floor((ODBox.scrollLeft + (section * increment * -1) - 400) * dScale);
+  let dist = '' + Math.floor((ODBox.scrollLeft + (section * increment * -1) - offset) * dScale);
   
   output.innerHTML = 'Scroll: ' + ODBox.scrollLeft + '<br>Section: ' + section + '<br>Distance: ' + dist + ' km';
   
