@@ -6,6 +6,22 @@ img{
   image-rendering: auto;
 }
 
+/* Tables */
+
+.tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.tbl {
+  border-collapse: collapse;
+  min-width: 30rem;
+}
+
+.tblCont {
+  overflow-x: scroll;
+  width: 100%;
+}
+
 /* Window */
 
 .window {
@@ -96,11 +112,6 @@ img{
 
 /* Periodic Table */
 
-#selCont {
-  overflow-x: scroll;
-  width: 100%;
-}
-
 .selTbl > tbody > tr > td {
   position: relative;
   
@@ -179,16 +190,6 @@ img{
   overflow: visible;
   text-overflow: ellipsis;
   padding: 0;
-}
-
-.tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {
-  border: 1px solid rgb(0, 0, 0);
-}
-
-.tbl {
-  border-collapse: collapse;
-  max-width: 100%;
-  min-width: 30rem;
 }
 
 .info > tbody > tr > td {
