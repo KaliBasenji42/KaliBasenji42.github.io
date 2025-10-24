@@ -181,7 +181,8 @@ function chemElemClick(z) { // Create Weight Table for selection
     
     // Create td
     
-    weightTable.innerHTML += '<td class="elem" onclick="weightIsoClick(\'' + chemElems[z][elem] + '\')">' + weight + '</td>';
+    weightTable.innerHTML += '<td class="elem" onclick="weightIsoClick(\'' + chemElems[z][elem] + '\')">' + weight + 
+                             '<div class="wNote">n = ' + (weight - z) + '</div></td>';
     
   }
   
