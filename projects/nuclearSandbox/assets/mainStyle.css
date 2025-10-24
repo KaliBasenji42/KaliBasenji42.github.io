@@ -1,5 +1,9 @@
 /* Elements */
 
+body {
+  margin-top: 4rem;
+}
+
 li {font-size: 1.125rem;}
 
 img{
@@ -35,14 +39,23 @@ img{
   overflow: hidden;
 }
 
-.toolBar {
+#toolbar {
   background-color: rgb(240, 240, 240);
   
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  
+  position: fixed;
+  left: 0;
+  top: 0;
+  
   height: 3rem;
+  width: 100vw;
   
   overflow-x: auto;
   overflow-y: hidden;
+  
+  z-index: 1;
 }
 
 .field {
@@ -105,9 +118,9 @@ img{
   background-color: rgb(224, 224 , 224);
 }
 
-.bttnImg {
-  width: 3rem;
+.bttn > img {
   height: 3rem;
+  width: 3rem;
 }
 
 /* Periodic Table */
@@ -216,4 +229,8 @@ img{
 
 .dataBttn:active {
   background-color: rgb(224, 224, 224);
+}
+
+#themeButton {
+  z-index: 100;
 }
