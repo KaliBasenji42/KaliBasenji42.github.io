@@ -1,0 +1,505 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<!--End-->
+  <title>Nuclear Sandbox | Isotope Data & Process</title>
+<!--Start-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../assets/areFilesLinked.js"></script>
+  
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
+  
+<!--End-->
+  
+  <script src="assets/nuclear.js"></script>
+  
+  <p><a href="../../">Home Page</a></p>
+  <p><a href="./">Game</a></p>
+  
+  <h1>Nuclear Sandbox | Isotope Data & Process (WIP)</h1>
+  
+  <h2>
+    NuDat Status:<span id="NuDatStat">🔄</span>
+  </h2>
+  
+  <button onclick="loadNuDat()" class="dataBttn" title="Re-Fetch NuDat">
+    ↺
+  </button>
+  
+  <p>
+    DISCLAIMER: This is general and may not be accurate. This is for entertainment purposes and is based on real physics, to a point, for realism.
+  </p>
+  
+  <button onclick="collapseAll()" style="margin-left: 1rem; margin-right: 1rem;">Collapse All</button>
+  <button onclick="expandAll()" style="margin-left: 1rem; margin-right: 1rem;">Expand All</button>
+  
+  <h2>
+    Data
+    <span><button class="sectBttn" id="dataBttn" onclick="expndOrClps('dataSect', 'dataBttn')">🔽</button></span>
+  </h2>
+  
+  <div id="dataSect" class="sect">
+    
+    <h3>Periodic Table</h3>
+    
+    <div class="tblCont">
+      <table class="selTbl"><tbody id="periodic"></tbody></table>
+    </div>
+    
+    <h3>Weights</h3>
+    
+    <div class="tblCont">
+      <table class="selTbl"><tbody><tr id="weights"></tr></tbody></table>
+    </div>
+    
+    <h3>Info</h3>
+    
+    <table class="tbl">
+      <tbody id="selInfo">
+        <tr><th>Value Name</th><th>Value</th><th>Unit</th><th>Uncertainty</th></tr>
+      </tbody>
+    </table>
+    
+    <h3>Energy Levels</h3>
+    
+    <div class="tblCont">
+      <table class="selTbl"><tbody><tr id="levels"></tr></tbody></table>
+    </div>
+    
+    <h3>Level Info</h3>
+    
+    <table class="tbl">
+      <tbody id="selLevelInfo">
+        <tr><th>Value Name</th><th>Value</th><th>Unit</th><th>Uncertainty</th></tr>
+      </tbody>
+    </table>
+    
+    <table class="tbl">
+      <tbody id="selDecayModes">
+        <tr><th colspan="4">Decay Modes</th></tr>
+        <tr><th>Mode</th><th>Percent</th><th>Uncertainty</th><th>Observed/Predicted</th></tr>
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <h2>Decay Chain
+    <span><button class="sectBttn" id="DCBttn" onclick="expndOrClps('DCSect', 'DCBttn')">🔽</button></span>
+  </h2>
+  
+  <p>Only ground states used.</p>
+  
+  <div id="DCSect" class="sect">
+    
+    <form id="DCForm">
+      <label for="DCIsoInput">Isotope:</label>
+      <input type="text" id="DCIsoInput" name="DCIsoInput">
+      Example: "235U"<br>
+      <input type="submit" value="Load">
+    </form>
+    
+    <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
+    
+    <div class="DCCont">
+      <table class="DCTbl" id="DCTbl">
+      </table>
+    </div>
+    
+    <br>
+    
+    <table class="tbl info" id="selected">
+      <tr>
+        <th>Selected</th>
+      </tr>
+      <tr>
+        <td>Name: #z, #n: Halflife: Decay Modes</td>
+      </tr>
+    </table>
+    <table class="tbl info" id="daughters">
+      <tr>
+        <th>Daughters</th>
+        <th>Info</th>
+      </tr>
+      <tr>
+        <td>Name: #z, #n</td>
+        <td>Decay Mode (Δz, Δn): Prob.%</td>
+      </tr>
+    </table>
+    <table class="tbl info" id="parents">
+      <tr>
+        <th>Parents</th>
+      </tr>
+      <tr>
+        <td>Name: #z, #n</td>
+      </tr>
+    </table>
+    
+    <p>Horizontal Axis: N (Neutrons), Vertical Axis: Z (Protrons/Element)</p>
+    <p>Red<span style="color: rgb(255, 0, 0);">█</span> & Cyan<span style="color: rgb(0, 255, 255);">█</span>: Selected</p>
+    <p>Green<span style="color: rgb(0, 255, 0);">█</span> & Magenta<span style="color: rgb(255, 0, 255);">█</span>: Daughter</p>
+    <p>Blue<span style="color: rgb(0, 0, 255);">█</span> & Yellow<span style="color: rgb(255, 255, 0);">█</span>: Parent</p>
+    
+    <table class="tbl">
+      <tr>
+        <th>Symbol</th>
+        <th>Mode</th>
+        <th>ΔZ</th>
+        <th>ΔN</th>
+      </tr>
+      <tr>
+        <td>B- / β⁻</td>
+        <td>Beta- (Electron)</td>
+        <td>1</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>N</td>
+        <td>Neutron</td>
+        <td>0</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>2N</td>
+        <td>2 Neutrons</td>
+        <td>0</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>B-N</td>
+        <td>Beta- and Neutron</td>
+        <td>1</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>P</td>
+        <td>Proton</td>
+        <td>-1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>B-A</td>
+        <td>Beta- and Alpha</td>
+        <td>-1</td>
+        <td>-3</td>
+      </tr>
+      <tr>
+        <td>B-2N</td>
+        <td>Beta- and 2 Neutrons</td>
+        <td>1</td>
+        <td>-3</td>
+      </tr>
+      <tr>
+        <td>B-3N</td>
+        <td>Beta- and 3 Neutrons</td>
+        <td>1</td>
+        <td>-4</td>
+      </tr>
+      <tr>
+        <td>2P</td>
+        <td>2 Protons</td>
+        <td>-2</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>B+ / EC / EC+B+</td>
+        <td>Beta+ (Positron) / Electron Capture</td>
+        <td>-1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>Alpha (He Nucleus)</td>
+        <td>-2</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>B-4N</td>
+        <td>Beta- and 4 Neutrons</td>
+        <td>1</td>
+        <td>-5</td>
+      </tr>
+      <tr>
+        <td>ECA</td>
+        <td>Electron Capture and Alpha</td>
+        <td>-3</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>ECP</td>
+        <td>Electron Capture and Proton</td>
+        <td>-2</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>IT</td>
+        <td>Internal Transition (Gamma)</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>EC2P</td>
+        <td>Electron Capture and 2 Protons</td>
+        <td>-3</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>EC3P</td>
+        <td>Electron Capture and 3 Protons</td>
+        <td>-4</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>ECAP</td>
+        <td>Electron Capture and Alpha and Proton</td>
+        <td>-4</td>
+        <td>-1</td>
+      </tr>
+      <tr>
+        <td>3P</td>
+        <td>3 Protons</td>
+        <td>-3</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>2B-</td>
+        <td>2 Beta-'s</td>
+        <td>2</td>
+        <td>-2</td>
+      </tr>
+      <tr>
+        <td>ECSF</td>
+        <td>Electron Capture and Spontaneous Fission</td>
+        <td>?</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>14C</td>
+        <td>Carbon 14 Nucleus</td>
+        <td>-6</td>
+        <td>-8</td>
+      </tr>
+      <tr>
+        <td>B-SF</td>
+        <td>Beta- and Spontaneous Fission</td>
+        <td>?</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>24NE</td>
+        <td>Neon 24 Nucleus</td>
+        <td>-10</td>
+        <td>-14</td>
+      </tr>
+      <tr>
+        <td>SF</td>
+        <td>Spontaneous Fission</td>
+        <td>?</td>
+        <td>?</td>
+      </tr>
+      <tr>
+        <td>20O</td>
+        <td>Oxygen 20 Nucleus</td>
+        <td>-8</td>
+        <td>-12</td>
+      </tr>
+      <tr>
+        <td>20NE / NE</td>
+        <td>Neon 20 Nucleus</td>
+        <td>-10</td>
+        <td>-10</td>
+      </tr>
+      <tr>
+        <td>25NE</td>
+        <td>Neon 25 Nucleus</td>
+        <td>-10</td>
+        <td>-15</td>
+      </tr>
+      <tr>
+        <td>28MG</td>
+        <td>Magnesium 28 Nucleus</td>
+        <td>-12</td>
+        <td>-16</td>
+      </tr>
+      <tr>
+        <td>22NE</td>
+        <td>Neon 22 Nucleus</td>
+        <td>-10</td>
+        <td>-12</td>
+      </tr>
+      <tr>
+        <td>SI</td>
+        <td>Silicon 28 Nucleus</td>
+        <td>-14</td>
+        <td>-14</td>
+      </tr>
+      <tr>
+        <td>MG</td>
+        <td>Magnesium 24 Nucleus</td>
+        <td>-12</td>
+        <td>-12</td>
+      </tr>
+      <tr>
+        <td>34SI</td>
+        <td>Silicon 34 Nucleus</td>
+        <td>-12</td>
+        <td>-20</td>
+      </tr>
+    </table>
+    
+  </div>
+  
+  <h2>Decay Process (WIP - Not Working Yet)
+    <span><button class="sectBttn" id="DecayBttn" onclick="expndOrClps('DecaySect', 'DecayBttn')">🔽</button></span>
+  </h2>
+  
+  <div id="DecaySect" class="sect">
+    
+    <form id="DecayForm">
+      <label for="DecayIsoInput">Isotope:</label>
+      <input type="text" id="DecayIsoInput" name="DecayIsoInput">
+      Example: "235U"<br>
+      
+      <label for="DecayStepSize">Time Step Size (seconds):</label>
+      <input type="number" min="0" id="DecayStepSize" name="DecayStepSize"><br>
+      
+      <label for="DecayRunTime">Run Time (seconds):</label>
+      <input type="number" min="0" id="DecayRunTime" name="DecayRunTime"><br>
+      
+      <label for="DecayMass">Mass (grams):</label>
+      <input type="number" min="0" id="DecayMass" name="DecayMass"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      <output id="DecayOut">Awaiting Input...</output>
+    </form>
+    
+    <h3>Output Material</h3>
+    
+    <table class="tbl">
+      <tbody id="decayMaterial">
+        <tr><th>Isotope</th><th>% Atoms</th><th>% Mass</th><th>Part Mass (g)</th></tr>
+      </tbody>
+    </table>
+    
+    <h3>Energy</h3>
+    
+    <table class="tbl">
+      <tbody id="decayEnergy">
+        <tr><th>Total Mass (g)</th><th>Mass Loss (g)</th><th>Total Joules</th><th>Predicted Δ Kelvin</th></tr>
+      </tbody>
+    </table>
+    
+    <h3>Decays</h3>
+    
+    <table class="tbl">
+      <tbody id="decayDecay">
+        <tr><th>Time Step (s)</th><th>Parent</th><th>Daughter</th><th>Particle Type</th><th>Decay Constant (Prob.) %</th><th>Δ Mass (eV)</th><th>% Decayed Atoms</th><th># Decayed Atoms (Moles)</th><th>Total Δ Mass (?)</th></tr>
+      </tbody>
+    </table>
+    
+    <h3>Decay Energy</h3>
+    
+    <table class="tbl">
+      <tbody id="decayEnergy">
+        <tr><th>Particle Type</th><th>Assumed Thermal Absorption %</th><th>Total Particles Energy (J)</th><th>Predicted Thermal Absorption (K)</th></tr>
+        <tr><td>Alpha</td><td>?</td><td></td><td></td></tr>
+        <tr><td>Beta-</td><td>?</td><td></td><td></td></tr>
+        <tr><td>2 Beta-</td><td>?</td><td></td><td></td></tr>
+        <tr><td>Beta+</td><td>?</td><td></td><td></td></tr>
+        <tr><td>Gamma</td><td>0%</td><td></td><td></td></tr>
+        <tr><td>Neutron</td><td>?</td><td></td><td></td></tr>
+        <tr><td>2 Neutrons</td><td>?</td><td></td><td></td></tr>
+        <tr><td>3 Neutrons</td><td>?</td><td></td><td></td></tr>
+        <tr><td>Proton</td><td>?</td><td></td><td></td></tr>
+        <tr><td>2 Protons</td><td>?</td><td></td><td></td></tr>
+        <tr><td>3 Protons</td><td>?</td><td></td><td></td></tr>
+        <tr><td>14C</td><td>?</td><td></td><td></td></tr>
+        <tr><td>24NE</td><td>?</td><td></td><td></td></tr>
+        <tr><td>20O</td><td>?</td><td></td><td></td></tr>
+        <tr><td>20NE</td><td>?</td><td></td><td></td></tr>
+        <tr><td>25NE</td><td>?</td><td></td><td></td></tr>
+        <tr><td>28MG</td><td>?</td><td></td><td></td></tr>
+        <tr><td>NE</td><td>?</td><td></td><td></td></tr>
+        <tr><td>22NE</td><td>?</td><td></td><td></td></tr>
+        <tr><td>SI</td><td>?</td><td></td><td></td></tr>
+        <tr><td>MG</td><td>?</td><td></td><td></td></tr>
+        <tr><td>34SI</td><td>?</td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    
+  </div>
+  
+  <h2>Sources:</h2>
+  
+  <ul>
+    <li>National Nuclear Data Center, information extracted from the NuDat database, <a href="https://www.nndc.bnl.gov/nudat/" target="_blank">https://www.nndc.bnl.gov/nudat/</a></li>
+    <li>International Atomic Energy Agency's <a href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" target="_blank">Live Charts</a></li>
+    <li><a href="https://ptable.com" target="_blank">Ptable</a></li>
+  </ul>
+  
+</body>
+
+<!--Start-->
+
+<footer>
+  <div>
+    KaliBasenji42's Website<br>
+    Copyright (C) 2025  KaliBasenji42<br><br>
+    
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; version 2 of the License.<br><br>
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.<br><br>
+    
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.<br><br>
+    
+    <a href="../../LICENSE.md" target="_blank">Attached License</a><br>
+    <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank">GPL v2</a><br>
+    <a href="https://github.com/KaliBasenji42" target="_blank">KaliBasenji42's Github</a>
+  </div>
+</footer>
+
+<button id="themeButton" onclick="nextTheme(1)" title="Change Theme">◪</button>
+
+</html>
+
+<!--End-->
+
+<!--Hello!-->

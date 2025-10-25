@@ -2,56 +2,83 @@
 
 li {font-size: 1.125rem;}
 
-img{
-  image-rendering: auto;
+/* Tables */
+
+.tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {
+  border: 1px solid rgb(0, 0, 0);
 }
 
-/* Window */
+.tbl {
+  border-collapse: collapse;
+  min-width: 30rem;
+}
+
+.tblCont {
+  overflow-x: scroll;
+  width: 100%;
+}
+
+/* Game */
 
 .window {
-  position: relative;
+  position: absolute;
   
-  background-color: rgb(192, 192, 192);
+  background-color: rgb(128, 128, 128);
   
-  width: 100%;
-  aspect-ratio: 2 / 1;
+  width: 100vw;
+  height: 50vw;
+  top: 3rem;
+  left: 0;
   
   overflow: hidden;
 }
 
-.toolBar {
-  background-color: rgb(240, 240, 240);
+#toolbar {
+  background-color: rgb(224, 224, 224);
   
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  
+  position: fixed;
+  left: 0;
+  top: 0;
+  
   height: 3rem;
+  width: 100vw;
   
   overflow-x: auto;
   overflow-y: hidden;
+  
+  z-index: 2;
 }
 
-.field {
+#toolbar > a {
+  cursor: alias;
+}
+
+#home.bttn > img {
   position: relative;
-  
-  width: 100%;
-  height: calc(100% - 3rem);
-  
-  overflow: scroll;
+  height: 2rem;
+  width: 2rem;
+  top: 0.5rem;
+  left: 0.5rem;
 }
 
 .menu {
   display: none;
-  
-  top: 20%;
-  left: 20%;
-  
-  background-color: rgb(240, 240, 240);
-  
   position: absolute;
-  padding: 0.5rem;
-  
+  background-color: rgb(224, 224, 224);
   box-shadow: 0.25rem 0.25rem 0.5rem;
   
-  overflow: hidden;
+  width: 32rem;
+  height: 24rem;
+  left: calc(50% - 16rem);
+  top: calc(50% - 12rem);
+  
+  padding: 1rem;
+  
+  overflow-y: scroll;
+  z-index: 1;
 }
 
 .menuTtl {
@@ -74,10 +101,14 @@ img{
 }
 
 .bttn {
-  background-color: rgb(240, 240 , 240);
+  background-color: rgba(0,0,0,0);
   
   height: 3rem;
   width: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  max-width: 3rem;
+  min-height: 3rem;
   
   border: 0;
   padding: 0;
@@ -86,12 +117,98 @@ img{
 }
 
 .bttn:hover {
-  background-color: rgb(224, 224 , 224);
+  background-color: rgb(192, 192 , 192);
 }
 
-.bttnImg {
+.bttn > img {
+  height: 3rem;
+  width: 3rem;
+}
+
+canvas#map {
+  position: absolute;
+  background-color: rgb(144, 144, 144);
+  
+  width: 48vw;
+  height: 36vw;
+  left: 5vw; /* (areaWidth / 2) - (width / 2); areaWidth = 60 */
+  top: 7vw; /* (areaHeight / 2) - (height / 2); areaHeight = 50 */
+  
+  border: 4px solid;
+  border-right-color: rgb(160, 160, 160);
+  border-bottom-color: rgb(160, 160, 160);
+  border-left-color: rgb(96, 96, 96);
+  border-top-color: rgb(96, 96, 96);
+}
+
+canvas#info {
+  position: absolute;
+  background-color: rgb(144, 144, 144);
+  
+  width: 24vw;
+  height: 32vw;
+  left: 68vw; /* (areaWidth / 2) - (width / 2) + 60; areaWidth = 40 */
+  top: 9vw; /* (areaHeight / 2) - (height / 2); areaHeight = 50 */
+  
+  border: 4px solid;
+  border-right-color: rgb(160, 160, 160);
+  border-bottom-color: rgb(160, 160, 160);
+  border-left-color: rgb(96, 96, 96);
+  border-top-color: rgb(96, 96, 96);
+}
+
+/* Periodic Table */
+
+.selTbl > tbody > tr > td {
+  position: relative;
+  
+  text-align: center;
+  line-height: 3rem;
+  font-size: 1.25rem;
+  
+  min-width: 3rem;
+  min-height: 3rem;
   width: 3rem;
   height: 3rem;
+}
+
+.selTbl > tbody > tr > #a, .selTbl > tbody > tr > #l {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
+
+.selTbl > tbody > tr > td {
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.selTbl > tbody > tr > .b {
+  border: 0;
+}
+
+.selTbl > tbody > tr > .elem {
+  cursor: pointer;
+}
+
+.selTbl > tbody > tr > .elem:hover {
+  background-color: rgba(128, 128, 128, 0.25);
+}
+
+.selTbl > tbody > tr > .elem > .zNote {
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  font-size: 0.8rem;
+  line-height: 0.8rem;
+}
+
+.selTbl > tbody > tr > .elem > .wNote {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  
+  font-size: 0.8rem;
+  line-height: 0.8rem;
 }
 
 /* Decay Chain */
@@ -101,7 +218,7 @@ img{
   width: 100%;
   overflow: scroll;
   
-  background-color: rgb(240, 240, 240);
+  background-color: rgba(128, 128, 128, 0.5);
 }
 
 .DCTbl {
@@ -111,7 +228,7 @@ img{
 }
 
 .DCIso {
-  border: 4px solid rgb(240, 240 , 240);
+  border: 4px solid rgba(240, 240, 240, 0);
   min-width: 3rem;
   min-height: 3rem;
   width: 3rem;
@@ -120,17 +237,6 @@ img{
   overflow: visible;
   text-overflow: ellipsis;
   padding: 0;
-}
-
-.tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {
-  border: 1px solid rgb(0, 0, 0);
-}
-
-.tbl {
-  border-collapse: collapse;
-  background-color: rgb(240, 240, 240);
-  max-width: 100%;
-  width: 30rem;
 }
 
 .info > tbody > tr > td {
@@ -157,4 +263,15 @@ img{
 
 .dataBttn:active {
   background-color: rgb(224, 224, 224);
+}
+
+/* Media */
+
+@media (max-width: 800px) {
+  .menu {
+    width: 16rem;
+    height: 12rem;
+    left: calc(50% - 8rem);
+    top: calc(50% - 6rem);
+  }
 }

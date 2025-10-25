@@ -85,6 +85,7 @@ table {
   background-color: rgb(240, 240, 240);
   color: rgb(0, 0, 0);
   position: fixed;
+  box-shadow: 0.25rem 0.25rem 0.5rem;
   
   width: 32rem;
   height: 24rem;
