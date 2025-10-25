@@ -1,14 +1,6 @@
 /* Elements */
 
-body {
-  margin-top: 4rem;
-}
-
 li {font-size: 1.125rem;}
-
-img{
-  image-rendering: auto;
-}
 
 /* Tables */
 
@@ -26,21 +18,23 @@ img{
   width: 100%;
 }
 
-/* Window */
+/* Game */
 
 .window {
-  position: relative;
+  position: absolute;
   
-  background-color: rgb(192, 192, 192);
+  background-color: rgb(128, 128, 128);
   
-  width: 100%;
-  aspect-ratio: 2 / 1;
+  width: 100vw;
+  height: 50vw;
+  top: 3rem;
+  left: 0;
   
   overflow: hidden;
 }
 
 #toolbar {
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(224, 224, 224);
   
   display: flex;
   flex-direction: row;
@@ -55,32 +49,36 @@ img{
   overflow-x: auto;
   overflow-y: hidden;
   
-  z-index: 1;
+  z-index: 2;
 }
 
-.field {
+#toolbar > a {
+  cursor: alias;
+}
+
+#home.bttn > img {
   position: relative;
-  
-  width: 100%;
-  height: calc(100% - 3rem);
-  
-  overflow: scroll;
+  height: 2rem;
+  width: 2rem;
+  top: 0.5rem;
+  left: 0.5rem;
 }
 
 .menu {
   display: none;
-  
-  top: 20%;
-  left: 20%;
-  
-  background-color: rgb(240, 240, 240);
-  
   position: absolute;
-  padding: 0.5rem;
-  
+  background-color: rgb(224, 224, 224);
   box-shadow: 0.25rem 0.25rem 0.5rem;
   
-  overflow: hidden;
+  width: 32rem;
+  height: 24rem;
+  left: calc(50% - 16rem);
+  top: calc(50% - 12rem);
+  
+  padding: 1rem;
+  
+  overflow-y: scroll;
+  z-index: 1;
 }
 
 .menuTtl {
@@ -103,10 +101,14 @@ img{
 }
 
 .bttn {
-  background-color: rgb(240, 240 , 240);
+  background-color: rgba(0,0,0,0);
   
   height: 3rem;
   width: 3rem;
+  min-width: 3rem;
+  min-height: 3rem;
+  max-width: 3rem;
+  min-height: 3rem;
   
   border: 0;
   padding: 0;
@@ -115,12 +117,44 @@ img{
 }
 
 .bttn:hover {
-  background-color: rgb(224, 224 , 224);
+  background-color: rgb(192, 192 , 192);
 }
 
 .bttn > img {
   height: 3rem;
   width: 3rem;
+}
+
+canvas#map {
+  position: absolute;
+  background-color: rgb(144, 144, 144);
+  
+  width: 48vw;
+  height: 36vw;
+  left: 5vw; /* (areaWidth / 2) - (width / 2); areaWidth = 60 */
+  top: 7vw; /* (areaHeight / 2) - (height / 2); areaHeight = 50 */
+  
+  border: 4px solid;
+  border-right-color: rgb(160, 160, 160);
+  border-bottom-color: rgb(160, 160, 160);
+  border-left-color: rgb(96, 96, 96);
+  border-top-color: rgb(96, 96, 96);
+}
+
+canvas#info {
+  position: absolute;
+  background-color: rgb(144, 144, 144);
+  
+  width: 24vw;
+  height: 32vw;
+  left: 68vw; /* (areaWidth / 2) - (width / 2) + 60; areaWidth = 40 */
+  top: 9vw; /* (areaHeight / 2) - (height / 2); areaHeight = 50 */
+  
+  border: 4px solid;
+  border-right-color: rgb(160, 160, 160);
+  border-bottom-color: rgb(160, 160, 160);
+  border-left-color: rgb(96, 96, 96);
+  border-top-color: rgb(96, 96, 96);
 }
 
 /* Periodic Table */
@@ -231,6 +265,13 @@ img{
   background-color: rgb(224, 224, 224);
 }
 
-#themeButton {
-  z-index: 100;
+/* Media */
+
+@media (max-width: 800px) {
+  .menu {
+    width: 16rem;
+    height: 12rem;
+    left: calc(50% - 8rem);
+    top: calc(50% - 6rem);
+  }
 }
