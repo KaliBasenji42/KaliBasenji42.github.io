@@ -4,7 +4,7 @@ li {font-size: 1.125rem;}
 
 /* Tables */
 
-.tbl, .tbl > tbody > tr > td, .tbl > tbody > tr > th {
+.tbl, .tbl td, .tbl th {
   border: 1px solid rgb(0, 0, 0);
 }
 
@@ -159,8 +159,9 @@ canvas#info {
 
 /* Periodic Table */
 
-.selTbl > tbody > tr > td {
+.selTbl td {
   position: relative;
+  border: 1px solid rgb(0, 0, 0);
   
   text-align: center;
   line-height: 3rem;
@@ -172,28 +173,24 @@ canvas#info {
   height: 3rem;
 }
 
-.selTbl > tbody > tr > #a, .selTbl > tbody > tr > #l {
+.selTbl #a, .selTbl #l {
   font-size: 1rem;
   line-height: 1.25rem;
 }
 
-.selTbl > tbody > tr > td {
-  border: 1px solid rgb(0, 0, 0);
-}
-
-.selTbl > tbody > tr > .b {
+.selTbl .b {
   border: 0;
 }
 
-.selTbl > tbody > tr > .elem {
+.selTbl .elem {
   cursor: pointer;
 }
 
-.selTbl > tbody > tr > .elem:hover {
+.selTbl .elem:hover {
   background-color: rgba(128, 128, 128, 0.25);
 }
 
-.selTbl > tbody > tr > .elem > .zNote {
+.selTbl .elem > .zNote {
   position: absolute;
   top: 0;
   right: 0;
@@ -202,7 +199,7 @@ canvas#info {
   line-height: 0.8rem;
 }
 
-.selTbl > tbody > tr > .elem > .wNote {
+.selTbl .elem > .wNote {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -239,7 +236,7 @@ canvas#info {
   padding: 0;
 }
 
-.info > tbody > tr > td {
+.info td {
   padding-left: 1rem;
   padding-right: 1rem;
 }
