@@ -113,7 +113,7 @@ for(let i = 0; i < body.length; i++) body[i].innerHTML += bodyHTML;
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('body').style = "animation-name: load;" +
                                          "animation-duration: 1s;";
-  loadSpin();
+  fun.load();
 });
 
 // Theme
@@ -323,33 +323,79 @@ restartWarning();
 
 // :P
 
-document.addEventListener('keypress', function() {
-  let key = event.keyCode || event.charCode;
-  if(key == 33) window.alert('Hello!');
-});
+let fun = {};
 
-let elems = [];
-let rotate = 0;
-let run = true;
-let trigger = '@';
+fun.elems = [];
+fun.trigger1 = '$';
+fun.triggered1 = false;
+fun.trigger2 = '@';
+fun.triggered2 = false;
 
-function loadSpin(){
-  elems = document.getElementsByTagName('*');
+fun.load = function() {
+  fun.elems = document.querySelectorAll('body *');
 }
 
-function spin() {
-  rotate += 180;
+fun.spinRotate = 0;
+fun.spinRun = true;
+
+fun.spin = function() {
+  console.log('Spin!');
   
-  for(let i = 0; i < elems.length; i ++) elems[i].style.rotate = '' + rotate + 'deg';
+  fun.spinRotate += 180;
+  
+  for(let i = 0; i < fun.elems.length; i++) fun.elems[i].style.rotate = '' + fun.spinRotate + 'deg';
+}
+
+fun.random = function() {
+  console.log('Random!');
+  console.log('WIP :/');
+  /*
+  for(let i = 0; i < fun.elems.length; i++) {
+    let elem = fun.elems[i];
+    let rect = elem.getBoundingClientRect();
+    
+    if(rect) {
+      console.log(rect.top);
+      elem.style.top = '' + rect.top + 'px';
+    }
+    
+    elem.style.position = 'fixed';
+  }*/
 }
 
 document.addEventListener('keypress', function() {
-    if(event.key == trigger && run) {
-        run = false;
-        spin();
-        window.setTimeout(spin, 5 * 1000);
-        window.setTimeout(function runTrue(){
-            run = true;
-        }, 5 * 1000 * 2);
-    }
+  
+  // 1 - Hello!
+  
+  if(event.key == '1' && fun.triggered2) {
+    window.alert('Hello!');
+  }
+  
+  // 2 - Spin
+  
+  if(event.key == '2' && fun.triggered2 && fun.spinRun) {
+    fun.spinRun = false;
+    fun.spin();
+    window.setTimeout(fun.spin, 5 * 1000);
+    window.setTimeout(function runTrue(){
+        fun.spinRun = true;
+    }, 5 * 1000 * 2);
+  }
+  
+  // 3 - Random
+  
+  if(event.key == '3' && fun.triggered2) {
+    fun.random();
+  }
+  
+  // Trigger 2
+  
+  if(event.key == fun.trigger2 && fun.triggered1) fun.triggered2 = true;
+  else fun.triggered2 = false;
+  
+  // Trigger 1
+  
+  if(event.key == fun.trigger1) fun.triggered1 = true;
+  else fun.triggered1 = false;
+  
 });

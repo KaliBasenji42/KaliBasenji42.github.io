@@ -1,6 +1,8 @@
 /* :P */
 
-* {transition: rotate 5s linear;}
+body * {
+  transition: rotate 5s linear, left 5s linear;
+}
 
 /* Elements */
 
