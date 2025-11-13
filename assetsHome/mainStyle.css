@@ -99,3 +99,25 @@ tr {border: 1px solid;}
   font-size: 2rem;
   rotate: 30deg;
 }
+
+/* Link Info */
+
+.siteInfo {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s;
+}
+
+.siteInfo:hover {
+  max-height: 8rem;
+}
+
+.siteLink#root:hover ~ .siteInfo#root {
+  max-height: 8rem;
+}
+.siteLink#raspi:hover ~ .siteInfo#raspi {
+  max-height: 8rem;
+}
+.siteLink#github:hover ~ .siteInfo#github {
+  max-height: 8rem;
+}
