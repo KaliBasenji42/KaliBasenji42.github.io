@@ -105,19 +105,19 @@ tr {border: 1px solid;}
 .siteInfo {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1s;
+  transition: max-height 2s;
 }
 
 .siteInfo:hover {
-  max-height: 8rem;
+  max-height: 20rem;
 }
 
 .siteLink#root:hover ~ .siteInfo#root {
-  max-height: 8rem;
+  max-height: 20rem;
 }
 .siteLink#raspi:hover ~ .siteInfo#raspi {
-  max-height: 8rem;
+  max-height: 20rem;
 }
 .siteLink#github:hover ~ .siteInfo#github {
-  max-height: 8rem;
+  max-height: 20rem;
 }
