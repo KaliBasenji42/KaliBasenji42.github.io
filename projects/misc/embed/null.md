@@ -27,6 +27,8 @@ Shutdown scheduled for Mon ████-██-██ 14:48:09 ███, use 's
 
 <i style="color:rgb(128,128,128);">System Shutdown</i>
 
+<!-- Example of how to show password:
+
 <i style="color:rgb(128,128,128);">System Startup</i>
 
 <span style="color:rgb(0,192,0);">[sclyde@egeria-LinuxDT4:~]$</span> thunderbird
@@ -41,3 +43,5 @@ Passphrase:
 :Zm_3PD||zMHfwV@h'x%JRfTQ
 
 <span style="color:rgb(0,192,0);">[sclyde@egeria-LinuxDT4:~]$</span>
+
+-->
