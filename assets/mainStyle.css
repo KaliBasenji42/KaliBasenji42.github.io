@@ -1,6 +1,8 @@
 /* :P */
 
-* {transition: rotate 5s linear;}
+body * {
+  transition: rotate 5s linear, left 5s linear;
+}
 
 /* Elements */
 
@@ -177,12 +179,4 @@ div.navArrow {
 .WC {
   text-align: center;
   color: rgb(96, 96, 96);
-}
-
-.siteLink > p {
-  display: none;
-}
-
-.siteLink:hover > p {
-  display: block;
 }
