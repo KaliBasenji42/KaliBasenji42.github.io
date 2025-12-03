@@ -1,0 +1,21 @@
+{
+  "beforeDur": 21600000, "!comment": "Integer (Milliseconds): Duration before the warning's time, to display the warning. Default: 6 Hours",
+  "afterDur": 900000, "!comment": "Integer (Milliseconds): Duration after the warning's time, to display the warning. Default: 15 Minutes",
+  
+  "!comment": "List [{date: Date Obj. string, note: string}, ...]: List of pre-set dates. The date string must be any JS Date object parsable string. Note is a note to display when the warning is shown.",
+  "setDates": [
+    {"date": "1-9-2025 22:23:17", "note": "Test"}
+  ],
+  
+  "!comment": "List [{pattern object}, ...]: List of patterns to repeat warnings.",
+  "repeatPatterns": [
+    {
+      "active": false, "!comment": "Boolean: Enable?",
+      "time": [3, 0, 0], "!comment": "List [hour, minute, second]: Time of day. Default: 3:00:00 AM",
+      "dayOfWeek": 0, "!comment": "Integer/String (0-7, *): Day of week. Default: Sunday",
+      "dayOfMonth": "*", "!comment": "Integer/String (0-7, *): Day of month. Default: Any/Ignored",
+      "note": "Weekly Restart", "!comment": "Displayed note"
+    }
+  ]
+  
+}

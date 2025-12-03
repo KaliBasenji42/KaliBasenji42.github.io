@@ -240,7 +240,7 @@ setTimeout(nextTheme, 10, 0);
 let restartTimeMS;
 let restartNote = '';
 let restartWarningElem;
-let restartWarningCont
+let restartWarningCont;
 let restartWarningMinButton;
 let restartWarningShow = false;
 

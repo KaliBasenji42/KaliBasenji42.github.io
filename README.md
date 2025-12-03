@@ -39,21 +39,22 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 ├── _config.yml <i>- Jekyll config</i>
 ├── index.html <i>- Home page</i>
 ├── kill_jekyll.sh <i>- Kills server (Raspi)</i>
-├── restartT.txt <i>- For displaying restart time (Raspi) (in file instructions)</i>
 ├── restart_jekyll.sh <i>- Restarts server (Raspi)</i>
 ├── setup.py <i>- Explained below</i>
 ├── status.txt <i>- Used to return server status</i>
-└── template.html <i>- Explained below</i>
+├── template.html <i>- Explained below</i>
+└── warning.json <i>- Used to display website wide message (EX: Restart Warning)</i>
 </pre>
 
 # Template
 
-"setup.py" finds all the HTML files in "projects" using `os.walk`. It then reads "template.html".
+"setup.py" finds all the HTML files in "projects" using `os.walk`. It then reads "template.html".  
 
-"setup.py" finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order of appearance.
+"setup.py"'s *template* command finds all the sections, starting with commented 'Start' and ending with commented 'End'. It replaces each one based on order of appearance.
 
-The script will also find a variable stored as '{project}' and replace it with the project name based on the file path (This feature is currently unused).
+The script's *template* command will also find a variable stored as '{project}' and replace it with the project name based on the file path (This feature is currently unused).  
 
-The Pyhton file will not affect the following files (due to not having template syntax setup or being in the wrong directory):
-*   "projects/resume/index.html"
-*   "index.html"
+The script file will not affect the following files (due to not having template syntax setup or being in the wrong directory):  
+* "index.html"
+
+"setup.py" also has a find and replace function.  
