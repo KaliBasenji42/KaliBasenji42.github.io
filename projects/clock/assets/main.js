@@ -1,11 +1,5 @@
 // Variables and Constants
 
-const headHTML = `
-  `;
-
-const bodyHTML = `
-  `;
-
 let time = new Date();
 
 let update = true;

@@ -1,11 +1,5 @@
 // Variables and Constants
 
-const headHTML = `
-  `;
-
-const bodyHTML = `
-  `;
-
 const control = {
   run: true,
   startTime: 0, // Start time, to find elapsed time (to find ticks)

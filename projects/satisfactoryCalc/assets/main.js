@@ -1,11 +1,5 @@
 // Variables and Constants
 
-const headHTML = `
-  `;
-
-const bodyHTML = `
-  `;
-
 let calcTable = {}; // Holds more data for each item
 
 let settings = { // Default settings
