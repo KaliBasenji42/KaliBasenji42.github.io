@@ -7,7 +7,9 @@ run = True
 instructions = [
   'Input "quit" to quit',
   'Input "?" to reprint this',
-  'Input "temp" to update template marked areas'
+  'Input "temp" to update template marked areas',
+  'Input "repl" to use find and replace',
+  '  Text inputs on line 34 & 35, to allow multi-line inputs',
 ]
 
 paths = []
@@ -28,9 +30,14 @@ tempEnd = '<!--End-->\n'
 projectId = '{project}'
 projectDepth = len('projects/') # What to cut off in front of Project
 
+# Find and Replace
+
+findText = ''
+replaceText = ''
+
 # Simple Functions
 
-def cutStringAt(string, char):
+def cutStringAt(string, char): # Cut off a string at a character
   
   for i in range(len(string)):
     
@@ -40,20 +47,9 @@ def cutStringAt(string, char):
   return string
   
 
-def remFile(string):
-  
-  for i in range(len(string)):
-    
-    if string[-i] == '/': return string[:-i]
-    elif string[-i] == '\\': return string[:-i]
-    
-  
-  return ''
-  
-
 # Complex Functions
 
-def getPaths():
+def getPaths(): # Get paths of files to edit
   
   print('Getting file paths:\n')
   
@@ -89,7 +85,7 @@ def getPaths():
     
   
 
-def readTemplate():
+def readTemplate(): # Read Template file and convert to usable array
   
   print('Reading Template:\n')
   
@@ -137,7 +133,7 @@ def readTemplate():
   return True # Success
   
 
-def templateEdit():
+def templateEdit(): # Edit files according to the template
   
   if input('Enter "y" to continue: ') != 'y': return
   
@@ -157,7 +153,7 @@ def templateEdit():
       
       addCont = True # If it should add content, not template section
       
-      newCont = [] # Content to be writen to file
+      newCont = [] # Content to be written to file
       
       sect = 0 # Template section
       
@@ -211,6 +207,42 @@ def templateEdit():
     
   
 
+def findAndReplace():
+  
+  print('Find: ')
+  print(findText)
+  print('Replace: ')
+  print(replaceText)
+  
+  if input('Enter "y" to continue: ') != 'y': return
+  
+  print('\nWriting to Files:\n')
+  
+  for path in paths:
+    
+    cont = [] # Content of file before writing
+    
+    try:
+      
+      with open(path, 'r+', encoding='utf-8', errors='ignore') as file: cont = file.read()
+      
+    except: print('Unable to open "' + path + '" :/')
+    
+    else:
+      
+      newCont = cont.replace(findText, replaceText)
+      
+      # Write to file
+      
+      with open(path, 'w', encoding='utf-8', errors='ignore') as file: file.write(newCont)
+      
+      # Print
+      
+      print('Updated "' + path + '"')
+      
+    
+  
+
 # Pre Loop
 
 getPaths()
@@ -237,5 +269,10 @@ while run:
     if readTemplate():
       print()
       templateEdit()
+    
+  
+  elif inp == 'repl':
+    
+    findAndReplace()
     
   
