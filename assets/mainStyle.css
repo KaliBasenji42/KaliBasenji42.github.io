@@ -71,7 +71,7 @@ footer > div {
 
 /* Restart Warning */
 
-.restartWarn {
+.warn {
   background-color: rgb(255, 224, 32);
   color: rgb(0, 0, 0);
   
@@ -86,7 +86,7 @@ footer > div {
   z-index: 100;
 }
 
-.restartWarn > div {
+.warn > div {
   display: inline-block;
   
   max-width: 0;

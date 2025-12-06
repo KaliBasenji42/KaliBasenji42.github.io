@@ -6,6 +6,8 @@ const headHTML = `
 const bodyHTML = `
   `;
 
+warningPath = 'warning.json';
+
 let warnRotate = 30;
 let warn;
 let boomRotate = 300;
