@@ -287,6 +287,7 @@ async function loadWarning(warningJSONPath = '../../warning.json') {
   }
   
   nextDates = nextDates.sort(function(a, b){return b.MS - a.MS}); // Sort
+  // Sorted such closest dates are iterated last (take final say)
   
   //console.log(nextDates);
   
@@ -300,7 +301,7 @@ async function loadWarning(warningJSONPath = '../../warning.json') {
     
   }
   
-  if(!warning.show) return; // Return if none shown
+  if(!warning.show) return; // Return if none in range
   
   // Other Declarations
   
