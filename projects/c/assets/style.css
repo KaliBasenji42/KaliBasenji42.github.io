@@ -1,0 +1,340 @@
+/* Elements */
+
+body {
+  width: 100vw;
+  height: 100vh;
+  
+  background-color: rgb(64, 64, 64);
+  margin: 0;
+  
+  color: rgb(0, 0, 0);
+}
+
+main {
+  max-width: 100vw;
+  max-height: 100vh;
+  aspect-ratio: 1024 / 717;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  
+  background-image: url("images/RubberRoom.jpg");
+  background-size: contain;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  font-size: 0.75em;
+}
+
+/* Crazy?! */
+
+#crazyTxt {
+  width: 100%;
+  font-weight: bold;
+  position: absolute;
+  line-height: 1.5em;
+  
+  animation-name: crazy;
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#crazyTxtCont {
+  width: 24em;
+  height: 6em;
+  text-align: center;
+  margin: auto;
+  margin-top: 2em;
+  overflow: hidden;
+  position: relative;
+  
+  z-index: 100;
+}
+
+@keyframes crazy {
+  from {top: 0}
+  to {top: -19.5em}
+}
+
+/* Cat Ascii */
+
+#catAscii {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  height: 13%;
+  width: 10%;
+  margin: 0;
+  
+  font-weight: bold;
+  font-size: 100%;
+  
+  border: 0;
+}
+
+/* Rats & Wheels */
+
+.rat {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+.rat * {
+  position: absolute;
+}
+
+.rat > #rat {
+  width: 100%;
+  height: 100%;
+}
+
+#a.rat {
+  top: 55%;
+  left: 45%;
+  width: 10%;
+  aspect-ratio: 1570 / 1223;
+}
+
+#a.rat > #wheel {
+  bottom: 10%;
+  left: 50%;
+  width: 40%;
+  
+  animation-name: wheelA;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wheelA {
+  0% {height: 40%}
+  50% {height: 30%}
+  100% {height: 40%}
+}
+
+#b.rat {
+  top: 20%;
+  left: 66%;
+  width: 5%;
+  aspect-ratio: 495 / 1271;
+}
+
+#b.rat > #wheel {
+  top: 90%;
+  left: 25%;
+  height: 20%;
+  
+  animation-name: wheelB;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes wheelB {
+  0% {rotate: 0deg}
+  100% {rotate: 360deg}
+}
+
+#c.rat {
+  top: 70%;
+  left: 27%;
+  width: 10%;
+  aspect-ratio: 1968 / 1526;
+  
+  animation-name: ratC;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes ratC {
+  25% {transform: scale(0.75, 1.5)}
+  75% {transform: scale(1.5, 0.75)}
+}
+
+#d.rat {
+  top: 62%;
+  left: 77%;
+  width: 10%;
+  aspect-ratio: 960 / 565;
+  
+  animation-name: ratD;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+#d.rat > #wheel {
+  top: 80%;
+  left: 10%;
+  width: 80%;
+  
+  animation-name: wheelD;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ratD {
+  25% {rotate: -20deg}
+  75% {rotate: 20deg}
+}
+
+@keyframes wheelD {
+  25% {rotate: 40deg}
+  75% {rotate: -40deg}
+}
+
+#e.rat {
+  top: 80%;
+  left: 50%;
+  width: 20%;
+  aspect-ratio: 940 / 564;
+  
+  transform: rotate(-7deg);
+  z-index: 2;
+  
+  animation-name: ratE;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#e.rat > #wheel1 {
+  top: 70%;
+  left: 20%;
+  width: 20%;
+  
+  animation-name: wheelE;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#e.rat > #wheel2 {
+  top: 80%;
+  left: 60%;
+  width: 20%;
+  rotate: -162deg;
+  
+  animation-name: wheelE;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes ratE {
+  0% {left: -40%}
+  100% {left: 140%}
+}
+
+@keyframes wheelE {
+  0% {rotate: 0deg}
+  100% {rotate: 360deg}
+}
+
+#f.rat {
+  top: 70%;
+  left: 55%;
+  width: 20%;
+  aspect-ratio: 425 / 204;
+  
+  animation-name: ratF;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ratF {
+  0% {transform: scale(1, 1)}
+  50% {transform: scale(-1, 1)}
+}
+
+#g.rat {
+  bottom: 15%;
+  left: 5%;
+  height: 20%;
+  aspect-ratio: 999 / 799;
+  
+  transform-origin: 50% 100%;
+  
+  animation-name: ratG;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+#g.rat > #wheel {
+  top: 0%;
+  left: 70%;
+  width: 20%;
+  
+  animation-name: wheelG;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ratG {
+  0% {transform: scale(1, 1)}
+  50% {transform: scale(1, 1.5)}
+}
+
+@keyframes wheelG {
+  0% {transform: scale(1, 1); top: 0%}
+  50% {transform: scale(1, 0.667); top: -20%}
+}
+
+#h.rat {
+  top: 20%;
+  left: 20%;
+  width: 15%;
+  aspect-ratio: 862 / 428;
+  rotate: 30deg;
+  
+  z-index: 1;
+  
+  animation-name: ratH;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#h.rat > #fire {
+  top: -80%;
+  left: 80%;
+  width: 80%;
+  rotate: 90deg;
+}
+
+@keyframes ratH {
+  0% {left: 600%; top: 400%;}
+  100% {left: -500%; top: -300%;}
+}
+
+#i.rat {
+  top: -10%;
+  left: -10%;
+  width: 5%;
+  aspect-ratio: 400 / 219;
+  
+  transition: top 2s linear, left 2s linear, rotate 2s linear, transform 2s linear;
+}
+
+#i.rat > #rainbow {
+  width: 100%;
+  height: 100%;
+  
+  animation-name: rainbowI;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rainbowI {
+  0% {background-color: rgba(255, 0, 0, 0.5);}
+  17% {background-color: rgba(255, 255, 0, 0.5);}
+  33% {background-color: rgba(0, 255, 0, 0.5);}
+  50% {background-color: rgba(0, 255, 255, 0.5);}
+  67% {background-color: rgba(0, 0, 255, 0.5);}
+  84% {background-color: rgba(255, 0, 255, 0.5);}
+  100% {background-color: rgba(255, 0, 0, 0.5);}
+}
