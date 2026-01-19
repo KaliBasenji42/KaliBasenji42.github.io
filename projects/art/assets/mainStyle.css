@@ -1,0 +1,74 @@
+/* Flex Boxes */
+
+.cont {
+  padding: 0.5rem;
+  
+  background-color: rgba(0, 0, 0, .25);
+}
+
+.cont > * {
+  margin: 0.5rem;
+  
+  min-width: 12rem;
+  max-width: 16rem;
+  
+  cursor: zoom-in;
+}
+
+/* Zoom */
+
+#zoom {
+  display: none;
+  position: fixed;
+  
+  top: 0;
+  left: 0;
+  
+  width: 100vw;
+  height: 100vh;
+  
+  background-color: rgba(0, 0, 0, .25);
+  
+  z-index: 100;
+}
+
+#zoom > button {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  border-radius: 0;
+  background-color: rgba(224, 224, 224, 0.4);
+  
+  line-height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  
+  font-weight: bold;
+  
+  z-index: 2;
+}
+
+#zoom > a {
+  position: absolute;
+  
+  bottom: 0.5rem;
+  left: 0.5rem;
+  
+  z-index: 1;
+}
+
+#zoom > img {
+  position: absolute;
+  
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  
+  top: 5%;
+  left: 5%;
+  
+  margin: auto;
+  
+  z-index: 0;
+}
