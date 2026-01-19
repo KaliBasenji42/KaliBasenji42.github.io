@@ -3,7 +3,7 @@
 .cont {
   padding: 0.5rem;
   
-  background-color: rgba(0, 0, 0, .25);
+  background-color: rgba(128, 128, 128, .25);
 }
 
 .cont > * {
@@ -27,7 +27,7 @@
   width: 100vw;
   height: 100vh;
   
-  background-color: rgba(0, 0, 0, .25);
+  background-color: rgba(128, 128, 128, .5);
   
   z-index: 100;
 }
