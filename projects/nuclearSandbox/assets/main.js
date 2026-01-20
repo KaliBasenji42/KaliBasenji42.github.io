@@ -50,7 +50,7 @@ class material { // Material Class
   
   constructor(grams, content, temp = 20) {
     
-    this.atoms = gramsToAtoms(grams); // Total number of atoms from grams
+    this.grams = grams; // Grams
     this.content = content; // Content object in form:
     // { "isoName": fraction, "235U": 0.42 }
     
@@ -64,6 +64,8 @@ class material { // Material Class
     // { "type": [amount, joules], "2B-": [42, 3.14] }
     
     for(let i; i < iterations; i++) {
+      
+      
       
     }
     
