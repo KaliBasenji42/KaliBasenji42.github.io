@@ -18,7 +18,7 @@
 /* Zoom */
 
 #zoom {
-  display: none;
+  visibility: hidden;
   position: fixed;
   
   top: 0;
@@ -30,6 +30,9 @@
   background-color: rgba(128, 128, 128, .5);
   
   z-index: 100;
+  
+  transition: opacity 0.1s linear;
+  opacity: 0;
 }
 
 #zoom > button {

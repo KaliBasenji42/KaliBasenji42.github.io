@@ -15,14 +15,16 @@ let zoomLink; // Zoom link
 function zoom(URL) { // Zoom on image (onclick)
   
   if(URL == '') { // If none, close
-    zoomElem.style.display = 'none'
+    zoomElem.style.visibility = 'hidden';
+    zoomElem.style.opacity = '0';
     return
   }
   
-  zoomElem.style.display = 'block' // Show zoom
+  zoomElem.style.visibility = 'visible'; // Show zoom
+  zoomElem.style.opacity = '1';
   
-  zoomImg.src = URL // Set image URL
-  zoomLink.href = URL // Set link URL
+  zoomImg.src = URL; // Set image URL
+  zoomLink.href = URL; // Set link URL
   
 }
 
@@ -30,9 +32,9 @@ function zoom(URL) { // Zoom on image (onclick)
 
 document.addEventListener('DOMContentLoaded', function() {
   
-  zoomElem = document.getElementById('zoom') // Get zoom element
-  zoomImg = document.querySelector('#zoom > img') // Get zoom image
-  zoomLink = document.querySelector('#zoom > a') // Get zoom image
+  zoomElem = document.getElementById('zoom'); // Get zoom element
+  zoomImg = document.querySelector('#zoom > img'); // Get zoom image
+  zoomLink = document.querySelector('#zoom > a'); // Get zoom image
   
   let images = document.querySelectorAll('.cont > img'); // Get image elements
   
