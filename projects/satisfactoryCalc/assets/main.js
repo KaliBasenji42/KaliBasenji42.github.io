@@ -9,7 +9,20 @@ let settings = { // Default settings
   'reuseBypro': true, // Should reuse byproduct to discount demand
   'greaterColor': '#00ffff', // Color of cells greater than 0
   'lessColor': '#ff0000', // Color of cells less than 0
+  'drawCalcTbl': false, // Wether to auto render Calc. Table
+  'powerConsFunc': 'sat', // Function used to calculate power consumption (positive)
+  'powerConsCust': '', // Uses eval(), "input" as input/buildings
+  'powerProdFunc': 'line', // Function used to calculate power production (negative)
+  'powerProdCust': '', // Uses eval(), "input" as input/buildings
 };
+
+let powerEquations = { // eval()'ed equations for calculating power usage
+  'sat': 'baseMW * (sloopMult ** 2) * (clock ** clockPowerExp)',
+  'line': 'baseMW * sloopMult * clock',
+  'ceil': 'baseMW * sloopMult * Math.ceil(clock)',
+  'custCons': settings.powerConsCust,
+  'custProd': settings.powerConsProd,
+}
 
 let unresolved = new Set; // Set of the names of all unresolved items
 let solving = new Set; // Set of the names of all the items being resolved
@@ -64,21 +77,17 @@ let CTTble; // Calc Table (Each Items demand of Each Item)
 
 // Math/Calc Functions
 
-function powerInd(MWKey, clock, sloopMult) { // Power for individual positive MW building
-  return MWKey * (sloopMult ** 2) * (clock ** clockPowerExp);
+function powerInd(baseMW, clock, sloopMult) { // Power for individual MW buildings
+  if(baseMW >= 0) return eval(powerEquations[settings.powerConsFunc]);
+  else return eval(powerEquations[settings.powerProdFunc]);
 }
 
-function power(buildings, MWKey, maxClock, sloopMult) { // Function for calculating power usage
+function power(buildings, baseMW, maxClock, sloopMult) { // Function for calculating power usage
   
-  let bFloor = Math.floor(buildings); // Floor of buildings (whole buildings)
-  let bFrac = buildings - bFloor; // Fractional building remainder
-  
-  if(MWKey > 0) {
-    return ( bFloor * powerInd(MWKey, maxClock, sloopMult) ) + 
-      powerInd(MWKey, maxClock * bFrac, sloopMult)
-  }
-  
-  else return buildings * MWKey * maxClock
+  return (
+    Math.floor(buildings) * powerInd(baseMW, maxClock, sloopMult) + // Whole buildings
+    powerInd(baseMW, maxClock * (buildings - Math.floor(buildings)), sloopMult) // Remainder
+  );
   
 }
 
@@ -147,7 +156,7 @@ async function calculate() { // Calculate items
     
     iterations ++;
     
-    if(iterations % settings['maxCalcIter'] == 0 && iterations > 0) {
+    if(iterations % settings.maxCalcIter == 0 && iterations > 0) {
       if(!window.confirm('' + iterations + ' iterations. Continue?')) return
     }
     
@@ -1184,7 +1193,7 @@ async function renderFuncs() { // Render Everything
   renderMI();
   renderRec();
   renderBPAP();
-  renderCT();
+  if(settings.drawCalcTbl) renderCT();
   
   // Other
   
@@ -1229,7 +1238,7 @@ function applySettings() {
   let numInps = document.querySelectorAll('.numInp'); // Get NumInpDgts
   
   for(let inp of numInps) { // Apply NumInpDgts
-    inp.step = '' + (10 ** (-1 * settings['NumInpDgts']));
+    inp.step = '' + (10 ** (-1 * settings.NumInpDgts));
   }
   
   highlightSheet.replace( // Greater and Less CSS
@@ -1567,6 +1576,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     let localStorageSettings = localStorage.getItem('SatisfactoryCalc - Settings');
     if(localStorageSettings === null) throw('Does not exist in localStorage, taking default');
     settings = JSON.parse(localStorageSettings);
+    
+    powerEquations.custCons = settings.powerConsCust; // Set custom power consumption
+    powerEquations.custProd = settings.powerProdCust; // Set custom power consumption
   }
   catch(err) {
     console.log('localStorage Loading Error (Settings):');
@@ -1594,6 +1606,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     }
     
     // Apply, Save, Close
+    
+    powerEquations.custCons = settings.powerConsCust; // Set custom power consumption
+    powerEquations.custProd = settings.powerProdCust; // Set custom power consumption
     
     applySettings();
     

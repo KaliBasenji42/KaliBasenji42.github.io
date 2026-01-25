@@ -122,11 +122,11 @@
         
         <label for="zeroIsComplete">Zero Is Complete:</label><br>
         <input type="checkbox" id="zeroIsComplete" name="zeroIsComplete"><br>
-        <div class="subTtl">Do not count unaffected items in complete %.</div><br>
+        <div class="subTtl">Do not count items of 0 demand toward % complete.</div><br>
         
         <label for="reuseBypro">Reuse Bypro:</label><br>
         <input type="checkbox" id="reuseBypro" name="reuseBypro"><br>
-        <div class="subTtl">Should reuse byproduct to discount demand.</div><br>
+        <div class="subTtl">Wether to reuse byproduct to discount demand.</div><br>
         
         <label for="greaterColor">Greater Color:</label><br>
         <input type="color" id="greaterColor" name="greaterColor"><br>
@@ -135,6 +135,57 @@
         <label for="lessColor">Less Color:</label><br>
         <input type="color" id="lessColor" name="lessColor"><br>
         <div class="subTtl">Color of cells less than 0.</div><br>
+        
+        <label for="drawCalcTbl">Auto Draw Calc. Table:</label><br>
+        <input type="checkbox" id="drawCalcTbl" name="drawCalcTbl"><br>
+        <div class="subTtl">Wether to auto render Calc. Table? (Rending it is intensive)</div>
+        
+        <h3>Power Calculation (Defining powerInd())</h3>
+        
+        <div class="subTtl">
+          These are the functions used to calculate an individual building's power consumption/production (<code>powerInd()</code>). Total power usage for an item is calculated by power usage of all the whole buildings plus the usage of the remainder building:<br><br>
+          <div style="padding-left: 0.5rem;">
+            ( floor(buildings) * powerInd(baseMW, maxClock, sloopMult) ) 
+            + powerInd(baseMW, maxClock * (buildings - floor(buildings)), sloopMult)
+          </div><br>
+          Where:<br>
+          "buildings" is the number of buildings needed<br>"
+          baseMW" is a building's normal/base power usage (at 100%)<br>
+          "maxClock" is the maximum allowed clocking (clocking is used for the remainder)<br>
+          "sloopMult" is the Production Amplifier<br><br>
+          
+          Presets:<br>
+          Satisfactory: <code>"baseMW * (sloopMult ** 2) * (clock ** clockPowerExp)"</code>*<br>
+          Linear: <code>"baseMW * sloopMult * clock"</code><br>
+          Ceiling: <code>"baseMW * sloopMult * Math.ceil(clock)"</code><br>
+          *<code>clockPowerExp</code> is a global constant
+        </div><br>
+        
+        <label for="powerConsFunc">Power Consumption Function (powerInd() where baseMW >= 0):</label><br>
+        <select id="powerConsFunc" name="powerConsFunc">
+          <option value="sat">Satisfactory (Default)</option>
+          <option value="line">Linear</option>
+          <option value="ceil">Ceiling</option>
+          <option value="custCons">Custom</option>
+        </select>
+        <div class="subTtl">Function used to calculate power consumption (positive).</div><br>
+        
+        <label for="powerConsCust">Custom Consumption Equation:</label><br>
+        <input type="text" id="powerConsCust" name="powerConsCust"><br>
+        <div class="subTtl">Uses <code>eval()</code> for <code>powerInd(baseMW, clock, sloopMult)</code> where <code>baseMW</code> >= 0.</div><br>
+        
+        <label for="powerProdFunc">Power Production Function (powerInd() where baseMW &#60; 0):</label><br>
+        <select id="powerProdFunc" name="powerProdFunc">
+          <option value="line">Linear (Default)</option>
+          <option value="ceil">Ceiling</option>
+          <option value="sat">Satisfactory</option>
+          <option value="custProd">Custom</option>
+        </select>
+        <div class="subTtl">Function used to calculate power production (negative).</div><br>
+        
+        <label for="powerProdCust">Custom Production Equation:</label><br>
+        <input type="text" id="powerProdCust" name="powerProdCust"><br>
+        <div class="subTtl">Uses <code>eval()</code> for <code>powerInd(baseMW, clock, sloopMult)</code> where <code>baseMW</code> &#60; 0.</div><br>
         
         <input type="submit" value="Submit">
         <br>
@@ -327,6 +378,7 @@
   <h2>Calc. Table 🤓<span><button class="sectBttn" id="CTBttn" onclick="expndOrClps('CTSect', 'CTBttn')">🔽</button></span></h2>
   
   <div class="sect" id="CTSect">
+    <p><button onclick="renderCT()">Render</button> (You may need to re-open section) (auto in settings)</p>
     <table id="CTTbl"></table>
     <br>
   </div>
