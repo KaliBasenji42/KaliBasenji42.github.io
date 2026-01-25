@@ -29,8 +29,6 @@
 
 <body style="background-color: rgb(224, 160, 244);">
   
-  <script src="assets/vars.js"></script>
-  
 <!--Start-->
   
   <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
@@ -51,6 +49,7 @@
     <div id="save" title="Save" class="menuBttn"><img src="assets/images/file.png"></div>
     <div id="upload" title="Upload" class="menuBttn"><img src="assets/images/upload.png"></div>
     <div id="download" title="Download" class="menuBttn"><img src="assets/images/download.png"></div>
+    <div id="templates" title="Templates" class="menuBttn"><img src="assets/images/pageTemplate.png"></div>
     <div id="settings" title="Settings" class="menuBttn"><img src="assets/images/settings.png"></div>
     <div id="submit" title="Calculate" class="toolBttn"><img src="assets/images/check.png"></div>
     <output id="status" title="Status" class="toolInfo">🖌️</output>
@@ -104,6 +103,25 @@
       <h2 class="menuTtl">Download</h2>
       
       <a target="_blank" id="downloadLink" download="">Loading...</a>
+    </div>
+    
+    <div id="templates" style="display: none;">
+      <img class="X" src="assets/images/X.png">
+      
+      <h2 class="menuTtl">Templates</h2>
+      
+      <div id="templateList">
+        <div>
+          Satisfactory - Lite (Default)
+          <button onclick="loadTemplate('assets/json/satisfactory-lite.json', true)">Load</button>
+        </div>
+        <div>
+          Blank
+          <button onclick="loadTemplate('assets/json/blank.json', true)">Load</button>
+        </div>
+      </div>
+      
+      <label id="templateOut">... Awaiting Input</label>
     </div>
     
     <div id="settings" style="display: none;">

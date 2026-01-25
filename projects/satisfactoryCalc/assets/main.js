@@ -1,5 +1,9 @@
 // Variables and Constants
 
+let items = {};
+let buildings = {};
+let categories = {};
+
 let calcTable = {}; // Holds more data for each item
 
 let settings = { // Default settings
@@ -60,6 +64,8 @@ let loadList; // Load List
 let loadOut; // Load Status Output
 let uploadForm; // Upload Form
 let downloadLink; // Upload Link
+let templateList; // Template List
+let templateOut; // Template Status Output
 let settingsForm; // Settings Form
 
 let MITbl; // Main Interface Table
@@ -1248,8 +1254,7 @@ function applySettings() {
   
 }
 
-function loadSave(saveName) {
-  
+async function loadSave(saveName) {
   
   loadOut.innerHTML = '🔄 Processing';
   
@@ -1263,6 +1268,8 @@ function loadSave(saveName) {
     categories = index['categories'];
     buildings = index['buildings'];
     
+    await render();
+    
     loadOut.innerHTML = '✅ Loaded';
     
   }
@@ -1271,16 +1278,14 @@ function loadSave(saveName) {
     
     loadOut.innerHTML = '⚠️ Processing Error';
     
-    console.log('Processing Error:');
+    console.log('Processing Error - Loading Save:');
     console.log(error);
     
   }
   
-  render();
-  
 }
 
-function removeSave(saveName) {
+async function removeSave(saveName) {
   
   loadOut.innerHTML = '🔄 Processing';
   
@@ -1290,6 +1295,8 @@ function removeSave(saveName) {
     
     localStorage.removeItem('SatisfactoryCalc - Save:' + saveName);
     
+    renderLoadList();
+    
     loadOut.innerHTML = '✅ Removed';
     
   }
@@ -1298,12 +1305,10 @@ function removeSave(saveName) {
     
     loadOut.innerHTML = '⚠️ Processing Error';
     
-    console.log('Processing Error:');
+    console.log('Processing Error - Removing Save:');
     console.log(error);
     
   }
-  
-  renderLoadList();
   
 }
 
@@ -1330,6 +1335,38 @@ function renderLoadList() { // Render Saves into LoadList
     listItem.innerHTML = saveName; // Save Name
     listItem.innerHTML += ` <button onclick="loadSave('` + saveName + `')">Load</button>`; // Load Button
     listItem.innerHTML += ` <button onclick="removeSave('` + saveName + `')">Remove</button>`; // Remove Button
+    
+  }
+  
+}
+
+async function loadTemplate(path, output) {
+  // output: Wether to update templateOut
+  
+  if(output) templateOut.innerHTML = '🔄 Processing';
+  
+  let file = await fetch(path); // Fetch file
+  
+  try {
+      
+    const index = await file.json(); // JSON
+    
+    items = index['items'];
+    categories = index['categories'];
+    buildings = index['buildings'];
+    
+    await render();
+    
+    if(output) templateOut.innerHTML = '✅ Loaded';
+    
+  }
+  
+  catch(error) {
+    
+    if(output) templateOut.innerHTML = '⚠️ Processing Error';
+    
+    console.log('Processing Error - Loading Template:');
+    console.log(error);
     
   }
   
@@ -1383,9 +1420,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   toolStatus = document.querySelector('#toolbar > #status');
   toolStatus.title = 'Status:\n🖌️ = Rendering\n🔄 = Calculating\n✅ = Done';
   
-  // Rendering
+  // Load Defualt Data
   
-  render().then(expandAll);
+  loadTemplate('assets/json/satisfactory-lite.json', false).then(expandAll);
   
   // Menus
   
@@ -1527,7 +1564,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
             
             fileOut.innerHTML = '⚠️ Processing Error';
             
-            console.log('Processing Error:');
+            console.log('Processing Error - Uploading:');
             console.log(error);
             
           }
@@ -1569,6 +1606,11 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     downloadLink.href = url; // Set href
     
   });
+  
+  // Template
+  
+  templateList = document.getElementById('templateList');
+  templateOut = document.getElementById('templateOut')
   
   // Load Settings
   
