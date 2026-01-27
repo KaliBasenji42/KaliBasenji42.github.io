@@ -1357,6 +1357,8 @@ async function loadTemplate(path, output) {
     
     await render();
     
+    expandAll();
+    
     if(output) templateOut.innerHTML = '✅ Loaded';
     
   }
@@ -1422,7 +1424,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   // Load Defualt Data
   
-  loadTemplate('assets/json/satisfactory-lite.json', false).then(expandAll);
+  loadTemplate('assets/json/satisfactory-lite.json', false);
   
   // Menus
   

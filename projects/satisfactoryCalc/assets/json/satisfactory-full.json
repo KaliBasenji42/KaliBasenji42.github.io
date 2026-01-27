@@ -603,6 +603,93 @@
         }
       }
     },
+    "Somersloop": {
+      "category": "Non-Renewable",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 17,
+      "color": "#741b47",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Mercer Sphere": {
+      "category": "Non-Renewable",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 18,
+      "color": "#351c75",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Hard Drive": {
+      "category": "Non-Renewable",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 19,
+      "color": "#e69138",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
     "Iron Ore": {
       "category": "Raw",
       "complete": false,
@@ -8123,7 +8210,7 @@
       }
     },
     "Black Powder": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8176,7 +8263,7 @@
       }
     },
     "Smokeless Powder": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8214,7 +8301,7 @@
       }
     },
     "Iron Rebar": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8248,7 +8335,7 @@
       }
     },
     "Stun Rebar": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8286,7 +8373,7 @@
       }
     },
     "Shatter Rebar": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8324,7 +8411,7 @@
       }
     },
     "Explosive Rebar": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8366,7 +8453,7 @@
       }
     },
     "Rifle Ammo": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8404,7 +8491,7 @@
       }
     },
     "Homing Rifle Ammo": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8442,7 +8529,7 @@
       }
     },
     "Turbo Rifle Ammo": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8503,7 +8590,7 @@
       }
     },
     "Nobelisk": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8541,7 +8628,7 @@
       }
     },
     "Gas Nobelisk": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8579,7 +8666,7 @@
       }
     },
     "Pulse Nobelisk": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8617,7 +8704,7 @@
       }
     },
     "Cluster Nobelisk": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8655,7 +8742,7 @@
       }
     },
     "Nuke Nobelisk": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8701,7 +8788,7 @@
       }
     },
     "Gas Filter": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8743,7 +8830,7 @@
       }
     },
     "Iodine-Infused Filter": {
-      "category": "Weapons",
+      "category": "Ammo (Automated)",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
@@ -8784,12 +8871,244 @@
         }
       }
     },
-    "Parachute": {
+    "Xeno-Zapper": {
       "category": "Equipment & Misc",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
       "pos": 0,
+      "color": "#b45f06",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 1880,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Xeno-Basher": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 1,
+      "color": "#45818e",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 17800,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Rebar Gun": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 2,
+      "color": "#990000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 1968,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Rifle": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 3,
+      "color": "#ffd966",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 9480,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Chainsaw": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 4,
+      "color": "#666666",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 2760,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Nobelisk Detonator": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 5,
+      "color": "#f1c232",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 6480,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Parachute": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 6,
+      "color": "#efefef",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 6080,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Blade Runners": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 7,
+      "color": "#3d85c6",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 4088,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Zipline": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 8,
       "color": "#ffe599",
       "calc": 0,
       "calcDemand": 0,
@@ -8797,19 +9116,280 @@
       "maxClock": 1,
       "sloopMult": 1,
       "buildings": 0,
-      "awesomePts": 1,
+      "awesomePts": 5284,
       "awesomePtsInp": 0,
       "awesomePtsBypro": 0,
       "power": 0,
       "powerMax": 0,
       "powerMin": 0,
-      "recipe": "Gift",
+      "recipe": "Future Problem :3",
       "recipes": {
-        "Gift": {
-          "out": 15,
+        "Future Problem :3": {
+          "out": 1,
           "in": [],
           "bypro": [],
-          "building": "FICSMAS Tree"
+          "building": "The Void"
+        }
+      }
+    },
+    "Jetpack": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 9,
+      "color": "#e69138",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 16580,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Hoverpack": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 10,
+      "color": "#f6b26b",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 265632,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Gas Mask": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 11,
+      "color": "#f9cb9c",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 14960,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Hazmat Suit": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 12,
+      "color": "#fff2cc",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 14960,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Object Scanner": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 13,
+      "color": "#93c47d",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 1400,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Cup": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 14,
+      "color": "#6d9eeb",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 84,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Boom Box": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 15,
+      "color": "#434343",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "FICSIT Coupon": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 16,
+      "color": "#fce5cd",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Portable Miner": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 17,
+      "color": "#b45f06",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 56,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
         }
       }
     },
@@ -9383,6 +9963,35 @@
           "building": "Assembler"
         }
       }
+    },
+    "CAndy CAne Basher": {
+      "category": "Ficsmas",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 16,
+      "color": "#f4cccc",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 7850,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
     }
   },
   "categories": {
@@ -9430,7 +10039,7 @@
       "pos": 10,
       "color": "#b4a7d6"
     },
-    "Weapons": {
+    "Ammo (Automated)": {
       "pos": 11,
       "color": "#ea9999"
     },
