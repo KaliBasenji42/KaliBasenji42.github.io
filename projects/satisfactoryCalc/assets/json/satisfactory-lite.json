@@ -4243,7 +4243,7 @@
           "building": "Manufacturer"
         },
         "Crystal Computer": {
-          "out": 3.3333333333333335,
+          "out": 3.3333333333333333,
           "in": [
             {
               "item": "Circuit Board",
@@ -4251,7 +4251,7 @@
             },
             {
               "item": "Crystal Oscillator",
-              "amount": 2.5
+              "amount": 1.6666666666666667
             }
           ],
           "bypro": [],
@@ -5960,6 +5960,21 @@
             },
             {
               "item": "AI Limiter",
+              "amount": 4
+            }
+          ],
+          "bypro": [],
+          "building": "Assembler"
+        },
+        "Electromagnetic Connection Rod": {
+          "out": 8,
+          "in": [
+            {
+              "item": "Stator",
+              "amount": 8
+            },
+            {
+              "item": "High-Speed Connector",
               "amount": 4
             }
           ],
