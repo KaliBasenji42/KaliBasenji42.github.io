@@ -6059,6 +6059,134 @@
           ],
           "bypro": [],
           "building": "Constructor"
+        },
+        "Unpackage Alumina Solution": {
+          "out": 120,
+          "in": [
+            {
+              "item": "Packaged Alumina Solution",
+              "amount": 120
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Alumina Solution",
+              "amount": 120
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Fuel": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Packaged Fuel",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Fuel",
+              "amount": 60
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Heavy Oil Residue": {
+          "out": 20,
+          "in": [
+            {
+              "item": "Packaged Heavy Oil Residue",
+              "amount": 20
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Heavy Oil Residue",
+              "amount": 20
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Liquid Biofuel": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Packaged Liquid Biofuel",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Liquid Biofuel",
+              "amount": 60
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Oil": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Packaged Oil",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Crude Oil",
+              "amount": 60
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Sulfuric Acid": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Packaged Sulfuric Acid",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Sulfuric Acid",
+              "amount": 60
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Turbofuel": {
+          "out": 20,
+          "in": [
+            {
+              "item": "Packaged Turbofuel",
+              "amount": 20
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Turbofuel",
+              "amount": 20
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Water": {
+          "out": 120,
+          "in": [
+            {
+              "item": "Packaged Water",
+              "amount": 120
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Water",
+              "amount": 120
+            }
+          ],
+          "building": "Packager"
         }
       }
     },
@@ -6093,6 +6221,70 @@
           ],
           "bypro": [],
           "building": "Constructor"
+        },
+        "Unpackage Ionized Fuel": {
+          "out": 40,
+          "in": [
+            {
+              "item": "Packaged Ionized Fuel",
+              "amount": 40
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Ionized Fuel",
+              "amount": 80
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Nitric Acid": {
+          "out": 20,
+          "in": [
+            {
+              "item": "Packaged Nitric Acid",
+              "amount": 20
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Nitric Acid",
+              "amount": 20
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Nitrogen Gas": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Packaged Nitrogen Gas",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Nitrogen Gas",
+              "amount": 240
+            }
+          ],
+          "building": "Packager"
+        },
+        "Unpackage Rocket Fuel": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Packaged Rocket Fuel",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Rocket Fuel",
+              "amount": 120
+            }
+          ],
+          "building": "Packager"
         }
       }
     },
@@ -9075,12 +9267,41 @@
         }
       }
     },
-    "Parachute": {
+    "Medical Inhaler": {
       "category": "Equipment & Misc",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
       "pos": 6,
+      "color": "#a4c2f4",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 125,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Parachute": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 7,
       "color": "#efefef",
       "calc": 0,
       "calcDemand": 0,
@@ -9109,7 +9330,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 7,
+      "pos": 8,
       "color": "#3d85c6",
       "calc": 0,
       "calcDemand": 0,
@@ -9138,7 +9359,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 8,
+      "pos": 9,
       "color": "#ffe599",
       "calc": 0,
       "calcDemand": 0,
@@ -9167,7 +9388,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 9,
+      "pos": 10,
       "color": "#e69138",
       "calc": 0,
       "calcDemand": 0,
@@ -9196,7 +9417,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 10,
+      "pos": 11,
       "color": "#f6b26b",
       "calc": 0,
       "calcDemand": 0,
@@ -9225,7 +9446,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 11,
+      "pos": 12,
       "color": "#f9cb9c",
       "calc": 0,
       "calcDemand": 0,
@@ -9254,7 +9475,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 12,
+      "pos": 13,
       "color": "#fff2cc",
       "calc": 0,
       "calcDemand": 0,
@@ -9262,7 +9483,7 @@
       "maxClock": 1,
       "sloopMult": 1,
       "buildings": 0,
-      "awesomePts": 14960,
+      "awesomePts": 54100,
       "awesomePtsInp": 0,
       "awesomePtsBypro": 0,
       "power": 0,
@@ -9283,7 +9504,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 13,
+      "pos": 14,
       "color": "#93c47d",
       "calc": 0,
       "calcDemand": 0,
@@ -9312,7 +9533,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 14,
+      "pos": 15,
       "color": "#6d9eeb",
       "calc": 0,
       "calcDemand": 0,
@@ -9341,7 +9562,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 15,
+      "pos": 16,
       "color": "#434343",
       "calc": 0,
       "calcDemand": 0,
@@ -9370,7 +9591,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 16,
+      "pos": 17,
       "color": "#fce5cd",
       "calc": 0,
       "calcDemand": 0,
@@ -9399,7 +9620,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 17,
+      "pos": 18,
       "color": "#b45f06",
       "calc": 0,
       "calcDemand": 0,
@@ -9420,6 +9641,21 @@
           "in": [],
           "bypro": [],
           "building": "The Void"
+        },
+        "Automated Miner": {
+          "out": 1,
+          "in": [
+            {
+              "item": "Steel Pipe",
+              "amount": 4
+            },
+            {
+              "item": "Iron Plate",
+              "amount": 4
+            }
+          ],
+          "bypro": [],
+          "building": "Assembler"
         }
       }
     },
