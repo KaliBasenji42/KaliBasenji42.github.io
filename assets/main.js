@@ -426,44 +426,87 @@ else loadWarning();
 
 // :P
 
-let fun = {};
+let fun = {}; // Fun object
 
-fun.elems = [];
-fun.trigger1 = '$';
+fun.elems = []; // Effected elements
+fun.trigger1 = '$'; // First trigger
 fun.triggered1 = false;
-fun.trigger2 = '@';
+fun.trigger2 = '@'; // Second trigger
 fun.triggered2 = false;
 
-fun.load = function() {
+fun.load = function() { // Select effected elements
   fun.elems = document.querySelectorAll('body *');
 }
 
-fun.spinRotate = 0;
-fun.spinRun = true;
+fun.spinRotate = 0; // Initial degrees
+fun.spinRunning = false; // Already happening?
+
+fun.spinSheet = new CSSStyleSheet ();
+fun.spinSheet.replace(`
+body * {
+  transition: rotate 5s linear;
+}
+`); // Spin Style Sheet
 
 fun.spin = function() {
-  console.log('Spin!');
   
-  fun.spinRotate += 180;
+  console.log('Spin!'); // Log
   
-  for(let i = 0; i < fun.elems.length; i++) fun.elems[i].style.rotate = '' + fun.spinRotate + 'deg';
+  fun.spinRotate += 180; // Add 180 deg
+  
+  for(let i = 0; i < fun.elems.length; i++) { // For each element...
+    fun.elems[i].style.rotate = '' + fun.spinRotate + 'deg'; // ...set style
+  }
+  
 }
 
-fun.random = function() {
-  console.log('Random!');
-  console.log('WIP :/');
-  /*
-  for(let i = 0; i < fun.elems.length; i++) {
-    let elem = fun.elems[i];
-    let rect = elem.getBoundingClientRect();
+fun.randomScale = 100; // Max pixel movement
+fun.randomFirst = true; // First call?
+fun.randomRunning = false; // Already happening?
+
+fun.randomSheet = new CSSStyleSheet ();
+fun.randomSheet.replace(`
+body * {
+  position: relative;
+  transition: left 2s linear, top 2s linear;
+  left: 0;
+  top: 0;
+}
+`); // Random Style Sheet
+
+fun.random = function(first = false) {
+  // first: Is first call, should set left and top to 0
+  
+  console.log('Random!'); // Log
+  
+  for(let i = 0; i < fun.elems.length; i++) { // For each element
     
-    if(rect) {
-      console.log(rect.top);
-      elem.style.top = '' + rect.top + 'px';
+    let elem = fun.elems[i]; // Element
+    
+    // Get Current
+    
+    let left = parseInt('0' + elem.style.left);
+    let top = parseInt('0' + elem.style.top);
+    
+    // Add Random
+    
+    left += (Math.floor(Math.random() * fun.randomScale) * 2) - fun.randomScale;
+    top += (Math.floor(Math.random() * fun.randomScale) * 2) - fun.randomScale;
+    
+    // First
+    
+    if(first) {
+      left = 0;
+      top = 0;
     }
     
-    elem.style.position = 'fixed';
-  }*/
+    // Set Style
+    
+    elem.style.left = '' + left + 'px';
+    elem.style.top = '' + top + 'px';
+    
+  }
+  
 }
 
 document.addEventListener('keypress', function() {
@@ -471,24 +514,51 @@ document.addEventListener('keypress', function() {
   // 1 - Hello!
   
   if(event.key == '1' && fun.triggered2) {
+    
     window.alert('Hello!');
+    
   }
   
   // 2 - Spin
   
-  if(event.key == '2' && fun.triggered2 && fun.spinRun) {
-    fun.spinRun = false;
-    fun.spin();
-    window.setTimeout(fun.spin, 5 * 1000);
-    window.setTimeout(function runTrue(){
-        fun.spinRun = true;
+  if(event.key == '2' && fun.triggered2 && !fun.spinRunning) {
+    
+    document.adoptedStyleSheets.push(fun.spinSheet); // Add style sheet
+    
+    fun.spinRunning = true; // Do not allow second trigger
+    
+    fun.spin(); // First 180
+    window.setTimeout(fun.spin, 5 * 1000); // Last 180
+    
+    window.setTimeout(() => {
+        fun.spinRunning = false; // Allow next trigger
+        document.adoptedStyleSheets.pop(fun.spinSheet); // Remove style sheet
     }, 5 * 1000 * 2);
+    
   }
   
   // 3 - Random
   
   if(event.key == '3' && fun.triggered2) {
-    fun.random();
+    
+    document.adoptedStyleSheets.push(fun.randomSheet); // Add style sheet
+    
+    if(fun.randomFirst) fun.random(true); // First call
+    
+    window.setTimeout(fun.random, 100); // Call
+    
+  }
+  
+  // 3 & Shift - Repeated Random
+  
+  if(event.key == '#' && fun.triggered2 && !fun.randomRunning) {
+    
+    document.adoptedStyleSheets.push(fun.randomSheet); // Add style sheet
+    
+    fun.random(true); // First call
+    
+    window.setInterval(fun.random, 2 * 1000); // Call
+    
   }
   
   // Trigger 2
