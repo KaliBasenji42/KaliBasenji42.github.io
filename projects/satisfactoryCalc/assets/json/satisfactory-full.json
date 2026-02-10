@@ -1738,6 +1738,178 @@
             }
           ],
           "building": "Packager"
+        },
+        "Aluminum Scrap": {
+          "out": 120,
+          "in": [
+            {
+              "item": "Alumina Solution",
+              "amount": 240
+            },
+            {
+              "item": "Coal",
+              "amount": 120
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Aluminum Scrap",
+              "amount": 360
+            }
+          ],
+          "building": "Refinery"
+        },
+        "Battery": {
+          "out": 30,
+          "in": [
+            {
+              "item": "Sulfuric Acid",
+              "amount": 50
+            },
+            {
+              "item": "Alumina Solution",
+              "amount": 40
+            },
+            {
+              "item": "Aluminum Casing",
+              "amount": 20
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Battery",
+              "amount": 20
+            }
+          ],
+          "building": "Blender"
+        },
+        "Non-Fissle Uranium": {
+          "out": 15,
+          "in": [
+            {
+              "item": "Uranium Waste",
+              "amount": 37.5
+            },
+            {
+              "item": "Silica",
+              "amount": 25
+            },
+            {
+              "item": "Nitric Acid",
+              "amount": 15
+            },
+            {
+              "item": "Sulfuric Acid",
+              "amount": 15
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Non-Fissle Uranium",
+              "amount": 50
+            }
+          ],
+          "building": "Blender"
+        },
+        "Distilled Silica": {
+          "out": 80,
+          "in": [
+            {
+              "item": "Dissolved Silica",
+              "amount": 120
+            },
+            {
+              "item": "Limestone",
+              "amount": 50
+            },
+            {
+              "item": "Water",
+              "amount": 100
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Silica",
+              "amount": 270
+            }
+          ],
+          "building": "Blender"
+        },
+        "Electrode Aluminum Scrap": {
+          "out": 105,
+          "in": [
+            {
+              "item": "Alumina Solution",
+              "amount": 180
+            },
+            {
+              "item": "Petroleum Coke",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Aluminum Scrap",
+              "amount": 300
+            }
+          ],
+          "building": "Refinery"
+        },
+        "Fertile Uranium": {
+          "out": 40,
+          "in": [
+            {
+              "item": "Uranium",
+              "amount": 25
+            },
+            {
+              "item": "Uranium Waste",
+              "amount": 25
+            },
+            {
+              "item": "Nitric Acid",
+              "amount": 15
+            },
+            {
+              "item": "Sulfuric Acid",
+              "amount": 25
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Non-Fissle Uranium",
+              "amount": 100
+            }
+          ],
+          "building": "Blender"
+        },
+        "Instant Scrap": {
+          "out": 50,
+          "in": [
+            {
+              "item": "Bauxite",
+              "amount": 150
+            },
+            {
+              "item": "Coal",
+              "amount": 100
+            },
+            {
+              "item": "Sulfuric Acid",
+              "amount": 50
+            },
+            {
+              "item": "Water",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Aluminum Scrap",
+              "amount": 300
+            }
+          ],
+          "building": "Blender"
         }
       }
     },
@@ -2678,6 +2850,94 @@
           ],
           "bypro": [],
           "building": "Assembler"
+        },
+        "Rocket Fuel": {
+          "out": 10,
+          "in": [
+            {
+              "item": "Turbofuel",
+              "amount": 60
+            },
+            {
+              "item": "Nitric Acid",
+              "amount": 10
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Rocket Fuel",
+              "amount": 100
+            }
+          ],
+          "building": "Blender"
+        },
+        "Ionized Fuel": {
+          "out": 5,
+          "in": [
+            {
+              "item": "Rocket Fuel",
+              "amount": 40
+            },
+            {
+              "item": "Power Shard",
+              "amount": 2.5
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Ionized Fuel",
+              "amount": 40
+            }
+          ],
+          "building": "Refinery"
+        },
+        "Nitro Rocket Fuel": {
+          "out": 25,
+          "in": [
+            {
+              "item": "Fuel",
+              "amount": 100
+            },
+            {
+              "item": "Nitrogen Gas",
+              "amount": 75
+            },
+            {
+              "item": "Sulfur",
+              "amount": 100
+            },
+            {
+              "item": "Coal",
+              "amount": 50
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Rocket Fuel",
+              "amount": 150
+            }
+          ],
+          "building": "Blender"
+        },
+        "Dark-Ion Fuel": {
+          "out": 40,
+          "in": [
+            {
+              "item": "Packaged Rocket Fuel",
+              "amount": 240
+            },
+            {
+              "item": "Dark Matter Crystal",
+              "amount": 80
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Ionized Fuel",
+              "amount": 200
+            }
+          ],
+          "building": "Converter"
         }
       }
     },
@@ -4341,8 +4601,12 @@
               "amount": 6.5625
             },
             {
-              "item": "Rubber",
-              "amount": 45
+              "item": "Electromagnetic Control Rod",
+              "amount": 4.6875
+            },
+            {
+              "item": "Rotor",
+              "amount": 6.5625
             }
           ],
           "bypro": [],
@@ -5050,7 +5314,7 @@
           "building": "Manufacturer"
         },
         "Radio Control System": {
-          "out": 2.5,
+          "out": 4.5,
           "in": [
             {
               "item": "Aluminum Casing",
@@ -5659,7 +5923,7 @@
             },
             {
               "item": "Nitrogen Gas",
-              "amount": 10
+              "amount": 75
             },
             {
               "item": "Sulfur",
@@ -5673,7 +5937,7 @@
           "bypro": [
             {
               "item": "Compacted Coal",
-              "amount": 10
+              "amount": 25
             }
           ],
           "building": "Blender"
@@ -5738,7 +6002,7 @@
           "building": "Packager"
         },
         "Dark-Ion Fuel": {
-          "out": 10,
+          "out": 200,
           "in": [
             {
               "item": "Packaged Rocket Fuel",
@@ -6544,7 +6808,7 @@
           ],
           "bypro": [
             {
-              "item": "Empty Canister",
+              "item": "Empty Fluid Tank",
               "amount": 20
             }
           ],
@@ -6836,7 +7100,7 @@
       "maxClock": 1,
       "sloopMult": 1,
       "buildings": 0,
-      "awesomePts": 0,
+      "awesomePts": 255088,
       "awesomePtsInp": 0,
       "awesomePtsBypro": 0,
       "power": 0,
@@ -7556,6 +7820,174 @@
           ],
           "bypro": [],
           "building": "Converter"
+        },
+        "AI Expansion Server": {
+          "out": 100,
+          "in": [
+            {
+              "item": "Magnetic Field Generator",
+              "amount": 4
+            },
+            {
+              "item": "Neural-Quantum Processor",
+              "amount": 4
+            },
+            {
+              "item": "Superposition Oscillator",
+              "amount": 4
+            },
+            {
+              "item": "Excited Photonic Matter",
+              "amount": 100
+            }
+          ],
+          "bypro": [
+            {
+              "item": "AI Expansion Server",
+              "amount": 4
+            }
+          ],
+          "building": "Quantum Encoder"
+        },
+        "Alien Power Matrix": {
+          "out": 60,
+          "in": [
+            {
+              "item": "SAM Fluctuator",
+              "amount": 12.5
+            },
+            {
+              "item": "Power Shard",
+              "amount": 7.5
+            },
+            {
+              "item": "Superposition Oscillator",
+              "amount": 7.5
+            },
+            {
+              "item": "Excited Photonic Matter",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Alien Power Matrix",
+              "amount": 2.5
+            }
+          ],
+          "building": "Quantum Encoder"
+        },
+        "Ficsonium Fuel Rod": {
+          "out": 50,
+          "in": [
+            {
+              "item": "Ficsonium",
+              "amount": 5
+            },
+            {
+              "item": "Electromagnetic Control Rod",
+              "amount": 5
+            },
+            {
+              "item": "Ficsite Trigon",
+              "amount": 100
+            },
+            {
+              "item": "Excited Photonic Matter",
+              "amount": 50
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Ficsonium Fuel Rod",
+              "amount": 2.5
+            }
+          ],
+          "building": "Quantum Encoder"
+        },
+        "Neural-Quantum Processor": {
+          "out": 75,
+          "in": [
+            {
+              "item": "Time Crystal",
+              "amount": 15
+            },
+            {
+              "item": "Supercomputer",
+              "amount": 3
+            },
+            {
+              "item": "Ficsite Trigon",
+              "amount": 45
+            },
+            {
+              "item": "Excited Photonic Matter",
+              "amount": 75
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Neural-Quantum Processor",
+              "amount": 3
+            }
+          ],
+          "building": "Quantum Encoder"
+        },
+        "Superposition Oscillator": {
+          "out": 125,
+          "in": [
+            {
+              "item": "Dark Matter Crystal",
+              "amount": 30
+            },
+            {
+              "item": "Crystal Oscillator",
+              "amount": 5
+            },
+            {
+              "item": "Alclad Aluminum Sheet",
+              "amount": 45
+            },
+            {
+              "item": "Excited Photonic Matter",
+              "amount": 125
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Superposition Oscillator",
+              "amount": 5
+            }
+          ],
+          "building": "Quantum Encoder"
+        },
+        "Synthetic Power Shard": {
+          "out": 60,
+          "in": [
+            {
+              "item": "Time Crystal",
+              "amount": 10
+            },
+            {
+              "item": "Dark Matter Crystal",
+              "amount": 10
+            },
+            {
+              "item": "Quartz Crystal",
+              "amount": 60
+            },
+            {
+              "item": "Excited Photonic Matter",
+              "amount": 60
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Power Shard",
+              "amount": 5
+            }
+          ],
+          "building": "Quantum Encoder"
         }
       }
     },
@@ -7695,7 +8127,7 @@
       "powerMin": 0,
       "recipe": "Power Shard",
       "recipes": {
-        "Power Shard": {
+        "Synthetic Power Shard": {
           "out": 5,
           "in": [
             {
@@ -7722,6 +8154,39 @@
             }
           ],
           "building": "Quantum Encoder"
+        },
+        "Power Shard (1)": {
+          "out": 7.5,
+          "in": [
+            {
+              "item": "Blue Power Slug",
+              "amount": 7.5
+            }
+          ],
+          "bypro": [],
+          "building": "Constructor"
+        },
+        "Power Shard (2)": {
+          "out": 10,
+          "in": [
+            {
+              "item": "Yellow Power Slug",
+              "amount": 5
+            }
+          ],
+          "bypro": [],
+          "building": "Constructor"
+        },
+        "Power Shard (5)": {
+          "out": 12.5,
+          "in": [
+            {
+              "item": "Purple Power Slug",
+              "amount": 2.5
+            }
+          ],
+          "bypro": [],
+          "building": "Constructor"
         }
       }
     },
@@ -7914,11 +8379,11 @@
           "in": [
             {
               "item": "Reinforced Iron Plate",
-              "amount": 2
+              "amount": 2.5
             },
             {
               "item": "Rotor",
-              "amount": 2
+              "amount": 2.5
             },
             {
               "item": "Plastic",
@@ -8742,7 +9207,7 @@
             },
             {
               "item": "High-Speed Connector",
-              "amount": 1
+              "amount": 2.5
             }
           ],
           "bypro": [],
@@ -9656,6 +10121,35 @@
           ],
           "bypro": [],
           "building": "Assembler"
+        }
+      }
+    },
+    "Factory Cart": {
+      "category": "Equipment & Misc",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 19,
+      "color": "#f6b26b",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 1552,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Future Problem :3",
+      "recipes": {
+        "Future Problem :3": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
         }
       }
     },

@@ -3694,8 +3694,12 @@
               "amount": 6.5625
             },
             {
-              "item": "Rubber",
-              "amount": 45
+              "item": "Electromagnetic Control Rod",
+              "amount": 4.6875
+            },
+            {
+              "item": "Rotor",
+              "amount": 6.5625
             }
           ],
           "bypro": [],
@@ -4403,7 +4407,7 @@
           "building": "Manufacturer"
         },
         "Radio Control System": {
-          "out": 2.5,
+          "out": 4.5,
           "in": [
             {
               "item": "Aluminum Casing",
@@ -5012,7 +5016,7 @@
             },
             {
               "item": "Nitrogen Gas",
-              "amount": 10
+              "amount": 75
             },
             {
               "item": "Sulfur",
@@ -5026,7 +5030,7 @@
           "bypro": [
             {
               "item": "Compacted Coal",
-              "amount": 10
+              "amount": 25
             }
           ],
           "building": "Blender"
@@ -5091,7 +5095,7 @@
           "building": "Packager"
         },
         "Dark-Ion Fuel": {
-          "out": 10,
+          "out": 200,
           "in": [
             {
               "item": "Packaged Rocket Fuel",
@@ -5651,7 +5655,7 @@
           ],
           "bypro": [
             {
-              "item": "Empty Canister",
+              "item": "Empty Fluid Tank",
               "amount": 20
             }
           ],
@@ -5906,7 +5910,7 @@
       "sloopMult": 1,
       "buildings": 0,
       "awesomePts": 0,
-      "awesomePtsInp": 0,
+      "awesomePtsInp": 255088,
       "awesomePtsBypro": 0,
       "power": 0,
       "powerMax": 0,
@@ -6764,7 +6768,7 @@
       "powerMin": 0,
       "recipe": "Power Shard",
       "recipes": {
-        "Power Shard": {
+        "Synthetic Power Shard": {
           "out": 5,
           "in": [
             {
@@ -6983,11 +6987,11 @@
           "in": [
             {
               "item": "Reinforced Iron Plate",
-              "amount": 2
+              "amount": 2.5
             },
             {
               "item": "Rotor",
-              "amount": 2
+              "amount": 2.5
             },
             {
               "item": "Plastic",
@@ -7811,7 +7815,7 @@
             },
             {
               "item": "High-Speed Connector",
-              "amount": 1
+              "amount": 2.5
             }
           ],
           "bypro": [],
