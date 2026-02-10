@@ -132,6 +132,14 @@ table {
   border-color: rgb(224, 224, 224) rgb(255, 255, 255) rgb(255, 255, 255) rgb(224, 224, 224);
 }
 
+#menuGreyout > * > #templateList {
+  overflow: scroll;
+  
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(224, 224, 224) rgb(255, 255, 255) rgb(255, 255, 255) rgb(224, 224, 224);
+}
+
 /* Tables */
 
 table {

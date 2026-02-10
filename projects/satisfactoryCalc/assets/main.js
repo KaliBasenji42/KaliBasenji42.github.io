@@ -1,5 +1,9 @@
 // Variables and Constants
 
+let items = {};
+let buildings = {};
+let categories = {};
+
 let calcTable = {}; // Holds more data for each item
 
 let settings = { // Default settings
@@ -9,7 +13,20 @@ let settings = { // Default settings
   'reuseBypro': true, // Should reuse byproduct to discount demand
   'greaterColor': '#00ffff', // Color of cells greater than 0
   'lessColor': '#ff0000', // Color of cells less than 0
+  'drawCalcTbl': false, // Wether to auto render Calc. Table
+  'powerConsFunc': 'sat', // Function used to calculate power consumption (positive)
+  'powerConsCust': '', // Uses eval(), "input" as input/buildings
+  'powerProdFunc': 'line', // Function used to calculate power production (negative)
+  'powerProdCust': '', // Uses eval(), "input" as input/buildings
 };
+
+let powerEquations = { // eval()'ed equations for calculating power usage
+  'sat': 'baseMW * (sloopMult ** 2) * (clock ** clockPowerExp)',
+  'line': 'baseMW * sloopMult * clock',
+  'ceil': 'baseMW * sloopMult * Math.ceil(clock)',
+  'custCons': settings.powerConsCust,
+  'custProd': settings.powerConsProd,
+}
 
 let unresolved = new Set; // Set of the names of all unresolved items
 let solving = new Set; // Set of the names of all the items being resolved
@@ -47,6 +64,8 @@ let loadList; // Load List
 let loadOut; // Load Status Output
 let uploadForm; // Upload Form
 let downloadLink; // Upload Link
+let templateList; // Template List
+let templateOut; // Template Status Output
 let settingsForm; // Settings Form
 
 let MITbl; // Main Interface Table
@@ -64,21 +83,17 @@ let CTTble; // Calc Table (Each Items demand of Each Item)
 
 // Math/Calc Functions
 
-function powerInd(MWKey, clock, sloopMult) { // Power for individual positive MW building
-  return MWKey * (sloopMult ** 2) * (clock ** clockPowerExp);
+function powerInd(baseMW, clock, sloopMult) { // Power for individual MW buildings
+  if(baseMW >= 0) return eval(powerEquations[settings.powerConsFunc]);
+  else return eval(powerEquations[settings.powerProdFunc]);
 }
 
-function power(buildings, MWKey, maxClock, sloopMult) { // Function for calculating power usage
+function power(buildings, baseMW, maxClock, sloopMult) { // Function for calculating power usage
   
-  let bFloor = Math.floor(buildings); // Floor of buildings (whole buildings)
-  let bFrac = buildings - bFloor; // Fractional building remainder
-  
-  if(MWKey > 0) {
-    return ( bFloor * powerInd(MWKey, maxClock, sloopMult) ) + 
-      powerInd(MWKey, maxClock * bFrac, sloopMult)
-  }
-  
-  else return buildings * MWKey * maxClock
+  return (
+    Math.floor(buildings) * powerInd(baseMW, maxClock, sloopMult) + // Whole buildings
+    powerInd(baseMW, maxClock * (buildings - Math.floor(buildings)), sloopMult) // Remainder
+  );
   
 }
 
@@ -147,7 +162,7 @@ async function calculate() { // Calculate items
     
     iterations ++;
     
-    if(iterations % settings['maxCalcIter'] == 0 && iterations > 0) {
+    if(iterations % settings.maxCalcIter == 0 && iterations > 0) {
       if(!window.confirm('' + iterations + ' iterations. Continue?')) return
     }
     
@@ -1184,7 +1199,7 @@ async function renderFuncs() { // Render Everything
   renderMI();
   renderRec();
   renderBPAP();
-  renderCT();
+  if(settings.drawCalcTbl) renderCT();
   
   // Other
   
@@ -1229,7 +1244,7 @@ function applySettings() {
   let numInps = document.querySelectorAll('.numInp'); // Get NumInpDgts
   
   for(let inp of numInps) { // Apply NumInpDgts
-    inp.step = '' + (10 ** (-1 * settings['NumInpDgts']));
+    inp.step = '' + (10 ** (-1 * settings.NumInpDgts));
   }
   
   highlightSheet.replace( // Greater and Less CSS
@@ -1239,8 +1254,7 @@ function applySettings() {
   
 }
 
-function loadSave(saveName) {
-  
+async function loadSave(saveName) {
   
   loadOut.innerHTML = '🔄 Processing';
   
@@ -1254,6 +1268,8 @@ function loadSave(saveName) {
     categories = index['categories'];
     buildings = index['buildings'];
     
+    await render();
+    
     loadOut.innerHTML = '✅ Loaded';
     
   }
@@ -1262,16 +1278,14 @@ function loadSave(saveName) {
     
     loadOut.innerHTML = '⚠️ Processing Error';
     
-    console.log('Processing Error:');
+    console.log('Processing Error - Loading Save:');
     console.log(error);
     
   }
   
-  render();
-  
 }
 
-function removeSave(saveName) {
+async function removeSave(saveName) {
   
   loadOut.innerHTML = '🔄 Processing';
   
@@ -1281,6 +1295,8 @@ function removeSave(saveName) {
     
     localStorage.removeItem('SatisfactoryCalc - Save:' + saveName);
     
+    renderLoadList();
+    
     loadOut.innerHTML = '✅ Removed';
     
   }
@@ -1289,12 +1305,10 @@ function removeSave(saveName) {
     
     loadOut.innerHTML = '⚠️ Processing Error';
     
-    console.log('Processing Error:');
+    console.log('Processing Error - Removing Save:');
     console.log(error);
     
   }
-  
-  renderLoadList();
   
 }
 
@@ -1321,6 +1335,40 @@ function renderLoadList() { // Render Saves into LoadList
     listItem.innerHTML = saveName; // Save Name
     listItem.innerHTML += ` <button onclick="loadSave('` + saveName + `')">Load</button>`; // Load Button
     listItem.innerHTML += ` <button onclick="removeSave('` + saveName + `')">Remove</button>`; // Remove Button
+    
+  }
+  
+}
+
+async function loadTemplate(path, output) {
+  // output: Wether to update templateOut
+  
+  if(output) templateOut.innerHTML = '🔄 Processing';
+  
+  let file = await fetch(path); // Fetch file
+  
+  try {
+      
+    const index = await file.json(); // JSON
+    
+    items = index['items'];
+    categories = index['categories'];
+    buildings = index['buildings'];
+    
+    await render();
+    
+    expandAll();
+    
+    if(output) templateOut.innerHTML = '✅ Loaded';
+    
+  }
+  
+  catch(error) {
+    
+    if(output) templateOut.innerHTML = '⚠️ Processing Error';
+    
+    console.log('Processing Error - Loading Template:');
+    console.log(error);
     
   }
   
@@ -1374,9 +1422,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   toolStatus = document.querySelector('#toolbar > #status');
   toolStatus.title = 'Status:\n🖌️ = Rendering\n🔄 = Calculating\n✅ = Done';
   
-  // Rendering
+  // Load Defualt Data
   
-  render().then(expandAll);
+  loadTemplate('assets/json/satisfactory-lite.json', false);
   
   // Menus
   
@@ -1518,7 +1566,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
             
             fileOut.innerHTML = '⚠️ Processing Error';
             
-            console.log('Processing Error:');
+            console.log('Processing Error - Uploading:');
             console.log(error);
             
           }
@@ -1561,12 +1609,20 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
   });
   
+  // Template
+  
+  templateList = document.getElementById('templateList');
+  templateOut = document.getElementById('templateOut')
+  
   // Load Settings
   
   try {
     let localStorageSettings = localStorage.getItem('SatisfactoryCalc - Settings');
     if(localStorageSettings === null) throw('Does not exist in localStorage, taking default');
     settings = JSON.parse(localStorageSettings);
+    
+    powerEquations.custCons = settings.powerConsCust; // Set custom power consumption
+    powerEquations.custProd = settings.powerProdCust; // Set custom power consumption
   }
   catch(err) {
     console.log('localStorage Loading Error (Settings):');
@@ -1594,6 +1650,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     }
     
     // Apply, Save, Close
+    
+    powerEquations.custCons = settings.powerConsCust; // Set custom power consumption
+    powerEquations.custProd = settings.powerProdCust; // Set custom power consumption
     
     applySettings();
     

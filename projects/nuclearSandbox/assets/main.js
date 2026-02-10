@@ -41,7 +41,39 @@ let decay = {
   }
 };
 
-// Nuclear Function
+const avogadro = 6.02214076 * ( 10 ** 23 ); // Avogadro's Number
+const C = 299792458 // Speed of Light (m/s)
+
+// Classes
+
+class material { // Material Class
+  
+  constructor(grams, content, temp = 20) {
+    
+    this.grams = grams; // Grams
+    this.content = content; // Content object in form:
+    // { "isoName": fraction, "235U": 0.42 }
+    
+    this.temp = temp; // Temperature
+    
+  }
+  
+  async decay(step) {
+    
+    let emissions = {} // All particle emissions in form:
+    // { "type": [amount, joules], "2B-": [42, 3.14] }
+    
+    for(let i; i < iterations; i++) {
+      
+      
+      
+    }
+    
+  }
+  
+}
+
+// Data Functions
 
 async function loadNuDat() {
   
@@ -115,6 +147,26 @@ function listLevelKeys() {
   }
   
   return list
+  
+}
+
+// Basic Math Functions
+
+function gramsToAtoms(grams, aMass) {
+  
+  return ( grams / aMass ) * avogadro;
+  
+}
+
+function atomsToGrams(atoms, aMass) {
+  
+  return ( atoms / avogadro ) * aMass
+  
+}
+
+function gramsToJoules(grams) {
+  
+  return ( grams / 1000 ) * ( C ** 2 )
   
 }
 
