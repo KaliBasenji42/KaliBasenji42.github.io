@@ -17,10 +17,10 @@ function createNavArrows() {
   let prevIndex = chapter - 1;
   let nextIndex = chapter + 1;
   
-  let first = '<a class="navArrow" title="First (A)" href="' + chapters[0] + '">&#10913</a>'
-  let prev = '<a class="navArrow" title="Prev (a)" href="' + chapters[prevIndex] + '"><</a>'
-  let next = '<a class="navArrow" title="Next (d)" href="' + chapters[nextIndex] + '">></a>'
-  let last = '<a class="navArrow" title="Last (D)" href="' + chapters[chapters.length - 1] + '">&#10914</a>'
+  let first = '<a class="navArrow" title="First (A)" href="' + chapters[0] + '" rel="prev">&#10913</a>'
+  let prev = '<a class="navArrow" title="Prev (a)" href="' + chapters[prevIndex] + '" rel="prev"><</a>'
+  let next = '<a class="navArrow" title="Next (d)" href="' + chapters[nextIndex] + '" rel="next">></a>'
+  let last = '<a class="navArrow" title="Last (D)" href="' + chapters[chapters.length - 1] + '" rel="next">&#10914</a>'
   
   if(prevIndex < 0) {
     first = '<div class="navArrow" title="[First Page]">&#10913</div>';
