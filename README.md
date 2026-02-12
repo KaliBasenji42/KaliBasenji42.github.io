@@ -55,6 +55,7 @@ It is structured so that it can by copied to host on a Raspberry Pi using Jekyll
 The script's *template* command will also find a variable stored as '{project}' and replace it with the project name based on the file path (This feature is currently unused).  
 
 The script file will not affect the following files (due to not having template syntax setup or being in the wrong directory):  
-* "index.html"
+- "index.html"
+- "c/*"
 
 "setup.py" also has a find and replace function.  

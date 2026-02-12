@@ -428,6 +428,13 @@ else loadWarning();
 
 let fun = {}; // Fun object
 
+fun.key = `
+1 - Hello
+2 - Spin
+3 - Random
+# - Repeated Random
+`
+
 fun.elems = []; // Effected elements
 fun.trigger1 = '$'; // First trigger
 fun.triggered1 = false;
@@ -511,11 +518,19 @@ fun.random = function(first = false) {
 
 document.addEventListener('keypress', function() {
   
+  // h - Key/Help!
+  
+  if(event.key == 'h' && fun.triggered2) {
+    
+    window.alert(fun.key);
+    
+  }
+  
   // 1 - Hello!
   
   if(event.key == '1' && fun.triggered2) {
     
-    window.alert('Hello!');
+    window.alert('Hello!\nTry pressing "$@" with different numbers :P\n"$@h" for key');
     
   }
   
@@ -549,7 +564,7 @@ document.addEventListener('keypress', function() {
     
   }
   
-  // 3 & Shift - Repeated Random
+  // 3 & Shift (#) - Repeated Random
   
   if(event.key == '#' && fun.triggered2 && !fun.randomRunning) {
     
