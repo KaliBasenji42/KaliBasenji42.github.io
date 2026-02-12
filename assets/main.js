@@ -433,6 +433,8 @@ fun.key = `
 2 - Spin
 3 - Random
 # - Repeated Random
+4 - Random+
+$ - Repeated Random+
 `
 
 fun.elems = []; // Effected elements
@@ -446,7 +448,6 @@ fun.load = function() { // Select effected elements
 }
 
 fun.spinRotate = 0; // Initial degrees
-fun.spinRunning = false; // Already happening?
 
 fun.spinSheet = new CSSStyleSheet ();
 fun.spinSheet.replace(`
@@ -469,7 +470,6 @@ fun.spin = function() {
 
 fun.randomScale = 100; // Max pixel movement
 fun.randomFirst = true; // First call?
-fun.randomRunning = false; // Already happening?
 
 fun.randomSheet = new CSSStyleSheet ();
 fun.randomSheet.replace(`
@@ -516,6 +516,117 @@ fun.random = function(first = false) {
   
 }
 
+fun.randomPlusScale = 100; // Max pixel movement
+fun.randomPlusScaleDeg = 90; // Max degree movement
+fun.randomPlusFirst = true; // First call?
+
+fun.randomPlusSheet = new CSSStyleSheet ();
+fun.randomPlusSheet.replace(`
+body * {
+  position: relative;
+  transition: left 2s linear, top 2s linear, rotate 2s;
+  left: 0;
+  top: 0;
+  rotate: 0;
+}
+`); // Random Plus Style Sheet
+
+fun.randomPlus = function(first = false) {
+  // first: Is first call, should set left and top to 0
+  
+  console.log('Random+!'); // Log
+  
+  for(let i = 0; i < fun.elems.length; i++) { // For each element
+    
+    let elem = fun.elems[i]; // Element
+    
+    // Get Current
+    
+    let left = parseInt('0' + elem.style.left);
+    let top = parseInt('0' + elem.style.top);
+    let rotate = parseInt('0' + elem.style.rotate);
+    
+    // Add Random
+    
+    left += (Math.floor(Math.random() * fun.randomPlusScale) * 2) - fun.randomPlusScale;
+    top += (Math.floor(Math.random() * fun.randomPlusScale) * 2) - fun.randomPlusScale;
+    rotate += (Math.floor(Math.random() * fun.randomPlusScaleDeg) * 2) - fun.randomPlusScaleDeg;
+    
+    // First
+    
+    if(first) {
+      left = 0;
+      top = 0;
+      rotate = 0;
+    }
+    
+    // Set Style
+    
+    elem.style.left = '' + left + 'px';
+    elem.style.top = '' + top + 'px';
+    elem.style.rotate = '' + rotate + 'deg';
+    
+  }
+  
+}
+
+fun.BGColorDelay = 50; // Delay based on element
+
+fun.BGColorSheet = new CSSStyleSheet ();
+fun.BGColorSheet.replace(`
+body * {
+  transition: background-color 1s;
+}
+`); // BG Color Style Sheet
+
+fun.BGColor = function() {
+  
+  console.log('BG Color'); // Log
+  
+  for(let i = 0; i < fun.elems.length; i++) { // For each color
+    
+    let elem = fun.elems[i]; // Element
+    
+    // Red
+    
+    setTimeout(() => {
+      elem.style.backgroundColor = 'rgb(255,0,0)';
+    }, i * fun.BGColorDelay);
+    
+    // Yellow
+    
+    setTimeout(() => {
+      elem.style.backgroundColor = 'rgb(255,255,0)';
+    }, 1000 + i * fun.BGColorDelay);
+    
+    // Green
+    
+    setTimeout(() => {
+      elem.style.backgroundColor = 'rgb(0,255,0)';
+    }, 2000 + i * fun.BGColorDelay);
+    
+    // Cyan
+    
+    setTimeout(() => {
+      elem.style.backgroundColor = 'rgb(0,255,255)';
+    }, 3000 + i * fun.BGColorDelay);
+    
+    // Blue
+    
+    setTimeout(() => {
+      elem.style.backgroundColor = 'rgb(0,0,255)';
+    }, 4000 + i * fun.BGColorDelay);
+    
+    // Blue
+    
+    setTimeout(() => {
+      elem.style.backgroundColor = 'rgb(255,0,255)';
+    }, 5000 + i * fun.BGColorDelay);
+    
+  }
+  
+}
+
 document.addEventListener('keypress', function() {
   
   // h - Key/Help!
@@ -536,11 +647,9 @@ document.addEventListener('keypress', function() {
   
   // 2 - Spin
   
-  if(event.key == '2' && fun.triggered2 && !fun.spinRunning) {
+  if(event.key == '2' && fun.triggered2) {
     
     document.adoptedStyleSheets.push(fun.spinSheet); // Add style sheet
-    
-    fun.spinRunning = true; // Do not allow second trigger
     
     fun.spin(); // First 180
     window.setTimeout(fun.spin, 5 * 1000); // Last 180
@@ -566,13 +675,49 @@ document.addEventListener('keypress', function() {
   
   // 3 & Shift (#) - Repeated Random
   
-  if(event.key == '#' && fun.triggered2 && !fun.randomRunning) {
+  if(event.key == '#' && fun.triggered2) {
     
     document.adoptedStyleSheets.push(fun.randomSheet); // Add style sheet
     
     fun.random(true); // First call
     
     window.setInterval(fun.random, 2 * 1000); // Call
+    
+  }
+  
+  // 4 - Random+
+  
+  if(event.key == '4' && fun.triggered2) {
+    
+    document.adoptedStyleSheets.push(fun.randomPlusSheet); // Add style sheet
+    
+    if(fun.randomPlusFirst) fun.randomPlus(true); // First call
+    
+    window.setTimeout(fun.randomPlus, 100); // Call
+    
+  }
+  
+  // 4 & Shift ($) - Repeated Random+
+  
+  if(event.key == '$' && fun.triggered2) {
+    
+    document.adoptedStyleSheets.push(fun.randomPlusSheet); // Add style sheet
+    
+    fun.randomPlus(true); // First call
+    
+    window.setInterval(fun.randomPlus, 2 * 1000); // Call
+    
+  }
+  
+  // 5 - BG Color
+  
+  if(event.key == '5' && fun.triggered2) {
+    
+    document.adoptedStyleSheets.push(fun.BGColorSheet); // Add style sheet
+    
+    fun.BGColor(); // First call
+    
+    window.setInterval(fun.BGColor, 6 * 1000); // Repeated Call
     
   }
   
