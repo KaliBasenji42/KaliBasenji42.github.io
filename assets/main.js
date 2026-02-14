@@ -436,7 +436,7 @@ fun.key = `
 4 - Random+
 $ - Repeated Random+
 5 - BG Color
-`
+`;
 
 fun.elems = []; // Effected elements
 fun.trigger1 = '$'; // First trigger
