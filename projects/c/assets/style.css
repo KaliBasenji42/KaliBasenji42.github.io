@@ -54,9 +54,40 @@ footer {
   z-index: 100;
 }
 
-@keyframes crazy {
+@keyframes crazy { /* Animation redefined in JS */
   from {top: 0}
   to {top: -19.5em}
+}
+
+/* Bagel */
+
+#bagels {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  
+  top: 76%;
+  left: 42%;
+  width: 12%;
+  aspect-ratio: 429 / 286;
+  
+  cursor: help;
+}
+
+#bagels * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#bagels > #shadow {
+  border-radius: 50%;
+  width: 90%;
+  height: 40%;
+  top: 65%;
+  left: 5%;
+  
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Cat Ascii */
