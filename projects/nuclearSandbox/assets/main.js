@@ -189,7 +189,9 @@ function listDecayModes(all) {
         
         for(const mode in modes) {
           list.add(modes[mode]['mode']);
-          if(all) console.log(modes[mode]['mode'] + ' in ' + NuDat[iso]['name']);
+          if(all) console.log(
+            '"' + modes[mode]['mode'] + '" in "' + NuDat[iso]['name'] + '"'
+          );
         }
         
       }
@@ -201,6 +203,40 @@ function listDecayModes(all) {
   }
   
   return list
+  
+}
+
+function listDecayTables() {
+  
+  for(const iso in NuDat) {
+    
+    let text = iso + ':\n'; // Text to log
+    
+    let modes = {}; // All decay modes
+    let total = 0; // Total
+    
+    try {
+      
+      modes = NuDat[iso]['levels'][0]['decayModes']['observed'];
+      
+      for(const mode in modes) {
+        text += '"' + (modes[mode]['mode'] + '": ' + modes[mode]['value'] + '%\n'); // Mode
+        total += modes[mode]['value']; // Total
+      }
+      
+    }
+    
+    catch {}
+    
+    text += ('Total: ' + total + '%'); // Total
+    
+    if(Math.abs(total - 100) > 0.01 && total != 0) { // Abnormal total
+      text += '\nAbnormal Total!';
+    }
+    
+    console.log(text); //Log
+    
+  }
   
 }
 
