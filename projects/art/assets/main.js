@@ -17,12 +17,14 @@ function zoom(URL) { // Zoom on image (onclick)
   if(URL == '') { // If none, close
     zoomElem.style.visibility = 'hidden';
     zoomElem.style.opacity = '0';
+    zoomImg.src = '';
     return
   }
   
   zoomElem.style.visibility = 'visible'; // Show zoom
   zoomElem.style.opacity = '1';
   
+  // window.setTimeout(() => {zoomImg.src = URL}, 500); // Lag test
   zoomImg.src = URL; // Set image URL
   zoomLink.href = URL; // Set link URL
   
