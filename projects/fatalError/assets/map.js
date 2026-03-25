@@ -16,6 +16,7 @@ const mapAreas = [
 
 const anthropoidAreas = [
   ['Boop!', 'rect', 44, 13, 48, 16],
+  ['Bop!', 'rect', 112, 15, 116, 17],
   ['Side<br>Canis', 'label', 16, 55, 'rgb(64,0,64)', 16, 16, 'c'],
   ['Front<br>Canis', 'label', 48, 55, 'rgb(64,0,64)', 16, 16, 'c'],
   ['Side<br>Feline', 'label', 83, 55, 'rgb(64,0,64)', 16, 16, 'c'],
