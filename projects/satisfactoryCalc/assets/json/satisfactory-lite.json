@@ -1,4 +1,5 @@
 {
+  "note": "Default template data.<br>Just the useful, automate-able items (items per minute).",
   "items": {
     "Iron Ore": {
       "category": "Raw",

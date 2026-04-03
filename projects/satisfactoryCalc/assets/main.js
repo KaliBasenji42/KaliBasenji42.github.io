@@ -1355,6 +1355,9 @@ async function loadTemplate(path, output) {
     categories = index['categories'];
     buildings = index['buildings'];
     
+    if(output) document.getElementById('templateNotes').innerHTML = index['note'];
+    // Notes
+    
     await render();
     
     expandAll();

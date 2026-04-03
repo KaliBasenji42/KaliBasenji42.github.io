@@ -1,0 +1,789 @@
+{
+  "note": "Items/Materials from Timberborn in items per hour and MW as HP. Remember to set power consumption to linear.<br><br>F = Folktails, IT = Iron Teeth, FB = Food Byproduct (sums all food)<br><br>If an item is to only be used for food, use FB to make it count to {Food}.",
+  "items": {
+    "Beaver Needs": {
+      "category": "Labor",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 0,
+      "color": "#c08040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Beaver Needs",
+      "recipes": {
+        "Beaver Needs": {
+          "out": 1,
+          "in": [
+            {
+              "item": "{Food}",
+              "amount": 0.1111111111111111
+            },
+            {
+              "item": "Water",
+              "amount": 0.0883838383838384
+            }
+          ],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Beaver (Pod)": {
+      "category": "Labor",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 1,
+      "color": "#606080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Breeding Pod (IT)",
+      "recipes": {
+        "Breeding Pod (IT)": {
+          "out": 0.0083333333333333,
+          "in": [
+            {
+              "item": "Berry",
+              "amount": 0.0166666666666667
+            },
+            {
+              "item": "Water",
+              "amount": 0.0166666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Breeding Pod"
+        },
+        "Advanced Breeding Pod (IT)": {
+          "out": 0,
+          "in": [
+            {
+              "item": "Berry",
+              "amount": 0
+            },
+            {
+              "item": "Extract",
+              "amount": 0
+            }
+          ],
+          "bypro": [],
+          "building": "Advanced Breeding Pod"
+        }
+      }
+    },
+    "Bot": {
+      "category": "Labor",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 2,
+      "color": "#606060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Bot",
+      "recipes": {
+        "Bot": {
+          "out": 0.0277777777777778,
+          "in": [
+            {
+              "item": "Bot Head",
+              "amount": 0.0277777777777778
+            },
+            {
+              "item": "Bot Chassis",
+              "amount": 0.0277777777777778
+            },
+            {
+              "item": "Bot Limb",
+              "amount": 0.1111111111111111
+            }
+          ],
+          "bypro": [],
+          "building": "Bot Assembler"
+        }
+      }
+    },
+    "Water": {
+      "category": "Basic",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 0,
+      "color": "#4040e0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Water Pump (F)",
+      "recipes": {
+        "Water Pump (F)": {
+          "out": 3,
+          "in": [],
+          "bypro": [],
+          "building": "Water Pump"
+        },
+        "Large Water Pump (F)": {
+          "out": 15,
+          "in": [],
+          "bypro": [],
+          "building": "Large Water Pump"
+        },
+        "Deep Water Pump (IT)": {
+          "out": 3,
+          "in": [],
+          "bypro": [],
+          "building": "Deep Water Pump"
+        }
+      }
+    },
+    "Log": {
+      "category": "Basic",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 1,
+      "color": "#e0a060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Oak",
+      "recipes": {
+        "Birch": {
+          "out": 0.0059523809523810,
+          "in": [],
+          "bypro": [],
+          "building": "Birch"
+        },
+        "Pine": {
+          "out": 0.0069444444444444,
+          "in": [],
+          "bypro": [],
+          "building": "Pine"
+        },
+        "Oak": {
+          "out": 0.0111111111111111,
+          "in": [],
+          "bypro": [],
+          "building": "Oak"
+        },
+        "Maple (F)": {
+          "out": 0.0089285714285714,
+          "in": [],
+          "bypro": [],
+          "building": "Maple"
+        },
+        "Chestnut Tree (F)": {
+          "out": 0.0072463768115942,
+          "in": [],
+          "bypro": [],
+          "building": "Chestnut Tree"
+        },
+        "Mangrove Tree (IT)": {
+          "out": 0.0083333333333333,
+          "in": [],
+          "bypro": [],
+          "building": "Mangrove Tree"
+        }
+      }
+    },
+    "{Food}": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 0,
+      "color": "#808080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "{Food}",
+      "recipes": {
+        "{Food}": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        }
+      }
+    },
+    "Berry": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 1,
+      "color": "#4020c0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Berry",
+      "recipes": {
+        "Berry": {
+          "out": 0.0104166666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Blueberry Bush"
+        },
+        "Berry (FB)": {
+          "out": 0.0104166666666667,
+          "in": [],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 0.0104166666666667
+            }
+          ],
+          "building": "Blueberry Bush"
+        }
+      }
+    },
+    "Bread": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 2,
+      "color": "#ffe0a0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Bread (F)",
+      "recipes": {
+        "Bread (F)": {
+          "out": 5,
+          "in": [
+            {
+              "item": "Wheat Flour",
+              "amount": 1
+            },
+            {
+              "item": "Log",
+              "amount": 0.1
+            }
+          ],
+          "bypro": [],
+          "building": "Bakery"
+        },
+        "Bread (F) (FB)": {
+          "out": 5,
+          "in": [
+            {
+              "item": "Wheat Flour",
+              "amount": 1
+            },
+            {
+              "item": "Log",
+              "amount": 0.1
+            }
+          ],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 5
+            }
+          ],
+          "building": "Bakery"
+        }
+      }
+    },
+    "Carrot": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 3,
+      "color": "#e08020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Carrot (F)",
+      "recipes": {
+        "Carrot (F)": {
+          "out": 0.03125,
+          "in": [],
+          "bypro": [],
+          "building": "Carrot"
+        },
+        "Carrot (F) (FB)": {
+          "out": 0.03125,
+          "in": [],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 0.03125
+            }
+          ],
+          "building": "Carrot"
+        }
+      }
+    },
+    "Cattail Cracker": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 4,
+      "color": "#ffe0c0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Cattail Cracker (F)",
+      "recipes": {
+        "Cattail Cracker (F)": {
+          "out": 8,
+          "in": [
+            {
+              "item": "Cattail Flour",
+              "amount": 2
+            },
+            {
+              "item": "Log",
+              "amount": 0.2
+            }
+          ],
+          "bypro": [],
+          "building": "Bakery"
+        },
+        "Cattail Cracker (F) (FB)": {
+          "out": 8,
+          "in": [
+            {
+              "item": "Cattail Flour",
+              "amount": 2
+            },
+            {
+              "item": "Log",
+              "amount": 0.2
+            }
+          ],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 8
+            }
+          ],
+          "building": "Bakery"
+        }
+      }
+    },
+    "Grilled Chestnut": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 5,
+      "color": "#e0a060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Grilled Chestnut (F)",
+      "recipes": {
+        "Grilled Chestnut (F)": {
+          "out": 6.0606060606060606,
+          "in": [
+            {
+              "item": "Chestnut",
+              "amount": 3.0303030303030303
+            },
+            {
+              "item": "Log",
+              "amount": 0.3030303030303030
+            }
+          ],
+          "bypro": [],
+          "building": "Grill"
+        },
+        "Grilled Chestnut (F) (FB)": {
+          "out": 6.0606060606060606,
+          "in": [
+            {
+              "item": "Chestnut",
+              "amount": 3.0303030303030303
+            },
+            {
+              "item": "Log",
+              "amount": 0.3030303030303030
+            }
+          ],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 6.0606060606060606
+            }
+          ],
+          "building": "Grill"
+        }
+      }
+    },
+    "Grilled Potato": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 6,
+      "color": "#ffffe0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Grilled Potato (F)",
+      "recipes": {
+        "Grilled Potatoes (F)": {
+          "out": 7.6923076923076920,
+          "in": [
+            {
+              "item": "Potato",
+              "amount": 1.9230769230769230
+            },
+            {
+              "item": "Log",
+              "amount": 0.1923076923076923
+            }
+          ],
+          "bypro": [],
+          "building": "Grill"
+        },
+        "Grilled Potato (F) (FB)": {
+          "out": 7.6923076923076920,
+          "in": [
+            {
+              "item": "Potato",
+              "amount": 1.9230769230769230
+            },
+            {
+              "item": "Log",
+              "amount": 0.1923076923076923
+            }
+          ],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 7.6923076923076920
+            }
+          ],
+          "building": "Grill"
+        }
+      }
+    },
+    "Grilled Spadderdock": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 7,
+      "color": "#004000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Grilled Spadderdock (F)",
+      "recipes": {
+        "Grilled Spadderdock (F)": {
+          "out": 7.5,
+          "in": [
+            {
+              "item": "Spadderdock",
+              "amount": 2.5
+            },
+            {
+              "item": "Log",
+              "amount": 0.25
+            }
+          ],
+          "bypro": [],
+          "building": "Grill"
+        },
+        "Grilled Spadderdock (F) (FB)": {
+          "out": 7.5,
+          "in": [
+            {
+              "item": "Spadderdock",
+              "amount": 2.5
+            },
+            {
+              "item": "Log",
+              "amount": 0.25
+            }
+          ],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 7.5
+            }
+          ],
+          "building": "Grill"
+        }
+      }
+    },
+    "Maple Pastry": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 8,
+      "color": "#a06020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Maple Pastry (F)",
+      "recipes": {
+        "Maple Pastry (F)": {
+          "out": 2,
+          "in": [
+            {
+              "item": "Wheat Flour",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Maple Syrup",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Log",
+              "amount": 0.0666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Bakery"
+        },
+        "Maple Pastry (F) (FB)": {
+          "out": 2,
+          "in": [
+            {
+              "item": "Wheat Flour",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Maple Syrup",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Log",
+              "amount": 0.0666666666666667
+            }
+          ],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 2
+            }
+          ],
+          "building": "Bakery"
+        }
+      }
+    },
+    "Sunflower Seeds": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 9,
+      "color": "#202000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Sunflower Seeds (F)",
+      "recipes": {
+        "Sunflower Seeds (F)": {
+          "out": 0.0166666666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Sunflower"
+        },
+        "Sunflower Seeds (F) (FB)": {
+          "out": 0.0166666666666667,
+          "in": [],
+          "bypro": [
+            {
+              "item": "{Food}",
+              "amount": 0.0166666666666667
+            }
+          ],
+          "building": "Sunflower"
+        }
+      }
+    }
+  },
+  "categories": {
+    "Labor": {
+      "pos": 0,
+      "color": "#e0a060"
+    },
+    "Basic": {
+      "pos": 1,
+      "color": "#808080"
+    },
+    "Food": {
+      "pos": 2,
+      "color": "#80c080"
+    },
+    "Ingredients": {
+      "pos": 3,
+      "color": "#c0c080"
+    },
+    "Materials": {
+      "pos": 4,
+      "color": "#8080c0"
+    }
+  },
+  "buildings": {
+    "Miner Mk. 1": {
+      "Average MW": 5,
+      "Max MW": 5,
+      "Min MW": 5,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 0,
+      "color": "#b7b7b7"
+    },
+    "The Void": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 19,
+      "color": "#404040"
+    }
+  }
+}

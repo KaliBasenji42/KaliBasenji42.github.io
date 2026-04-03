@@ -42,7 +42,7 @@
   
 <!--End-->
   
-  <!-- <script src="assets/test.js"></script> -->
+  <script src="assets/test.js"></script>
   
   <div id="toolbar">
     <div id="load" title="Load" class="menuBttn"><img src="assets/images/folder.png"></div>
@@ -120,12 +120,20 @@
           <button onclick="loadTemplate('assets/json/satisfactory-full.json', true)">Load</button>
         </div>
         <div>
+          Timberborn
+          <button onclick="loadTemplate('assets/json/timberborn.json', true)">Load</button>
+        </div>
+        <div>
           Blank
           <button onclick="loadTemplate('assets/json/blank.json', true)">Load</button>
         </div>
       </div>
       
-      <label id="templateOut">... Awaiting Input</label>
+      <label id="templateOut">... Awaiting Input</label><br>
+      
+      <br>
+      <b>Note:</b><br>
+      <div id="templateNotes"></div>
     </div>
     
     <div id="settings" style="display: none;">
@@ -220,8 +228,9 @@
   <h2>May be buggy; report bugs <a href="https://github.com/KaliBasenji42/KaliBasenji42.github.io/issues" target="_blank" rel="opener external">here</a>.</h2>
   
   <a href="../../">Website Homepage</a>
-  <div>Default data from <a href="https://satisfactory.wiki.gg/wiki" target="_blank" rel="opener external">The Satisfactory Wiki</a></div>
+  <div>Default data from <a href="https://satisfactory.wiki.gg/wiki" target="_blank" rel="opener external">The Satisfactory Wiki</a> and <a href="https://timberborn.wiki.gg/wiki" target="_blank" rel="opener external">The Timberborn Wiki</a></div>
   <div>Shout out to (although no sources used from) <a href="https://satisfactory-calculator.com/" target="_blank" rel="opener external">Satisfactory Calculator</a></div>
+  <div>Based off this Google Sheet: <a href="https://docs.google.com/spreadsheets/d/1sW_QjrwLQxPv0XAXjSgnewo0WWrJ1WgY58rWv6FmuTk/edit?usp=sharing" target="_blank" rel="opener external">Satisfactory Build Calculator</a></div>
   
   <br>
   <button onclick="expandAll()">Expand All</button>
