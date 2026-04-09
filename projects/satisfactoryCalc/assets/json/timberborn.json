@@ -1,5 +1,5 @@
 {
-  "note": "Items/Materials from Timberborn in items per hour and MW as HP. Remember to set power consumption to linear.<br><br>F = Folktails, IT = Iron Teeth, FB = Food Byproduct (sums all food)<br><br>If an item is to only be used for food, use FB to make it count to {Food}.",
+  "note": "Items/Materials from Timberborn in items per hour and MW as HP. Remember to set power consumption to linear/ceiling.<br><br>F = Folktails, IT = Iron Teeth, FB = Food Byproduct (sums all food)<br><br>If an item is to only be used for food, use FB to make it count to Food.<br><br>Remember to set recipe clock speed based on working hours/efficiency.",
   "items": {
     "Beaver Needs": {
       "category": "Labor",
@@ -26,7 +26,7 @@
           "out": 1,
           "in": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 0.1111111111111111
             },
             {
@@ -39,7 +39,7 @@
         }
       }
     },
-    "Beaver (Pod)": {
+    "Beaver - Pod": {
       "category": "Labor",
       "complete": false,
       "inpDemand": 0,
@@ -131,6 +131,40 @@
           ],
           "bypro": [],
           "building": "Bot Assembler"
+        }
+      }
+    },
+    "Bot - Sustain Pop": {
+      "category": "Labor",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 3,
+      "color": "#806080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Bot Assemblers",
+      "recipes": {
+        "Bot Assemblers": {
+          "out": 1680,
+          "in": [
+            {
+              "item": "Bot",
+              "amount": 1
+            }
+          ],
+          "bypro": [],
+          "building": "The Void"
         }
       }
     },
@@ -234,7 +268,7 @@
         }
       }
     },
-    "{Food}": {
+    "Food": {
       "category": "Food",
       "complete": false,
       "inpDemand": 0,
@@ -253,9 +287,9 @@
       "power": 0,
       "powerMax": 0,
       "powerMin": 0,
-      "recipe": "{Food}",
+      "recipe": "Food",
       "recipes": {
-        "{Food}": {
+        "Food": {
           "out": 1,
           "in": [],
           "bypro": [],
@@ -295,7 +329,7 @@
           "in": [],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 0.0104166666666667
             }
           ],
@@ -353,7 +387,7 @@
           ],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 5
             }
           ],
@@ -393,7 +427,7 @@
           "in": [],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 0.03125
             }
           ],
@@ -451,7 +485,7 @@
           ],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 8
             }
           ],
@@ -509,7 +543,7 @@
           ],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 6.0606060606060606
             }
           ],
@@ -538,7 +572,7 @@
       "powerMin": 0,
       "recipe": "Grilled Potato (F)",
       "recipes": {
-        "Grilled Potatoes (F)": {
+        "Grilled Potato (F)": {
           "out": 7.6923076923076920,
           "in": [
             {
@@ -567,7 +601,7 @@
           ],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 7.6923076923076920
             }
           ],
@@ -625,7 +659,7 @@
           ],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 7.5
             }
           ],
@@ -691,7 +725,7 @@
           ],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 2
             }
           ],
@@ -699,7 +733,7 @@
         }
       }
     },
-    "Sunflower Seeds": {
+    "Sunflower Seed": {
       "category": "Food",
       "complete": false,
       "inpDemand": 0,
@@ -718,24 +752,1856 @@
       "power": 0,
       "powerMax": 0,
       "powerMin": 0,
-      "recipe": "Sunflower Seeds (F)",
+      "recipe": "Sunflower Seed (F)",
       "recipes": {
-        "Sunflower Seeds (F)": {
+        "Sunflower Seed (F)": {
           "out": 0.0166666666666667,
           "in": [],
           "bypro": [],
           "building": "Sunflower"
         },
-        "Sunflower Seeds (F) (FB)": {
+        "Sunflower Seed (F) (FB)": {
           "out": 0.0166666666666667,
           "in": [],
           "bypro": [
             {
-              "item": "{Food}",
+              "item": "Food",
               "amount": 0.0166666666666667
             }
           ],
           "building": "Sunflower"
+        }
+      }
+    },
+    "Algae Ration": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 10,
+      "color": "#20a020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Algae Ration (IT)",
+      "recipes": {
+        "Algae Ration (IT)": {
+          "out": 24,
+          "in": [
+            {
+              "item": "Algae",
+              "amount": 4
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 4
+            },
+            {
+              "item": "Log",
+              "amount": 0.4
+            }
+          ],
+          "bypro": [],
+          "building": "Food Factory"
+        },
+        "Algae Ration (IT) (FB)": {
+          "out": 24,
+          "in": [
+            {
+              "item": "Algae",
+              "amount": 4
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 4
+            },
+            {
+              "item": "Log",
+              "amount": 0.4
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 24
+            }
+          ],
+          "building": "Food Factory"
+        }
+      }
+    },
+    "Corn Ration": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 11,
+      "color": "#e0e020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Corn Ration (IT)",
+      "recipes": {
+        "Corn Ration (IT)": {
+          "out": 10,
+          "in": [
+            {
+              "item": "Corn",
+              "amount": 2
+            },
+            {
+              "item": "Log",
+              "amount": 0.2
+            }
+          ],
+          "bypro": [],
+          "building": "Food Factory"
+        },
+        "Corn Ration (IT) (FB)": {
+          "out": 10,
+          "in": [
+            {
+              "item": "Corn",
+              "amount": 2
+            },
+            {
+              "item": "Log",
+              "amount": 0.2
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 10
+            }
+          ],
+          "building": "Food Factory"
+        }
+      }
+    },
+    "Eggplant Ration": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 12,
+      "color": "#a020a0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Eggplant Ration (IT)",
+      "recipes": {
+        "Eggplant Ration (IT)": {
+          "out": 12,
+          "in": [
+            {
+              "item": "Eggplant",
+              "amount": 2
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 2
+            },
+            {
+              "item": "Log",
+              "amount": 0.2
+            }
+          ],
+          "bypro": [],
+          "building": "Food Factory"
+        },
+        "Eggplant Ration (IT) (FB)": {
+          "out": 12,
+          "in": [
+            {
+              "item": "Eggplant",
+              "amount": 2
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 2
+            },
+            {
+              "item": "Log",
+              "amount": 0.2
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 12
+            }
+          ],
+          "building": "Food Factory"
+        }
+      }
+    },
+    "Fermented Cassava": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 13,
+      "color": "#a0a020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Fermented Cassava (IT)",
+      "recipes": {
+        "Fermented Cassava (IT)": {
+          "out": 5,
+          "in": [
+            {
+              "item": "Cassava",
+              "amount": 2
+            }
+          ],
+          "bypro": [],
+          "building": "Fermenter"
+        },
+        "Fermented Cassava (IT) (FB)": {
+          "out": 5,
+          "in": [
+            {
+              "item": "Cassava",
+              "amount": 2
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 5
+            }
+          ],
+          "building": "Fermenter"
+        }
+      }
+    },
+    "Fermented Mushroom": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 14,
+      "color": "#802080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Fermented Mushroom (IT)",
+      "recipes": {
+        "Fermented Mushroom (IT)": {
+          "out": 8,
+          "in": [
+            {
+              "item": "Mushroom",
+              "amount": 2
+            }
+          ],
+          "bypro": [],
+          "building": "Fermenter"
+        },
+        "Fermented Mushroom (IT) (FB)": {
+          "out": 8,
+          "in": [
+            {
+              "item": "Mushroom",
+              "amount": 2
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 8
+            }
+          ],
+          "building": "Fermenter"
+        }
+      }
+    },
+    "Fermented Soybean": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 15,
+      "color": "#20a020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Fermented Soybean (IT)",
+      "recipes": {
+        "Fermented Soybean (IT)": {
+          "out": 6.6666666666666667,
+          "in": [
+            {
+              "item": "Soybean",
+              "amount": 2
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 0.3333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Fermenter"
+        },
+        "Fermented Soybean (IT) (FB)": {
+          "out": 6.6666666666666667,
+          "in": [
+            {
+              "item": "Soybean",
+              "amount": 2
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 0.3333333333333333
+            }
+          ],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 6.6666666666666667
+            }
+          ],
+          "building": "Fermenter"
+        }
+      }
+    },
+    "Kohlrabi": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 16,
+      "color": "#80e080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Kohlrabi (IT)",
+      "recipes": {
+        "Kohlrabi (IT)": {
+          "out": 0.0277777777777776,
+          "in": [],
+          "bypro": [],
+          "building": "Kohlrabi"
+        },
+        "Kohlrabi (IT) (FB)": {
+          "out": 0.0277777777777776,
+          "in": [],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 0.0277777777777776
+            }
+          ],
+          "building": "Kohlrabi"
+        }
+      }
+    },
+    "Mangrove Fruit": {
+      "category": "Food",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 17,
+      "color": "#e06080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Mangrove Fruit (IT)",
+      "recipes": {
+        "Mangrove Fruit (IT)": {
+          "out": 0.0166666666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Mangrove Tree"
+        },
+        "Mangrove Fruit (IT) (FB)": {
+          "out": 0.0166666666666667,
+          "in": [],
+          "bypro": [
+            {
+              "item": "Food",
+              "amount": 0.0166666666666667
+            }
+          ],
+          "building": "Mangrove Tree"
+        }
+      }
+    },
+    "Cattail Flour": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 0,
+      "color": "#ffffe0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Cattail Flour (F)",
+      "recipes": {
+        "Cattail Flour (F)": {
+          "out": 4,
+          "in": [
+            {
+              "item": "Cattail Root",
+              "amount": 4
+            }
+          ],
+          "bypro": [],
+          "building": "Gristmill"
+        }
+      }
+    },
+    "Cattail Root": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 1,
+      "color": "#606000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Cattail Root (F)",
+      "recipes": {
+        "Cattail Root (F)": {
+          "out": 0.015625,
+          "in": [],
+          "bypro": [],
+          "building": "Cattail"
+        }
+      }
+    },
+    "Chestnut": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 2,
+      "color": "#e0a060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Chestnut (F)",
+      "recipes": {
+        "Chestnut (F)": {
+          "out": 0.015625,
+          "in": [],
+          "bypro": [],
+          "building": "Chestnut Tree"
+        }
+      }
+    },
+    "Maple Syrup": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 3,
+      "color": "#a06000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Maple Syrup (F)",
+      "recipes": {
+        "Maple Syrup (F)": {
+          "out": 0.0104166666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Maple"
+        }
+      }
+    },
+    "Potato": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 4,
+      "color": "#c08040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Potato (F)",
+      "recipes": {
+        "Potato (F)": {
+          "out": 0.0069444444444444,
+          "in": [],
+          "bypro": [],
+          "building": "Potato"
+        }
+      }
+    },
+    "Spadderdock": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 5,
+      "color": "#208000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Spadderdock (F)",
+      "recipes": {
+        "Spadderdock (F)": {
+          "out": 0.0104166666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Spadderdock"
+        }
+      }
+    },
+    "Wheat": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 6,
+      "color": "#e0e080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Wheat (F)",
+      "recipes": {
+        "Wheat (F)": {
+          "out": 0.0125,
+          "in": [],
+          "bypro": [],
+          "building": "Wheat"
+        }
+      }
+    },
+    "Wheat Flour": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 7,
+      "color": "#ffffff",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Wheat Flour (F)",
+      "recipes": {
+        "Wheat Flour (F)": {
+          "out": 2,
+          "in": [
+            {
+              "item": "Wheat",
+              "amount": 2
+            }
+          ],
+          "bypro": [],
+          "building": "Gristmill"
+        }
+      }
+    },
+    "Algae": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 8,
+      "color": "#20a040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Algae (IT)",
+      "recipes": {
+        "Algae (IT)": {
+          "out": 0.2430555555555556,
+          "in": [
+            {
+              "item": "Water",
+              "amount": 0.2083333333333334
+            }
+          ],
+          "bypro": [],
+          "building": "Hydroponic Garden"
+        }
+      }
+    },
+    "Canola Seed": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 9,
+      "color": "#404000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Canola Seed (IT)",
+      "recipes": {
+        "Canola Seed (IT)": {
+          "out": 0.0138888888888889,
+          "in": [],
+          "bypro": [],
+          "building": "Canola"
+        }
+      }
+    },
+    "Cassava": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 10,
+      "color": "#a0c020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Cassava (IT)",
+      "recipes": {
+        "Cassava (IT)": {
+          "out": 0.0083333333333333,
+          "in": [],
+          "bypro": [],
+          "building": "Cassava"
+        }
+      }
+    },
+    "Coffee Bean": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 11,
+      "color": "#604000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Coffee Bean (IT)",
+      "recipes": {
+        "Coffee Bean (IT)": {
+          "out": 0.0138888888888889,
+          "in": [],
+          "bypro": [],
+          "building": "Coffee Bush"
+        }
+      }
+    },
+    "Corn": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 12,
+      "color": "#e0e060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Corn (IT)",
+      "recipes": {
+        "Corn (IT)": {
+          "out": 0.0083333333333333,
+          "in": [],
+          "bypro": [],
+          "building": "Corn"
+        }
+      }
+    },
+    "Eggplant": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 13,
+      "color": "#a060a0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Eggplant (IT)",
+      "recipes": {
+        "Eggplant (IT)": {
+          "out": 0.0104166666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Eggplant"
+        }
+      }
+    },
+    "Mushroom": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 14,
+      "color": "#806080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Mushroom (IT)",
+      "recipes": {
+        "Mushroom (IT)": {
+          "out": 0.234375,
+          "in": [
+            {
+              "item": "Water",
+              "amount": 0.2083333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Hydroponic Garden"
+        }
+      }
+    },
+    "Soybean": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 15,
+      "color": "#60a060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Soybean (IT)",
+      "recipes": {
+        "Soybean (IT)": {
+          "out": 0.0104166666666667,
+          "in": [],
+          "bypro": [],
+          "building": "Soybean"
+        }
+      }
+    },
+    "Canola Oil": {
+      "category": "Ingredients",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 16,
+      "color": "#e0e080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Canola Oil (IT)",
+      "recipes": {
+        "Canola Oil (IT)": {
+          "out": 0.7692307692307692,
+          "in": [
+            {
+              "item": "Canola Seed",
+              "amount": 0.7692307692307692
+            }
+          ],
+          "bypro": [],
+          "building": "Oil Press"
+        }
+      }
+    },
+    "Badwater": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 0,
+      "color": "#a04000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Badwater (F)",
+      "recipes": {
+        "Badwater (F)": {
+          "out": 3.0303030303030303,
+          "in": [],
+          "bypro": [],
+          "building": "Badwater Pump"
+        },
+        "Badwater (IT)": {
+          "out": 3.0303030303030303,
+          "in": [],
+          "bypro": [],
+          "building": "Deep Badwater Pump"
+        }
+      }
+    },
+    "Bot Chassis": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 1,
+      "color": "#806060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Bot Chassis (F)",
+      "recipes": {
+        "Bot Chassis (F)": {
+          "out": 0.0555555555555556,
+          "in": [
+            {
+              "item": "Plank",
+              "amount": 0.2777777777777778
+            },
+            {
+              "item": "Metal Block",
+              "amount": 0.0555555555555556
+            },
+            {
+              "item": "Biofuel",
+              "amount": 0.0555555555555556
+            }
+          ],
+          "bypro": [],
+          "building": "Bot Part Factory"
+        },
+        "Bot Chassis (IT)": {
+          "out": 0.0555555555555556,
+          "in": [
+            {
+              "item": "Plank",
+              "amount": 0.2777777777777778
+            },
+            {
+              "item": "Metal Block",
+              "amount": 0.0555555555555556
+            }
+          ],
+          "bypro": [],
+          "building": "Bot Part Factory"
+        }
+      }
+    },
+    "Bot Head": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 2,
+      "color": "#608060",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Bot Head",
+      "recipes": {
+        "Bot Head": {
+          "out": 0.0555555555555556,
+          "in": [
+            {
+              "item": "Gear",
+              "amount": 0.1666666666666667
+            },
+            {
+              "item": "Metal Block",
+              "amount": 0.0555555555555556
+            },
+            {
+              "item": "Plank",
+              "amount": 0.0555555555555556
+            }
+          ],
+          "bypro": [],
+          "building": "Bot Part Factory"
+        }
+      }
+    },
+    "Bot Limb": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 3,
+      "color": "#606080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Bot Limb",
+      "recipes": {
+        "Bot Limb": {
+          "out": 0.2222222222222222,
+          "in": [
+            {
+              "item": "Gear",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Plank",
+              "amount": 0.2222222222222222
+            }
+          ],
+          "bypro": [],
+          "building": "Bot Part Factory"
+        }
+      }
+    },
+    "Dirt": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 4,
+      "color": "#806040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Dirt",
+      "recipes": {
+        "Dirt": {
+          "out": 2,
+          "in": [],
+          "bypro": [],
+          "building": "Dirt Excavator"
+        }
+      }
+    },
+    "Extract": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 5,
+      "color": "#40e040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Extract",
+      "recipes": {
+        "Extract": {
+          "out": 1.3333333333333333,
+          "in": [
+            {
+              "item": "Badwater",
+              "amount": 5.3333333333333333
+            },
+            {
+              "item": "Log",
+              "amount": 0.1333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Centrifuge"
+        }
+      }
+    },
+    "Explosive": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 6,
+      "color": "#e04040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Explosive",
+      "recipes": {
+        "Explosive": {
+          "out": 0.3333333333333333,
+          "in": [
+            {
+              "item": "Badwater",
+              "amount": 1.6666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Explosives Factory"
+        }
+      }
+    },
+    "Gear": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 7,
+      "color": "#c0a080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Gear",
+      "recipes": {
+        "Gear": {
+          "out": 0.3333333333333333,
+          "in": [
+            {
+              "item": "Plank",
+              "amount": 0.3333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Gear Workshop"
+        }
+      }
+    },
+    "Metal Block": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 8,
+      "color": "#402080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Metal Block",
+      "recipes": {
+        "Metal Block": {
+          "out": 0.5,
+          "in": [
+            {
+              "item": "Scrap Metal",
+              "amount": 1
+            },
+            {
+              "item": "Log",
+              "amount": 0.1
+            }
+          ],
+          "bypro": [],
+          "building": "Smelter"
+        }
+      }
+    },
+    "Pine Resin": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 9,
+      "color": "#c0c040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Pine Resin",
+      "recipes": {
+        "Pine Resin": {
+          "out": 0.0119047619047619,
+          "in": [],
+          "bypro": [],
+          "building": "Pine"
+        }
+      }
+    },
+    "Plank": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 10,
+      "color": "#e0c0a0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Plank (F)",
+      "recipes": {
+        "Plank (F)": {
+          "out": 0.7692307692307692,
+          "in": [
+            {
+              "item": "Log",
+              "amount": 0.7692307692307692
+            }
+          ],
+          "bypro": [],
+          "building": "Lumber Mill"
+        },
+        "Plank (IT)": {
+          "out": 1.5873015873015872,
+          "in": [
+            {
+              "item": "Log",
+              "amount": 1.5873015873015872
+            }
+          ],
+          "bypro": [],
+          "building": "Industrial Lumber Mill"
+        }
+      }
+    },
+    "Scrap Metal": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 11,
+      "color": "#c04020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Scavenger",
+      "recipes": {
+        "Scavenger": {
+          "out": 1,
+          "in": [],
+          "bypro": [],
+          "building": "The Void"
+        },
+        "Mine (F)": {
+          "out": 2.7777777777777778,
+          "in": [
+            {
+              "item": "Treated Plank",
+              "amount": 0.5555555555555556
+            }
+          ],
+          "bypro": [],
+          "building": "Mine"
+        },
+        "Mine (IT)": {
+          "out": 2.7777777777777778,
+          "in": [
+            {
+              "item": "Treated Plank",
+              "amount": 0.5555555555555556
+            }
+          ],
+          "bypro": [],
+          "building": "Efficient Mine"
+        },
+        "Efficient Mine (IT)": {
+          "out": 5.5555555555555556,
+          "in": [
+            {
+              "item": "Treated Plank",
+              "amount": 0.5555555555555556
+            },
+            {
+              "item": "Extract",
+              "amount": 1.1111111111111111
+            }
+          ],
+          "bypro": [],
+          "building": "Efficient Mine"
+        }
+      }
+    },
+    "Treated Plank": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 12,
+      "color": "#ffe0c0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Treated Plank",
+      "recipes": {
+        "Treated Plank": {
+          "out": 0.3333333333333333,
+          "in": [
+            {
+              "item": "Plank",
+              "amount": 0.3333333333333333
+            },
+            {
+              "item": "Pine Resin",
+              "amount": 0.3333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Wood Workshop"
+        }
+      }
+    },
+    "Antidote": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 13,
+      "color": "#a0ffa0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Antidote (F)",
+      "recipes": {
+        "Antidote (F)": {
+          "out": 1,
+          "in": [
+            {
+              "item": "Paper",
+              "amount": 0.5
+            },
+            {
+              "item": "Dandelion",
+              "amount": 1
+            },
+            {
+              "item": "Berry",
+              "amount": 1
+            }
+          ],
+          "bypro": [],
+          "building": "Herbalist"
+        }
+      }
+    },
+    "Biofuel": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 14,
+      "color": "#80e040",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Biofuel with Carrot (F)",
+      "recipes": {
+        "Biofuel with Carrots (F)": {
+          "out": 1.6666666666666667,
+          "in": [
+            {
+              "item": "Water",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Carrot",
+              "amount": 0.6666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Refinery"
+        },
+        "Biofuel with Potatoes (F)": {
+          "out": 10,
+          "in": [
+            {
+              "item": "Water",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Potato",
+              "amount": 0.6666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Refinery"
+        },
+        "Biofuel with Spadderdocks (F)": {
+          "out": 8.3333333333333333,
+          "in": [
+            {
+              "item": "Water",
+              "amount": 0.6666666666666667
+            },
+            {
+              "item": "Spadderdock",
+              "amount": 0.6666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Refinery"
+        }
+      }
+    },
+    "Book": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 15,
+      "color": "#ffc080",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Book (F)",
+      "recipes": {
+        "Book (F)": {
+          "out": 0.6666666666666667,
+          "in": [
+            {
+              "item": "Paper",
+              "amount": 0.6666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Printing Press"
+        }
+      }
+    },
+    "Catalyst": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 16,
+      "color": "#e020ff",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Catalyst (F)",
+      "recipes": {
+        "Catalyst (F)": {
+          "out": 1,
+          "in": [
+            {
+              "item": "Maple Syrup",
+              "amount": 0.3333333333333333
+            },
+            {
+              "item": "Extract",
+              "amount": 0.3333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Refinery"
+        }
+      }
+    },
+    "Dandelion": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 17,
+      "color": "#e0e020",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Dandelion (F)",
+      "recipes": {
+        "Dandelion (F)": {
+          "out": 0.3333333333333333,
+          "in": [],
+          "bypro": [],
+          "building": "Dandelion Bush"
+        }
+      }
+    },
+    "Paper": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 18,
+      "color": "#e0e0e0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Paper (F)",
+      "recipes": {
+        "Paper (F)": {
+          "out": 1.25,
+          "in": [
+            {
+              "item": "Log",
+              "amount": 0.625
+            }
+          ],
+          "bypro": [],
+          "building": "Paper Mill"
+        }
+      }
+    },
+    "Punchcard": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 19,
+      "color": "#e0e0ff",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Punchcard (F)",
+      "recipes": {
+        "Punchcard (F)": {
+          "out": 2.6666666666666667,
+          "in": [
+            {
+              "item": "Paper",
+              "amount": 2.6666666666666667
+            },
+            {
+              "item": "Plank",
+              "amount": 1.3333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Printing Press"
+        }
+      }
+    },
+    "Coffee": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 20,
+      "color": "#402000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Coffee (IT)",
+      "recipes": {
+        "Coffee (IT)": {
+          "out": 4,
+          "in": [
+            {
+              "item": "Coffee Bean",
+              "amount": 1
+            },
+            {
+              "item": "Water",
+              "amount": 1
+            },
+            {
+              "item": "Log",
+              "amount": 0.1
+            }
+          ],
+          "bypro": [],
+          "building": "Coffee Brewery"
+        }
+      }
+    },
+    "Grease": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 21,
+      "color": "#e0e0a0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Grease (IT)",
+      "recipes": {
+        "Grease (IT)": {
+          "out": 1,
+          "in": [
+            {
+              "item": "Extract",
+              "amount": 0.5
+            },
+            {
+              "item": "Canola Oil",
+              "amount": 0.5
+            }
+          ],
+          "bypro": [],
+          "building": "Grease Factory"
         }
       }
     }
@@ -763,16 +2629,588 @@
     }
   },
   "buildings": {
-    "Miner Mk. 1": {
-      "Average MW": 5,
-      "Max MW": 5,
-      "Min MW": 5,
+    "Breeding Pod": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
       "Total": 0,
       "Total MW": 0,
       "Max Total MW": 0,
       "Min Total MW": 0,
       "pos": 0,
-      "color": "#b7b7b7"
+      "color": "#808060"
+    },
+    "Advanced Breeding Pod": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 1,
+      "color": "#606080"
+    },
+    "Water Pump": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 2,
+      "color": "#4040e0"
+    },
+    "Large Water Pump": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 3,
+      "color": "#6060e0"
+    },
+    "Deep Water Pump": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 4,
+      "color": "#4040a0"
+    },
+    "Birch": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 5,
+      "color": "#c0efc0"
+    },
+    "Pine": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 6,
+      "color": "#20a060"
+    },
+    "Oak": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 7,
+      "color": "#20a020"
+    },
+    "Maple": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 8,
+      "color": "#60a020"
+    },
+    "Chestnut Tree": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 9,
+      "color": "#40a020"
+    },
+    "Mangrove Tree": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 10,
+      "color": "#406020"
+    },
+    "Blueberry Bush": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 11,
+      "color": "#4020c0"
+    },
+    "Dandelion Bush": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 12,
+      "color": "#e0e020"
+    },
+    "Coffee Bush": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 13,
+      "color": "#a04000"
+    },
+    "Carrot": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 14,
+      "color": "#e08020"
+    },
+    "Sunflower": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 15,
+      "color": "#ffe020"
+    },
+    "Potato": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 16,
+      "color": "#c08040"
+    },
+    "Wheat": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 17,
+      "color": "#e0e080"
+    },
+    "Cattail": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 18,
+      "color": "#606000"
+    },
+    "Spadderdock": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 19,
+      "color": "#208000"
+    },
+    "Kohlrabi": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 20,
+      "color": "#80e080"
+    },
+    "Cassava": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 21,
+      "color": "#a0c020"
+    },
+    "Canola": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 22,
+      "color": "#e0e000"
+    },
+    "Soybean": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 23,
+      "color": "#60a060"
+    },
+    "Corn": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 24,
+      "color": "#e0e060"
+    },
+    "Eggplant": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 25,
+      "color": "#a060a0"
+    },
+    "Hydroponic Garden": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 26,
+      "color": "#8080a0"
+    },
+    "Gristmill": {
+      "Average MW": 60,
+      "Max MW": 60,
+      "Min MW": 60,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 27,
+      "color": "#e0e0e0"
+    },
+    "Oil Press": {
+      "Average MW": 50,
+      "Max MW": 50,
+      "Min MW": 50,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 28,
+      "color": "#80a080"
+    },
+    "Bakery": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 29,
+      "color": "#c08080"
+    },
+    "Grill": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 30,
+      "color": "#404080"
+    },
+    "Food Factory": {
+      "Average MW": 120,
+      "Max MW": 120,
+      "Min MW": 120,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 31,
+      "color": "#808080"
+    },
+    "Fermenter": {
+      "Average MW": 50,
+      "Max MW": 50,
+      "Min MW": 50,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 32,
+      "color": "#80a0a0"
+    },
+    "Badwater Pump": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 33,
+      "color": "#a04000"
+    },
+    "Deep Badwater Pump": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 34,
+      "color": "#804000"
+    },
+    "Bot Part Factory": {
+      "Average MW": 150,
+      "Max MW": 150,
+      "Min MW": 150,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 35,
+      "color": "#80a080"
+    },
+    "Bot Assembler": {
+      "Average MW": 250,
+      "Max MW": 250,
+      "Min MW": 250,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 36,
+      "color": "#a080a0"
+    },
+    "Dirt Excavator": {
+      "Average MW": 200,
+      "Max MW": 200,
+      "Min MW": 200,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 37,
+      "color": "#806040"
+    },
+    "Centrifuge": {
+      "Average MW": 200,
+      "Max MW": 200,
+      "Min MW": 200,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 38,
+      "color": "#40e040"
+    },
+    "Explosives Factory": {
+      "Average MW": 150,
+      "Max MW": 150,
+      "Min MW": 150,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 39,
+      "color": "#e04040"
+    },
+    "Gear Workshop": {
+      "Average MW": 120,
+      "Max MW": 120,
+      "Min MW": 120,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 40,
+      "color": "#c0a080"
+    },
+    "Smelter": {
+      "Average MW": 200,
+      "Max MW": 200,
+      "Min MW": 200,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 41,
+      "color": "#402080"
+    },
+    "Lumber Mill": {
+      "Average MW": 50,
+      "Max MW": 50,
+      "Min MW": 50,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 42,
+      "color": "#e0c0a0"
+    },
+    "Industrial Lumber Mill": {
+      "Average MW": 75,
+      "Max MW": 75,
+      "Min MW": 75,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 43,
+      "color": "#e0c080"
+    },
+    "Mine": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 44,
+      "color": "#c04020"
+    },
+    "Efficient Mine": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 45,
+      "color": "#c02000"
+    },
+    "Wood Workshop": {
+      "Average MW": 250,
+      "Max MW": 250,
+      "Min MW": 250,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 46,
+      "color": "#ffe0c0"
+    },
+    "Herbalist": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 47,
+      "color": "#a0ffa0"
+    },
+    "Refinery": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 48,
+      "color": "#80e040"
+    },
+    "Printing Press": {
+      "Average MW": 150,
+      "Max MW": 150,
+      "Min MW": 150,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 49,
+      "color": "#c0c0c0"
+    },
+    "Paper Mill": {
+      "Average MW": 80,
+      "Max MW": 80,
+      "Min MW": 80,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 50,
+      "color": "#e0e0e0"
+    },
+    "Coffee Brewery": {
+      "Average MW": 200,
+      "Max MW": 200,
+      "Min MW": 200,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 51,
+      "color": "#402000"
+    },
+    "Grease Factory": {
+      "Average MW": 200,
+      "Max MW": 200,
+      "Min MW": 200,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 52,
+      "color": "#e0e0a0"
     },
     "The Void": {
       "Average MW": 0,
@@ -782,7 +3220,7 @@
       "Total MW": 0,
       "Max Total MW": 0,
       "Min Total MW": 0,
-      "pos": 19,
+      "pos": 53,
       "color": "#404040"
     }
   }
