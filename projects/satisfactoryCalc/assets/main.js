@@ -608,6 +608,32 @@ function renderRec() { // Render Recipes
   
   let cats = sortRows(categories); // Sorted categories
   
+  // Get Max's
+  
+  let maxInps = 0;
+  let maxBypros = 0;
+  
+  for(let itemID in items) { // Loop
+    
+    let item = items[itemID];
+    
+    for(let recID in item['recipes']) {
+      
+      let rec = item['recipes'][recID];
+      
+      // Variables
+      
+      inps = rec['in'].length;
+      bypros = rec['bypro'].length;
+      
+      // Ifs
+      
+      if(inps > maxInps) maxInps = inps;
+      if(bypros > maxBypros) maxBypros = bypros;
+      
+    }
+  }
+  
   // Reset
   
   RecTbl.innerHTML = '';
@@ -622,18 +648,63 @@ function renderRec() { // Render Recipes
     <th style="background-color: rgb(128, 128, 128);" title="Item Name">Item</th>
     <th style="background-color: rgb(192, 192, 192);" title="Recipe Name">Recipe</th>
     <th style="background-color: rgb(192, 128, 255);" title="Output" class="wideTH">Out</th>
-    <th style="background-color: rgb(255, 128, 128);" title="Input Item 1" class="wideTH">Input 1</th>
-    <th style="background-color: rgb(255, 128, 128);" title="Input Amount 1" class="wideTH">Inp. Amount 1</th>
-    <th style="background-color: rgb(255, 255, 128);" title="Input Item 2" class="wideTH">Input 2</th>
-    <th style="background-color: rgb(255, 255, 128);" title="Input Amount 2" class="wideTH">Inp Amount 2</th>
-    <th style="background-color: rgb(128, 255, 128);" title="Input Item 3" class="wideTH">Input 3</th>
-    <th style="background-color: rgb(128, 255, 128);" title="Input Amount 3" class="wideTH">Inp. Amount 3</th>
-    <th style="background-color: rgb(128, 128, 255);" title="Input Item 4" class="wideTH">Input 4</th>
-    <th style="background-color: rgb(128, 128, 255);" title="Input Amount 4" class="wideTH">Inp. Amount 4</th>
-    <th style="background-color: rgb(255, 128, 192);" title="Byproduct Item 1" class="wideTH">Bypro. 1</th>
-    <th style="background-color: rgb(255, 128, 192);" title="Byproduct Amount 1" class="wideTH">Bypro. Amount 1</th>
-    <th style="background-color: rgb(255, 192, 128);" title="Building" class="wideTH">Building</th>
   `; // Labels/Headers of each column
+  
+  for(let i = 0; i < maxInps; i++) { // Generate Inps
+    
+    if(i % 2 == 0) { // Even - Red
+      
+      headRow.innerHTML += `
+        <th style="background-color: rgb(255, 128, 128);" title="Input Item `
+        + (i+1) + `" class="wideTH">Input ` + (i+1) + `</th>
+        <th style="background-color: rgb(255, 128, 128);" title="Input Amount `
+        + (i+1) + `" class="wideTH">Inp. Amount ` + (i+1) + `</th>
+      `;
+      
+    }
+    
+    else { // Odd - Yellow
+      
+      headRow.innerHTML += `
+        <th style="background-color: rgb(255, 255, 128);" title="Input Item `
+        + (i+1) + `" class="wideTH">Input ` + (i+1) + `</th>
+        <th style="background-color: rgb(255, 255, 128);" title="Input Amount `
+        + (i+1) + `" class="wideTH">Inp. Amount ` + (i+1) + `</th>
+      `;
+      
+    }
+    
+  }
+  
+  for(let i = 0; i < maxBypros; i++) { // Generate Bypros
+    
+    if(i % 2 == 0) { // Even - Blue
+      
+      headRow.innerHTML += `
+        <th style="background-color: rgb(128, 128, 255);" title="Byproduct Item `
+        + (i+1) + `" class="wideTH">Bypro. ` + (i+1) + `</th>
+        <th style="background-color: rgb(128, 128, 255);" title="Byproduct Amount `
+        + (i+1) + `" class="wideTH">Bypro. Amount ` + (i+1) + `</th>
+      `;
+      
+    }
+    
+    else { // Odd - Green
+      
+      headRow.innerHTML += `
+        <th style="background-color: rgb(128, 255, 128);" title="Byproduct Item `
+        + (i+1) + `" class="wideTH">Bypro. ` + (i+1) + `</th>
+        <th style="background-color: rgb(128, 255, 128);" title="Byproduct Amount `
+        + (i+1) + `" class="wideTH">Bypro. Amount ` + (i+1) + `</th>
+      `;
+      
+    }
+    
+  }
+  
+  headRow.innerHTML += `
+    <th style="background-color: rgb(255, 192, 128);" title="Building" class="wideTH">Building</th>
+  `;
   
   for(let cat of cats) { // For each category
     
@@ -693,114 +764,98 @@ function renderRec() { // Render Recipes
         outTD.style.backgroundColor = 'rgb(224, 192, 255)'; // BG Color
         outTD.innerText = rec['out'].toPrecision(10); // Recipe output
         
-        let inpItem1TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpItem1TD); // Append
-        inpItem1TD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
-        inpItem1TD.style.textAlign = 'center'; // Center Text
-        if(rec['in'].length > 0) { // If input item 1 exists
-          inpItem1TD.innerText = rec['in'][0]['item']; // Recipe input item 1
+        for(let i = 0; i < maxInps; i++) { // Inps
           
-          let childItem = items[rec['in'][0]['item']]; // Child item
-          //console.log(childItem);
-          if(childItem !== undefined) { // If color is defined
-            inpItem1TD.style.backgroundColor = childItem['color']; // BG Color
-            inpItem1TD.style.color = textColor(childItem['color']); // Text Color
-          }
-        }
-        
-        let inpAmount1TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpAmount1TD); // Append
-        inpAmount1TD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
-        if(rec['in'].length > 0) { // If input amount 1 exists
-          inpAmount1TD.innerText = rec['in'][0]['amount'].toPrecision(10); // Recipe input amount 1
-        }
-        
-        let inpItem2TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpItem2TD); // Append
-        inpItem2TD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
-        inpItem2TD.style.textAlign = 'center'; // Center Text
-        if(rec['in'].length > 1) { // If input item 2 exists
-          inpItem2TD.innerText = rec['in'][1]['item']; // Recipe input item 2
+          // Item
           
-          let childItem = items[rec['in'][1]['item']]; // Child item
-          //console.log(childItem);
-          if(childItem !== undefined) { // If color is defined
-            inpItem2TD.style.backgroundColor = childItem['color']; // BG Color
-            inpItem2TD.style.color = textColor(childItem['color']); // Text Color
-          }
-        }
-        
-        let inpAmount2TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpAmount2TD); // Append
-        inpAmount2TD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
-        if(rec['in'].length > 1) { // If input amount 2 exists
-          inpAmount2TD.innerText = rec['in'][1]['amount'].toPrecision(10); // Recipe input amount 2
-        }
-        
-        let inpItem3TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpItem3TD); // Append
-        inpItem3TD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
-        inpItem3TD.style.textAlign = 'center'; // Center Text
-        if(rec['in'].length > 2) { // If input item 3 exists
-          inpItem3TD.innerText = rec['in'][2]['item']; // Recipe input item 3
+          let inpItemTD = document.createElement('td'); // Declare
+          itemRow.appendChild(inpItemTD); // Append
+          inpItemTD.style.textAlign = 'center'; // Center Text
           
-          let childItem = items[rec['in'][2]['item']]; // Child item
-          //console.log(childItem);
-          if(childItem !== undefined) { // If color is defined
-            inpItem3TD.style.backgroundColor = childItem['color']; // BG Color
-            inpItem3TD.style.color = textColor(childItem['color']); // Text Color
-          }
-        }
-        
-        let inpAmount3TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpAmount3TD); // Append
-        inpAmount3TD.style.backgroundColor = 'rgb(192, 255, 192)'; // BG Color
-        if(rec['in'].length > 2) { // If input amount 3 exists
-          inpAmount3TD.innerText = rec['in'][2]['amount'].toPrecision(10); // Recipe input amount 3
-        }
-        
-        let inpItem4TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpItem4TD); // Append
-        inpItem4TD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
-        inpItem4TD.style.textAlign = 'center'; // Center Text
-        if(rec['in'].length > 3) { // If input item 4 exists
-          inpItem4TD.innerText = rec['in'][3]['item']; // Recipe input item 4
+          // Amount
           
-          let childItem = items[rec['in'][3]['item']]; // Child item
-          //console.log(childItem);
-          if(childItem !== undefined) { // If color is defined
-            inpItem4TD.style.backgroundColor = childItem['color']; // BG Color
-            inpItem4TD.style.color = textColor(childItem['color']); // Text Color
-          }
-        }
-        
-        let inpAmount4TD = document.createElement('td'); // Declare
-        itemRow.appendChild(inpAmount4TD); // Append
-        inpAmount4TD.style.backgroundColor = 'rgb(192, 192, 255)'; // BG Color
-        if(rec['in'].length > 3) { // If input amount 4 exists
-          inpAmount4TD.innerText = rec['in'][3]['amount'].toPrecision(10); // Recipe input amount 4
-        }
-        
-        let byproItem1TD = document.createElement('td'); // Declare
-        itemRow.appendChild(byproItem1TD); // Append
-        byproItem1TD.style.backgroundColor = 'rgb(255, 192, 224)'; // BG Color
-        byproItem1TD.style.textAlign = 'center'; // Center Text
-        if(rec['bypro'].length > 0) { // If bypro item 1 exists
-          byproItem1TD.innerText = rec['bypro'][0]['item']; // Recipe bypro item 1
+          let inpAmountTD = document.createElement('td'); // Declare
+          itemRow.appendChild(inpAmountTD); // Append
           
-          let childItem = items[rec['bypro'][0]['item']]; // Child item
-          //console.log(childItem);
-          if(childItem !== undefined) { // If color is defined
-            byproItem1TD.style.backgroundColor = childItem['color']; // BG Color
-            byproItem1TD.style.color = textColor(childItem['color']); // Text Color
+          // Background Colors
+          
+          if(i % 2 == 0) { // Even - Red
+            inpItemTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Item BG
+            inpAmountTD.style.backgroundColor = 'rgb(255, 192, 192)'; // Amount BG
           }
+          else { // Odd - Yellow
+            inpItemTD.style.backgroundColor = 'rgb(255, 255, 192)'; // Item BG
+            inpAmountTD.style.backgroundColor = 'rgb(255, 255, 192)'; // Amount BG
+          }
+          
+          // Set Values
+          
+          if(rec['in'].length > i) { // If input exists
+            
+            // Item
+            
+            inpItemTD.innerText = rec['in'][i]['item']; // Recipe input item
+            
+            let childItem = items[rec['in'][i]['item']]; // Child item
+            //console.log(childItem);
+            if(childItem !== undefined) { // If color is defined
+              inpItemTD.style.backgroundColor = childItem['color']; // BG Color
+              inpItemTD.style.color = textColor(childItem['color']); // Text Color
+            }
+            
+            // Amount
+            
+            inpAmountTD.innerText = rec['in'][i]['amount'].toPrecision(10); // Recipe input amount
+            
+          }
+          
         }
         
-        let byproAmount1TD = document.createElement('td'); // Declare
-        itemRow.appendChild(byproAmount1TD); // Append
-        byproAmount1TD.style.backgroundColor = 'rgb(255, 192, 224)'; // BG Color
-        if(rec['bypro'].length > 0) { // If input bypro 1 exists
-          byproAmount1TD.innerText = rec['bypro'][0]['amount'].toPrecision(10); // Recipe bypro amount 1
+        for(let i = 0; i < maxBypros; i++) { // Bypros
+          
+          // Item
+          
+          let byproItemTD = document.createElement('td'); // Declare
+          itemRow.appendChild(byproItemTD); // Append
+          byproItemTD.style.textAlign = 'center'; // Center Text
+          
+          // Amount
+          
+          let byproAmountTD = document.createElement('td'); // Declare
+          itemRow.appendChild(byproAmountTD); // Append
+          
+          // Background Colors
+          
+          if(i % 2 == 0) { // Even - Blue
+            byproItemTD.style.backgroundColor = 'rgb(192, 192, 255)'; // Item BG
+            byproAmountTD.style.backgroundColor = 'rgb(192, 192, 255)'; // Amount BG
+          }
+          else { // Odd - Green
+            byproItemTD.style.backgroundColor = 'rgb(192, 255, 192)'; // Item BG
+            byproAmountTD.style.backgroundColor = 'rgb(192, 255, 192)'; // Amount BG
+          }
+          
+          // Set Values
+          
+          if(rec['bypro'].length > i) { // If bypro exists
+            
+            // Item
+            
+            byproItemTD.innerText = rec['bypro'][i]['item']; // Recipe bypro item
+            
+            let childItem = items[rec['bypro'][i]['item']]; // Child item
+            //console.log(childItem);
+            if(childItem !== undefined) { // If color is defined
+              byproItemTD.style.backgroundColor = childItem['color']; // BG Color
+              byproItemTD.style.color = textColor(childItem['color']); // Text Color
+            }
+            
+            // Amount
+            
+            byproAmountTD.innerText = rec['bypro'][i]['amount'].toPrecision(10); // Recipe bypro amount
+            
+          }
+          
         }
         
         let buildingTD = document.createElement('td'); // Declare
@@ -2054,32 +2109,43 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     let add = document.querySelector('#RecEditForm > #recAddCheck').checked;
     let remove = document.querySelector('#RecEditForm > #recRemoveCheck').checked;
     
-    let outAmnt = parseInt(document.querySelector('#RecEditForm > #outAmnt').value);
+    let outAmnt = parseFloat(document.querySelector('#RecEditForm > #outAmnt').value);
     let building = document.querySelector('#RecEditForm > #building').value;
     let numInp = parseInt(document.querySelector('#RecEditForm > #numInp').value);
     let numBypro = parseInt(document.querySelector('#RecEditForm > #numBypro').value);
     
-    let inpItems = [
-      document.querySelector('#RecEditForm > #inpItem1').value, 
-      document.querySelector('#RecEditForm > #inpItem2').value, 
-      document.querySelector('#RecEditForm > #inpItem3').value, 
-      document.querySelector('#RecEditForm > #inpItem4').value, 
-    ];
+    let inpItems = [];
+    let inpAmnts = [];
+    let byproItems = [];
+    let byproAmnts = [];
     
-    let inpAmnts = [
-      parseInt(document.querySelector('#RecEditForm > #inpAmnt1').value), 
-      parseInt(document.querySelector('#RecEditForm > #inpAmnt2').value), 
-      parseInt(document.querySelector('#RecEditForm > #inpAmnt3').value), 
-      parseInt(document.querySelector('#RecEditForm > #inpAmnt4').value), 
-    ];
+    for(let i = 0; i < numInp; i++) { // Inp Loop
+      
+      // Select
+      
+      let inpItem = document.querySelector('#RecEditForm #inpItem' + (i+1));
+      let inpAmnt = document.querySelector('#RecEditForm #inpAmnt' + (i+1));
+      
+      // Push
+      
+      inpItems.push(inpItem.value);
+      inpAmnts.push(parseFloat(inpAmnt.value));
+      
+    }
     
-    let byproItems = [
-      document.querySelector('#RecEditForm > #byproItem1').value, 
-    ];
-    
-    let byproAmnts = [
-      parseInt(document.querySelector('#RecEditForm > #byproAmnt1').value), 
-    ];
+    for(let i = 0; i < numBypro; i++) { // Bypro Loop
+      
+      // Select
+      
+      let byproItem = document.querySelector('#RecEditForm #byproItem' + (i+1));
+      let byproAmnt = document.querySelector('#RecEditForm #byproAmnt' + (i+1));
+      
+      // Push
+      
+      byproItems.push(byproItem.value);
+      byproAmnts.push(parseFloat(byproAmnt.value));
+      
+    }
     
     let exists = false;
     
@@ -2211,27 +2277,78 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     let numInp = items[itemName]['recipes'][recName].in.length;
     let numBypro = items[itemName]['recipes'][recName].bypro.length;
     
-    let inpItems = [
-      document.querySelector('#RecEditForm > #inpItem1'), 
-      document.querySelector('#RecEditForm > #inpItem2'), 
-      document.querySelector('#RecEditForm > #inpItem3'), 
-      document.querySelector('#RecEditForm > #inpItem4'), 
-    ];
+    // Generate Inps & Bypros
     
-    let inpAmnts = [
-      document.querySelector('#RecEditForm > #inpAmnt1'), 
-      document.querySelector('#RecEditForm > #inpAmnt2'), 
-      document.querySelector('#RecEditForm > #inpAmnt3'), 
-      document.querySelector('#RecEditForm > #inpAmnt4'), 
-    ];
+    let RecEditFormInpsDiv = document.querySelector('#RecEditForm > #inps');
     
-    let byproItems = [
-      document.querySelector('#RecEditForm > #byproItem1'), 
-    ];
+    RecEditFormInpsDiv.innerHTML = ''; // Reset
     
-    let byproAmnts = [
-      document.querySelector('#RecEditForm > #byproAmnt1'), 
-    ];
+    for(let i = 0; i < numInp; i++) {
+      
+      let innerHTML = `
+        <label for="inpItem` + (i+1) + `">Input Item ` + (i+1) + `:</label>
+        <input type="text" id="inpItem` + (i+1) + `" name="inpItem` + (i+1) + `"><br>
+        <label for="inpAmnt` + (i+1) + `">Input Amount ` + (i+1) + `:</label>
+        <input type="number" id="inpAmnt` + (i+1) + `" name="inpAmnt` + (i+1) + `" class="numInp"><br>
+      `; // Inner HTML to add to RecEditFormInpsDiv
+      
+      RecEditFormInpsDiv.innerHTML += innerHTML; // Add inner HTML string
+      
+    }
+    
+    let RecEditFormByprosDiv = document.querySelector('#RecEditForm > #bypros');
+    
+    RecEditFormByprosDiv.innerHTML = ''; // Reset
+    
+    for(let i = 0; i < numBypro; i++) {
+      
+      let innerHTML = `
+        <label for="byproItem` + (i+1) + `">Byproduct Item ` + (i+1) + `:</label>
+        <input type="text" id="byproItem` + (i+1) + `" name="byproItem` + (i+1) + `"><br>
+        <label for="byproAmnt` + (i+1) + `">Byproduct Amount ` + (i+1) + `:</label>
+        <input type="number" id="byproAmnt` + (i+1) + `" name="byproAmnt` + (i+1) + `" class="numInp"><br>
+      `; // Inner HTML to add to RecEditFormByprosDiv
+      
+      RecEditFormByprosDiv.innerHTML += innerHTML; // Add inner HTML string
+      
+    }
+    
+    expand('RecSect', 'RecBttn'); // Re-Expand (to ensure no clipping)
+    
+    // Get Generated Elems
+    
+    let inpItems = [];
+    let inpAmnts = [];
+    let byproItems = [];
+    let byproAmnts = [];
+    
+    for(let i = 0; i < numInp; i++) { // Inp Loop
+      
+      // Select
+      
+      let inpItem = document.querySelector('#RecEditForm #inpItem' + (i+1));
+      let inpAmnt = document.querySelector('#RecEditForm #inpAmnt' + (i+1));
+      
+      // Push
+      
+      inpItems.push(inpItem);
+      inpAmnts.push(inpAmnt);
+      
+    }
+    
+    for(let i = 0; i < numBypro; i++) { // Bypro Loop
+      
+      // Select
+      
+      let byproItem = document.querySelector('#RecEditForm #byproItem' + (i+1));
+      let byproAmnt = document.querySelector('#RecEditForm #byproAmnt' + (i+1));
+      
+      // Push
+      
+      byproItems.push(byproItem);
+      byproAmnts.push(byproAmnt);
+      
+    }
     
     // Set
     
@@ -2251,6 +2368,76 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     }
     
     out.innerText = '✅ Loaded';
+    
+  });
+  
+  // Edit Recipe Num Inputs - Change
+  
+  let RecEditFormNumInp = document.querySelector('#RecEditForm > #numInp');
+  
+  RecEditFormNumInp.addEventListener('change', function() {
+    
+    // Variables
+    
+    let RecEditFormInpsDiv = document.querySelector('#RecEditForm > #inps');
+    
+    let numInp = parseInt(RecEditFormNumInp.value);
+    
+    if(numInp > 100) numInp = 100; // Cap
+    
+    // Generate Loop
+    
+    RecEditFormInpsDiv.innerHTML = ''; // Reset
+    
+    for(let i = 0; i < numInp; i++) {
+      
+      let innerHTML = `
+        <label for="inpItem` + (i+1) + `">Input Item ` + (i+1) + `:</label>
+        <input type="text" id="inpItem` + (i+1) + `" name="inpItem` + (i+1) + `"><br>
+        <label for="inpAmnt` + (i+1) + `">Input Amount ` + (i+1) + `:</label>
+        <input type="number" id="inpAmnt` + (i+1) + `" name="inpAmnt` + (i+1) + `" class="numInp"><br>
+      `; // Inner HTML to add to RecEditFormInpsDiv
+      
+      RecEditFormInpsDiv.innerHTML += innerHTML; // Add inner HTML string
+      
+    }
+    
+    expand('RecSect', 'RecBttn'); // Re-Expand (to ensure no clipping)
+    
+  });
+  
+  // Edit Recipe Num Bypro - Change
+  
+  let RecEditFormNumBypro = document.querySelector('#RecEditForm > #numBypro');
+  
+  RecEditFormNumBypro.addEventListener('change', function() {
+    
+    // Variables
+    
+    let RecEditFormByprosDiv = document.querySelector('#RecEditForm > #bypros');
+    
+    let numBypro = parseInt(RecEditFormNumBypro.value);
+    
+    if(numBypro > 100) numBypro = 100; // Cap
+    
+    // Generate Loop
+    
+    RecEditFormByprosDiv.innerHTML = ''; // Reset
+    
+    for(let i = 0; i < numBypro; i++) {
+      
+      let innerHTML = `
+        <label for="byproItem` + (i+1) + `">Byproduct Item ` + (i+1) + `:</label>
+        <input type="text" id="byproItem` + (i+1) + `" name="byproItem` + (i+1) + `"><br>
+        <label for="byproAmnt` + (i+1) + `">Byproduct Amount ` + (i+1) + `:</label>
+        <input type="number" id="byproAmnt` + (i+1) + `" name="byproAmnt` + (i+1) + `" class="numInp"><br>
+      `; // Inner HTML to add to RecEditFormByprosDiv
+      
+      RecEditFormByprosDiv.innerHTML += innerHTML; // Add inner HTML string
+      
+    }
+    
+    expand('RecSect', 'RecBttn'); // Re-Expand (to ensure no clipping)
     
   });
   
@@ -2276,9 +2463,9 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     let pos = parseInt(document.querySelector('#BPAPEditForm > #BPAPPos').value);
     let color = document.querySelector('#BPAPEditForm > #BPAPColor').value;
-    let avrgPower = parseInt(document.querySelector('#BPAPEditForm > #avrgPower').value);
-    let maxPower = parseInt(document.querySelector('#BPAPEditForm > #maxPower').value);
-    let minPower = parseInt(document.querySelector('#BPAPEditForm > #minPower').value);
+    let avrgPower = parseFloat(document.querySelector('#BPAPEditForm > #avrgPower').value);
+    let maxPower = parseFloat(document.querySelector('#BPAPEditForm > #maxPower').value);
+    let minPower = parseFloat(document.querySelector('#BPAPEditForm > #minPower').value);
     
     let exists = false;
     let posTaken = false;
