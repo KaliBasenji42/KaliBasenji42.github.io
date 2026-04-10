@@ -1,15 +1,15 @@
 /* Elements */
 
-body {
-  margin-top: 4rem;
-}
-
 table {
   color: rgb(0, 0, 0) !important;
   overflow-y: hidden;
 }
 
 /* Tool Bar */
+
+#mainBody {
+  margin-top: 4rem;
+}
 
 #toolbar {
   background-color: rgb(240, 240, 240);
@@ -223,4 +223,13 @@ th {
   margin: 0;
   width: 1rem;
   height: 1rem;
+}
+
+/* Help */
+
+.iconEx {
+  width: 2rem;
+  background-color: rgb(240, 240, 240);
+  position: relative;
+  top: 0.5rem;
 }

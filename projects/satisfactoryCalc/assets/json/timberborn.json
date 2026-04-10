@@ -39,7 +39,7 @@
         }
       }
     },
-    "Beaver - Pod": {
+    "Beaver Pod": {
       "category": "Labor",
       "complete": false,
       "inpDemand": 0,
@@ -134,7 +134,7 @@
         }
       }
     },
-    "Bot - Sustain Pop": {
+    "Bot Sustain Pop": {
       "category": "Labor",
       "complete": false,
       "inpDemand": 0,

@@ -1,0 +1,404 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<!--End-->
+  <title>Documentation | Satisfactory Build Calculator</title>
+<!--Start-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../assets/areFilesLinked.js"></script>
+  
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
+  
+<!--End-->
+  
+  <h1>Documentation - Satisfactory Build Calculator</h1>
+  
+  <a href="../../">Website Homepage</a><br>
+  <br>
+  
+  <a href="./">Satisfactory Build Calculator</a><br>
+  <br>
+  
+  <h2>Table of Contents</h2>
+  
+  <ol style="font-size: 1.125rem">
+    <li><a href="#toc-basicSteps">Basic Steps</a></li>
+    <li><a href="#toc-toolbar">Toolbar</a></li>
+    <li><a href="#toc-mi">Main Interface</a></li>
+    <li><a href="#toc-rec">Recipes</a></li>
+    <li><a href="#toc-bpap">Buildings, Power, & Awesome Points</a></li>
+    <li><a href="#toc-ct">Calc. Table</a></li>
+  </ol>
+  
+  <h2 id="toc-basicSteps">Basic Steps</h2>
+  
+  <ol style="font-size: 1.125rem">
+    <li>
+      Load the save you want, either from Load, Upload, or Templates (or just the default).
+    </li>
+    <li>
+      In Main Interface, set the Inp. Demand (the number of items per minute you demand).
+    </li>
+    <ul>
+      <li>
+        Ensure that the Max Clocking, Somersloop Multiplication, and Recipe values are set to the correct values.
+      </li>
+    </ul>
+    <li>
+      Press the Calculate button when done.
+    </li>
+    <ul>
+      <li>
+        Buildings, Power, & Awesome Points will show the total number of buildings needed, along with power requirements and awesome point totals.
+      </li>
+    </ul>
+    <li>
+      Use the complete checkboxes you complete each item's production (% Complete only updates upon re-calculating)
+    </li>
+    <li>
+      Save by using the using Save (browser localStorage) or Download (JSON file download), do this often as reloading the page will reset to the default template.
+    </li>
+  </ol>
+  
+  <p>
+    There are also Settings, which already have descriptions in the Setting's menu. 
+  </p>
+  
+  <h2 id="toc-toolbar">Toolbar</h2>
+  
+  <p>
+    Bar at the top of the window, has buttons for saving/loading saves and other basic function and displayed data.
+  </p>
+  
+  <h3>Load <img src="assets/images/folder.png" class="iconEx"></h3>
+  
+  <p>
+    Lists all saves in localStorage (more info on home page). There is a "Load" button next to each listed save, this will load and <b>overwrite</b> whatever is currently loaded.
+  </p>
+  <p>
+    The "Remove" button will prompt the user for confirmation, and (if granted) will delete the save from localStorage. 
+  </p>
+  
+  <h3>Save <img src="assets/images/file.png" class="iconEx"></h3>
+  
+  <p>
+    Prompts the user for a save name. When submitted, this will save to localStorage as "SatisfactoryCalc - Save:{name}".
+  </p>
+  <p>
+    If the same name as another save is submitted the user will be prompted if the save should be overwritten, and (if granted) will overwrite the save in localStorage. 
+  </p>
+  <p>
+    Save or Download often.
+  </p>
+  
+  <h3>Upload <img src="assets/images/upload.png" class="iconEx"></h3>
+  
+  <p>
+    Prompts the user for a JSON file. When submitted (if the file is processed successfully), this will load and <b>overwrite</b> whatever is currently loaded.
+  </p>
+  
+  <p>
+    Note that this is done client side, this file is not sent to an external server.
+  </p>
+  
+  <h3>Download <img src="assets/images/download.png" class="iconEx"></h3>
+  
+  <p>
+    Generates a blob link to a JSON file download of what is currently loaded.
+  </p>
+  <p>
+    Saving the JSONs locally is a good way to ensure you do not lose your saves.
+  </p>
+  
+  <h3>Templates <img src="assets/images/pageTemplate.png" class="iconEx"></h3>
+  
+  <p>
+    Lists templates to start off from. There is a "Load" button next to each listed save, this will load and <b>overwrite</b> whatever is currently loaded.
+  </p>
+  <p>
+    Ensure to read the note that is shown when loaded.
+  </p>
+  
+  <h3>Settings <img src="assets/images/settings.png" class="iconEx"></h3>
+  
+  <p>
+    Settings that change how the calculator works and looks.
+  </p>
+  <p>
+    Saved into localStorage.
+  </p>
+  
+  <h3>Calculate <img src="assets/images/check.png" class="iconEx"></h3>
+  
+  <p>
+    Submit button, calculates and renders everything.
+  </p>
+  
+  <h3>Status ✅</h3>
+  
+  <p>
+    Shows calculation status. 🖌️ = Rendering, 🔄 = Calculating, ✅ = Done.
+  </p>
+  
+  <h3>Values</h3>
+  
+  <p>
+    The toolbar also shows the values: % complete, total MW consumption (average), and total awesome points produced.
+  </p>
+  
+  <h2 id="toc-mi">Main Interface</h2>
+  
+  <p>
+    Section for editing item data and setting input demand.
+  </p>
+  <p>
+    Forms at the bottom to edit/add items and categories.
+  </p>
+  
+  <h3>Cat.</h3>
+  
+  <p>
+    Customizable item category.
+  </p>
+  <p>
+    Uses HTML element ID for selection, so non alphanumeric characters (except spaces, which are replaced by "_") may cause issues.
+  </p>
+  
+  <h3>Item</h3>
+  
+  <p>
+    Customizable item name (used as a unique identifier).
+  </p>
+  <p>
+    Uses HTML element ID for selection, so non alphanumeric characters (except spaces, which are replaced by "_") may cause issues.
+  </p>
+  
+  <h3>Status</h3>
+  
+  <p>
+    Individual item calculation status. Most useful for debug to see where calculation fails.
+  </p>
+  
+  <h3>Complete</h3>
+  
+  <p>
+    Used to mark an item as complete. And calculate % complete.
+  </p>
+  <p>
+    One can change if items with 0 total demand count in settings. There are also check/uncheck all as complete buttons.
+  </p>
+  
+  <h3>Inp. Demand</h3>
+  
+  <p>
+    User input-ed demand for each item.
+  </p>
+  
+  <h3>Calc.</h3>
+  
+  <p>
+    Sum of Calculated Demand - Byproduct (When reuse bypro setting is true).
+  </p>
+  
+  <h3>Calc. Demand</h3>
+  
+  <p>
+    Demand from calculation.
+  </p>
+  <p>
+    If Calc. > 0: | Calc. |, else: 0. (When reuse bypro setting is true)
+  </p>
+  
+  <h3>Demand</h3>
+  
+  <p>
+    Total demand.
+  </p>
+  <p>
+    Inp. Demand + Calc. Demand
+  </p>
+  
+  <h3>Bypro.</h3>
+  
+  <p>
+    Byproducts.
+  </p>
+  <p>
+    If Calc. < 0: | Calc. |, else: 0. (When reuse bypro setting is true)
+  </p>
+  
+  <h3>Max Clocking (%)</h3>
+  
+  <p>
+    Maximum clock speed allowed for buildings. Maximum specifically because the remainder building's clock speed will be set so that item demand is matched exactly.
+  </p>
+  <p>
+    Taken as a percent (100% = 1 or a normal clocked building).
+  </p>
+  
+  <h3>Sloop Mult.</h3>
+  
+  <p>
+    Somersloop Multiplication value. Multiplies output, such that a fraction of the recipe's input items are needed. This field accepts any number, and may not reflect what is possible in satisfactory.
+  </p>
+  
+  <h3>Buildings</h3>
+  
+  <p>
+    Total amount of buildings needed to produce the demanded amount of items. Fractional portion represents the clock speed of the remainder building.
+  </p>
+  
+  <h3>Recipe</h3>
+  
+  <p>
+    Drop down menu. Select whatever recipe desired.
+  </p>
+  
+  <h3>Power _</h3>
+  
+  <p>
+    Average, Maximum, and Minimum MW usage needed to produce item.
+  </p>
+  
+  <h3>Awe. Pts. Key</h3>
+  
+  <p>
+    Awesome points per item.
+  </p>
+  
+  <h3>A.P. InpDemand</h3>
+  
+  <p>
+    Awesome points per minute given input demand.
+  </p>
+  <p>
+    Awe. Pts. Key * Inp. Demand
+  </p>
+  
+  <h3>A.P. Bypro.</h3>
+  
+  <p>
+    Awesome points per minute given byproduct.
+  </p>
+  <p>
+    Awe. Pts. Key * Bypro.
+  </p>
+  
+  <h2 id="toc-rec">Recipes</h2>
+  
+  <p>
+    Displays all the recipes. Similar category/item organization as Main Interface.
+  </p>
+  <p>
+    Form at bottom to edit/add recipes.
+  </p>
+  
+  <h2 id="toc-bpap">Buildings, Power, & Awesome Points</h2>
+  
+  <p>
+    Has a building table and an awesome points table.
+  </p>
+  <p>
+    Form at bottom to edit/add buildings.
+  </p>
+  
+  <h3>Total</h3>
+  
+  <p>
+    Total whole number of buildings required (by type).
+  </p>
+  
+  <h3>_ Ind. Power</h3>
+  
+  <p>
+    Average, Maximum, and Minimum power used by a normal individual building type.
+  </p>
+  
+  <h3>_ Sub-Total Power</h3>
+  
+  <p>
+    Average, Maximum, and Minimum total power used by each building type.
+  </p>
+  <p>
+    Uses a complex formula that can be edited in settings (more details in settings).
+  </p>
+  
+  <h3>Awesome Points</h3>
+  
+  <p>
+    Shows Awesome Points per minute from Input Demand and Byproducts, and their sum (Total).
+  </p>
+  
+  <h2 id="toc-ct">Calc. Table</h2>
+  
+  <p>
+    Table that shows each item (output, horizontal), and how much of each other item (input/bypro, vertical) that item requires/produces as byproduct.
+  </p>
+  
+<!--Start-->
+  
+  <footer>
+    <div>
+      KaliBasenji42's Website<br>
+      Copyright (C) 2025  KaliBasenji42<br><br>
+      
+      This program is free software; you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation; version 2 of the License.<br><br>
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.<br><br>
+      
+      You should have received a copy of the GNU General Public License along
+      with this program; if not, write to the Free Software Foundation, Inc.,
+      51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.<br><br>
+      
+      <a href="../../LICENSE.md" target="_blank" rel="license opener">Attached License</a><br>
+      <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank" rel="license opener external">GPL v2</a><br>
+      <a href="https://github.com/KaliBasenji42" target="_blank" rel="author opener external">KaliBasenji42's Github</a><br>
+      <a href="mailto:code.strike366@passinbox.com" rel="author">Email</a>
+    </div>
+  </footer>
+  
+  <button id="themeButton" onclick="nextTheme(1)" title="Change Theme">◪</button>
+  
+</body>
+
+</html>
+
+<!--End-->
+
+<!--Hello!-->

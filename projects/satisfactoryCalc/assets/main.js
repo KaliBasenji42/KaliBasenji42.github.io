@@ -388,7 +388,7 @@ function renderMI() { // Render Main Interface
     <th style="background-color: rgb(128, 255, 192);" title="Calculation Status">Status</th>
     <th style="background-color: rgb(128, 192, 192);" title="Is Complete (Input)">Complete</th>
     <th style="background-color: rgb(128, 128, 255);" title="Input Demand" class="wideTH">Inp. Demand</th>
-    <th style="background-color: rgb(192, 192, 192);" title="Calculated Value" class="wideTH">Calc</th>
+    <th style="background-color: rgb(192, 192, 192);" title="Calculated Value" class="wideTH">Calc.</th>
     <th style="background-color: rgb(128, 225, 128);" title="Calculated Demand" class="wideTH">Calc. Demand</th>
     <th style="background-color: rgb(255, 192, 128);" title="Total Demand" class="wideTH">Demand</th>
     <th style="background-color: rgb(255, 255, 128);" title="Byproduct" class="wideTH">Bypro.</th>
@@ -881,6 +881,8 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
     totalTD.id = 'total'; // Set ID
     totalTD.style.backgroundColor = 'rgb(255, 192, 192)'; // BG Color
     totalTD.innerText = building['Total']; // Total
+    if(building['Total'] > 0) totalTD.className = 'greater'; // If greater than 0, class
+    if(building['Total'] < 0) totalTD.className = 'less'; // If less than 0, class
     
     let powerTD = document.createElement('td'); // Declare
     row.appendChild(powerTD); // Append
@@ -905,18 +907,24 @@ function renderBPAP() { // Render Buildings, Power, & Awesome Points
     powerTotalTD.id = 'totalPower'; // Set ID
     powerTotalTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
     powerTotalTD.innerText = building['Total MW'].toPrecision(10); // Total Power
+    if(building['Total MW'] > 0) powerTotalTD.className = 'greater'; // If greater than 0, class
+    if(building['Total MW'] < 0) powerTotalTD.className = 'less'; // If less than 0, class
     
     let maxTotalPowerTD = document.createElement('td'); // Declare
     row.appendChild(maxTotalPowerTD); // Append
     maxTotalPowerTD.id = 'maxTotalPower'; // Set ID
     maxTotalPowerTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
     maxTotalPowerTD.innerText = building['Max Total MW'].toPrecision(10); // Max Total Power
+    if(building['Max Total MW'] > 0) maxTotalPowerTD.className = 'greater'; // If greater than 0, class
+    if(building['Max Total MW'] < 0) maxTotalPowerTD.className = 'less'; // If less than 0, class
     
     let minTotalPowerTD = document.createElement('td'); // Declare
     row.appendChild(minTotalPowerTD); // Append
     minTotalPowerTD.id = 'minTotalPower'; // Set ID
     minTotalPowerTD.style.backgroundColor = 'rgb(255, 255, 192)'; // BG Color
     minTotalPowerTD.innerText = building['Min Total MW'].toPrecision(10); // Min Total Power
+    if(building['Min Total MW'] > 0) minTotalPowerTD.className = 'greater'; // If greater than 0, class
+    if(building['Min Total MW'] < 0) minTotalPowerTD.className = 'less'; // If less than 0, class
     
     // Totals
     
