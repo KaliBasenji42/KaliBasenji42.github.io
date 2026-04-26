@@ -13,7 +13,7 @@
     {
       "active": false, "!comment5": "Boolean: Enable?",
       "time": [3, 0, 0], "!comment6": "List [hour, minute, second]: Time of day. Default: 3:00:00 AM",
-      "zone": "GMT-0700", "!comment7": "String: Time Zone. Default: America/Denver (UTC-07:00)",
+      "zone": "GMT-0600", "!comment7": "String: Time Zone. Default: America/Denver (UTC-06:00)",
       "dayOfWeek": 0, "!comment8": "Integer/String (0-7, *): Day of week. Default: Sunday",
       "dayOfMonth": "*", "!comment9": "Integer/String (1-31, *): Day of month. Default: Any/Ignored",
       "note": "Weekly restart.", "!comment10": "Displayed note",
