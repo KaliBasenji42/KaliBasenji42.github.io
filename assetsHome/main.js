@@ -103,8 +103,9 @@ function outputData(usage) { // Render localStorage graphics
   
   DTElem.innerHTML = `
     <tr>
-      <th style="width: 25%;">Key</th>
-      <th style="width: 75%;">Data</th>
+      <th style="width: 30%;">Key</th>
+      <th style="width: 20%;">Size</th>
+      <th style="width: 50%;">Data</th>
       <th style="width: 6rem;">Delete</th>
     </tr>
     `
@@ -113,7 +114,7 @@ function outputData(usage) { // Render localStorage graphics
   
   for(let key in localStorage) {
     if(localStorage.hasOwnProperty(key)) {
-      item = localStorage.getItem(key);
+      let item = localStorage.getItem(key);
       
       let rowElem = document.createElement('tr');
       DTElem.appendChild(rowElem);
@@ -122,8 +123,12 @@ function outputData(usage) { // Render localStorage graphics
       keyElem.innerText = key;
       rowElem.appendChild(keyElem);
       
+      let sizeElem = document.createElement('td');
+      sizeElem.innerText = numForm(item.length + key.length) + ' B';
+      rowElem.appendChild(sizeElem);
+      
       let dataElem = document.createElement('td');
-      dataElem.innerText = '' + item;
+      dataElem.innerHTML = '<div class="dataCont">' + item + '</div>';
       rowElem.appendChild(dataElem);
       
       let remElem = document.createElement('td');
