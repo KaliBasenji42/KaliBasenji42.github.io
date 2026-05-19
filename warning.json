@@ -3,7 +3,7 @@
   "setDates": [
     {
       "date": "2025-1-9 22:23:17 GMT-0700", "!comment1": "String: Any JS parsable, must have time zone.",
-      "note": "Example", "!comment2": "String: Note to be displayed",
+      "note": "Example.", "!comment2": "String: Note to be displayed",
       "dur": 43200000, "!comment3": "Integer (milliseconds): Time the warning is shown before the listed date. Default: 12 Hours"
     }
   ],
@@ -16,7 +16,7 @@
       "zone": "GMT-0600", "!comment7": "String: Time Zone. Default: America/Denver (UTC-06:00)",
       "dayOfWeek": 0, "!comment8": "Integer/String (0-7, *): Day of week. Default: Sunday",
       "dayOfMonth": "*", "!comment9": "Integer/String (1-31, *): Day of month. Default: Any/Ignored",
-      "note": "Weekly restart.", "!comment10": "Displayed note",
+      "note": "Server will be temporarily down (weekly restart).", "!comment10": "Displayed note",
       "dur": 43200000, "!comment11": "Integer (milliseconds): Time the warning is shown before the listed date. Default: 12 Hours"
     }
   ]

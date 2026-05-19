@@ -307,8 +307,17 @@ async function loadWarning(warningJSONPath = '../../warning.json') {
   
   warning.expand = false;
   
+  warning.container = document.createElement('div');
+  warning.container.id = 'warnContainer';
+  if(document.querySelector('#homeWarnContainer')) {
+    document.querySelector('#homeWarnContainer').appendChild(warning.container);
+  }
+  else {
+    document.querySelector('body').appendChild(warning.container);
+  }
+  
   warning.elem = document.createElement('div');
-  document.getElementsByTagName('body')[0].appendChild(warning.elem);
+  warning.container.appendChild(warning.elem);
   warning.elem.className = 'warn';
   
   warning.cont = document.createElement('div');
@@ -342,9 +351,9 @@ warning.render = function() { // Update warning
   if(seconds < 10) timeTill += '0';
   timeTill += seconds;
   
-  warning.cont.innerHTML = 'Warning for:<br>' + time;
-  warning.cont.innerHTML += '<br>in ' + timeTill;
-  if(warning.note != "") warning.cont.innerHTML += '<br>Note: ' + warning.note;
+  warning.cont.innerHTML = '<b>Warning:</b><br>Effective: ' + time;
+  warning.cont.innerHTML += '<br>In: ' + timeTill;
+  if(warning.note != "") warning.cont.innerHTML += '<br>Reason: ' + warning.note;
   
 };
 
@@ -355,12 +364,14 @@ warning.toggle = function() { // Toggle expand
   if(warning.expand) {
     warning.cont.style.maxWidth = '80vw';
     warning.cont.style.maxHeight = '80vh';
-    warning.button.innerHTML = '<';
+    warning.button.innerHTML = '<'
+    warning.elem.style.right = '0rem';
   }
   else {
     warning.cont.style.maxWidth = '0';
     warning.cont.style.maxHeight = '1rem';
     warning.button.innerHTML = '❗>';
+    warning.elem.style.right = 'calc(100% - 0.5rem)';
   }
   
 };
