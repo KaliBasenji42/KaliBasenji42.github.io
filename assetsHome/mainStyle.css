@@ -144,6 +144,9 @@ tr {border: 1px solid;}
 }
 
 .warn > div {
-  max-width: 100% !important;
-  max-height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  width: 100%;
+  white-space: normal;
+  overflow: hidden;
 }
