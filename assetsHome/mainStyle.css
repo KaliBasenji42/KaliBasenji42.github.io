@@ -150,3 +150,12 @@ tr {border: 1px solid;}
   white-space: normal;
   overflow: hidden;
 }
+
+/* Euler */
+
+#eulerDec {
+  background-color: rgb(16, 16, 16);
+  color: rgb(224, 224, 224);
+  word-break: break-all;
+  padding: 0.5rem;
+}

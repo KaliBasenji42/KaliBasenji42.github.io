@@ -33,6 +33,54 @@
   
   <h1>Projects</h1>
   
+  <h2>Daily Euler's Number Approximation:</h2>
+  
+  <p><a href="https://kalibasenji.xeroideas.org/">Raspi Hosted Site</a> only (dynamic).</p>
+  
+  <table id="eulerTable" style="width: 100%;">
+    <tr>
+      <th style="width: 10rem;">Iteration:</th>
+      <td id="iterations">?</td>
+    </tr>
+    <tr>
+      <th>Stable Digits*:</th>
+      <td id="stableDigits">?</td>
+    </tr>
+    <tr>
+      <th>Digit Buffer**:</th>
+      <td id="digitBuffer">?</td>
+    </tr>
+  </table>
+  <div>*Digits that have stayed consistent for <span id="digitThreshold">?</span> iterations.</div>
+  <div>**Number of digits calculated after stable digits.</div>
+  
+  <h3>Decimal
+    <span><button class="sectBttn" id="eulerDecBttn" onclick="expndOrClps('eulerDecSect', 'eulerDecBttn')">🔽</button></span>
+  </h3>
+  <div id="eulerDecSect" class="sect" style="width: 100%;">
+    <div id="eulerDec">???</div>
+  </div>
+  <script>expndOrClps('eulerDecSect', 'eulerDecBttn');</script>
+  
+  <h3>Fraction
+    <span><button class="sectBttn" id="eulerFracBttn" onclick="expndOrClps('eulerFracSect', 'eulerFracBttn')">🔽</button></span>
+  </h3>
+  <div id="eulerFracSect" class="sect">
+    <table style="width: 100%; word-break: break-all;">
+      <tr>
+        <th style="width: 10rem;">Numerator:</th>
+        <td id="numerator">?</td>
+      </tr>
+      <tr>
+        <th>Denominator:</th>
+        <td id="denominator">?</td>
+      </tr>
+    </table>
+  </div>
+  <script>expndOrClps('eulerFracSect', 'eulerFracBttn');</script>
+  
+  <script src="assetsHome/euler.js"></script>
+  
   <h2>HTML:</h2>
   
   <ul>
