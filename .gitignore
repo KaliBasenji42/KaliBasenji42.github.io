@@ -10,3 +10,4 @@ _posts
 */Thumbs.db
 projects/nuclearSandbox/assets/data/ENDF-B-VIII.1-GNDS
 projects/piCalc/save.json
+projects/piCalc/__pycache__
