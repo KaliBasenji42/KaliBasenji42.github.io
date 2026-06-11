@@ -156,7 +156,7 @@
         
         <label for="reuseBypro">Reuse Bypro:</label><br>
         <input type="checkbox" id="reuseBypro" name="reuseBypro"><br>
-        <div class="subTtl">Wether to reuse byproduct to discount demand.</div><br>
+        <div class="subTtl">Whether to reuse byproduct to discount demand.</div><br>
         
         <label for="greaterColor">Greater Color:</label><br>
         <input type="color" id="greaterColor" name="greaterColor"><br>
@@ -168,7 +168,7 @@
         
         <label for="drawCalcTbl">Auto Draw Calc. Table:</label><br>
         <input type="checkbox" id="drawCalcTbl" name="drawCalcTbl"><br>
-        <div class="subTtl">Wether to auto render Calc. Table? (Rending it is intensive)</div>
+        <div class="subTtl">Whether to auto render Calc. Table? (Rending it is intensive)</div>
         
         <h3>Power Calculation (Defining powerInd())</h3>
         
@@ -179,16 +179,16 @@
             + powerInd(baseMW, maxClock * (buildings - floor(buildings)), sloopMult)
           </div><br>
           Where:<br>
-          "buildings" is the number of buildings needed<br>"
-          baseMW" is a building's normal/base power usage (at 100%)<br>
+          "buildings" is the number of buildings needed<br>
+          "baseMW" is a building's normal/base power usage (at 100%)<br>
           "maxClock" is the maximum allowed clocking (clocking is used for the remainder)<br>
           "sloopMult" is the Production Amplifier<br><br>
           
-          Presets:<br>
+          Presets for <code>powerInd()</code>:<br>
           Satisfactory: <code>"baseMW * (sloopMult ** 2) * (clock ** clockPowerExp)"</code>*<br>
           Linear: <code>"baseMW * sloopMult * clock"</code><br>
           Ceiling: <code>"baseMW * sloopMult * Math.ceil(clock)"</code><br>
-          *<code>clockPowerExp</code> is a global constant
+          *<code>clockPowerExp</code> is a global constant equal to <code>Math.log(2.5) / Math.log(2)</code>
         </div><br>
         
         <label for="powerConsFunc">Power Consumption Function (powerInd() where baseMW >= 0):</label><br>
