@@ -143,10 +143,9 @@ a:hover {color: rgb(0, 128, 0);}
 body {
   color: rgb(255, 255, 255);
   background-color: rgb(0, 0, 0);
-  background-image: none;
   background-image: 
-    linear-gradient(135deg, rgb(0, 0, 0) 60%, rgb(0, 0, 16), rgb(16, 0, 16)),
-    linear-gradient(90deg, rgb(0, 0, 0) 60%, rgb(0, 0, 16), rgb(16, 0, 16));
+    linear-gradient(135deg, rgb(0, 0, 0) 20%, rgb(0, 0, 32), rgb(32, 0, 32)),
+    linear-gradient(90deg, rgb(0, 0, 0) 20%, rgb(0, 0, 32), rgb(32, 0, 32));
 }
 
 table {
@@ -160,10 +159,51 @@ a:hover {color: rgb(64, 240, 64);}
   'light': `
 body {
   color: rgb(0, 0, 0);
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(240, 240, 240);
   background-image: 
-    linear-gradient(135deg, rgb(224, 224, 224) 60%, rgb(232, 232, 224), rgb(232, 224, 224)),
-    linear-gradient(90deg, rgb(224, 224, 224) 60%, rgb(232, 232, 224), rgb(232, 224, 224));
+    linear-gradient(135deg, rgb(240, 240, 240) 20%, rgb(255, 255, 240), rgb(255, 240, 240)),
+    linear-gradient(90deg, rgb(240, 240, 240) 20%, rgb(255, 255, 240), rgb(255, 240, 240));
+}
+
+table {
+  color: rgb(0, 0, 0);
+  background-color: rgb(224, 224, 224);
+}
+
+a {color: rgb(0, 96, 0);}
+a:hover {color: rgb(0, 128, 0);}
+  `,
+    'pride': `
+body {
+  color: rgb(0, 0, 0);
+  background-color: rgb(240, 240, 240);
+  background-image: 
+    linear-gradient(135deg,
+      rgb(255, 255, 255),
+      rgb(255, 240, 240),
+      rgb(240, 240, 255),
+      rgb(240, 224, 224),
+      rgb(224, 224, 224),
+      rgb(255, 224, 224),
+      rgb(255, 240, 224),
+      rgb(255, 255, 224),
+      rgb(224, 255, 224),
+      rgb(224, 224, 255),
+      rgb(240, 224, 255)
+    ),
+    linear-gradient(90deg,
+      rgb(255, 255, 255),
+      rgb(255, 240, 240),
+      rgb(240, 240, 255),
+      rgb(240, 224, 224),
+      rgb(224, 224, 224),
+      rgb(255, 224, 224),
+      rgb(255, 240, 224),
+      rgb(255, 255, 224),
+      rgb(224, 255, 224),
+      rgb(224, 224, 255),
+      rgb(240, 224, 255)
+    );
 }
 
 table {
