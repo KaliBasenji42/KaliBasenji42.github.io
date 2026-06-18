@@ -487,6 +487,7 @@ fun.key = `
 4 - Random+
 $ - Repeated Random+
 5 - BG Color
+6 - Toggle Explosions (Press 'b')
 `;
 
 fun.elems = []; // Effected elements
@@ -494,6 +495,8 @@ fun.trigger1 = '$'; // First trigger
 fun.triggered1 = false;
 fun.trigger2 = '@'; // Second trigger
 fun.triggered2 = false;
+fun.mouseX = 0; // Mouse Position
+fun.mouseY = 0;
 
 fun.load = function() { // Select effected elements
   fun.elems = document.querySelectorAll('body *');
@@ -679,6 +682,215 @@ fun.BGColor = function() {
   
 }
 
+fun.explosionActive = false; // Whether it active
+fun.explosionShakeScale = 4; // Max pixel movement
+fun.explosionShakeScaleDeg = 0; // Max degree movement
+fun.randomPlusSheet = new CSSStyleSheet ();
+fun.randomPlusSheet.replace(`
+body * {
+  position: relative;
+  transition: left 0.1s linear, top 0.1s linear, rotate 0.1s;
+  left: 0;
+  top: 0;
+  rotate: 0;
+}
+`); // Explosion Style Sheet
+
+fun.explosionStart = function() {
+  console.log('Explosion Start'); // Log
+  
+  for(let i = 0; i < fun.elems.length; i++) { // For each element
+    
+    let elem = fun.elems[i]; // Element
+    
+    // Initial Values
+    
+    let left = 0;
+    let top = 0;
+    let rotate = 0;
+    
+    // Set Style
+    
+    elem.style.left = '' + left + 'px';
+    elem.style.top = '' + top + 'px';
+    elem.style.rotate = '' + rotate + 'deg';
+    
+  }
+  
+}
+
+fun.explosionShake = function(reset = false) {
+  
+  for(let i = 0; i < fun.elems.length; i++) { // For each element
+    
+    let elem = fun.elems[i]; // Element
+    
+    // Get Current
+    
+    let left = parseInt('0' + elem.style.left);
+    let top = parseInt('0' + elem.style.top);
+    let rotate = parseInt('0' + elem.style.rotate);
+    
+    // Add Random
+    
+    left += (Math.floor(Math.random() * fun.explosionShakeScale) * 2) - fun.explosionShakeScale;
+    top += (Math.floor(Math.random() * fun.explosionShakeScale) * 2) - fun.explosionShakeScale;
+    rotate += (Math.floor(Math.random() * fun.explosionShakeScaleDeg) * 2) - fun.explosionShakeScaleDeg;
+    
+    // Reset
+    
+    if(reset) {
+      left = 0;
+      top = 0;
+      rotate = 0;
+    }
+    
+    // Set Style
+    
+    elem.style.left = '' + left + 'px';
+    elem.style.top = '' + top + 'px';
+    elem.style.rotate = '' + rotate + 'deg';
+    
+  }
+  
+}
+
+fun.explosion = function(xPos, yPos) {
+  // first: Is first call, should set left and top to 0
+  
+  console.log('Explosion at: (' + xPos + ', ' + yPos + ')!'); // Log
+  
+  // Play Audio
+  
+  let rootDir = window.location.href.search('project') < 0; // Whether we are on the homepage
+  //console.log('Homepage: ' + rootDir);
+  
+  let boom; // Boom audio
+  let boomFile = 'assets/audio/boom.mp3'; // File Path
+  if(Math.random() < 0.1) boomFile = 'assets/audio/meow.mp3'; // Goofy Boom (Rare)
+  
+  if(rootDir) boom = new Audio(boomFile);
+  else boom = new Audio('../../' + boomFile);
+  boom.play();
+  
+  // Create Explosion
+  
+  let explosionMarkElem = document.createElement('div'); // Soot mark
+  explosionMarkElem.style = `
+    position: absolute;
+    overflow: hidden;
+    z-index: -1;
+    
+    background-image: radial-gradient(circle, rgba(64, 64, 64, 1), rgba(64, 64, 64, 0) 50%);
+    color: rgb(64, 64, 64);
+    opacity: 0;
+    
+    width: 16rem;
+    height: 16rem;
+    border-radius: 8rem;
+    
+    line-height: 16rem;
+    text-align: center;
+    font-size: 8rem;
+    
+    transition: opacity 1s;
+  `;
+  explosionMarkElem.style.left = 'calc(' + xPos + 'px - 8rem)';
+  explosionMarkElem.style.top = 'calc(' + yPos + 'px - 8rem)';
+  explosionMarkElem.innerHTML = '✶'
+  explosionMarkElem.style.rotate = '' + (Math.random() * 360) + 'deg';
+  document.querySelector('body').appendChild(explosionMarkElem);
+  window.setTimeout(() => { // Appear after later
+    explosionMarkElem.style.opacity = '1';
+  }, 500);
+  
+  let explosionFlashElem = document.createElement('div'); // Flash
+  explosionFlashElem.style = `
+    position: absolute;
+    overflow: hidden;
+    z-index: 1000;
+    
+    background-color: rgb(255, 255, 255);
+    opacity: 0.5;
+    
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    
+    transition: transform 1s, opacity 1s;
+  `;
+  explosionFlashElem.style.left = 'calc(' + xPos + 'px - 0.5rem)';
+  explosionFlashElem.style.top = 'calc(' + yPos + 'px - 0.5rem)';
+  document.querySelector('body').appendChild(explosionFlashElem);
+  window.setTimeout(() => { // Animation
+    explosionFlashElem.style.transform = 'scale(1000)';
+    explosionFlashElem.style.opacity = '0';
+  }, 100);
+  window.setTimeout(() => { // Remove
+    explosionFlashElem.remove();
+  }, 1500);
+  
+  let explosionSmokeElem = document.createElement('div'); // Smoke
+  explosionSmokeElem.style = `
+    position: absolute;
+    overflow: hidden;
+    
+    background-color: rgb(255, 128, 0);
+    opacity: 0.5;
+    
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    
+    transition-timing-function: ease-out;
+    transition: background-color 3s, transform 3s, opacity 3s;
+  `;
+  explosionSmokeElem.style.left = 'calc(' + xPos + 'px - 0.5rem)';
+  explosionSmokeElem.style.top = 'calc(' + yPos + 'px - 0.5rem)';
+  document.querySelector('body').appendChild(explosionSmokeElem);
+  window.setTimeout(() => { // Animation
+    explosionSmokeElem.style.transform = 'scale(40)';
+    explosionSmokeElem.style.opacity = '0';
+    explosionSmokeElem.style.backgroundColor = 'rgb(0, 0, 0)';
+  }, 100);
+  window.setTimeout(() => { // Remove
+    explosionSmokeElem.remove();
+  }, 3500);
+  
+  let explosionEmojiElem = document.createElement('div'); // Emoji
+  explosionEmojiElem.style = `
+    position: absolute;
+    overflow: hidden;
+    
+    opacity: 1;
+    
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
+    rotate: 0deg;
+    
+    line-height: 4rem;
+    text-align: center;
+    font-size: 1rem;
+    
+    transition-timing-function: ease-out;
+    transition: transform 3s, opacity 3s, rotate 3s;
+  `;
+  explosionEmojiElem.style.left = 'calc(' + xPos + 'px - 2rem)';
+  explosionEmojiElem.style.top = 'calc(' + yPos + 'px - 2rem)';
+  explosionEmojiElem.innerHTML = '💥'
+  document.querySelector('body').appendChild(explosionEmojiElem);
+  window.setTimeout(() => { // Animation
+    explosionEmojiElem.style.transform = 'scale(20)';
+    explosionEmojiElem.style.opacity = '0';
+    explosionEmojiElem.style.rotate = '' + (Math.random() * 720 - 360) + 'deg';
+  }, 100);
+  window.setTimeout(() => { // Remove
+    explosionEmojiElem.remove();
+  }, 3500);
+  
+}
+
 document.addEventListener('keypress', function() {
   
   // h - Key/Help!
@@ -773,6 +985,34 @@ document.addEventListener('keypress', function() {
     
   }
   
+  // 6 - Explosions
+  
+  if(event.key == '6' && fun.triggered2) { // Setup
+    
+    document.adoptedStyleSheets.push(fun.randomPlusSheet); // Add style sheet
+    
+    fun.explosionActive = !fun.explosionActive; // Activate
+    
+    console.log('Explosions Active: ' + fun.explosionActive); // Log
+    
+    if(fun.explosionActive) fun.explosionStart(); // Start
+    
+  }
+  
+  if(event.key == 'b' && fun.explosionActive) { // Explosion
+    
+    fun.explosion(fun.mouseX, fun.mouseY); // Call
+    
+    // Shake
+    
+    let shakeInterval = window.setInterval(fun.explosionShake, 100); // Shake
+    window.setTimeout(() => {
+      clearInterval(shakeInterval);
+      fun.explosionShake(true);
+    }, 1000); // Stop
+    
+  }
+  
   // Trigger 2
   
   if(event.key == fun.trigger2 && fun.triggered1) fun.triggered2 = true;
@@ -782,5 +1022,14 @@ document.addEventListener('keypress', function() {
   
   if(event.key == fun.trigger1) fun.triggered1 = true;
   else fun.triggered1 = false;
+  
+});
+
+document.addEventListener('mousemove', function() {
+  
+  if(fun.explosionActive) {
+    fun.mouseX = event.pageX;
+    fun.mouseY = event.pageY;
+  }
   
 });
