@@ -685,8 +685,8 @@ fun.BGColor = function() {
 fun.explosionActive = false; // Whether it active
 fun.explosionShakeScale = 4; // Max pixel movement
 fun.explosionShakeScaleDeg = 0; // Max degree movement
-fun.randomPlusSheet = new CSSStyleSheet ();
-fun.randomPlusSheet.replace(`
+fun.explosionSheet = new CSSStyleSheet ();
+fun.explosionSheet.replace(`
 body * {
   position: relative;
   transition: left 0.1s linear, top 0.1s linear, rotate 0.1s;
