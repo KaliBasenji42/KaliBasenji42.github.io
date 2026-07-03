@@ -1,0 +1,229 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<!--End-->
+  <title>Art | Scintilla</title>
+<!--Start-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../assets/areFilesLinked.js"></script>
+  
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
+  
+<!--End-->
+  
+  <a href="./" style="position: fixed; left: 0.5rem; top: 0.5rem; font-size: 1.5rem;" title="Back to Art">🔙</a>
+  
+  <h1>Scintilla</h1>
+  
+  <div class="carousel">
+    <div id="ref">
+      <a href="assets/art/Scintilla/Ref.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Ref.png" alt="Reference Sheet">
+      </a>
+      <h3>Reference Sheet</h3>
+    </div>
+    
+    <div id="test">
+      <a href="assets/art/Scintilla/Test.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Test.png" alt="Test Card">
+      </a>
+      <h3>Test Card</h3>
+    </div>
+    
+    <div id="blep">
+      <a href="assets/art/Scintilla/Blep.gif" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Blep.gif" alt="Blep">
+      </a>
+      <h3>Blep</h3>
+    </div>
+    
+    <div id="static">
+      <a href="assets/art/Scintilla/Static.gif" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Static.gif" alt="Static">
+      </a>
+      <h3>Static</h3>
+    </div>
+    
+    <div id="yummers">
+      <a href="assets/art/Scintilla/Yummers.gif" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Yummers.gif" alt="Yummers">
+      </a>
+      <h3>Yummers</h3>
+    </div>
+    
+    <div id="assets">
+      <a href="assets/art/Scintilla/Assets.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Assets.png" alt="Assets">
+      </a>
+      <h3>Assets</h3>
+    </div>
+    
+    <div id="ref8X">
+      <a href="assets/art/Scintilla/Ref 8X.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Ref 8X.png" alt="Reference Sheet 8X">
+      </a>
+      <h3>Reference Sheet 8X</h3>
+    </div>
+    
+    <div id="test8X">
+      <a href="assets/art/Scintilla/Test 8X.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Test 8X.png" alt="Test Card 8X">
+      </a>
+      <h3>Test Card 8X</h3>
+    </div>
+  </div>
+  
+  <div>
+    <a href="#ref">Reference Sheet</a> | 
+    <a href="#test">Test Card</a> | 
+    <a href="#blep">Blep</a> | 
+    <a href="#static">Static</a> | 
+    <a href="#yummers">Yummers</a> | 
+    <a href="#assets">Assets</a> | 
+    <a href="#ref8X">Ref 8X</a> | 
+    <a href="#test8X">Test Card 8X</a>
+  </div>
+  
+  <table>
+    <tr>
+      <th>Species</th><td>Protogen / Timber Wolf</td>
+    </tr>
+    <tr>
+      <th>Gender</th><td>Nonbinary / Agender</td>
+    </tr>
+  </table>
+  
+  <p>
+    Scintilla roughly translates to "spark" in Latin. They are a protogen with a timber wolf body. It lives in the woods, and scavenges scrap yards for parts. Whilst looking for parts it got their head stuck in a CRT TV. Its fur is a mossy green to help blend in with the forest they reside in. The mechanical part of its body runs off an RTG, hence why they find Plutonium 238 yummy.
+  </p>
+  
+  <p>
+    The GIFs where made by copying a base image many times and editing it (frame by frame). These images where put in a folder and named "0.png", "1.png", ... etc. I then used a bash script to make an 8X up scaled (nearest neighbor / point) copy of each image using magick and then use ffmpeg to convert each image into a single GIF (ffmpeg creates a palette image before making the GIF to ensure quality).
+  </p>
+  
+  <h3>File Structure:</h3>
+  
+  <pre style="white-space: pre; overflow-x: scroll; background-color: rgba(128, 128, 128, 0.25); padding: 0.5rem;">
+
+.
+├── gif.sh <i>- Bash script</i>
+├── Yummers <i>- Input folder</i>
+│   ├── 0.png <i>- Each low resolution frame</i>
+│   ├── 1.png
+│   ├── 2.png
+│   <i>...</i>
+│   ├── 12.png
+│   ├── 13.png
+│   └── 14.png
+└── Yummers-out <i>- Output folder created by script</i>
+    ├── 0.png <i>- Each high resolution frame created by script</i>
+    ├── 1.png
+    ├── 2.png
+    <i>...</i>
+    ├── 12.png
+    ├── 13.png
+    ├── 14.png
+    ├── output.gif <i>- Output GIF </i>
+    └── palette.png <i>- Palette to ensure quality</i>
+  </pre>
+  
+  <h3>Bash Script "gif.sh":</h3>
+  
+  <pre style="white-space: pre; overflow-x: scroll; background-color: rgba(128, 128, 128, 0.25); padding: 0.5rem;"><code class="language-bash;">
+#!/usr/bin/env bash
+
+DIR=Yummers # No end slash
+FPS=4 # Frames per Second
+SCALE=800 # Rescale percent
+
+mkdir "$DIR-out"
+
+# Resize
+
+cd "$DIR"
+
+for FILE in *;
+do
+  magick "$FILE" -filter point -resize "$SCALE %" "../$DIR-out/$FILE"
+done
+
+# Gif
+
+cd "../$DIR-out/"
+
+ffmpeg -i %d.png -vf palettegen palette.png # Generate Pallete
+
+ffmpeg -framerate $FPS -i %d.png -i palette.png -filter_complex "paletteuse" output.gif
+  </code></pre>
+  
+  <p>
+    For "Static.gif" I got white noise by downloading an image from <a href="https://qrng.anu.edu.au/random-image-bw/" target="_blank" ref="opener external">ANU QRNG</a>, and scaling the image down to 0.5 the original size (in each dimension) bilinearly. I then copied parts of the downscaled image onto a layer above the screen of Scintilla with varying opacity.
+  </p>
+  
+  <p><a href="./#license" rel="license">License</a></p>
+  
+<!--Start-->
+  
+  <footer>
+    <div>
+      KaliBasenji42's Website<br>
+      Copyright (C) 2025  KaliBasenji42<br><br>
+      
+      This program is free software; you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation; version 2 of the License.<br><br>
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.<br><br>
+      
+      You should have received a copy of the GNU General Public License along
+      with this program; if not, write to the Free Software Foundation, Inc.,
+      51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.<br><br>
+      
+      <a href="../../LICENSE.md" target="_blank" rel="license opener">Attached License</a><br>
+      <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank" rel="license opener external">GPL v2</a><br>
+      <a href="https://github.com/KaliBasenji42" target="_blank" rel="author opener external">KaliBasenji42's Github</a><br>
+      <a href="mailto:code.strike366@passinbox.com" rel="author">Email</a>
+    </div>
+  </footer>
+  
+  <button id="themeButton" onclick="nextTheme(1)" title="Change Theme">◪</button>
+  
+</body>
+
+</html>
+
+<!--End-->
