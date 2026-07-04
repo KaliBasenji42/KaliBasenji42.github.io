@@ -152,11 +152,14 @@ div.navArrow {
 
 .sectBttn {
   text-align: center;
-  line-height: 2em;
+  line-height: 100%;
+  aspect-ratio: 1;
+  padding: 0;
   border: none;
   background-color: rgba(0, 0, 0, 0);
   font-size: 1em;
   cursor: pointer;
+  transition: transform 0.1s;
 }
 
 .sect {

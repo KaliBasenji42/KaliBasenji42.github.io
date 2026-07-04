@@ -37,16 +37,18 @@ function expndOrClps(ID, bttnID) {
   bttn = document.getElementById(bttnID);
   height = "" + (sect.scrollHeight + 100) + "px";
   
-  if(sect.style.maxHeight ==  "0px") {
+  if(sect.style.maxHeight ==  "0px") { // Expand
     
     sect.style.maxHeight = height;
-    bttn.style.transform = "rotate(0deg)";
+    bttn.style.transform = "scaleY(1) rotate(0deg)";
+    bttn.title = "Collapse";
     
   }
-  else {
+  else { // Collapse
     
     sect.style.maxHeight = "0px";
-    bttn.style.transform = "rotate(270deg)";
+    bttn.style.transform = "scaleY(-1) rotate(-90deg)";
+    bttn.title = "Expand";
     
   }
   
@@ -59,7 +61,8 @@ function expand(ID, bttnID) {
   height = "" + (sect.scrollHeight + 100) + "px";
   
   sect.style.maxHeight = height;
-  bttn.style.transform = "rotate(0deg)";
+  bttn.style.transform = "scaleY(1) rotate(0deg)";
+  bttn.title = "Collapse";
   
 }
 
@@ -70,21 +73,8 @@ function collapse(ID, bttnID) {
   height = "" + (sect.scrollHeight + 100) + "px";
   
   sect.style.maxHeight = "0px";
-  bttn.style.transform = "rotate(270deg)";
-  
-}
-
-function collapseAll() {
-  
-  let sections = document.getElementsByClassName('sect');
-  let sectBttns = document.getElementsByClassName('sectBttn');
-  
-  for(let i = 0; i < sections.length; i++) {
-    
-    sections[i].style.maxHeight = "0px";
-    sectBttns[i].style.transform = "rotate(270deg)";
-    
-  }
+  bttn.style.transform = "scaleY(-1) rotate(-90deg)";
+  bttn.title = "Expand";
   
 }
 
@@ -96,7 +86,23 @@ function expandAll() {
   for(let i = 0; i < sections.length; i++) {
     
     sections[i].style.maxHeight = "" + (sections[i].scrollHeight + 100) + "px";
-    sectBttns[i].style.transform = "rotate(0deg)";
+    sectBttns[i].style.transform = "scaleY(1) rotate(0deg)";
+    sectBttns[i].title = "Collapse";
+    
+  }
+  
+}
+
+function collapseAll() {
+  
+  let sections = document.getElementsByClassName('sect');
+  let sectBttns = document.getElementsByClassName('sectBttn');
+  
+  for(let i = 0; i < sections.length; i++) {
+    
+    sections[i].style.maxHeight = "0px";
+    sectBttns[i].style.transform = "scaleY(-1) rotate(-90deg)";
+    sectBttns[i].title = "Expand";
     
   }
   
