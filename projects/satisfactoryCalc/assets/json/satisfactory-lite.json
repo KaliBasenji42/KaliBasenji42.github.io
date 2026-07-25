@@ -1,5 +1,7 @@
 {
   "note": "Default template data.<br>Just the useful, automate-able items (items per minute).",
+  "copyright": "(C) 2026 wiki.gg, KaliBasenji42",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "items": {
     "Iron Ore": {
       "category": "Raw",

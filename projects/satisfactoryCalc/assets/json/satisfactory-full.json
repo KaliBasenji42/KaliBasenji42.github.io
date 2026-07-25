@@ -1,5 +1,7 @@
 {
   "note": "All items in satisfactory (not all buildings, and only automate-able recipes, however).",
+  "copyright": "(C) 2026 wiki.gg, KaliBasenji42",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "items": {
     "Leaves": {
       "category": "Non-Renewable",

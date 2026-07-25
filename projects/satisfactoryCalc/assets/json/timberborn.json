@@ -1,5 +1,7 @@
 {
   "note": "Items/Materials from Timberborn in items per hour and MW as HP. Remember to set power consumption to linear/ceiling.<br><br>F = Folktails, IT = Iron Teeth, FB = Food Byproduct (sums all food)<br><br>If an item is to only be used for food, use FB to make it count to Food.<br><br>Remember to set recipe clock speed based on working hours/efficiency.",
+  "copyright": "(C) 2026 wiki.gg, KaliBasenji42",
+  "license": "https://creativecommons.org/licenses/by-sa/4.0/",
   "items": {
     "Beaver Needs": {
       "category": "Labor",
@@ -65,26 +67,26 @@
           "in": [
             {
               "item": "Berry",
-              "amount": 0.0166666666666667
+              "amount": 0.0416666666666667
             },
             {
               "item": "Water",
-              "amount": 0.0166666666666667
+              "amount": 0.0416666666666667
             }
           ],
           "bypro": [],
           "building": "Breeding Pod"
         },
         "Advanced Breeding Pod (IT)": {
-          "out": 0,
+          "out": 0.0083333333333333,
           "in": [
             {
               "item": "Berry",
-              "amount": 0
+              "amount": 0.0416666666666667
             },
             {
               "item": "Extract",
-              "amount": 0
+              "amount": 0.0416666666666667
             }
           ],
           "bypro": [],
