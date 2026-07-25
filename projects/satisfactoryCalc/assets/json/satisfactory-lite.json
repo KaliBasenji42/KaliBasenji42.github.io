@@ -1,6 +1,6 @@
 {
-  "note": "Default template data.<br>Just the useful, automate-able items (items per minute).",
-  "copyright": "(C) 2026 wiki.gg, KaliBasenji42",
+  "note": "Default template data.<br>Just the useful, automate-able items (items per minute).<br><br>Satisfactory - Lite Data<br>Copyright (C) 2026 wiki.gg, 2026 KaliBasenji42<br><a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\" target=\"_blank\" rel=\"external opener license\">CC BY-NC-SA 4.0 License</a>",
+  "copyright": "(C) 2026 wiki.gg, 2026 KaliBasenji42",
   "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "items": {
     "Iron Ore": {

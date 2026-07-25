@@ -1,6 +1,6 @@
 {
-  "note": "Items/Materials from Timberborn in items per hour and MW as HP. Remember to set power consumption to linear/ceiling.<br><br>F = Folktails, IT = Iron Teeth, FB = Food Byproduct (sums all food)<br><br>If an item is to only be used for food, use FB to make it count to Food.<br><br>Remember to set recipe clock speed based on working hours/efficiency.",
-  "copyright": "(C) 2026 wiki.gg, KaliBasenji42",
+  "note": "Items/Materials from Timberborn in items per hour and MW as HP. Remember to set power consumption to linear/ceiling.<br><br>F = Folktails, IT = Iron Teeth, FB = Food Byproduct (sums all food)<br><br>If an item is to only be used for food, use FB to make it count to Food.<br><br>Remember to set recipe clock speed based on working hours/efficiency.<br><br>Timberborn Data<br>Copyright (C) 2026 wiki.gg, 2026 KaliBasenji42<br><a href=\"https://creativecommons.org/licenses/by-sa/4.0/\" target=\"_blank\" rel=\"external opener license\">CC BY-SA 4.0 License</a>",
+  "copyright": "(C) 2026 wiki.gg, 2026 KaliBasenji42",
   "license": "https://creativecommons.org/licenses/by-sa/4.0/",
   "items": {
     "Beaver Needs": {
@@ -1994,12 +1994,46 @@
         }
       }
     },
-    "Gear": {
+    "Firework": {
       "category": "Materials",
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
       "pos": 7,
+      "color": "#e02000",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Explosive",
+      "recipes": {
+        "Explosive": {
+          "out": 3.3333333333333333,
+          "in": [
+            {
+              "item": "Badwater",
+              "amount": 0.3333333333333333
+            }
+          ],
+          "bypro": [],
+          "building": "Explosives Factory"
+        }
+      }
+    },
+    "Gear": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 8,
       "color": "#c0a080",
       "calc": 0,
       "calcDemand": 0,
@@ -2033,7 +2067,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 8,
+      "pos": 9,
       "color": "#402080",
       "calc": 0,
       "calcDemand": 0,
@@ -2071,7 +2105,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 9,
+      "pos": 10,
       "color": "#c0c040",
       "calc": 0,
       "calcDemand": 0,
@@ -2100,7 +2134,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 10,
+      "pos": 11,
       "color": "#e0c0a0",
       "calc": 0,
       "calcDemand": 0,
@@ -2145,7 +2179,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 11,
+      "pos": 12,
       "color": "#c04020",
       "calc": 0,
       "calcDemand": 0,
@@ -2211,7 +2245,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 12,
+      "pos": 13,
       "color": "#ffe0c0",
       "calc": 0,
       "calcDemand": 0,
@@ -2249,7 +2283,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 13,
+      "pos": 14,
       "color": "#a0ffa0",
       "calc": 0,
       "calcDemand": 0,
@@ -2291,7 +2325,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 14,
+      "pos": 15,
       "color": "#80e040",
       "calc": 0,
       "calcDemand": 0,
@@ -2305,7 +2339,7 @@
       "power": 0,
       "powerMax": 0,
       "powerMin": 0,
-      "recipe": "Biofuel with Carrot (F)",
+      "recipe": "Biofuel with Carrots (F)",
       "recipes": {
         "Biofuel with Carrots (F)": {
           "out": 1.6666666666666667,
@@ -2359,7 +2393,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 15,
+      "pos": 16,
       "color": "#ffc080",
       "calc": 0,
       "calcDemand": 0,
@@ -2393,7 +2427,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 16,
+      "pos": 17,
       "color": "#e020ff",
       "calc": 0,
       "calcDemand": 0,
@@ -2431,7 +2465,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 17,
+      "pos": 18,
       "color": "#e0e020",
       "calc": 0,
       "calcDemand": 0,
@@ -2460,7 +2494,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 18,
+      "pos": 19,
       "color": "#e0e0e0",
       "calc": 0,
       "calcDemand": 0,
@@ -2494,7 +2528,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 19,
+      "pos": 20,
       "color": "#e0e0ff",
       "calc": 0,
       "calcDemand": 0,
@@ -2532,7 +2566,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 20,
+      "pos": 21,
       "color": "#402000",
       "calc": 0,
       "calcDemand": 0,
@@ -2574,7 +2608,7 @@
       "complete": false,
       "inpDemand": 0,
       "status": "resolved",
-      "pos": 21,
+      "pos": 22,
       "color": "#e0e0a0",
       "calc": 0,
       "calcDemand": 0,
@@ -2604,6 +2638,44 @@
           ],
           "bypro": [],
           "building": "Grease Factory"
+        }
+      }
+    },
+    "Metal Part": {
+      "category": "Materials",
+      "complete": false,
+      "inpDemand": 0,
+      "status": "resolved",
+      "pos": 23,
+      "color": "#6040A0",
+      "calc": 0,
+      "calcDemand": 0,
+      "byproduct": 0,
+      "maxClock": 1,
+      "sloopMult": 1,
+      "buildings": 0,
+      "awesomePts": 0,
+      "awesomePtsInp": 0,
+      "awesomePtsBypro": 0,
+      "power": 0,
+      "powerMax": 0,
+      "powerMin": 0,
+      "recipe": "Metal Part (IT)",
+      "recipes": {
+        "Metal Part (IT)": {
+          "out": 0.3333333333333333,
+          "in": [
+            {
+              "item": "Scrap Metal",
+              "amount": 0.3333333333333333
+            },
+            {
+              "item": "Log",
+              "amount": 0.0666666666666667
+            }
+          ],
+          "bypro": [],
+          "building": "Metalsmith"
         }
       }
     }
@@ -3214,7 +3286,7 @@
       "pos": 52,
       "color": "#e0e0a0"
     },
-    "The Void": {
+    "Metalsmith": {
       "Average MW": 0,
       "Max MW": 0,
       "Min MW": 0,
@@ -3223,6 +3295,17 @@
       "Max Total MW": 0,
       "Min Total MW": 0,
       "pos": 53,
+      "color": "#6040A0"
+    },
+    "The Void": {
+      "Average MW": 0,
+      "Max MW": 0,
+      "Min MW": 0,
+      "Total": 0,
+      "Total MW": 0,
+      "Max Total MW": 0,
+      "Min Total MW": 0,
+      "pos": 54,
       "color": "#404040"
     }
   }
