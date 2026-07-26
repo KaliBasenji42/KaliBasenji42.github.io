@@ -2013,9 +2013,9 @@
       "power": 0,
       "powerMax": 0,
       "powerMin": 0,
-      "recipe": "Explosive",
+      "recipe": "Firework",
       "recipes": {
-        "Explosive": {
+        "Firework": {
           "out": 3.3333333333333333,
           "in": [
             {
