@@ -35,11 +35,11 @@ with open(xmlPath, 'r') as file:
 
 # Parse
 
-parsed = xmltodict.parse(xmlData)
+parsed = xmltodict.parse(xmlData, force_list=True)
 
 jsonData = json.dumps(parsed)
 
 # Write JSON
 
-with open(jsonPath, 'w') as file:
+with open(decayDataPath, 'w') as file:
     file.write(jsonData)
