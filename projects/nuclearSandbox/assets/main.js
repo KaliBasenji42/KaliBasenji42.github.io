@@ -1,6 +1,6 @@
 // Nuclear Variables
 
-let NuDat = {};
+let decayData = {};
 
 let decay = {
   dict: {
@@ -75,30 +75,30 @@ class material { // Material Class
 
 // Data Functions
 
-async function loadNuDat() {
+async function loadDecayData() {
   
-  let nuDatStatOutput = document.getElementById('NuDatStat');
+  let decayDataStatOutput = document.getElementById('decayDataStat');
   
-  nuDatStatOutput.innerHTML = '🔄'; // Loading Status
+  decayDataStatOutput.innerHTML = '🔄'; // Loading Status
   
-  let file = await fetch('assets/data/NuDat.json'); // Fetch file
+  let file = await fetch('assets/data/decay.json'); // Fetch file
   
   if(!file.ok) {
-    nuDatStatOutput.innerHTML = '⚠️ Response Not OK'; // Status
+    decayDataStatOutput.innerHTML = '⚠️ Response Not OK'; // Status
     throw new Error('Response: ' + response.statusText); // Log Error
   }
   
-  NuDat = await file.json(); // Set
+  decayData = await file.json(); // Set
   
-  nuDatStatOutput.innerHTML = '✅'; // Status
+  decayDataStatOutput.innerHTML = '✅'; // Status
   
 }
 
 function ZNtoName(Z, N) {
   
-  for(const iso in NuDat) {
+  for(const iso in decayData) {
     
-    if(NuDat[iso]['z'] == Z && NuDat[iso]['n'] == N) return NuDat[iso]['name'];
+    if(decayData[iso]['z'] == Z && decayData[iso]['n'] == N) return decayData[iso]['name'];
     
   }
   
@@ -109,13 +109,13 @@ function listKeys(details) {
   
   let list = new Set();
   
-  for(const iso in NuDat) {
+  for(const iso in decayData) {
     
-    for(const key in NuDat[iso]) {
+    for(const key in decayData[iso]) {
       
       if(details && !list.has(key)) {
         console.log(iso + ': ' + key + ': ');
-        console.log(NuDat[iso][key]);
+        console.log(decayData[iso][key]);
       }
       
       list.add(key);
@@ -132,11 +132,11 @@ function listLevelKeys() {
   
   let list = new Set();
   
-  for(const iso in NuDat) {
+  for(const iso in decayData) {
     
-    for(const level in NuDat[iso].levels) {
+    for(const level in decayData[iso].levels) {
       
-      for(const key in NuDat[iso].levels[level]) {
+      for(const key in decayData[iso].levels[level]) {
         
         list.add(key);
         
@@ -177,20 +177,20 @@ function listDecayModes(all) {
   
   let list = new Set();
   
-  for(const iso in NuDat) {
+  for(const iso in decayData) {
     
-    for(const level in NuDat[iso]['levels']) {
+    for(const level in decayData[iso]['levels']) {
       
       try {
         
         let modes = {};
         
-        modes = NuDat[iso]['levels'][level]['decayModes']['observed'];
+        modes = decayData[iso]['levels'][level]['decayModes']['observed'];
         
         for(const mode in modes) {
           list.add(modes[mode]['mode']);
           if(all) console.log(
-            '"' + modes[mode]['mode'] + '" in "' + NuDat[iso]['name'] + '"'
+            '"' + modes[mode]['mode'] + '" in "' + decayData[iso]['name'] + '"'
           );
         }
         
@@ -208,7 +208,7 @@ function listDecayModes(all) {
 
 function listDecayTables() {
   
-  for(const iso in NuDat) {
+  for(const iso in decayData) {
     
     let text = iso + ':\n'; // Text to log
     
@@ -217,7 +217,7 @@ function listDecayTables() {
     
     try {
       
-      modes = NuDat[iso]['levels'][0]['decayModes']['observed'];
+      modes = decayData[iso]['levels'][0]['decayModes']['observed'];
       
       for(const mode in modes) {
         text += '"' + (modes[mode]['mode'] + '": ' + modes[mode]['value'] + '%\n'); // Mode

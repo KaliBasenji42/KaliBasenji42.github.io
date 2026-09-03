@@ -49,11 +49,38 @@
   
   <h1>Nuclear Sandbox | Isotope Data & Process (WIP)</h1>
   
+  <h2>Sources:</h2>
+  
+  <h3>Data:</h3>
+  
+  <ul>
+    <li>
+      National Nuclear Data Center's <a href="https://www.nndc.bnl.gov/endf-releases/" target="_blank" rel="opener external">ENDF B-VIII.1</a> (GNDS Format). Extracted August 27th 2026.
+      <ul><li>
+        ENDF/B-VIII.1: Updated Nuclear Reaction Data Library for Science and Applications, Nuclear Data Sheets, Volume 210, 2026, Pages 1-224, ISSN 0090-3752, <a target="_blank" rel="opener external" href="https://doi.org/10.1016/j.nds.2026.04.001">https://doi.org/10.1016/j.nds.2026.04.001</a>. (<a target="_blank" rel="opener external" href="https://www.sciencedirect.com/science/article/pii/S0090375226000268">https://www.sciencedirect.com/science/article/pii/S0090375226000268</a>)
+      </li></ul>
+    </li>
+    <li>
+      <a href="https://ptable.com" target="_blank" rel="opener external">Ptable</a>
+    </li>
+  </ul>
+  
+  <h3>Other:</h3>
+  
+  <ul>
+    <li>
+      <a href="https://www.nndc.bnl.gov/nudat3/" target="_blank" rel="opener external">NuDat 3</a>
+    </li>
+    <li>
+      International Atomic Energy Agency's <a href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" target="_blank" rel="opener external">Live Charts</a>
+    </li>
+  </ul>
+  
   <h2>
-    NuDat Status:<span id="NuDatStat">🔄</span>
+    Data Status:<span id="dataStat">🔄</span>
   </h2>
   
-  <button onclick="loadNuDat()" class="dataBttn" title="Re-Fetch NuDat">
+  <button onclick="loadData()" class="dataBttn" title="Re-Fetch Data">
     ↺
   </button>
   
@@ -172,210 +199,64 @@
     
     <table class="tbl">
       <tr>
-        <th>Symbol</th>
         <th>Mode</th>
+        <th>Description</th>
         <th>ΔZ</th>
         <th>ΔN</th>
       </tr>
       <tr>
-        <td>IT</td>
-        <td>Internal Transition (Gamma)</td>
+        <td>stable</td>
+        <td>No decay (place holder)</td>
         <td>0</td>
         <td>0</td>
       </tr>
       <tr>
-        <td>A</td>
-        <td>Alpha (He Nucleus)</td>
-        <td>-2</td>
-        <td>-2</td>
-      </tr>
-      <tr>
-        <td>N</td>
-        <td>Neutron</td>
-        <td>0</td>
-        <td>-1</td>
-      </tr>
-      <tr>
-        <td>2N</td>
-        <td>2 Neutrons</td>
-        <td>0</td>
-        <td>-2</td>
-      </tr>
-      <tr>
-        <td>P</td>
-        <td>Proton</td>
+        <td>p</td>
+        <td>Proton emission</td>
         <td>-1</td>
         <td>0</td>
       </tr>
       <tr>
-        <td>2P</td>
-        <td>2 Protons</td>
-        <td>-2</td>
+        <td>n</td>
+        <td>Neutron emission</td>
         <td>0</td>
+        <td>-1</td>
       </tr>
       <tr>
-        <td>3P</td>
-        <td>3 Protons</td>
-        <td>-3</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>B- / β⁻</td>
-        <td>Beta- (Electron)</td>
+        <td>beta-</td>
+        <td>Electron emission, neutron decays to proton</td>
         <td>1</td>
         <td>-1</td>
       </tr>
       <tr>
-        <td>2B-</td>
-        <td>2 Beta-'s</td>
-        <td>2</td>
+        <td>beta+ or e.c.</td>
+        <td>Positron emission or electron capture, proton becomes neutron</td>
+        <td>-1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>alpha</td>
+        <td>Helium Nucleus emission</td>
         <td>-2</td>
-      </tr>
-      <tr>
-        <td>B-A</td>
-        <td>Beta- and Alpha</td>
-        <td>-1</td>
-        <td>-3</td>
-      </tr>
-      <tr>
-        <td>B-N</td>
-        <td>Beta- and Neutron</td>
-        <td>1</td>
         <td>-2</td>
-      </tr>
-      <tr>
-        <td>B-2N</td>
-        <td>Beta- and 2 Neutrons</td>
-        <td>1</td>
-        <td>-3</td>
-      </tr>
-      <tr>
-        <td>B-3N</td>
-        <td>Beta- and 3 Neutrons</td>
-        <td>1</td>
-        <td>-4</td>
-      </tr>
-      <tr>
-        <td>B-4N</td>
-        <td>Beta- and 4 Neutrons</td>
-        <td>1</td>
-        <td>-5</td>
-      </tr>
-      <tr>
-        <td>B+ / EC / EC+B+</td>
-        <td>Beta+ (Positron) / Electron Capture</td>
-        <td>-1</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>ECA</td>
-        <td>Electron Capture and Alpha</td>
-        <td>-3</td>
-        <td>-1</td>
-      </tr>
-      <tr>
-        <td>ECP</td>
-        <td>Electron Capture and Proton</td>
-        <td>-2</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>EC2P</td>
-        <td>Electron Capture and 2 Protons</td>
-        <td>-3</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>EC3P</td>
-        <td>Electron Capture and 3 Protons</td>
-        <td>-4</td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>ECAP</td>
-        <td>Electron Capture and Alpha and Proton</td>
-        <td>-4</td>
-        <td>-1</td>
-      </tr>
-      <tr>
-        <td>14C</td>
-        <td>Carbon 14 Nucleus</td>
-        <td>-6</td>
-        <td>-8</td>
-      </tr>
-      <tr>
-        <td>20O</td>
-        <td>Oxygen 20 Nucleus</td>
-        <td>-8</td>
-        <td>-12</td>
-      </tr>
-      <tr>
-        <td>20NE / NE</td>
-        <td>Neon 20 Nucleus</td>
-        <td>-10</td>
-        <td>-10</td>
-      </tr>
-      <tr>
-        <td>22NE</td>
-        <td>Neon 22 Nucleus</td>
-        <td>-10</td>
-        <td>-12</td>
-      </tr>
-      <tr>
-        <td>24NE</td>
-        <td>Neon 24 Nucleus</td>
-        <td>-10</td>
-        <td>-14</td>
-      </tr>
-      <tr>
-        <td>25NE</td>
-        <td>Neon 25 Nucleus</td>
-        <td>-10</td>
-        <td>-15</td>
-      </tr>
-      <tr>
-        <td>MG</td>
-        <td>Magnesium 24 Nucleus</td>
-        <td>-12</td>
-        <td>-12</td>
-      </tr>
-      <tr>
-        <td>28MG</td>
-        <td>Magnesium 28 Nucleus</td>
-        <td>-12</td>
-        <td>-16</td>
-      </tr>
-      <tr>
-        <td>SI</td>
-        <td>Silicon 28 Nucleus</td>
-        <td>-14</td>
-        <td>-14</td>
-      </tr>
-      <tr>
-        <td>34SI</td>
-        <td>Silicon 34 Nucleus</td>
-        <td>-14</td>
-        <td>-20</td>
       </tr>
       <tr>
         <td>SF</td>
-        <td>Spontaneous Fission</td>
+        <td>Spontaneous fission (variable Δ's)</td>
         <td>?</td>
         <td>?</td>
       </tr>
       <tr>
-        <td>B-SF</td>
-        <td>Beta- and Spontaneous Fission</td>
-        <td>?</td>
-        <td>?</td>
-      </tr>
-      <tr>
-        <td>ECSF</td>
-        <td>Electron Capture and Spontaneous Fission</td>
-        <td>?</td>
-        <td>?</td>
+        <td>IT</td>
+        <td>Internal transmission (gamma emission)</td>
+        <td>0</td>
+        <td>0</td>
       </tr>
     </table>
+    
+    <p>
+      Some modes are a combination of multiple modes. These modes are denoted by each component mode separated by commas. These mode's Δ's are the sum of the component mode's Δ's.
+    </p>
     
   </div>
   
@@ -459,14 +340,6 @@
     </table>
     
   </div>
-  
-  <h2>Sources:</h2>
-  
-  <ul>
-    <li>National Nuclear Data Center, information extracted from the NuDat database, <a href="https://www.nndc.bnl.gov/nudat/" target="_blank" rel="opener external">https://www.nndc.bnl.gov/nudat/</a></li>
-    <li>International Atomic Energy Agency's <a href="https://www-nds.iaea.org/relnsd/vcharthtml/VChartHTML.html" target="_blank" rel="opener external">Live Charts</a></li>
-    <li><a href="https://ptable.com" target="_blank">Ptable</a></li>
-  </ul>
   
 <!--Start-->
   

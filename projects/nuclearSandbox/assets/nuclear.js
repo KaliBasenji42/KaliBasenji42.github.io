@@ -119,9 +119,9 @@ function createPeriodicTable() { // Create Periodic Table for selection
   
   chemElems = {}; // Isotopes organized by z
   
-  for(const isoKey in NuDat) { // Each isotope
+  for(const isoKey in decayData) { // Each isotope
     
-    let iso = NuDat[isoKey];
+    let iso = decayData[isoKey];
     
     if(!chemElems[iso.z]) chemElems[iso.z] = [];
     
@@ -198,7 +198,7 @@ function weightIsoClick(iso) { // Create Levels Table for selection
   
   levelsTable.innerHTML = ''; // Clear
   
-  for(const level in NuDat[iso].levels) { // Each level
+  for(const level in decayData[iso].levels) { // Each level
     
     // Create td
     
@@ -217,7 +217,7 @@ function weightIsoClick(iso) { // Create Levels Table for selection
   
   keys.forEach((key) => {
     
-    let isoObj = NuDat[iso];
+    let isoObj = decayData[iso];
     
     // Values
     
@@ -271,7 +271,7 @@ function levelClick(iso, level) {
   
   keys.forEach((key) => {
     
-    let levelObj = NuDat[iso].levels[level];
+    let levelObj = decayData[iso].levels[level];
     
     // Values
     
@@ -312,11 +312,11 @@ function levelClick(iso, level) {
     <tr><th>Mode</th><th>Percent</th><th>Uncertainty</th><th>Observed/Predicted</th></tr>
   `; // Reset
   
-  if(NuDat[iso].levels[level].hasOwnProperty('decayModes')) {
+  if(decayData[iso].levels[level].hasOwnProperty('decayModes')) {
     
     // Observed
     
-    for(const observed of NuDat[iso].levels[level].decayModes.observed) {
+    for(const observed of decayData[iso].levels[level].decayModes.observed) {
       
       if(observed.length < 1) break
       
@@ -341,7 +341,7 @@ function levelClick(iso, level) {
     
     // Predicted
     
-    for(const predicted of NuDat[iso].levels[level].decayModes.predicted) {
+    for(const predicted of decayData[iso].levels[level].decayModes.predicted) {
       
       if(predicted.length < 1) break
       
@@ -611,14 +611,14 @@ async function testData() {
     
     // Each Weight / Isotope
     
-    for(const iso in NuDat) {
+    for(const iso in decayData) {
       await new Promise(resolve => setTimeout(resolve, 0));
       weightIsoClick(iso);
       if(checkAbnormalText()) console.log('Abnormal Text at: Weight: ' + iso);
       
       // Each Level
       
-      for(const level in NuDat[iso].levels) {
+      for(const level in decayData[iso].levels) {
         await new Promise(resolve => setTimeout(resolve, 0));
         levelClick(iso, level);
         if(checkAbnormalText()) console.log('Abnormal Text at: Level: ' + iso + ': ' + level);
@@ -658,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Load Data
   
-  loadNuDat().then(async () => {
+  loadDecayData().then(async () => {
     // Post Data Load
     createPeriodicTable();
     expandAll();
@@ -671,9 +671,9 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     
     let isoStr = document.getElementById('DCIsoInput').value; // Grab input isotope
-    let parent = NuDat[isoStr]; // Parent = input isotope in NuDat
+    let parent = decayData[isoStr]; // Parent = input isotope in decayData
     
-    if(parent === undefined) return; // Return if input is not in NuDat
+    if(parent === undefined) return; // Return if input is not in decayData
     
     let DCTbl = document.getElementById('DCTbl'); // Grab rendering table
     let isosCountElem = document.getElementById('DCIsosCount'); // Grab isotope count elem
@@ -708,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function() {
           let change = decayChange(modes[mode]['mode']); // Get change from mode
           
           if(!(change[0] == 0 && change[1] == 0)) { // If there was change
-            let daughter = NuDat[ZNtoName(Z + change[0], N + change[1])]; // Get daughter
+            let daughter = decayData[ZNtoName(Z + change[0], N + change[1])]; // Get daughter
             newIsos.add(daughter); // Add daughter to newIsos
             
             //console.log(iso['name'] + ' ' + modes[mode]['mode'] + ' -> ' + daughter['name']);

@@ -1,7 +1,7 @@
 # Python file that reads ENDF GNDS data and lists all values of a type.
 
 # KaliBasenji42's Website
-# Copyright (C) 2025 KaliBasenji42
+# Copyright (C) 2026 KaliBasenji42
 
 # This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; version 2 of the License.
 
@@ -111,7 +111,7 @@ def readFiles(mode):
         try: # Chemical Element
           value = data['PoPs'][0]['chemicalElements'][0]['chemicalElement'][0]['@Z']
         except: # Baryon
-          value =  '0?(' + data['PoPs'][0]['baryons'][0]['baryon'][0]['@id'] + ')' 
+          value =  '0?(' + data['PoPs'][0]['baryons'][0]['baryon'][0]['@id'] + ')'
         
       
       elif mode == 'a':
@@ -219,8 +219,8 @@ def readFiles(mode):
           
           # Log
           
-          target = '"IT"'
-          if value == target: logging.info('Decay mode ' + value + ' found in ' + path)
+          target = '"SF"'
+          #if value == target: logging.info('Decay mode ' + value + ' found in ' + path)
           
         
       
