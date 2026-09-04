@@ -1,4 +1,4 @@
-# Python file that converts ENDF GNDS data into JSON for decay data. Also produces Bateman Series (in a JSON)
+# Python file that converts ENDF GNDS data into JSON for decay data
 
 # KaliBasenji42's Website
 # Copyright (C) 2025 KaliBasenji42
