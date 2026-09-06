@@ -204,9 +204,13 @@
       <br>
       
       <input id="DCAxisNZ" type="radio" name="DCAxis" checked="true">
-      <label for="DCAxisNZ">X-Axis: N, Y-Axis: Z</label><br>
-      <input id="DCAxisA" type="radio" name="DCAxis">
-      <label for="DCAxisA">X-Axis: N - Z, Y-Axis: A (N + Z)</label><br>
+      <label for="DCAxisNZ">X-Axis: Z, Y-Axis: N</label><br>
+      <input id="DCAxisDA" type="radio" name="DCAxis">
+      <label for="DCAxisDA">X-Axis: Z - N, Y-Axis: A (Z + N)</label><br>
+      <input id="DCAxisZA" type="radio" name="DCAxis">
+      <label for="DCAxisZA">X-Axis: Z, Y-Axis: A (Z + N)</label><br>
+      <input id="DCznFlip" type="checkbox" name="DCznFlip">
+      <label for="DCznFlip">Flip Z and N?</label><br>
       <br>
       
       <input id="DCCheckImage" type="checkbox" name="DCCheckImage">
@@ -221,12 +225,15 @@
       <input id="DCCanvasScale" type="number" name="DCCanvasScale" value="64">px<br>
       <label for="DCCanvasMargin">Image isotope margin: </label>
       <input id="DCCanvasMargin" type="number" name="DCCanvasMargin" value="8">px<br>
+      <div>Large values can cause lag or errors.</div>
       <br>
       
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit"><br>
+      <br>
+      
+      <output id="DCFormOut">Awaiting Input...</output><br>
+      <div>Isotopes Loaded: <span id="DCIsosCount">0</span></div>
     </form>
-    
-    <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
     
     <h3>Interactive Table</h3>
     
@@ -286,6 +293,9 @@
     <div class="DCCont">
       <canvas id="DCCanvas"></canvas>
     </div>
+    <br>
+    
+    <a id="DCCanvasLink" target="_blank" rel="opener">Open Image</a>
     
   </div>
   

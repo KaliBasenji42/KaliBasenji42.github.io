@@ -266,21 +266,27 @@ function weightIsoClick(iso) { // Create Levels Table for selection
   
 }
 
-function transformAxis(pos, type='nz') { // Transforms [Z, N] to [X, Y]
+function transformAxis(pos, type='zn', flip=false) { // Transforms [Z, N] to [X, Y]
   // pos: Input [Z, N]
   // Returns [X, Y]
   
-  if(type == 'nz') {
-    return [pos[1], pos[0]];
+  if(flip) pos = [pos[1], pos[0]]; // Flip
+  
+  if(type == 'zn') {
+    return [pos[0], pos[1]];
   }
   
-  else if(type == 'a') {
-    return [pos[1] - pos[0], pos[1] + pos[0]];
+  else if(type == 'da') {
+    return [pos[0] - pos[1], pos[1] + pos[0]];
+  }
+  
+  else if(type == 'za') {
+    return [pos[0], pos[1] + pos[0]];
   }
   
 }
 
-function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawArrows=false, arrowMatchColor=false, canvasScale=64, canvasMargin=8) {
+function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='zn', znFlip=false, drawArrows=false, arrowMatchColor=false, canvasScale=64, canvasMargin=8) {
   // isos: All isotopes referenced (set)
   // tbl: Table element embedded in container (rendering elem)
   // canvas: Canvas for drawing image (element)
@@ -308,7 +314,7 @@ function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawAr
     let Z = iso['z']; // Set to match iso
     let N = iso['n'];
     
-    let pos = transformAxis([Z, N], axis); // Position [X, Y]
+    let pos = transformAxis([Z, N], axis, znFlip); // Position [X, Y]
     
     minX = Math.min(minX, pos[0]); // Min and Max
     minY = Math.min(minY, pos[1]);
@@ -388,7 +394,7 @@ function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawAr
     let Z = iso['z']; // # Protons
     let N = iso['n']; // # Neutrons
     
-    let pos = transformAxis([Z, N], axis); // Position [X, Y]
+    let pos = transformAxis([Z, N], axis, znFlip); // Position [X, Y]
     pos = [maxX - pos[0], maxY - pos[1]]; // Constrain to max's
     
     let modes = {}; // Mode for...
@@ -397,7 +403,7 @@ function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawAr
     for(let mode in modes) { // ...getting parents and daughters
       
       let decayDelta = decayChange(modes[mode]['mode']); // Change in [Z, N]
-      let posDelta = transformAxis(decayDelta, axis); // Change in [X, Y]
+      let posDelta = transformAxis(decayDelta, axis, znFlip); // Change in [X, Y]
       
       if(decayDelta[0] == 0 && decayDelta[1] == 0) continue // Skip if no change
       
@@ -505,7 +511,7 @@ function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawAr
           // Variables
           
           let decayDelta = decayChange(modes[mode]['mode']); // Change in [Z, N]
-          let posDelta = transformAxis(decayDelta, axis); // Change in [X, Y]
+          let posDelta = transformAxis(decayDelta, axis, znFlip); // Change in [X, Y]
           let posDaughter = [
             pos[0] - posDelta[0],
             pos[1] - posDelta[1]
@@ -644,7 +650,7 @@ function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawAr
       for(let mode in modes) { // Each mode of selected
         
         let decayDelta = decayChange(modes[mode]['mode']); // Change in [Z, N]
-        let posDelta = transformAxis(decayDelta, axis); // Change in [X, Y]
+        let posDelta = transformAxis(decayDelta, axis, znFlip); // Change in [X, Y]
         
         if(decayDelta[0] == 0 && decayDelta[1] == 0) continue // Skip if no change
         
@@ -775,8 +781,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if(parent === undefined) return; // Return if input is not in decayData
     
-    let axis = 'nz'; // Axis
-    if(document.getElementById('DCAxisA').checked) axis = 'a';
+    let axis = 'zn'; // Axis
+    if(document.getElementById('DCAxisDA').checked) axis = 'da';
+    if(document.getElementById('DCAxisZA').checked) axis = 'za';
+    
+    let znFlip = document.getElementById('DCznFlip').checked; // Axis flip
     
     let generateImage = document.getElementById('DCCheckImage').checked; // Wether to generate image
     let generateArrows = document.getElementById('DCCheckArrows').checked; // Wether to generate arrows
@@ -786,9 +795,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let canvasMargin = Number(document.getElementById('DCCanvasMargin').value); // Canvas border
     
     let DCTbl = document.getElementById('DCTbl'); // Grab rendering table
-    let isosCountElem = document.getElementById('DCIsosCount'); // Grab isotope count elem
-    
     let DCCanvas = document.getElementById('DCCanvas'); // Grab canvas
+    let isosCountElem = document.getElementById('DCIsosCount'); // Grab isotope count elem
+    let DCOut = document.getElementById('DCFormOut'); // Grab form output/status
+    
+    DCOut.innerHTML = '🔄 Loading'; // Set to loading
+    
+    let canvasLink = document.getElementById('DCCanvasLink'); // Image link
     
     // Get Isotopes
     
@@ -832,7 +845,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Call
     
-    createDecayChain(isos, DCTbl, DCCanvas, generateImage, axis, generateArrows, arrowMatchColor, canvasScale, canvasMargin); // Create chain
+    try {
+      createDecayChain(isos, DCTbl, DCCanvas, generateImage, axis, znFlip, generateArrows, arrowMatchColor, canvasScale, canvasMargin); // Create chain
+      DCOut.innerHTML = '✅ Done'; // Set to done
+      canvasLink.href = DCCanvas.toDataURL("png"); // Link
+    }
+    catch(err) {
+      DCOut.innerHTML = '⚠️ ' + err; // Set to done
+      console.log(err); // Log
+    }
+    
     
   });
   
