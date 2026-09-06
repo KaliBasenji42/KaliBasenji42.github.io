@@ -691,9 +691,14 @@ function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='zn', znFlip
       let Z = elem.Z; // Grab Z and N
       let N = elem.N;
       
+      buttonFunction = 'weightIsoClick(\'' + ZNtoName(Z, N) + '\');' + 
+      'document.getElementById(\'selInfo\')' + 
+      '.scrollIntoView({behavior: \'smooth\'});'; // Button onclick value
+      
       tblSelected.innerHTML += 
-        '<tr><td>Name:</td><td>' + 
-        ZNtoName(Z, N) + ' (' + Z + 'z, ' + N + 'n)</td></tr>' + 
+        '<tr><td>Isotope:</td><td>' + 
+        ZNtoName(Z, N) + ' (' + Z + 'z, ' + N + 'n) ' + 
+        '<button onclick="' + buttonFunction + '">Data</button></td></tr>' + 
         '<tr><td>Element:</td><td>' + 
         decayData[ZNtoName(Z, N)]['name'] + '</td></tr>' + 
         '<tr><td>Halflife:</td><td>' + 
@@ -716,7 +721,7 @@ async function testData() {
     // Each Chemical Element / Periodic Table
     
     for(let z = 0; z < Object.keys(chemIsos).length; z++) {
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise(resolve => setTimeout(resolve, 0)); // Delay 0 (update DOM)
       chemElemClick(z);
       if(checkAbnormalText()) console.log('Abnormal Text at: Periodic Table: ' + z);
     }
@@ -724,7 +729,7 @@ async function testData() {
     // Each Weight / Isotope
     
     for(const iso in decayData) {
-      await new Promise(resolve => setTimeout(resolve, 0));
+      await new Promise(resolve => setTimeout(resolve, 0)); // Delay 0 (update DOM)
       weightIsoClick(iso);
       if(checkAbnormalText()) console.log('Abnormal Text at: Weight: ' + iso);
     }
@@ -758,6 +763,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   periodicTable = document.querySelector('tbody#periodic');
   
+  dataForm = document.getElementById('dataForm');
   DCForm = document.getElementById('DCForm');
   
   // Load Data
@@ -768,9 +774,40 @@ document.addEventListener('DOMContentLoaded', function() {
     expandAll();
   });
   
-  // Decay Chain
+  // Data Form
   
-  DCForm.addEventListener("submit", function(event) {
+  dataForm.addEventListener("submit", async function(event) {
+    
+    event.preventDefault();
+    
+    // Variables
+    
+    let input = document.getElementById('dataIsoInput').value;
+    let output = document.getElementById('dataFormOut');
+    
+    output.innerHTML = '🔄 Loading'; // Set to loading
+    
+    // Try
+    
+    try {
+      if(decayData[input] === undefined) {
+        throw(new Error('"' + input + '" is not a listed isotope.'));
+      }
+      
+      await new Promise(resolve => setTimeout(resolve, 0)); // Delay 0 (update DOM)
+      weightIsoClick(input); // "Click" iso
+      output.innerHTML = '✅ Done'; // Set to done
+    }
+    catch(err) {
+      output.innerHTML = '⚠️ ' + err; // Set to error
+      console.log(err); // Log
+    }
+    
+  });
+  
+  // Decay Chain Form
+  
+  DCForm.addEventListener("submit", async function(event) {
     
     event.preventDefault();
     
@@ -846,12 +883,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call
     
     try {
+      await new Promise(resolve => setTimeout(resolve, 0)); // Delay 0 (update DOM)
       createDecayChain(isos, DCTbl, DCCanvas, generateImage, axis, znFlip, generateArrows, arrowMatchColor, canvasScale, canvasMargin); // Create chain
       DCOut.innerHTML = '✅ Done'; // Set to done
       canvasLink.href = DCCanvas.toDataURL("png"); // Link
     }
     catch(err) {
-      DCOut.innerHTML = '⚠️ ' + err; // Set to done
+      DCOut.innerHTML = '⚠️ ' + err; // Set to error
       console.log(err); // Log
     }
     

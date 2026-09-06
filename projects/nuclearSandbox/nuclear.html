@@ -98,6 +98,16 @@
   
   <div id="dataSect" class="sect">
     
+    <form id="dataForm">
+      <label for="dataIsoInput">Isotope:</label>
+      <input type="text" id="dataIsoInput" name="dataIsoInput"><br>
+      <br>
+      
+      <input type="submit" value="Submit"><br>
+      
+      <output id="dataFormOut">...Awaiting Input</output>
+    </form>
+    
     <h3>Periodic Table</h3>
     
     <div class="tblCont">
@@ -229,9 +239,8 @@
       <br>
       
       <input type="submit" value="Submit"><br>
-      <br>
       
-      <output id="DCFormOut">Awaiting Input...</output><br>
+      <output id="DCFormOut">...Awaiting Input</output><br>
       <div>Isotopes Loaded: <span id="DCIsosCount">0</span></div>
     </form>
     
@@ -249,7 +258,7 @@
         <th colspan="2">Selected</th>
       </tr>
       <tr>
-        <td>Name:</td><td></td>
+        <td>Isotope:</td><td></td>
       </tr>
       <tr>
         <td>Element:</td><td></td>
