@@ -266,9 +266,29 @@ function weightIsoClick(iso) { // Create Levels Table for selection
   
 }
 
-function createDecayChain(isos, tbl) {
+function transformAxis(pos, type='nz') { // Transforms [Z, N] to [X, Y]
+  // pos: Input [Z, N]
+  // Returns [X, Y]
+  
+  if(type == 'nz') {
+    return [pos[1], pos[0]];
+  }
+  
+  else if(type == 'a') {
+    return [pos[1] - pos[0], pos[1] + pos[0]];
+  }
+  
+}
+
+function createDecayChain(isos, tbl, canvas, drawCanvas=false, axis='nz', drawArrows=false, arrowMatchColor=false, canvasScale=64, canvasMargin=8) {
   // isos: All isotopes referenced (set)
   // tbl: Table element embedded in container (rendering elem)
+  // canvas: Canvas for drawing image (element)
+  // drawCanvas: Wether to draw image (boolean)
+  // axis: Axis type, 'nz' or 'a' (string)
+  // drawArrows: Wether to draw arrows on canvas (boolean)
+  // canvasScale: Canvas isotope rectangle scale
+  // canvasMargin: Canvas isotope rectangle margin
   
   // Reset
   
@@ -285,16 +305,15 @@ function createDecayChain(isos, tbl) {
   
   for(const iso of isos) {
     
-    let Z = iso['z'];
+    let Z = iso['z']; // Set to match iso
     let N = iso['n'];
     
-    let x = N;
-    let y = Z;
+    let pos = transformAxis([Z, N], axis); // Position [X, Y]
     
-    minX = Math.min(minX, x);
-    minY = Math.min(minY, y);
-    maxX = Math.max(maxX, x);
-    maxY = Math.max(maxY, y);
+    minX = Math.min(minX, pos[0]); // Min and Max
+    minY = Math.min(minY, pos[1]);
+    maxX = Math.max(maxX, pos[0]);
+    maxY = Math.max(maxY, pos[1]);
     
   }
   
@@ -307,88 +326,267 @@ function createDecayChain(isos, tbl) {
   
   for(let y = 0; y < height + 1; y++) { // Each row
     
-    let tblRow = document.createElement('tr');
-    tbl.appendChild(tblRow);
+    let tblRow = document.createElement('tr'); // Create tr
+    tbl.appendChild(tblRow); // Add to tbl
     
     for(let x = 0; x < width + 1; x++) { // Each column/iso
-      let tblDat = document.createElement('td');
-      tblDat.id = 'DCIso:' + x + ',' + y;
-      decayChainData['parents'][tblDat.id] = [];
-      tblDat.className = 'DCIso';
-      tblRow.appendChild(tblDat);
+      let tblDat = document.createElement('td'); // Create td
+      tblDat.id = 'DCIso:' + x + ',' + y; // Set ID
+      decayChainData['parents'][tblDat.id] = []; // Reset parent data
+      tblDat.className = 'DCIso'; // Set Class
+      tblRow.appendChild(tblDat); // Add to tr
     }
     
   }
   
   //console.log(decayChainData['parents']);
   
+  // Canvas
+  
+  let canvasCtx = canvas.getContext('2d'); // Define canvas context
+  
+  if(drawCanvas) { // If should draw canvas
+    
+    canvas.width = (width + 1) * (canvasScale + (canvasMargin * 2));
+    canvas.height = (height + 1) * (canvasScale + (canvasMargin * 2));
+    // Set canvas dimensions
+    
+    canvasCtx.clearRect(0, 0, canvas.width, canvas.height); // Clear
+    
+    // Transform test
+    /*
+    canvasCtx.save(); // Save state
+    
+    canvasCtx.strokeStyle = 'rgb(255,0,0)';
+    canvasCtx.fillStyle = 'rgb(0,255,0)';
+    
+    let testStart = [100, 100];
+    let testEnd = [200, 100];
+    let lineAngle = Math.atan2(0, 1);
+    
+    canvasCtx.fillRect(testStart[0] - 4, testStart[1] - 4, 8, 8);
+    
+    canvasCtx.translate(testStart[0], testStart[1]);
+    canvasCtx.rotate(lineAngle);
+    canvasCtx.translate(-testStart[0], -testStart[1]);
+    
+    canvasCtx.moveTo(testStart[0], testStart[1]);
+    canvasCtx.lineTo(testEnd[0], testEnd[1]);
+    
+    canvasCtx.stroke();
+    
+    canvasCtx.restore(); // Restore state
+    */
+  }
+  
   // Iso Loop
   
-  for(const iso of isos) {
+  for(const iso of isos) { // Each isotope in decay chain
     
     // Variables
     
-    let Z = iso['z'];
-    let N = iso['n'];
+    let Z = iso['z']; // # Protons
+    let N = iso['n']; // # Neutrons
     
-    let x = maxX - N;
-    let y = maxY - Z;
+    let pos = transformAxis([Z, N], axis); // Position [X, Y]
+    pos = [maxX - pos[0], maxY - pos[1]]; // Constrain to max's
     
     let modes = {}; // Mode for...
     modes = iso['decayModes'];
     
     for(let mode in modes) { // ...getting parents and daughters
-      let decayDelta = decayChange(modes[mode]['mode']);
+      
+      let decayDelta = decayChange(modes[mode]['mode']); // Change in [Z, N]
+      let posDelta = transformAxis(decayDelta, axis); // Change in [X, Y]
       
       if(decayDelta[0] == 0 && decayDelta[1] == 0) continue // Skip if no change
       
-      let child = 'DCIso:' + (x - decayDelta[1]) + ',' + (y - decayDelta[0]);
+      let child = 'DCIso:' + (pos[0] - posDelta[0]) + 
+        ',' + (pos[1] - posDelta[1]); // Child based on selected pos - pos delta
       //console.log(child);
       
-      decayChainData['parents'][child].push('DCIso:' + x + ',' + y);
+      decayChainData['parents'][child].push('DCIso:' + pos[0] + ',' + pos[1]);
+      // Add parent
+      
     }
     
     let halflife = '?'; // Halflife
     halflife = iso['halflife'] + ' s';
     
-    if(halflife.slice(0, 6) == 'stable') halflife = 'stable';
+    if(halflife.slice(0, 6) == 'stable') halflife = 'stable'; // Stable halflife
     
-    if(halflife.length > 6) {
+    if(halflife.length > 6) { // Scientific notation if too long
       let val = iso['halflife'];
       let valStr = val.toExponential(1);
       
       halflife = valStr + ' s';
     }
     
-    let red = ((x % 8) / 8) * 255; // Color
-    let blue = ((y % 8) / 8) * 255;
+    let red = ((pos[0] % 8) / 8) * 255; // Background color
+    let blue = ((pos[1] % 8) / 8) * 255;
     let green = 255 - blue;
     if(width == 0) red = 128;
     let color = 'rgb(' + red + ',' + green + ',' + blue +')';
     
-    let textColor = 'rgb(0,0,0)';
+    let textColor = 'rgb(0,0,0)'; // High contrast text color
     if(((red * 0.299) + (green * 0.587) + (blue * 0.114)) < 128) {
       textColor = 'rgb(255,255,255)';
     }
     
     // Create iso elem
     
-    let elem = document.getElementById('DCIso:' + x + ',' + y);
+    let elem = document.getElementById('DCIso:' + pos[0] + ',' + pos[1]);
+    // Grab element
     
-    elem.Z = Z;
+    elem.Z = Z; // Set attributes to isotopes properties
     elem.N = N;
     elem.halflife = halflife;
     
-    elem.style.backgroundColor = color;
-    elem.style.cursor = 'pointer';
+    elem.style.backgroundColor = color; // Set color
+    elem.style.cursor = 'pointer'; // Pointer curser
     
-    elem.style.color = textColor;
-    elem.style.textAlign = "center";
+    elem.style.color = textColor; // Text color
+    elem.style.textAlign = "center"; // Align
     
-    elem.innerHTML +=  iso['a'] + iso['symbol'] + 
-      '<div style="font-size: 0.7rem;">' + 
-      iso['z'] + 'z ' + iso['n'] + 'n<br>' + 
-      halflife + '</div>';
+    elem.innerHTML +=  iso['a'] + iso['symbol'] + // Isotope
+      '<div style="font-size: 0.7rem;">' + // Notes
+      iso['z'] + 'z ' + iso['n'] + 'n<br>' + // Z, N
+      halflife + '</div>'; // Halflife
+    
+    // Canvas
+    
+    if(drawCanvas) { // If should draw canvas
+      
+      let rectPos = [
+        pos[0] * (canvasScale + (canvasMargin * 2)) + canvasMargin,
+        pos[1] * (canvasScale + (canvasMargin * 2)) + canvasMargin
+      ]; // Rectangle position
+      
+      canvasCtx.fillStyle = color; // Iso background color
+      
+      canvasCtx.fillRect(
+        rectPos[0],
+        rectPos[1],
+        canvasScale,
+        canvasScale
+      ); // Draw rectangle
+      
+      canvasCtx.textAlign = 'center' // Center text
+      canvasCtx.textBaseline = 'middle' // Center text baseline
+      canvasCtx.fillStyle = textColor; // Iso text color
+      canvasCtx.font = (canvasScale * 0.25) + 'px Arial'; // Font
+      
+      canvasCtx.fillText(
+        iso['a'] + iso['symbol'],
+        rectPos[0] + (canvasScale * 0.5),
+        rectPos[1] + (canvasScale * 0.25)
+      ); // Draw isotope name
+      
+      canvasCtx.font = (canvasScale * 0.2) + 'px Arial'; // Font
+      
+      canvasCtx.fillText(
+        iso['z'] + 'z ' + iso['n'] + 'n',
+        rectPos[0] + (canvasScale * 0.5),
+        rectPos[1] + (canvasScale * 0.5)
+      ); // Draw text
+      
+      canvasCtx.fillText(
+        halflife,
+        rectPos[0] + (canvasScale * 0.5),
+        rectPos[1] + (canvasScale * 0.75)
+      ); // Draw text
+      
+      if(drawArrows) { // If should draw arrows
+        
+        canvasCtx.globalCompositeOperation='destination-over'; // Draw under
+        
+        for(let mode in modes) { // Each mode of current isotope
+          
+          // Variables
+          
+          let decayDelta = decayChange(modes[mode]['mode']); // Change in [Z, N]
+          let posDelta = transformAxis(decayDelta, axis); // Change in [X, Y]
+          let posDaughter = [
+            pos[0] - posDelta[0],
+            pos[1] - posDelta[1]
+          ]; // Daughter pos [X, Y]
+          
+          if(decayDelta[0] == 0 && decayDelta[1] == 0) continue // Skip if no change
+          
+          let daughterRectPos = [
+            posDaughter[0] * (canvasScale + (canvasMargin * 2)) + canvasMargin,
+            posDaughter[1] * (canvasScale + (canvasMargin * 2)) + canvasMargin
+          ]; // Rectangle position of daughter
+          
+          // Head
+          
+          canvasCtx.strokeStyle = 'rgb(64,64,64)'; // Arrow color
+          
+          canvasCtx.save(); // Save state
+          
+          let rectAvrgPos = [
+            ((rectPos[0] + daughterRectPos[0]) * 0.5) + (canvasScale * 0.5),
+            ((rectPos[1] + daughterRectPos[1]) * 0.5) + (canvasScale * 0.5)
+          ]; // Average of current isotope and daughter
+          
+          let lineAngle = Math.atan2(
+            (rectPos[1] - daughterRectPos[1]),
+            (rectPos[0] - daughterRectPos[0])
+          ); // Angle of line
+          
+          canvasCtx.translate(rectAvrgPos[0], rectAvrgPos[1]); // Move to average
+          canvasCtx.rotate(lineAngle); // Rotate to align with line
+          canvasCtx.translate(-rectAvrgPos[0], -rectAvrgPos[1]); // Move to origin
+          
+          canvasCtx.moveTo(
+            rectAvrgPos[0] - (canvasScale / 8),
+            rectAvrgPos[1]
+          ); // Move to average
+          
+          canvasCtx.lineTo(
+            rectAvrgPos[0],
+            rectAvrgPos[1] - (canvasScale / 8)
+          ); // Line 1
+          
+          canvasCtx.moveTo(
+            rectAvrgPos[0] - (canvasScale / 8),
+            rectAvrgPos[1]
+          ); // Move to average
+          
+          canvasCtx.lineTo(
+            rectAvrgPos[0],
+            rectAvrgPos[1] + (canvasScale / 8)
+          ); // Line 2
+          
+          canvasCtx.restore(); // Restore state
+          
+          canvasCtx.stroke(); // Draw
+          
+          // Line
+          
+          canvasCtx.strokeStyle = 'rgb(0,0,0)'; // Arrow color
+          if(arrowMatchColor) canvasCtx.strokeStyle = color; // Match
+          canvasCtx.lineWidth = 2; // Arrow width
+          
+          canvasCtx.moveTo(
+            rectPos[0] + (canvasScale * 0.5),
+            rectPos[1] + (canvasScale * 0.5)
+          ); // Move to center of current isotope
+          
+          canvasCtx.lineTo(
+            daughterRectPos[0] + (canvasScale * 0.5),
+            daughterRectPos[1] + (canvasScale * 0.5)
+          ); // Move to center of daughter isotope
+          
+          canvasCtx.stroke(); // Draw
+          
+        }
+        
+        canvasCtx.globalCompositeOperation='source-over'; // Reset
+        
+      }
+      
+    }
     
     // Click
     
@@ -411,11 +609,11 @@ function createDecayChain(isos, tbl) {
       tblDaughters.innerHTML = '<th>Daughters</th><th>Mode</th><th>Prob.</th>';
       tblParents.innerHTML = '<th colspan="2">Parents</th>';
       
-      // If already selected
+      // If already selected...
       
       if(elem.id == decayChainData['selectedIso']) {
         decayChainData['selectedIso'] = '';
-        return;
+        return; // ...skip
       }
       
       // Get elem
@@ -425,66 +623,66 @@ function createDecayChain(isos, tbl) {
       
       // Parents
       
-      for(let parent of decayChainData['parents'][elem.id]) {
+      for(let parent of decayChainData['parents'][elem.id]) { // Each parent of selected
         
-        let elemParent = document.getElementById(parent);
-        elemParent.style.borderBottomColor = 'rgb(0, 0, 240)';
+        let elemParent = document.getElementById(parent); // Grab parent element
+        elemParent.style.borderBottomColor = 'rgb(0, 0, 240)'; // Border
         elemParent.style.borderRightColor = 'rgb(0, 0, 240)';
         elemParent.style.borderLeftColor = 'rgb(240, 240, 0)';
         elemParent.style.borderTopColor = 'rgb(240, 240, 0)';
-        elemParent.title = 'Parent';
+        elemParent.title = 'Parent'; // Title
         
-        let Z = elemParent.Z;
+        let Z = elemParent.Z; // Grab Z and N
         let N = elemParent.N;
         
-        tblParents.innerHTML += '<tr><td>' + ZNtoName(Z, N) + ' (' + Z + 'z, ' + N + 'n)</td></tr>';
+        tblParents.innerHTML += '<tr><td>' + ZNtoName(Z, N) + ' (' + Z + 'z, ' + N + 'n)</td></tr>'; // Add to table
         
       }
       
       // Daughters
       
-      for(let mode in modes) {
+      for(let mode in modes) { // Each mode of selected
         
-        let decayDelta = decayChange(modes[mode]['mode']);
+        let decayDelta = decayChange(modes[mode]['mode']); // Change in [Z, N]
+        let posDelta = transformAxis(decayDelta, axis); // Change in [X, Y]
         
         if(decayDelta[0] == 0 && decayDelta[1] == 0) continue // Skip if no change
         
-        dx = x - decayDelta[1];
-        dy = y - decayDelta[0];
-        
-        let elemDaughter = document.getElementById('DCIso:' + dx + ',' + dy);
+        let daughterID = 'DCIso:' + (pos[0] - posDelta[0]) + ',' + 
+          (pos[1] - posDelta[1]); // ID to grab daughter element
+        let elemDaughter = document.getElementById(daughterID); // Grab daughter element
         
         let modeInfo = 
           modes[mode]['mode'] + 
-          ' (' + decayDelta[0] + 'z, ' + decayDelta[1] + 'n)';
-        let modeProb = roundTo(modes[mode]['prob'] * 100, 4) + '%';
+          ' (' + decayDelta[0] + 'z, ' + decayDelta[1] + 'n)'; // Mode (and delta)
+        let modeProb = roundTo(modes[mode]['prob'] * 100, 4) + '%'; // % Prob.
         
-        elemDaughter.style.borderBottomColor = 'rgb(0, 240, 0)';
+        elemDaughter.style.borderBottomColor = 'rgb(0, 240, 0)'; // Border
         elemDaughter.style.borderRightColor = 'rgb(0, 240, 0)';
         elemDaughter.style.borderLeftColor = 'rgb(240, 0, 240)';
         elemDaughter.style.borderTopColor = 'rgb(240, 0, 240)';
-        elemDaughter.title = 'Daughter: ' + modeInfo;
+        elemDaughter.title = 'Daughter: ' + modeInfo; // Title (daughter)
         
-        elemTitle += modes[mode]['mode'] + ' | ';
+        elemTitle += modes[mode]['mode'] + ' | '; // Title (modes)
         
-        let Z = elemDaughter.Z;
+        let Z = elemDaughter.Z; // Grab Z and N
         let N = elemDaughter.N;
         
         tblDaughters.innerHTML += 
           '<tr><td>' + ZNtoName(Z, N) + ' (' + Z + 'z, ' + N + 'n)</td><td>' + modeInfo + '</td><td>' + 
-          modeProb + '</td></tr>';
+          modeProb + '</td></tr>'; // Add to table
         
       }
       
       // Self
       
-      elem.style.borderBottomColor = 'rgb(240, 0, 0)';
+      elem.style.borderBottomColor = 'rgb(240, 0, 0)'; // Border
       elem.style.borderRightColor = 'rgb(240, 0, 0)';
       elem.style.borderLeftColor = 'rgb(0, 240, 240)';
       elem.style.borderTopColor = 'rgb(0, 240, 240)';
-      elem.title = elemTitle.slice(0, -2);
+      elem.title = elemTitle.slice(0, -2); // Title (cut last delimiter)
 
-      let Z = elem.Z;
+      let Z = elem.Z; // Grab Z and N
       let N = elem.N;
       
       tblSelected.innerHTML += 
@@ -495,7 +693,7 @@ function createDecayChain(isos, tbl) {
         '<tr><td>Halflife:</td><td>' + 
         elem.halflife + '</td></tr>' + 
         '<tr><td>Decay Modes:</td><td>' + 
-        elem.title.slice('Selected: '.length) + '</td></tr>';
+        elem.title.slice('Selected: '.length) + '</td></tr>'; // Add to table
       
     });
     
@@ -570,13 +768,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     event.preventDefault();
     
+    // Input
+    
     let isoStr = document.getElementById('DCIsoInput').value; // Grab input isotope
     let parent = decayData[isoStr]; // Parent = input isotope in decayData
     
     if(parent === undefined) return; // Return if input is not in decayData
     
+    let axis = 'nz'; // Axis
+    if(document.getElementById('DCAxisA').checked) axis = 'a';
+    
+    let generateImage = document.getElementById('DCCheckImage').checked; // Wether to generate image
+    let generateArrows = document.getElementById('DCCheckArrows').checked; // Wether to generate arrows
+    let arrowMatchColor = document.getElementById('DCCheckArrowsMatchColor').checked; // Wether arrows should match isotope color
+    
+    let canvasScale = Number(document.getElementById('DCCanvasScale').value); // Canvas scale
+    let canvasMargin = Number(document.getElementById('DCCanvasMargin').value); // Canvas border
+    
     let DCTbl = document.getElementById('DCTbl'); // Grab rendering table
     let isosCountElem = document.getElementById('DCIsosCount'); // Grab isotope count elem
+    
+    let DCCanvas = document.getElementById('DCCanvas'); // Grab canvas
+    
+    // Get Isotopes
     
     let isos = new Set(); // All isotopes in chain
     let newIsos = new Set([parent]); // New isotopes to process
@@ -616,7 +830,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
     }
     
-    createDecayChain(isos, DCTbl); // Create chain
+    // Call
+    
+    createDecayChain(isos, DCTbl, DCCanvas, generateImage, axis, generateArrows, arrowMatchColor, canvasScale, canvasMargin); // Create chain
     
   });
   

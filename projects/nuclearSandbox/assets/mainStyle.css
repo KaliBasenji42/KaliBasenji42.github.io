@@ -218,7 +218,7 @@ canvas#info {
   background-color: rgba(128, 128, 128, 0.5);
 }
 
-.DCTbl {
+#DCTbl {
   text-align: center;
   background-color: rgb(240, 240, 240);
   table-layout: fixed;

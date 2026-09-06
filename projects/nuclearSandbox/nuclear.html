@@ -201,13 +201,37 @@
       <label for="DCIsoInput">Isotope:</label>
       <input type="text" id="DCIsoInput" name="DCIsoInput">
       Example: "235U"<br>
-      <input type="submit" value="Load">
+      <br>
+      
+      <input id="DCAxisNZ" type="radio" name="DCAxis" checked="true">
+      <label for="DCAxisNZ">X-Axis: N, Y-Axis: Z</label><br>
+      <input id="DCAxisA" type="radio" name="DCAxis">
+      <label for="DCAxisA">X-Axis: N - Z, Y-Axis: A (N + Z)</label><br>
+      <br>
+      
+      <input id="DCCheckImage" type="checkbox" name="DCCheckImage">
+      <label for="DCCheckImage">Generate image?</label><br>
+      <input id="DCCheckArrows" type="checkbox" name="DCCheckArrows">
+      <label for="DCCheckArrows">Draw arrows in image?</label><br>
+      <input id="DCCheckArrowsMatchColor" type="checkbox" name="DCCheckArrowsMatchColor">
+      <label for="DCCheckArrowsMatchColor">Arrows match isotope color?</label><br>
+      <br>
+      
+      <label for="DCCanvasScale">Image isotope scale: </label>
+      <input id="DCCanvasScale" type="number" name="DCCanvasScale" value="64">px<br>
+      <label for="DCCanvasMargin">Image isotope margin: </label>
+      <input id="DCCanvasMargin" type="number" name="DCCanvasMargin" value="8">px<br>
+      <br>
+      
+      <input type="submit" value="Submit">
     </form>
+    
+    <h3>Interactive Table</h3>
     
     <p>Isotopes Loaded: <span id="DCIsosCount">0</span></p>
     
     <div class="DCCont">
-      <table class="DCTbl" id="DCTbl">
+      <table id="DCTbl">
       </table>
     </div>
     
@@ -253,10 +277,15 @@
     
     <p>Only ground states used.</p>
     
-    <p>Horizontal Axis: N (Neutrons), Vertical Axis: Z (Protrons/Element)</p>
     <p>Red<span style="color: rgb(255, 0, 0);">●</span> & Cyan<span style="color: rgb(0, 255, 255);">●</span>: Selected</p>
     <p>Green<span style="color: rgb(0, 255, 0);">●</span> & Magenta<span style="color: rgb(255, 0, 255);">●</span>: Daughter</p>
     <p>Blue<span style="color: rgb(0, 0, 255);">●</span> & Yellow<span style="color: rgb(255, 255, 0);">●</span>: Parent</p>
+    
+    <h3>Image</h3>
+    
+    <div class="DCCont">
+      <canvas id="DCCanvas"></canvas>
+    </div>
     
   </div>
   
