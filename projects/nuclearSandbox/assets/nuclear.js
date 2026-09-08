@@ -163,9 +163,17 @@ function createPeriodicTable() { // Create Periodic Table for selection
 
 function chemElemClick(z) { // Create Weight Table for selection
   
-  let weightTable = document.querySelector('tr#weights'); // Get element
+  let weightTable = document.querySelector('tr#weights'); // Get weight table
+  let element = document.querySelector('#periodic td.elem#z' + z); // Get element
+  let elements = document.querySelectorAll('#periodic td.elem'); // Get elements
   
-  weightTable.innerHTML = ''; // Clear
+  weightTable.innerHTML = ''; // Clear weight table
+  
+  for(const elem of elements) { // Clear selected style
+    elem.className = 'elem'; // Reset
+  }
+  
+  element.className = 'elem sel'; // Selected style
   
   for(const elem in chemIsos[z]) { // Each chemical element
     
@@ -181,8 +189,11 @@ function chemElemClick(z) { // Create Weight Table for selection
     
     // Create td
     
-    weightTable.innerHTML += '<td class="elem" onclick="weightIsoClick(\'' + chemIsos[z][elem] + '\')">' + weight + 
-                             '<div class="wNote">n = ' + (weight - z) + '</div></td>';
+    weightTable.innerHTML += '<td id="w' + weight + 
+                             '" class="elem" onclick="weightIsoClick(\'' + 
+                             chemIsos[z][elem] + '\')">' + weight + 
+                             '<div class="wNote">n = ' + (weight - z) + 
+                             '</div></td>';
     
   }
   
@@ -191,6 +202,25 @@ function chemElemClick(z) { // Create Weight Table for selection
 }
 
 function weightIsoClick(iso) { // Create Levels Table for selection
+  
+  // Variables
+  
+  let isoObj = decayData[iso]; // Isotope object
+  
+  // Re-Click to ensure weights
+  
+  chemElemClick(isoObj['z']); // Click element
+  
+  // Style
+  
+  let weight = document.querySelector('tr#weights td.elem#w' + isoObj['a']); // Get weight
+  let weights = document.querySelectorAll('tr#weights td.elem'); // Get weights
+  
+  for(const elem of weights) { // Clear selected style
+    elem.className = 'elem'; // Reset
+  }
+  
+  weight.className = 'elem sel'; // Selected style
   
   // Info
   
@@ -205,8 +235,6 @@ function weightIsoClick(iso) { // Create Levels Table for selection
   let keys = listKeys(); // Get each property
   
   keys.forEach((key) => {
-    
-    let isoObj = decayData[iso];
     
     // Values
     

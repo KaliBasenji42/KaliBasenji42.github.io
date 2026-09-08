@@ -190,6 +190,10 @@ canvas#info {
   background-color: rgba(128, 128, 128, 0.25);
 }
 
+.selTbl .elem.sel {
+  background-color: rgba(64, 192, 64, 0.25);
+}
+
 .selTbl .elem > .zNote {
   position: absolute;
   top: 0;
