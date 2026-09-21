@@ -1502,7 +1502,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   for(let child of menuBttns) { // Loop to auto create onclick for menus
     
     let id = child.id;
-    let menu = document.querySelector('#menuGreyout > #' + id);
+    let menu = document.querySelector('#menuGreyout > #' + id + 'Menu');
     
     child.addEventListener('click', function() {
       closeAllMenus(); // Clear (incase  another menu is open)
@@ -1744,20 +1744,20 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Out
     
-    let out = document.querySelector('#MIEditItemForm > #out');
+    let out = document.querySelector('#MIEditItemForm > #MIIOut');
     out.innerText = '🔄';
     
     // Variables
     
-    let itemName = document.querySelector('#MIEditItemForm > #itemName').value;
-    let add = document.querySelector('#MIEditItemForm > #itemAddCheck').checked;
-    let remove = document.querySelector('#MIEditItemForm > #itemRemoveCheck').checked;
-    let movePos = document.querySelector('#MIEditItemForm > #itemMovePos').checked;
+    let itemName = document.querySelector('#MIEditItemForm > #MIItemName').value;
+    let add = document.querySelector('#MIEditItemForm > #MIItemAddCheck').checked;
+    let remove = document.querySelector('#MIEditItemForm > #MIItemRemoveCheck').checked;
+    let movePos = document.querySelector('#MIEditItemForm > #MIItemMovePos').checked;
     
-    let category = document.querySelector('#MIEditItemForm > #itemCategory').value;
-    let pos = parseInt(document.querySelector('#MIEditItemForm > #itemPos').value);
-    let color = document.querySelector('#MIEditItemForm > #itemColor').value;
-    let awesomePts = parseInt(document.querySelector('#MIEditItemForm > #awesomePts').value);
+    let category = document.querySelector('#MIEditItemForm > #MIItemCategory').value;
+    let pos = parseInt(document.querySelector('#MIEditItemForm > #MIItemPos').value);
+    let color = document.querySelector('#MIEditItemForm > #MIItemColor').value;
+    let awesomePts = parseInt(document.querySelector('#MIEditItemForm > #MIAwesomePts').value);
     
     let exists = false;
     let catExists = false;
@@ -1894,15 +1894,15 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   // Edit Item Load Defaults
   
-  let MIEditItemFormLoadDefault = document.querySelector('#MIEditItemForm > #loadDefault');
+  let MIEditItemFormLoadDefault = document.querySelector('#MIEditItemForm > #MILoadDefaultItem');
   
   MIEditItemFormLoadDefault.addEventListener('click', function() {
     
-    let out = document.querySelector('#MIEditItemForm > #LDOut'); // Out
+    let out = document.querySelector('#MIEditItemForm > #MILDIOut'); // Out
     
     // Item Exists
     
-    let itemName = document.querySelector('#MIEditItemForm > #itemName').value;
+    let itemName = document.querySelector('#MIEditItemForm > #MIItemName').value;
     let exists = false;
     
     if(items[itemName]) exists = true;
@@ -1914,10 +1914,10 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Set
     
-    document.querySelector('#MIEditItemForm > #itemCategory').value = items[itemName].category;
-    document.querySelector('#MIEditItemForm > #itemPos').value = items[itemName].pos;
-    document.querySelector('#MIEditItemForm > #itemColor').value = items[itemName].color;
-    document.querySelector('#MIEditItemForm > #awesomePts').value = items[itemName].awesomePts;
+    document.querySelector('#MIEditItemForm > #MIItemCategory').value = items[itemName].category;
+    document.querySelector('#MIEditItemForm > #MIItemPos').value = items[itemName].pos;
+    document.querySelector('#MIEditItemForm > #MIItemColor').value = items[itemName].color;
+    document.querySelector('#MIEditItemForm > #MIAwesomePts').value = items[itemName].awesomePts;
     
     out.innerText = '✅ Loaded';
     
@@ -1933,17 +1933,17 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Out
     
-    let out = document.querySelector('#MIEditCatForm > #out');
+    let out = document.querySelector('#MIEditCatForm > #MICOut');
     out.innerText = '🔄';
     
     // Variables
     
-    let catName = document.querySelector('#MIEditCatForm > #catName').value;
-    let add = document.querySelector('#MIEditCatForm > #catAddCheck').checked;
-    let remove = document.querySelector('#MIEditCatForm > #catRemoveCheck').checked;
-    let movePos = document.querySelector('#MIEditCatForm > #catMovePos').checked;
-    let pos = parseInt(document.querySelector('#MIEditCatForm > #catPos').value);
-    let color = document.querySelector('#MIEditCatForm > #catColor').value;
+    let catName = document.querySelector('#MIEditCatForm > #MICatName').value;
+    let add = document.querySelector('#MIEditCatForm > #MICatAddCheck').checked;
+    let remove = document.querySelector('#MIEditCatForm > #MICatRemoveCheck').checked;
+    let movePos = document.querySelector('#MIEditCatForm > #MICatMovePos').checked;
+    let pos = parseInt(document.querySelector('#MIEditCatForm > #MICatPos').value);
+    let color = document.querySelector('#MIEditCatForm > #MICatColor').value;
     
     let exists = false;
     let posTaken = false;
@@ -2062,15 +2062,15 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   // Edit Category Load Defaults
   
-  let MIEditCatFormLoadDefault = document.querySelector('#MIEditCatForm > #loadDefault');
+  let MIEditCatFormLoadDefault = document.querySelector('#MIEditCatForm > #MILoadDefaultCat');
   
   MIEditCatFormLoadDefault.addEventListener('click', function() {
     
-    let out = document.querySelector('#MIEditCatForm > #LDOut'); // Out
+    let out = document.querySelector('#MIEditCatForm > #MILDCOut'); // Out
     
     // Item Exists
     
-    let catName = document.querySelector('#MIEditCatForm > #catName').value;
+    let catName = document.querySelector('#MIEditCatForm > #MICatName').value;
     let exists = false;
     
     if(categories[catName]) exists = true;
@@ -2082,8 +2082,8 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Set
     
-    document.querySelector('#MIEditCatForm > #catPos').value = categories[catName].pos;
-    document.querySelector('#MIEditCatForm > #catColor').value = categories[catName].color;
+    document.querySelector('#MIEditCatForm > #MICatPos').value = categories[catName].pos;
+    document.querySelector('#MIEditCatForm > #MICatColor').value = categories[catName].color;
     
     out.innerText = '✅ Loaded';
     
@@ -2104,15 +2104,15 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Variables
     
-    let itemName = document.querySelector('#RecEditForm > #itemName').value;
+    let itemName = document.querySelector('#RecEditForm > #recItemName').value;
     let recName = document.querySelector('#RecEditForm > #recName').value;
     let add = document.querySelector('#RecEditForm > #recAddCheck').checked;
     let remove = document.querySelector('#RecEditForm > #recRemoveCheck').checked;
     
-    let outAmnt = parseFloat(document.querySelector('#RecEditForm > #outAmnt').value);
-    let building = document.querySelector('#RecEditForm > #building').value;
-    let numInp = parseInt(document.querySelector('#RecEditForm > #numInp').value);
-    let numBypro = parseInt(document.querySelector('#RecEditForm > #numBypro').value);
+    let outAmnt = parseFloat(document.querySelector('#RecEditForm > #recOutAmnt').value);
+    let building = document.querySelector('#RecEditForm > #recBuilding').value;
+    let numInp = parseInt(document.querySelector('#RecEditForm > #recNumInp').value);
+    let numBypro = parseInt(document.querySelector('#RecEditForm > #recNumBypro').value);
     
     let inpItems = [];
     let inpAmnts = [];
@@ -2251,15 +2251,15 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   // Edit Recipe Load Defaults
   
-  let RecEditFormLoadDefault = document.querySelector('#RecEditForm > #loadDefault');
+  let RecEditFormLoadDefault = document.querySelector('#RecEditForm > #recLoadDefault');
   
   RecEditFormLoadDefault.addEventListener('click', function() {
     
-    let out = document.querySelector('#RecEditForm > #LDOut'); // Out
+    let out = document.querySelector('#RecEditForm > #recLDOut'); // Out
     
     // Rec Exists
     
-    let itemName = document.querySelector('#RecEditForm > #itemName').value;
+    let itemName = document.querySelector('#RecEditForm > #recItemName').value;
     let recName = document.querySelector('#RecEditForm > #recName').value;
     let exists = false;
     
@@ -2352,10 +2352,10 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Set
     
-    document.querySelector('#RecEditForm > #outAmnt').value = items[itemName]['recipes'][recName].out;
-    document.querySelector('#RecEditForm > #building').value = items[itemName]['recipes'][recName].building;
-    document.querySelector('#RecEditForm > #numInp').value = numInp;
-    document.querySelector('#RecEditForm > #numBypro').value = numBypro;
+    document.querySelector('#RecEditForm > #recOutAmnt').value = items[itemName]['recipes'][recName].out;
+    document.querySelector('#RecEditForm > #recBuilding').value = items[itemName]['recipes'][recName].building;
+    document.querySelector('#RecEditForm > #recNumInp').value = numInp;
+    document.querySelector('#RecEditForm > #recNumBypro').value = numBypro;
     
     for(let i = 0; i < numInp; i++) { // Items
       inpItems[i].value = items[itemName]['recipes'][recName]['in'][i].item;
@@ -2373,7 +2373,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   // Edit Recipe Num Inputs - Change
   
-  let RecEditFormNumInp = document.querySelector('#RecEditForm > #numInp');
+  let RecEditFormNumInp = document.querySelector('#RecEditForm > #recNumInp');
   
   RecEditFormNumInp.addEventListener('change', function() {
     
@@ -2408,7 +2408,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   // Edit Recipe Num Bypro - Change
   
-  let RecEditFormNumBypro = document.querySelector('#RecEditForm > #numBypro');
+  let RecEditFormNumBypro = document.querySelector('#RecEditForm > #recNumBypro');
   
   RecEditFormNumBypro.addEventListener('change', function() {
     
@@ -2451,7 +2451,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
     
     // Out
     
-    let out = document.querySelector('#BPAPEditForm > #out');
+    let out = document.querySelector('#BPAPEditForm > #BPAPOut');
     out.innerText = '🔄';
     
     // Variables
@@ -2591,7 +2591,7 @@ document.addEventListener('DOMContentLoaded', function() { // DOM Loaded
   
   BPAPEditFormLoadDefault.addEventListener('click', function() {
     
-    let out = document.querySelector('#BPAPEditForm > #LDOut'); // Out
+    let out = document.querySelector('#BPAPEditForm > #BPAPLDOut'); // Out
     
     // Item Exists
     

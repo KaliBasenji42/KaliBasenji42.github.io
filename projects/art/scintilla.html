@@ -9,8 +9,8 @@
 <!--Start-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
-  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css">
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css">
   <link href="assets/icon.png" rel="icon" id="icon">
   <script>
     // Icon Error Detection and Relink
@@ -51,56 +51,56 @@
       <a href="assets/art/Scintilla/Ref.png" target="_blank" rel="opener" class="imgCont">
         <img src="assets/art/Scintilla/Ref.png" alt="Reference Sheet">
       </a>
-      <h3>Reference Sheet</h3>
+      <div class="fileTitle">Reference Sheet</div>
     </div>
     
     <div id="test">
       <a href="assets/art/Scintilla/Test.png" target="_blank" rel="opener" class="imgCont">
         <img src="assets/art/Scintilla/Test.png" alt="Test Card">
       </a>
-      <h3>Test Card</h3>
+      <div class="fileTitle">Test Card</div>
     </div>
     
     <div id="blep">
       <a href="assets/art/Scintilla/Blep.gif" target="_blank" rel="opener" class="imgCont">
         <img src="assets/art/Scintilla/Blep.gif" alt="Blep">
       </a>
-      <h3>Blep</h3>
+      <div class="fileTitle">Blep</div>
     </div>
     
     <div id="static">
       <a href="assets/art/Scintilla/Static.gif" target="_blank" rel="opener" class="imgCont">
         <img src="assets/art/Scintilla/Static.gif" alt="Static">
       </a>
-      <h3>Static</h3>
+      <div class="fileTitle">Static</div>
     </div>
     
     <div id="yummers">
       <a href="assets/art/Scintilla/Yummers.gif" target="_blank" rel="opener" class="imgCont">
         <img src="assets/art/Scintilla/Yummers.gif" alt="Yummers">
       </a>
-      <h3>Yummers</h3>
+      <div class="fileTitle">Yummers</div>
     </div>
     
     <div id="assets">
       <a href="assets/art/Scintilla/Assets.png" target="_blank" rel="opener" class="imgCont">
         <img src="assets/art/Scintilla/Assets.png" alt="Assets">
       </a>
-      <h3>Assets</h3>
+      <div class="fileTitle">Assets</div>
     </div>
     
     <div id="ref8X">
-      <a href="assets/art/Scintilla/Ref 8X.png" target="_blank" rel="opener" class="imgCont">
-        <img src="assets/art/Scintilla/Ref 8X.png" alt="Reference Sheet 8X">
+      <a href="assets/art/Scintilla/Ref8X.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Ref8X.png" alt="Reference Sheet 8X">
       </a>
-      <h3>Reference Sheet 8X</h3>
+      <div class="fileTitle">Reference Sheet 8X</div>
     </div>
     
     <div id="test8X">
-      <a href="assets/art/Scintilla/Test 8X.png" target="_blank" rel="opener" class="imgCont">
-        <img src="assets/art/Scintilla/Test 8X.png" alt="Test Card 8X">
+      <a href="assets/art/Scintilla/Test8X.png" target="_blank" rel="opener" class="imgCont">
+        <img src="assets/art/Scintilla/Test8X.png" alt="Test Card 8X">
       </a>
-      <h3>Test Card 8X</h3>
+      <div class="fileTitle">Test Card 8X</div>
     </div>
   </div>
   
@@ -132,7 +132,7 @@
     The GIFs where made by copying a base image many times and editing it (frame by frame). These images where put in a folder and named "0.png", "1.png", ... etc. I then used a bash script to make an 8X up scaled (nearest neighbor / point) copy of each image using magick and then use ffmpeg to convert each image into a single GIF (ffmpeg creates a palette image before making the GIF to ensure quality).
   </p>
   
-  <h3>File Structure:</h3>
+  <h2>File Structure:</h2>
   
   <pre style="white-space: pre; overflow-x: scroll; background-color: rgba(128, 128, 128, 0.25); padding: 0.5rem;">
 
@@ -158,7 +158,7 @@
     └── palette.png <i>- Palette to ensure quality</i>
   </pre>
   
-  <h3>Bash Script "gif.sh":</h3>
+  <h2>Bash Script "gif.sh":</h2>
   
   <pre style="white-space: pre; overflow-x: scroll; background-color: rgba(128, 128, 128, 0.25); padding: 0.5rem;"><code class="language-bash;">
 #!/usr/bin/env bash
@@ -188,7 +188,7 @@ ffmpeg -framerate $FPS -i %d.png -i palette.png -filter_complex "paletteuse" out
   </code></pre>
   
   <p>
-    For "Static.gif" I got white noise by downloading an image from <a href="https://qrng.anu.edu.au/random-image-bw/" target="_blank" ref="opener external">ANU QRNG</a>, and scaling the image down to 0.5 the original size (in each dimension) bilinearly. I then copied parts of the downscaled image onto a layer above the screen of Scintilla with varying opacity.
+    For "Static.gif" I got white noise by downloading an image from <a href="https://qrng.anu.edu.au/random-image-bw/" target="_blank" rel="opener external">ANU QRNG</a>, and scaling the image down to 0.5 the original size (in each dimension) bilinearly. I then copied parts of the downscaled image onto a layer above the screen of Scintilla with varying opacity.
   </p>
   
   <p><a href="./#license" rel="license">License</a></p>

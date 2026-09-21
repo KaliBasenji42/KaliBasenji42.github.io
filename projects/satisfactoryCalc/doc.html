@@ -9,8 +9,8 @@
 <!--Start-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
-  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css">
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css">
   <link href="assets/icon.png" rel="icon" id="icon">
   <script>
     // Icon Error Detection and Relink
@@ -69,20 +69,20 @@
     </li>
     <li>
       In Main Interface, set the Inp. Demand (the number of items per minute you demand).
+      <ul>
+        <li>
+          Ensure that the Max Clocking, Somersloop Multiplication, and Recipe values are set to the correct values.
+        </li>
+      </ul>
     </li>
-    <ul>
-      <li>
-        Ensure that the Max Clocking, Somersloop Multiplication, and Recipe values are set to the correct values.
-      </li>
-    </ul>
     <li>
       Press the Calculate button when done.
+      <ul>
+        <li>
+          Buildings, Power, & Awesome Points will show the total number of buildings needed, along with power requirements and awesome point totals.
+        </li>
+      </ul>
     </li>
-    <ul>
-      <li>
-        Buildings, Power, & Awesome Points will show the total number of buildings needed, along with power requirements and awesome point totals.
-      </li>
-    </ul>
     <li>
       Use the complete checkboxes as you complete each item's production (% Complete only updates upon re-calculating)
     </li>
@@ -101,7 +101,7 @@
     Bar at the top of the window, has buttons for saving/loading saves and other basic function and displayed data.
   </p>
   
-  <h3>Load <img src="assets/images/folder.png" class="iconEx"></h3>
+  <h3>Load <img src="assets/images/folder.png" class="iconEx" alt="Load"></h3>
   
   <p>
     Lists all saves in localStorage (more info on home page). There is a "Load" button next to each listed save, this will load and <b>overwrite</b> whatever is currently loaded.
@@ -110,7 +110,7 @@
     The "Remove" button will prompt the user for confirmation, and (if granted) will delete the save from localStorage. 
   </p>
   
-  <h3>Save <img src="assets/images/file.png" class="iconEx"></h3>
+  <h3>Save <img src="assets/images/file.png" class="iconEx" alt="Save"></h3>
   
   <p>
     Prompts the user for a save name. When submitted, this will save to localStorage as "SatisfactoryCalc - Save:{name}".
@@ -122,7 +122,7 @@
     Save or Download often.
   </p>
   
-  <h3>Upload <img src="assets/images/upload.png" class="iconEx"></h3>
+  <h3>Upload <img src="assets/images/upload.png" class="iconEx" alt="Upload"></h3>
   
   <p>
     Prompts the user for a JSON file. When submitted (if the file is processed successfully), this will load and <b>overwrite</b> whatever is currently loaded.
@@ -132,7 +132,7 @@
     Note that this is done client side, this file is not sent to an external server.
   </p>
   
-  <h3>Download <img src="assets/images/download.png" class="iconEx"></h3>
+  <h3>Download <img src="assets/images/download.png" class="iconEx" alt="Download"></h3>
   
   <p>
     Generates a blob link to a JSON file download of what is currently loaded.
@@ -141,7 +141,7 @@
     Saving the JSONs locally is a good way to ensure you do not lose your saves.
   </p>
   
-  <h3>Templates <img src="assets/images/pageTemplate.png" class="iconEx"></h3>
+  <h3>Templates <img src="assets/images/pageTemplate.png" class="iconEx" alt="Template"></h3>
   
   <p>
     Lists templates to start off from. There is a "Load" button next to each listed template, this will load and <b>overwrite</b> whatever is currently loaded.
@@ -150,7 +150,7 @@
     Ensure to read the note that is shown when loaded.
   </p>
   
-  <h3>Settings <img src="assets/images/settings.png" class="iconEx"></h3>
+  <h3>Settings <img src="assets/images/settings.png" class="iconEx" alt="Settings"></h3>
   
   <p>
     Settings that change how the calculator works and looks.
@@ -159,7 +159,7 @@
     Saved into localStorage.
   </p>
   
-  <h3>Calculate <img src="assets/images/check.png" class="iconEx"></h3>
+  <h3>Calculate <img src="assets/images/check.png" class="iconEx" alt="Calculate"></h3>
   
   <p>
     Submit button, calculates and renders everything.
@@ -255,7 +255,7 @@
     Byproducts.
   </p>
   <p>
-    If Calc. < 0: | Calc. |, else: 0. (When reuse bypro setting is true)
+    If Calc. &lt; 0: | Calc. |, else: 0. (When reuse bypro setting is true)
   </p>
   
   <h3>Max Clocking (%)</h3>

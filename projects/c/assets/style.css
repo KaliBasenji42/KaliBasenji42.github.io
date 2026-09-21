@@ -108,29 +108,29 @@ footer {
 
 /* Rats & Wheels */
 
-.rat {
+.rat-cont {
   position: absolute;
   margin: 0;
   padding: 0;
 }
 
-.rat * {
+.rat-cont * {
   position: absolute;
 }
 
-.rat > #rat {
+.rat-cont > .rat {
   width: 100%;
   height: 100%;
 }
 
-#a.rat {
+#a.rat-cont {
   top: 55%;
   left: 45%;
   width: 10%;
   aspect-ratio: 1570 / 1223;
 }
 
-#a.rat > #wheel {
+#a.rat-cont > .wheel {
   bottom: 10%;
   left: 50%;
   width: 40%;
@@ -146,14 +146,14 @@ footer {
   100% {height: 40%}
 }
 
-#b.rat {
+#b.rat-cont {
   top: 20%;
   left: 66%;
   width: 5%;
   aspect-ratio: 495 / 1271;
 }
 
-#b.rat > #wheel {
+#b.rat-cont > .wheel {
   top: 90%;
   left: 25%;
   height: 20%;
@@ -169,7 +169,7 @@ footer {
   100% {rotate: 360deg}
 }
 
-#c.rat {
+#c.rat-cont {
   top: 70%;
   left: 27%;
   width: 10%;
@@ -186,7 +186,7 @@ footer {
   75% {transform: scale(1.5, 0.75)}
 }
 
-#d.rat {
+#d.rat-cont {
   top: 62%;
   left: 77%;
   width: 10%;
@@ -197,7 +197,7 @@ footer {
   animation-iteration-count: infinite;
 }
 
-#d.rat > #wheel {
+#d.rat-cont > .wheel {
   top: 80%;
   left: 10%;
   width: 80%;
@@ -217,7 +217,7 @@ footer {
   75% {rotate: -40deg}
 }
 
-#e.rat {
+#e.rat-cont {
   top: 80%;
   left: 50%;
   width: 20%;
@@ -232,7 +232,7 @@ footer {
   animation-timing-function: linear;
 }
 
-#e.rat > #wheel1 {
+#e.rat-cont > #wheel1 {
   top: 70%;
   left: 20%;
   width: 20%;
@@ -243,7 +243,7 @@ footer {
   animation-timing-function: linear;
 }
 
-#e.rat > #wheel2 {
+#e.rat-cont > #wheel2 {
   top: 80%;
   left: 60%;
   width: 20%;
@@ -265,7 +265,7 @@ footer {
   100% {rotate: 360deg}
 }
 
-#f.rat {
+#f.rat-cont {
   top: 70%;
   left: 55%;
   width: 20%;
@@ -281,7 +281,7 @@ footer {
   50% {transform: scale(-1, 1)}
 }
 
-#g.rat {
+#g.rat-cont {
   bottom: 15%;
   left: 5%;
   height: 20%;
@@ -294,7 +294,7 @@ footer {
   animation-iteration-count: infinite;
 }
 
-#g.rat > #wheel {
+#g.rat-cont > .wheel {
   top: 0%;
   left: 70%;
   width: 20%;
@@ -314,7 +314,7 @@ footer {
   50% {transform: scale(1, 0.667); top: -20%}
 }
 
-#h.rat {
+#h.rat-cont {
   top: 20%;
   left: 20%;
   width: 15%;
@@ -329,7 +329,7 @@ footer {
   animation-timing-function: linear;
 }
 
-#h.rat > #fire {
+#h.rat-cont > #fire {
   top: -80%;
   left: 80%;
   width: 80%;
@@ -341,7 +341,7 @@ footer {
   100% {left: -500%; top: -300%;}
 }
 
-#i.rat {
+#i.rat-cont {
   top: -10%;
   left: -10%;
   width: 5%;
@@ -350,7 +350,7 @@ footer {
   transition: top 2s linear, left 2s linear, rotate 2s linear, transform 2s linear;
 }
 
-#i.rat > #rainbow {
+#i.rat-cont > #rainbow {
   width: 100%;
   height: 100%;
   

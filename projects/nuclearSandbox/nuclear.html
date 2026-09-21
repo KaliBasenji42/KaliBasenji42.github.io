@@ -9,8 +9,8 @@
 <!--Start-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
-  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css">
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css">
   <link href="assets/icon.png" rel="icon" id="icon">
   <script>
     // Icon Error Detection and Relink
@@ -117,7 +117,7 @@
     <h3>Weights</h3>
     
     <div class="tblCont">
-      <table class="selTbl"><tbody><tr id="weights"></tr></tbody></table>
+      <table class="selTbl"><tbody><tr id="weights"><td>?</td></tr></tbody></table>
     </div>
     
     <h3>Info</h3>
@@ -213,7 +213,7 @@
       Example: "235U"<br>
       <br>
       
-      <input id="DCAxisNZ" type="radio" name="DCAxis" checked="true">
+      <input id="DCAxisNZ" type="radio" name="DCAxis" checked>
       <label for="DCAxisNZ">X-Axis: Z, Y-Axis: N</label><br>
       <input id="DCAxisDA" type="radio" name="DCAxis">
       <label for="DCAxisDA">X-Axis: Z - N, Y-Axis: A (Z + N)</label><br>
@@ -304,7 +304,7 @@
     </div>
     <br>
     
-    <a id="DCCanvasLink" target="_blank" rel="opener">Open Image</a>
+    <a href="javascript:;" id="DCCanvasLink" target="_blank" rel="opener">Open Image</a>
     
   </div>
   
@@ -322,7 +322,7 @@
       <label for="DecayStepSize">Time Step Size (seconds):</label>
       <input type="number" min="0" step="any" id="DecayStepSize" name="DecayStepSize"><br>
       
-      <label for="DecayTimeIterations">Time Iterations:</label>
+      <label for="DecayRunTime">Time Iterations:</label>
       <input type="number" min="0" id="DecayRunTime" name="DecayRunTime"><br>
       
       <label for="DecayMass">Mass (grams):</label>
@@ -344,7 +344,7 @@
     <h3>Energy</h3>
     
     <table class="tbl">
-      <tbody id="decayEnergy">
+      <tbody id="energy">
         <tr><th>Total Mass (g)</th><th>Mass Loss (g)</th><th>Total Joules</th><th>Predicted Δ Kelvin</th></tr>
       </tbody>
     </table>

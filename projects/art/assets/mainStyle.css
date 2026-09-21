@@ -88,3 +88,10 @@ table {
 .carousel > * > h3 {
   margin: 0.5rem;
 }
+
+/* Other */
+
+.fileTitle {
+  font-weight: bold;
+  font-size: 1.25em;
+}

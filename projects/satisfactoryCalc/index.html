@@ -9,8 +9,8 @@
 <!--Start-->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css" />
-  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css" />
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css">
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css">
   <link href="assets/icon.png" rel="icon" id="icon">
   <script>
     // Icon Error Detection and Relink
@@ -45,13 +45,13 @@
   <script src="assets/test.js"></script>
   
   <div id="toolbar">
-    <div id="load" title="Load" class="menuBttn"><img src="assets/images/folder.png"></div>
-    <div id="save" title="Save" class="menuBttn"><img src="assets/images/file.png"></div>
-    <div id="upload" title="Upload" class="menuBttn"><img src="assets/images/upload.png"></div>
-    <div id="download" title="Download" class="menuBttn"><img src="assets/images/download.png"></div>
-    <div id="templates" title="Templates" class="menuBttn"><img src="assets/images/pageTemplate.png"></div>
-    <div id="settings" title="Settings" class="menuBttn"><img src="assets/images/settings.png"></div>
-    <div id="submit" title="Calculate" class="toolBttn"><img src="assets/images/check.png"></div>
+    <div id="load" title="Load" class="menuBttn"><img src="assets/images/folder.png" alt="Load"></div>
+    <div id="save" title="Save" class="menuBttn"><img src="assets/images/file.png" alt="Save"></div>
+    <div id="upload" title="Upload" class="menuBttn"><img src="assets/images/upload.png" alt="Upload"></div>
+    <div id="download" title="Download" class="menuBttn"><img src="assets/images/download.png" alt="Download"></div>
+    <div id="templates" title="Templates" class="menuBttn"><img src="assets/images/pageTemplate.png" alt="Template"></div>
+    <div id="settings" title="Settings" class="menuBttn"><img src="assets/images/settings.png" alt="Settings"></div>
+    <div id="submit" title="Calculate" class="toolBttn"><img src="assets/images/check.png" alt="Calculate"></div>
     <output id="status" title="Status" class="toolInfo">🖌️</output>
     <div id="percentComplete" title="% Complete" class="toolInfo">0%</div>
     <div id="power" title="Power" class="toolInfo">0 MW</div>
@@ -59,8 +59,8 @@
   </div>
   
   <div id="menuGreyout" style="display: none;">
-    <div id="load" style="display: none;">
-      <img class="X" src="assets/images/X.png">
+    <div id="loadMenu" style="display: none;">
+      <img class="X" src="assets/images/X.png" alt="X.png">
       
       <h2 class="menuTtl">Load - localStorage</h2>
       
@@ -69,8 +69,8 @@
       <label id="loadOut">... Awaiting Input</label>
     </div>
     
-    <div id="save" style="display: none;">
-      <img class="X" src="assets/images/X.png">
+    <div id="saveMenu" style="display: none;">
+      <img class="X" src="assets/images/X.png" alt="X.png">
       
       <h2 class="menuTtl">Save - localStorage</h2>
       
@@ -82,8 +82,8 @@
       </form>
     </div>
     
-    <div id="upload" style="display: none;">
-      <img class="X" src="assets/images/X.png">
+    <div id="uploadMenu" style="display: none;">
+      <img class="X" src="assets/images/X.png" alt="X.png">
       
       <h2 class="menuTtl">Upload</h2>
       
@@ -97,16 +97,16 @@
       </form>
     </div>
     
-    <div id="download" style="display: none;">
-      <img class="X" src="assets/images/X.png">
+    <div id="downloadMenu" style="display: none;">
+      <img class="X" src="assets/images/X.png" alt="X.png">
       
       <h2 class="menuTtl">Download</h2>
       
-      <a target="_blank" id="downloadLink" download="">Loading...</a>
+      <a href="javascript:;" target="_blank" id="downloadLink" download="">Loading...</a>
     </div>
     
-    <div id="templates" style="display: none;">
-      <img class="X" src="assets/images/X.png">
+    <div id="templatesMenu" style="display: none;">
+      <img class="X" src="assets/images/X.png" alt="X.png">
       
       <h2 class="menuTtl">Templates</h2>
       
@@ -136,8 +136,8 @@
       <div id="templateNotes"></div>
     </div>
     
-    <div id="settings" style="display: none;">
-      <img class="X" src="assets/images/X.png">
+    <div id="settingsMenu" style="display: none;">
+      <img class="X" src="assets/images/X.png" alt="X.png">
       
       <h2 class="menuTtl">Settings</h2>
       
@@ -252,59 +252,59 @@
     
     <h3>Edit Item</h3>
     <form id="MIEditItemForm">
-      <label for="itemName">Item Name:</label>
-      <input type="text" id="itemName" name="itemName"><br>
-      <input type="button" id="loadDefault" value="Load Default">
-      <output id="LDOut">...Awaiting Input</output><br>
+      <label for="MIItemName">Item Name:</label>
+      <input type="text" id="MIItemName" name="MIItemName"><br>
+      <input type="button" id="MILoadDefaultItem" value="Load Default">
+      <output id="MILDIOut">...Awaiting Input</output><br>
       <div>Avoid special characters</div>
       <br>
       
-      <input type="checkbox" id="itemAddCheck" name="itemAddCheck">
-      <label for="itemAddCheck">Add Item (don't forget to add recipes)?</label><br>
-      <input type="checkbox" id="itemRemoveCheck" name="itemRemoveCheck">
-      <label for="itemRemoveCheck">Remove Item (if it exists)?</label><br>
-      <input type="checkbox" id="itemMovePos" name="itemMovePos">
-      <label for="itemMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <input type="checkbox" id="MIItemAddCheck" name="MIItemAddCheck">
+      <label for="MIItemAddCheck">Add Item (don't forget to add recipes)?</label><br>
+      <input type="checkbox" id="MIItemRemoveCheck" name="MIItemRemoveCheck">
+      <label for="MIItemRemoveCheck">Remove Item (if it exists)?</label><br>
+      <input type="checkbox" id="MIItemMovePos" name="MIItemMovePos">
+      <label for="MIItemMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
       <br>
       
-      <label for="itemCategory">Category:</label>
-      <input type="text" id="itemCategory" name="itemCategory"><br>
-      <label for="itemPos">Position:</label>
-      <input type="number" id="itemPos" name="itemPos"><br>
-      <label for="itemColor">Color:</label>
-      <input type="color" id="itemColor" name="itemColor"><br>
-      <label for="awesomePts">Awesome Points:</label>
-      <input type="number" id="awesomePts" name="awesomePts"><br>
+      <label for="MIItemCategory">Category:</label>
+      <input type="text" id="MIItemCategory" name="MIItemCategory"><br>
+      <label for="MIItemPos">Position:</label>
+      <input type="number" id="MIItemPos" name="MIItemPos"><br>
+      <label for="MIItemColor">Color:</label>
+      <input type="color" id="MIItemColor" name="MIItemColor"><br>
+      <label for="MIAwesomePts">Awesome Points:</label>
+      <input type="number" id="MIAwesomePts" name="MIAwesomePts"><br>
       <br>
       
       <input type="submit" value="Submit"><br>
-      <output id="out">...Awaiting Input</output><br>
+      <output id="MIIOut">...Awaiting Input</output><br>
     </form>
     
     <h3>Edit Category</h3>
     <form id="MIEditCatForm">
-      <label for="catName">Category Name:</label>
-      <input type="text" id="catName" name="catName"><br>
-      <input type="button" id="loadDefault" value="Load Default">
-      <output id="LDOut">...Awaiting Input</output><br>
+      <label for="MICatName">Category Name:</label>
+      <input type="text" id="MICatName" name="MICatName"><br>
+      <input type="button" id="MILoadDefaultCat" value="Load Default">
+      <output id="MILDCOut">...Awaiting Input</output><br>
       <br>
       
-      <input type="checkbox" id="catAddCheck" name="catAddCheck">
-      <label for="catAddCheck">Add Category?</label><br>
-      <input type="checkbox" id="catRemoveCheck" name="catRemoveCheck">
-      <label for="catRemoveCheck">Remove Category (if it exists)?</label><br>
-      <input type="checkbox" id="catMovePos" name="catMovePos">
-      <label for="catMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
+      <input type="checkbox" id="MICatAddCheck" name="MICatAddCheck">
+      <label for="MICatAddCheck">Add Category?</label><br>
+      <input type="checkbox" id="MICatRemoveCheck" name="MICatRemoveCheck">
+      <label for="MICatRemoveCheck">Remove Category (if it exists)?</label><br>
+      <input type="checkbox" id="MICatMovePos" name="MICatMovePos">
+      <label for="MICatMovePos">Move other positions if same position (to prevent duplicate)?</label><br>
       <br>
       
-      <label for="catPos">Position:</label>
-      <input type="number" id="catPos" name="catPos"><br>
-      <label for="catColor">Color:</label>
-      <input type="color" id="catColor" name="catColor"><br>
+      <label for="MICatPos">Position:</label>
+      <input type="number" id="MICatPos" name="MICatPos"><br>
+      <label for="MICatColor">Color:</label>
+      <input type="color" id="MICatColor" name="MICatColor"><br>
       <br>
       
       <input type="submit" value="Submit"><br>
-      <output id="out">...Awaiting Input</output><br>
+      <output id="MICOut">...Awaiting Input</output><br>
     </form>
     <br>
   </div>
@@ -316,12 +316,12 @@
     
     <h3>Edit Recipe</h3>
     <form id="RecEditForm">
-      <label for="itemName">Item Name:</label>
-      <input type="text" id="itemName" name="itemName"><br>
+      <label for="recItemName">Item Name:</label>
+      <input type="text" id="recItemName" name="recItemName"><br>
       <label for="recName">Recipe Name:</label>
       <input type="text" id="recName" name="recName"><br>
-      <input type="button" id="loadDefault" value="Load Default">
-      <output id="LDOut">...Awaiting Input</output><br>
+      <input type="button" id="recLoadDefault" value="Load Default">
+      <output id="recLDOut">...Awaiting Input</output><br>
       <br>
       
       <input type="checkbox" id="recAddCheck" name="recAddCheck">
@@ -330,14 +330,14 @@
       <label for="recRemoveCheck">Remove Recipe (if it exists)?</label><br>
       <br>
       
-      <label for="outAmnt">Output Amount:</label>
-      <input type="number" id="outAmnt" name="outAmnt" class="numInp"><br>
-      <label for="building">Building:</label>
-      <input type="text" id="building" name="building"><br>
-      <label for="numInp">Number of Inputs:</label>
-      <input type="number" id="numInp" name="numInp" min="0" max="100"><br>
-      <label for="numBypro">Number of Byproducts:</label>
-      <input type="number" id="numBypro" name="numBypro" min="0" max="100"><br>
+      <label for="recOutAmnt">Output Amount:</label>
+      <input type="number" id="recOutAmnt" name="recOutAmnt" class="numInp"><br>
+      <label for="recBuilding">Building:</label>
+      <input type="text" id="recBuilding" name="recBuilding"><br>
+      <label for="recNumInp">Number of Inputs:</label>
+      <input type="number" id="recNumInp" name="recNumInp" min="0" max="100"><br>
+      <label for="recNumBypro">Number of Byproducts:</label>
+      <input type="number" id="recNumBypro" name="recNumBypro" min="0" max="100"><br>
       <br>
       
       <div id="inps">
@@ -365,7 +365,7 @@
       <label for="buildingName">Building Name:</label>
       <input type="text" id="buildingName" name="buildingName"><br>
       <input type="button" id="loadDefault" value="Load Default">
-      <output id="LDOut">...Awaiting Input</output><br>
+      <output id="BPAPLDOut">...Awaiting Input</output><br>
       <br>
       
       <input type="checkbox" id="BPAPAddCheck" name="BPAPAddCheck">
@@ -389,7 +389,7 @@
       <br>
       
       <input type="submit" value="Submit"><br>
-      <output id="out">...Awaiting Input</output><br>
+      <output id="BPAPOut">...Awaiting Input</output><br>
     </form>
     
   </div>

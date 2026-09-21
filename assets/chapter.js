@@ -64,7 +64,15 @@ function TOCList() {
 
 // Set Elements
 
-for(let i = 0; i < head.length; i++) head[i].innerHTML += '<title>' + chapterNames[chapter] + '</title>'; // Set title to chapter name
+let title = document.getElementsByTagName('title'); // Get element
+
+for(let i = 0; i < title.length; i++) {
+  title[i].innerHTML = chapterNames[chapter]; // Set title to chapter name
+}
+
+if(title.length == 0) for(let i = 0; i < head.length; i++) { // Add title if none
+  head[i].innerHTML += '<title>' + chapterNames[chapter] + '</title>';
+}
 
 // Events
 

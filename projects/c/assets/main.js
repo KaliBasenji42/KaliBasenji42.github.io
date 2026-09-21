@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Variables
   
-  let ratI = document.querySelector('#i.rat');
+  let ratI = document.querySelector('#i.rat-cont');
   
   // Interval
   

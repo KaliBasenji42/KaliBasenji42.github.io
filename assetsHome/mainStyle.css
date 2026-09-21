@@ -119,14 +119,14 @@ tr {border: 1px solid;}
   max-height: 20rem;
 }
 
-.siteLink#root:hover ~ .siteInfo#root {
+#root-link:hover ~ .siteInfo#root-info {
   max-height: 20rem;
 }
-.siteLink#raspi:hover ~ .siteInfo#raspi {
+#raspi-link:hover ~ .siteInfo#raspi-info {
   max-height: 20rem;
 }
 
-.siteLink#github:hover ~ .siteInfo#github {
+#github-link:hover ~ .siteInfo#github-info {
   max-height: 20rem;
 }
 

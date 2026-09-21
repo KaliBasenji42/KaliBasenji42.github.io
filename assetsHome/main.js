@@ -89,7 +89,7 @@ function outputData(usage) { // Render localStorage graphics
   let barElem = document.getElementById('dataBar');
   let textElem = document.getElementById('data');
   let DTElem = document.getElementById('DT');
-  let DTSect = document.getElementById('DT Sect');
+  let DTSect = document.getElementById('DTSect');
   let warn = document.getElementById('warn');
   let boom = document.getElementById('boom');
   let how = document.getElementById('how');
@@ -304,6 +304,7 @@ function LSExport() {
   // Variables
   
   let downloadLink = document.getElementById('LSDownload');
+  let indicator = document.getElementById('LSIndicator');
   
   let json = {};
   
@@ -325,6 +326,16 @@ function LSExport() {
   let url = URL.createObjectURL(blob); // URL
   
   downloadLink.href = url; // Set href
+  downloadLink.innerHTML = 'Download'; // Set html
+  
+  // Indicator
+  
+  indicator.style.transition = '';
+  indicator.style.opacity = '1';
+  setTimeout(() => {
+    indicator.style.transition = 'opacity 1s';
+    indicator.style.opacity = '0';
+  }, 1000);
   
 }
 
