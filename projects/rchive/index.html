@@ -1,0 +1,130 @@
+<!--Start-->
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<!--End-->
+  <title>Rchive</title>
+<!--Start-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="../../assets/mainStyle.css" rel="stylesheet" type="text/css">
+  <link href="assets/mainStyle.css" rel="stylesheet" type="text/css">
+  <link href="assets/icon.png" rel="icon" id="icon">
+  <script>
+    // Icon Error Detection and Relink
+    window.onload = function() {
+      let icon = document.getElementById('icon');
+      let img = document.createElement('img');
+      img.src = icon.href;
+      img.onerror = function() {
+        icon.href = '../../assets/icon.png';
+      };
+    }
+  </script>
+</head>
+
+<!--End-->
+
+<body style="background-color: rgb(224, 160, 244);">
+  
+<!--Start-->
+  
+  <div id="link" style="text-align: center; font-size: 1.5em; background: rgb(255, 128, 128); position: fixed; width: 25%; right: 1em; bottom: 1em; font-weight: bold;">
+    Java Script does not seem to be linked. Most features and some content may be missing.
+  </div>
+  
+  <script src="../../assets/areFilesLinked.js"></script>
+  
+  <script src="assets/main.js"></script>
+  <script src="../../assets/main.js"></script>
+  
+<!--End-->
+  
+  <h1>Rchive</h1>
+  
+  <a href="../../">Website Homepage</a>
+  
+  <p>
+    This is a project that queries a random file from <a href="https://archive.org/advancedsearch.php" target="_blank" rel="opener external">archive.org</a>.
+    Note that large values could be taxing.
+  </p>
+  
+  <h2>Form</h2>
+  
+  <form id="form">
+    <label for="formQuery">Query: </label>
+    <input type="text" name="formQuery" id="formQuery"><br>
+    <div>Example: "mediatype:(movies) AND date:[2025-01-09 TO 2025-01-23]"</div><br>
+    
+    <label for="formNumber">Number of Files: </label>
+    <input type="number" name="formNumber" id="formNumber" min="1"><br>
+    <br>
+    
+    <label for="formDoRandDate">Random Date (reduces Files Found) (Inclusive)?</label>
+    <input type="checkbox" name="formDoRandDate" id="formDoRandDate"><br>
+    <label for="formStartRandDate">Start: </label>
+    <input type="date" name="formStartRandDate" id="formStartRandDate" value="1900-01-01">
+    <input type="button" value="Today" onclick="document.getElementById('formStartRandDate').value = new Date().toISOString().split('T')[0];"><br>
+    <label for="formEndRandDate">End: </label>
+    <input type="date" name="formEndRandDate" id="formEndRandDate">
+    <input type="button" value="Today" onclick="document.getElementById('formEndRandDate').value = new Date().toISOString().split('T')[0];"><br>
+    <br>
+    
+    <input type="submit" value="Submit"><br>
+    <output id="formOut">... Awaiting Input</output><br>
+    <br>
+    
+    <output id="formOutFiles">Files Found: ?</output>
+  </form>
+  
+  <h2>List</h2>
+  
+  <a href="javascript:;" id="downloadLink" target="_blank" rel="opener" download="random-archive-list.txt">Download</a>
+  
+  <ol id="outList"></ol>
+  
+<!--Start-->
+  
+  <footer>
+    <div>
+      KaliBasenji42's Website<br>
+      Copyright (C) 2025  KaliBasenji42<br><br>
+      
+      This program is free software; you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation; version 2 of the License.<br><br>
+      
+      This program is distributed in the hope that it will be useful,
+      but WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+      GNU General Public License for more details.<br><br>
+      
+      You should have received a copy of the GNU General Public License along
+      with this program; if not, write to the Free Software Foundation, Inc.,
+      51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.<br><br>
+      
+      <a href="../../LICENSE.md" target="_blank" rel="license opener">Attached License</a><br>
+      <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank" rel="license opener external">GPL v2</a><br>
+      <a href="https://github.com/KaliBasenji42" target="_blank" rel="author opener external">KaliBasenji42's Github</a><br>
+      <a href="mailto:code.strike366@passinbox.com" rel="author">Email</a>
+    </div>
+  </footer>
+  
+  <button id="themeButton" onclick="nextTheme(1)" title="Change Theme">◪</button>
+  
+</body>
+
+</html>
+
+<!--End-->
+
+<!--
+   _     ____     ____   _   _   _   _   _   _____        ___    ____     ___ 
+  / \   |  _ \   /  __| | | | | | | | | | | |  ___|      / _ \  |  _ \   / __\ 
+ / _ \  | |_) ) |  /    | |_| | | | | | | | | |___      | | | | | |_) ) | |___
+| |_| | |    /  | |     |  _  | | | | | | | |  ___|     | | | | |    /  | |_  | 
+|  _  | | |\ \  |  \__  | | | | | |  \ V /  | |___   _  | |_| | | |\ \  | |_| |
+|_| |_| |_| \_\  \____| |_| |_| |_|   \_/   |_____| (_)  \___/  |_| \_\  \___/ 
+-->
