@@ -12,6 +12,8 @@ const urlHead = 'https://archive.org/details/'; // Leading part of file URL stri
 let form; // Form element
 let outList; // Output list element
 let downloadLink; // Download link element
+let formRunning = false; // Wether the form is running/loading
+let formAbort = false; // Wether to abort form loading
 
 let IDs = []; // Array of IDs
 let position = 0; // Position in list
@@ -57,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Pre Try
     
     event.preventDefault();
+    
+    if(formRunning) return; // Exit if already running
+    formRunning = true; // Set running to true
     
     let out = document.getElementById('formOut'); // Form output
     out.innerHTML = '🔄 Loading'; // Set to loading
@@ -105,10 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error('Number of files requested exceeds number of files found')
       }
       
-      if(numFound > maxPages) { // High amount (warning/confirm)
+      if(numFound > maxPages && !doRandomDate) { // High amount (warning/confirm)
         let message = numFound + ' files found, continuing may take a while. Consider enabling Random Date. Continue?';
-        if(!window.confirm(message)) {
-          out.innerHTML = '❌ Aborted';
+        if(!window.confirm(message)) { // Abort
+          out.innerHTML = '❌ Aborted'; // Output
+          formAbort = false; // Reset abort bool
+          formRunning = false; // Set to not running
           return;
         }
       }
@@ -122,6 +129,13 @@ document.addEventListener('DOMContentLoaded', function() {
         IDs = []; // Clear
         
         while(IDs.length < number) { // While requested files not met
+          
+          if(formAbort) { // Abort
+            out.innerHTML = '❌ Aborted'; // Output
+            formAbort = false; // Reset abort bool
+            formRunning = false; // Set to not running
+            return;
+          }
           
           let date = randomDate(startRandDate, endRandDate); // Random date in range
           
@@ -226,7 +240,10 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Form Error:'); // Log error
       console.log(err);
     }
-      
+    
+    formAbort = false; // Reset abort bool
+    formRunning = false; // Set to not running
+    
   });
   
 });

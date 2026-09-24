@@ -47,7 +47,8 @@
   <a href="../../">Website Homepage</a>
   
   <p>
-    This is a project that queries a random file from <a href="https://archive.org/advancedsearch.php" target="_blank" rel="opener external">archive.org</a>.
+    This is a project that queries a random file from <a href="https://archive.org" target="_blank" rel="opener external">archive.org</a>.
+    The query is that used by <a href="https://archive.org/advancedsearch.php" target="_blank" rel="opener external">archive.org/advancedsearch.php</a>, and it lists "Number of Files" number of files/addresses.
     Note that large values could be taxing.
   </p>
   
@@ -72,7 +73,8 @@
     <input type="button" value="Today" onclick="document.getElementById('formEndRandDate').value = new Date().toISOString().split('T')[0];"><br>
     <br>
     
-    <input type="submit" value="Submit"><br>
+    <input type="submit" value="Submit">
+    <input type="button" value="Abort Random Date Loop" onclick="if(formRunning) formAbort = true"><br>
     <output id="formOut">... Awaiting Input</output><br>
     <br>
     
