@@ -56,6 +56,6 @@ The script's *template* command will also find a variable stored as '{project}' 
 
 The script file will not affect the following files (due to not having template syntax setup or being in the wrong directory):  
 - "index.html"
-- "c/*"
+- "projects/c/"
 
 "setup.py" also has a find and replace function.  
