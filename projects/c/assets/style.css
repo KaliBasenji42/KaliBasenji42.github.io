@@ -37,7 +37,7 @@ footer {
   line-height: 1.5em;
   
   animation-name: crazy;
-  animation-duration: 16s;
+  animation-duration: 19.5s; /* Redefined in JS */
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -324,7 +324,7 @@ footer {
   z-index: 1;
   
   animation-name: ratH;
-  animation-duration: 10s;
+  animation-duration: 20s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
@@ -347,12 +347,9 @@ footer {
   width: 5%;
   aspect-ratio: 400 / 219;
   
-  transition: top 2s linear, left 2s linear, rotate 2s linear, transform 2s linear;
-}
-
-#i.rat-cont > #rainbow {
-  width: 100%;
-  height: 100%;
+  transition: top 4s linear, left 4s linear, rotate 4s linear, transform 4s linear;
+  
+  background-image: radial-gradient(rgba(0,0,255,0.6) 40%, rgba(0,255,255,0.3),rgba(0,0,0,0) 80%);
   
   animation-name: rainbowI;
   animation-duration: 10s;
@@ -360,12 +357,13 @@ footer {
   animation-timing-function: linear;
 }
 
+#i.rat-cont > #rainbow {
+  width: 100%;
+  height: 100%;
+  
+}
+
 @keyframes rainbowI {
-  0% {background-color: rgba(255, 0, 0, 0.5);}
-  17% {background-color: rgba(255, 255, 0, 0.5);}
-  33% {background-color: rgba(0, 255, 0, 0.5);}
-  50% {background-color: rgba(0, 255, 255, 0.5);}
-  67% {background-color: rgba(0, 0, 255, 0.5);}
-  84% {background-color: rgba(255, 0, 255, 0.5);}
-  100% {background-color: rgba(255, 0, 0, 0.5);}
+  0% {filter: hue-rotate(0deg) saturate(4);}
+  100% {filter: hue-rotate(360deg) saturate(4);}
 }

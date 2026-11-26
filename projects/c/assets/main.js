@@ -46,7 +46,7 @@ function randomMovement(elem, margin) {
   elem.style.top = '' + Math.random() * (100 - margin) + '%';
   elem.style.rotate = '' + Math.random() * (360 * 4) + 'deg';
   
-  elem.style.transform = 'scale(' + (Math.random() + 0.5) + ',' + (Math.random() + 0.5) + ')';
+  elem.style.transform = 'scale(' + (Math.random() + 1) + ',' + (Math.random() + 1) + ')';
   
 } 
 
@@ -77,11 +77,16 @@ function iterateText() {
   // Style
   
   crazySheet.replace(
-    '@keyframes crazy {' +
-    '  from {top: 0}' +
-    '  to {top: -' + styleLen + 'em}' +
-    '}'
+    `@keyframes crazy {
+      from {top: 0}
+      to {top: -` + styleLen + `em}
+    }
+    #crazyTxt {
+      animation-duration: ` + styleLen + `s;
+    }`
   );
+  
+  //console.log('Changed text. styleLen: ' + styleLen);
   
 }
 
@@ -95,6 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Interval
   
-  let interval = setInterval(randomMovement, 2000, ratI, 5);
+  let interval = setInterval(randomMovement, 4000, ratI, 5);
   
 });
